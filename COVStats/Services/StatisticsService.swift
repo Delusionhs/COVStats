@@ -9,7 +9,7 @@
 import Foundation
 
 protocol StatisticsServiceProtocol {
-    func fetchGlobalSummaryData() -> GlobalSummaryCovidCases?
+    func fetchGlobalSummaryData(completion: @escaping (GlobalSummaryCovidCases?) -> Void)
 }
 
 class StatisticsService: StatisticsServiceProtocol {
@@ -20,14 +20,13 @@ class StatisticsService: StatisticsServiceProtocol {
 
     let networkService = NetworkService()
 
-    func fetchGlobalSummaryData() -> GlobalSummaryCovidCases? {
-        var summary: GlobalSummaryCovidCases? = nil
-        guard let url = URL(string: ApiURL.global) else { return nil }
+    func fetchGlobalSummaryData(completion: @escaping (GlobalSummaryCovidCases?) -> Void) {
+        guard let url = URL(string: ApiURL.global) else { return }
         networkService.getJSONData(URL: url) { data in
-            guard let data = data else { return }
-            summary = try? JSONDecoder().decode(GlobalSummaryCovidCases.self, from: data)
+            if let data = data {
+                let summary = try? JSONDecoder().decode(GlobalSummaryCovidCases.self, from: data)
+                    completion(summary)
+            }
         }
-        return summary
     }
-
 }
