@@ -25,6 +25,7 @@
 		78F470152518E9F20008637C /* HomeConfiguratorProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78F470142518E9F20008637C /* HomeConfiguratorProtocol.swift */; };
 		78F470182519092D0008637C /* GlobalSummaryCovidCases.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78F470172519092D0008637C /* GlobalSummaryCovidCases.swift */; };
 		78F4701B25190DEE0008637C /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78F4701A25190DEE0008637C /* NetworkService.swift */; };
+		78F4701D251943C10008637C /* StatisticsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78F4701C251943C10008637C /* StatisticsService.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -47,6 +48,7 @@
 		78F470142518E9F20008637C /* HomeConfiguratorProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeConfiguratorProtocol.swift; sourceTree = "<group>"; };
 		78F470172519092D0008637C /* GlobalSummaryCovidCases.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlobalSummaryCovidCases.swift; sourceTree = "<group>"; };
 		78F4701A25190DEE0008637C /* NetworkService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
+		78F4701C251943C10008637C /* StatisticsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatisticsService.swift; sourceTree = "<group>"; };
 		9D2A6164830B54906DFC83E9 /* Pods_COVStats.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_COVStats.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D7B5ADE79A4AC9CC6A577DCC /* Pods-COVStats.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-COVStats.release.xcconfig"; path = "Target Support Files/Pods-COVStats/Pods-COVStats.release.xcconfig"; sourceTree = "<group>"; };
 		E6743936026E95E4B1F99C13 /* Pods-COVStats.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-COVStats.debug.xcconfig"; path = "Target Support Files/Pods-COVStats/Pods-COVStats.debug.xcconfig"; sourceTree = "<group>"; };
@@ -167,6 +169,7 @@
 			isa = PBXGroup;
 			children = (
 				78F4701A25190DEE0008637C /* NetworkService.swift */,
+				78F4701C251943C10008637C /* StatisticsService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -316,6 +319,7 @@
 				78F470062518E5D20008637C /* HomeViewOutput.swift in Sources */,
 				78F470132518E8E70008637C /* HomeConfigurator.swift in Sources */,
 				78F470102518E8090008637C /* HomeRouterInput.swift in Sources */,
+				78F4701D251943C10008637C /* StatisticsService.swift in Sources */,
 				78F4700C2518E7F00008637C /* HomeRouter.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

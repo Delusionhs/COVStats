@@ -3,14 +3,11 @@ import SystemConfiguration
 import Alamofire
 
 class NetworkService {
-    static let instance = NetworkService()
-
-    func getJSON(URL: URL, parameters: [String: Any] = [:], completion: @escaping ([String: Any]?) -> Void) {
+    func getJSONData(URL: URL, parameters: [String: Any] = [:], completion: @escaping (Data?) -> Void) {
         AF.request(URL, parameters: parameters).responseJSON { responseJSON in
             switch responseJSON.result {
-                case .success(let value):
-                    let jsonData = value as? [String: Any]
-                    completion(jsonData)
+                case .success:
+                    completion(responseJSON.data)
                 case .failure(let error):
                     print("Failed to load: \(error.localizedDescription)")
                     completion(nil)

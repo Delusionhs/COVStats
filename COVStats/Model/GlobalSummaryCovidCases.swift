@@ -9,10 +9,7 @@
 import Foundation
 
 struct GlobalSummaryCovidCases: Decodable {
-    //let NewConfirmed: Int
-    //let NewRecovered: Int
-    //let NewDeaths: Int
-    let TotalConfirmed: Int
-    let TotalDeaths: Int
-    let TotalRecovered: Int
+    let cases: Int
+    let deaths: Int
+    let recovered: Int
 }
