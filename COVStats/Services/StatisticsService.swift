@@ -18,7 +18,7 @@ class StatisticsService: StatisticsServiceProtocol {
         static let global = "https://coronavirus-19-api.herokuapp.com/all"
     }
 
-    let networkService = NetworkService()
+    private let networkService = NetworkService()
 
     func fetchGlobalSummaryData(completion: @escaping (GlobalSummaryCovidCases?) -> Void) {
         guard let url = URL(string: ApiURL.global) else { return }
