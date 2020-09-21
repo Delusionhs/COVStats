@@ -14,7 +14,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
+//        if let url = URL(string: "https://coronavirus-19-api.herokuapp.com/countries") {
+//            NetworkService.instance.getJSON(URL: url) { json in print(json)}
+//        }
+
         return true
     }
 
