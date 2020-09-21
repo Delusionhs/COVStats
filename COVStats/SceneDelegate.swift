@@ -16,7 +16,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         guard let windowScene = (scene as? UIWindowScene) else { return }
         window = UIWindow(frame: UIScreen.main.bounds)
-        let viewController = ViewController() //init VC
+        let viewController = HomeViewController() //init VC
         window?.rootViewController = viewController // associate VC as root VC
         window?.makeKeyAndVisible() // Shows the window and makes it the key window.
         window?.windowScene = windowScene
