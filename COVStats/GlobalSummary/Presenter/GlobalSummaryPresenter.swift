@@ -1,0 +1,16 @@
+//
+//  GlobalSummaryPresenter.swift
+//  COVStats
+//
+//  Created by Igor Podolskiy on 21.09.2020.
+//  Copyright © 2020 Igor Podolskiy. All rights reserved.
+//
+
+import Foundation
+
+
+class GlobalSummaryPresenter: GlobalSummaryViewOutput,GlobalSummaryInteractorOutput {
+    weak var view: GlobalSummaryViewInput!
+    var interactor: GlobalSummaryInteractorInput!
+    var router: GlobalSummaryRouterInput!
+}
