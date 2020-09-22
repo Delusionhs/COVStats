@@ -87,12 +87,41 @@ extension GlobalSummaryCollectionViewCell {
         addSubview(trendingImageView)
         addSubview(trendingGraph)
         setupBorder()
+        setupGraph()
+        setTrendingGraphData(xAxisData: [], yAxisData: [])
     }
 
     private func setupBorder() {
         contentView.layer.borderWidth = CellOptions.layerBorderWidth
         contentView.layer.cornerRadius = CellOptions.layerCornerRadius
         contentView.layer.borderColor = CellOptions.layerBorderColor
+    }
+
+    private func setupGraph() {
+        trendingGraph.xAxis.drawGridLinesEnabled = false
+        trendingGraph.xAxis.drawAxisLineEnabled = false
+        trendingGraph.xAxis.drawLabelsEnabled = false
+        trendingGraph.legend.enabled = false
+        trendingGraph.rightAxis.enabled = false
+        trendingGraph.leftAxis.enabled = false
+    }
+
+   func setTrendingGraphData(xAxisData: [Int], yAxisData: [Int]) {
+        
+        var lineDataEntry: [ChartDataEntry] = []
+
+        for i in 0..<min(xAxisData.count, yAxisData.count) {
+            lineDataEntry.append(ChartDataEntry(x: Double(xAxisData[i]), y: Double(yAxisData[i])))
+        }
+
+        let lineDataSet = LineChartDataSet(entries: lineDataEntry, label: "Cases")
+        let lineData = LineChartData()
+        lineData.addDataSet(lineDataSet)
+        lineData.setDrawValues(false)
+        //lineDataSet.mode = .cubicBezier
+        lineDataSet.colors = [UIColor.red]
+        lineDataSet.drawCirclesEnabled = false
+        trendingGraph.data = lineData
     }
 
     private func setupLayouts() {
@@ -181,7 +210,6 @@ fileprivate class mockViewController: UIViewController, UICollectionViewDelegate
         collectionView.register(GlobalSummaryCollectionViewCell.self, forCellWithReuseIdentifier: "cell")
         view.addSubview(collectionView)
         setupLayouts()
-
     }
 
     private func setupLayouts() {
@@ -201,6 +229,7 @@ fileprivate class mockViewController: UIViewController, UICollectionViewDelegate
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as! GlobalSummaryCollectionViewCell
         cell.setup(title: "Total Cases", countText: "360,524", trending: .up)
+        cell.setTrendingGraphData(xAxisData: [1,2,3,4,5,6,7,8,9,10], yAxisData: [76,150,180,180,195,195,190,164,136,120])
         return cell
     }
 
