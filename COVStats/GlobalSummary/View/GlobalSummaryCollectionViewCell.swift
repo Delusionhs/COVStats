@@ -34,6 +34,7 @@ final class GlobalSummaryCollectionViewCell: UICollectionViewCell {
     private let title: UILabel = {
         let label = UILabel()
         label.textAlignment = .center
+        label.font = UIFont.systemFont(ofSize: 17, weight: UIFont.Weight.regular)
         label.numberOfLines = CellOptions.labelTextNumberOfLines
         return label
     }()
