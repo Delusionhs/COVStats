@@ -69,7 +69,13 @@ extension GlobalSummaryViewController: UICollectionViewDataSource {
 }
 
 extension GlobalSummaryViewController: UICollectionViewDelegateFlowLayout {
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return CGSize(width: 157.0, height: 208.0)
+    }
+
 }
+
+// MARK: - Preview
 
 #if DEBUG
 import SwiftUI

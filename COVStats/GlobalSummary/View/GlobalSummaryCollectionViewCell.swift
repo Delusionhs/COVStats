@@ -8,6 +8,7 @@
 
 import Foundation
 import UIKit
+import Charts
 
 final class GlobalSummaryCollectionViewCell: UICollectionViewCell {
 
@@ -17,6 +18,9 @@ final class GlobalSummaryCollectionViewCell: UICollectionViewCell {
         static let imageHorizontalPadding: CGFloat = 10
         static let casesCountLabelHorizontalPadding: CGFloat = 10
         static let casesCountLabelVerticalPadding: CGFloat = 10
+        static let trendingGraphHorizontalPadding: CGFloat = 16
+        static let trendingGraphTopPadding: CGFloat = 24
+        static let trendingGraphBottomPadding: CGFloat = 38
     }
 
     private enum CellOptions {
@@ -50,7 +54,12 @@ final class GlobalSummaryCollectionViewCell: UICollectionViewCell {
         label.font = UIFont.systemFont(ofSize: CellOptions.casesCountLabelFontSize, weight: UIFont.Weight.semibold)
         label.numberOfLines = CellOptions.labelTextNumberOfLines
         return label
-       }()
+    }()
+
+    private let trendingGraph: LineChartView = {
+        let lineChartView = LineChartView()
+        return lineChartView
+    }()
 
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -66,9 +75,9 @@ final class GlobalSummaryCollectionViewCell: UICollectionViewCell {
 // MARK: - Setup Layout
 extension GlobalSummaryCollectionViewCell {
 
-    private func setup(title: String, count: Int, trending: Trending) {
+    func setup(title: String, countText: String, trending: Trending) {
         self.title.text = title
-        self.casesCountLabel.text = String(count)
+        self.casesCountLabel.text = countText
         self.trendingImageView.image = getImageForTrending(trending: trending)
     }
 
@@ -76,10 +85,7 @@ extension GlobalSummaryCollectionViewCell {
         addSubview(casesCountLabel)
         addSubview(title)
         addSubview(trendingImageView)
-
-        title.text = "Total Cases"
-        casesCountLabel.text = "360,524"
-        trendingImageView.image = getImageForTrending(trending: .down)
+        addSubview(trendingGraph)
         setupBorder()
     }
 
@@ -93,6 +99,7 @@ extension GlobalSummaryCollectionViewCell {
         title.translatesAutoresizingMaskIntoConstraints = false
         trendingImageView.translatesAutoresizingMaskIntoConstraints = false
         casesCountLabel.translatesAutoresizingMaskIntoConstraints = false
+        trendingGraph.translatesAutoresizingMaskIntoConstraints = false
 
         NSLayoutConstraint.activate([
             title.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: CellLayoutOptions .titleHorizontalPadding),
@@ -110,6 +117,13 @@ extension GlobalSummaryCollectionViewCell {
             casesCountLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: CellLayoutOptions .casesCountLabelHorizontalPadding),
              casesCountLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -CellLayoutOptions .casesCountLabelHorizontalPadding),
              casesCountLabel.topAnchor.constraint(equalTo: title.bottomAnchor, constant: CellLayoutOptions .casesCountLabelHorizontalPadding)
+        ])
+
+        NSLayoutConstraint.activate([
+            trendingGraph.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: CellLayoutOptions .trendingGraphHorizontalPadding),
+            trendingGraph.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -CellLayoutOptions .trendingGraphHorizontalPadding),
+            trendingGraph.topAnchor.constraint(equalTo: casesCountLabel.bottomAnchor, constant: CellLayoutOptions.trendingGraphTopPadding),
+            trendingGraph.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -CellLayoutOptions.trendingGraphBottomPadding)
         ])
     }
 }
@@ -131,7 +145,7 @@ extension GlobalSummaryCollectionViewCell {
     }
 }
 
-// MARK: - Priview
+// MARK: - Preview
 
 #if DEBUG
 import SwiftUI
@@ -186,12 +200,13 @@ fileprivate class mockViewController: UIViewController, UICollectionViewDelegate
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as! GlobalSummaryCollectionViewCell
+        cell.setup(title: "Total Cases", countText: "360,524", trending: .up)
         return cell
     }
 
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
 
-        return CGSize(width: CellOptions.cellHeight, height: CellOptions.cellWidth)
+        return CGSize(width: CellOptions.cellWidth, height: CellOptions.cellHeight)
     }
 
 }
