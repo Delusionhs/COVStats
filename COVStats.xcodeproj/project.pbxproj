@@ -111,15 +111,14 @@
 		78F46FE42518D39E0008637C /* COVStats */ = {
 			isa = PBXGroup;
 			children = (
+				78F47052251A2F1E0008637C /* Resources */,
 				78F4701925190DB50008637C /* Services */,
 				78F47016251901A80008637C /* Model */,
 				78F46FF92518D8350008637C /* Home */,
 				78F47034251A1C600008637C /* GlobalSummary */,
 				78F46FE52518D39E0008637C /* AppDelegate.swift */,
 				78F46FE72518D39E0008637C /* SceneDelegate.swift */,
-				78F46FEE2518D39E0008637C /* Assets.xcassets */,
 				78F46FF02518D39E0008637C /* LaunchScreen.storyboard */,
-				78F46FF32518D39E0008637C /* Info.plist */,
 			);
 			path = COVStats;
 			sourceTree = "<group>";
@@ -256,6 +255,31 @@
 				78F47044251A1C600008637C /* GlobalSummaryRouterInput.swift */,
 			);
 			path = Router;
+			sourceTree = "<group>";
+		};
+		78F47052251A2F1E0008637C /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				78F47054251A2FFC0008637C /* Images */,
+				78F47053251A2F410008637C /* Plists */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		78F47053251A2F410008637C /* Plists */ = {
+			isa = PBXGroup;
+			children = (
+				78F46FF32518D39E0008637C /* Info.plist */,
+			);
+			path = Plists;
+			sourceTree = "<group>";
+		};
+		78F47054251A2FFC0008637C /* Images */ = {
+			isa = PBXGroup;
+			children = (
+				78F46FEE2518D39E0008637C /* Assets.xcassets */,
+			);
+			path = Images;
 			sourceTree = "<group>";
 		};
 		8D3AADFD1BE88DB0C0EF5A3B /* Frameworks */ = {
@@ -555,7 +579,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = DZ9WU6R332;
-				INFOPLIST_FILE = COVStats/Info.plist;
+				INFOPLIST_FILE = COVStats/Resources/Plists/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -574,7 +598,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = DZ9WU6R332;
-				INFOPLIST_FILE = COVStats/Info.plist;
+				INFOPLIST_FILE = COVStats/Resources/Plists/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
