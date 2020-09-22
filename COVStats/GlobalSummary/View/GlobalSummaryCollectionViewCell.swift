@@ -22,6 +22,7 @@ final class GlobalSummaryCollectionViewCell: UICollectionViewCell {
         static let layerCornerRadius: CGFloat = 10
         static let trendingUpImageName = "trending-up"
         static let trendingDownImageName = "trending-down"
+        static let layerBorderColor: CGColor = UIColor(hex: "#E4E4E4").cgColor
     }
 
     private let trendingImageView: UIImageView = {
@@ -80,6 +81,7 @@ extension GlobalSummaryCollectionViewCell {
     private func setupBorder() {
         contentView.layer.borderWidth = CellOptions.layerBorderWidth
         contentView.layer.cornerRadius = CellOptions.layerCornerRadius
+        contentView.layer.borderColor = CellOptions.layerBorderColor
     }
 
     private func setupLayouts() {
