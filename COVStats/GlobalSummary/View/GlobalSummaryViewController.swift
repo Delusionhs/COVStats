@@ -69,21 +69,15 @@ extension GlobalSummaryViewController: UICollectionViewDataSource {
 }
 
 extension GlobalSummaryViewController: UICollectionViewDelegateFlowLayout {
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-
-        return CGSize(width: 157.0, height: 208.0)
-    }
-
 }
 
 #if DEBUG
 import SwiftUI
 
 @available(iOS 13, *)
-struct InfoVCPreview: PreviewProvider {
+struct GlobalSummaryViewControllerPreview: PreviewProvider {
 
     static var previews: some View {
-        // view controller using programmatic UI
         GlobalSummaryViewController().toPreview()
     }
 }
