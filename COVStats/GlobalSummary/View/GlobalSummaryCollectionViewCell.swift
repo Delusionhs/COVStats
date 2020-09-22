@@ -9,41 +9,82 @@
 import Foundation
 import UIKit
 
-class GlobalSummaryCollectionViewCell: UICollectionViewCell {
+final class GlobalSummaryCollectionViewCell: UICollectionViewCell {
+
+    enum Trending {
+        case up
+        case down
+    }
+
+    private enum CellOptions {
+        static let labelTextNumberOfLines = 1
+        static let layerBorderWidth: CGFloat = 1
+        static let layerCornerRadius: CGFloat = 10
+        static let trendingUpImageName = "trending-up"
+        static let trendingDownImageName = "trending-down"
+    }
 
     private let trendingImageView: UIImageView = {
-        let imageView = UIImageView(frame: .zero)
+        let imageView = UIImageView()
         imageView.contentMode = .scaleAspectFill
         return imageView
     }()
 
-    let title: UILabel = {
-           let label = UILabel(frame: .zero)
-           label.textAlignment = .center
-           label.numberOfLines = 1
-           return label
-       }()
+    private let title: UILabel = {
+        let label = UILabel()
+        label.textAlignment = .center
+        label.numberOfLines = CellOptions.labelTextNumberOfLines
+        return label
+    }()
 
-    let casesCountLabel: UILabel = {
-           let label = UILabel(frame: .zero)
-           label.textAlignment = .center
-           label.numberOfLines = 1
-           return label
+    private let casesCountLabel: UILabel = {
+        let label = UILabel()
+        label.textAlignment = .center
+        label.numberOfLines = CellOptions.labelTextNumberOfLines
+        return label
        }()
 
     override init(frame: CGRect) {
         super.init(frame: frame)
-        setup()
+        setupViews()
         setupLayouts()
     }
 
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+}
+
+// MARK: - Setup Layout
+extension GlobalSummaryCollectionViewCell {
+
+    private func setup(title: String, count: Int, trending: Trending) {
+        self.title.text = title
+        self.casesCountLabel.text = String(count)
+        self.trendingImageView.image = getImageForTrending(trending: trending)
+    }
+
+    private func setupViews() {
+        addSubview(casesCountLabel)
+        addSubview(title)
+        addSubview(trendingImageView)
+
+        title.text = "Total Cases"
+        casesCountLabel.text = "360,524"
+        trendingImageView.image = UIImage(named: "trending-up")
+
+        setupBorder()
+
+    }
+
+    private func setupBorder() {
+        contentView.layer.borderWidth = CellOptions.layerBorderWidth
+        contentView.layer.cornerRadius = CellOptions.layerCornerRadius
+    }
 
     private func setupLayouts() {
-        trendingImageView.translatesAutoresizingMaskIntoConstraints = false
         title.translatesAutoresizingMaskIntoConstraints = false
+        trendingImageView.translatesAutoresizingMaskIntoConstraints = false
         casesCountLabel.translatesAutoresizingMaskIntoConstraints = false
 
         NSLayoutConstraint.activate([
@@ -58,7 +99,6 @@ class GlobalSummaryCollectionViewCell: UICollectionViewCell {
              title.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 16.0)
         ])
 
-        // Layout constraints for `usernameLabel`
         NSLayoutConstraint.activate([
              casesCountLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 16.0),
              casesCountLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -16.0),
@@ -67,17 +107,20 @@ class GlobalSummaryCollectionViewCell: UICollectionViewCell {
     }
 }
 
-// MARK: Helper
+// MARK: - Helpers
 extension GlobalSummaryCollectionViewCell {
-    fileprivate func setup() {
-        addSubview(casesCountLabel)
-        addSubview(title)
-        addSubview(trendingImageView)
-
-        title.text = "Total Cases"
-        casesCountLabel.text = "360,524"
-        trendingImageView.image = UIImage(named: "trending-up")
-        contentView.layer.borderWidth = 1
+    func getImageForTrending(trending: Trending) -> UIImage {
+        switch trending {
+        case .up:
+            if let image = UIImage(named: CellOptions.trendingUpImageName) {
+                return image
+            }
+        case .down:
+            if let image = UIImage(named: CellOptions.trendingDownImageName) {
+                return image
+            }
+        }
+        return UIImage()
     }
 }
 
