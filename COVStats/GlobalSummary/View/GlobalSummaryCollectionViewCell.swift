@@ -11,11 +11,6 @@ import UIKit
 
 final class GlobalSummaryCollectionViewCell: UICollectionViewCell {
 
-    enum Trending {
-        case up
-        case down
-    }
-
     private enum CellLayoutOptions {
         static let titleVerticalPadding: CGFloat = 28
         static let titleHorizontalPadding: CGFloat = 10
@@ -30,8 +25,8 @@ final class GlobalSummaryCollectionViewCell: UICollectionViewCell {
         static let casesCountLabelFontSize: CGFloat = 28
         static let layerBorderWidth: CGFloat = 1
         static let layerCornerRadius: CGFloat = 10
-        static let trendingUpImageName = "trending-up"
-        static let trendingDownImageName = "trending-down"
+        static let trendingUpImageName = "trendingUpRed"
+        static let trendingDownImageName = "trendingUpGreen"
         static let layerBorderColor: CGColor = UIColor(hex: "#E4E4E4", alpha: 0.6).cgColor
     }
 
@@ -84,10 +79,8 @@ extension GlobalSummaryCollectionViewCell {
 
         title.text = "Total Cases"
         casesCountLabel.text = "360,524"
-        trendingImageView.image = UIImage(named: "trending-up")
-
+        trendingImageView.image = getImageForTrending(trending: .down)
         setupBorder()
-
     }
 
     private func setupBorder() {
