@@ -16,13 +16,23 @@ final class GlobalSummaryCollectionViewCell: UICollectionViewCell {
         case down
     }
 
+    private enum CellLayoutOptions {
+        static let titleVerticalPadding: CGFloat = 28
+        static let titleHorizontalPadding: CGFloat = 10
+        static let imageHorizontalPadding: CGFloat = 10
+        static let casesCountLabelHorizontalPadding: CGFloat = 10
+        static let casesCountLabelVerticalPadding: CGFloat = 10
+    }
+
     private enum CellOptions {
         static let labelTextNumberOfLines = 1
+        static let titleFontSize:CGFloat = 17
+        static let casesCountLabelFontSize: CGFloat = 28
         static let layerBorderWidth: CGFloat = 1
         static let layerCornerRadius: CGFloat = 10
         static let trendingUpImageName = "trending-up"
         static let trendingDownImageName = "trending-down"
-        static let layerBorderColor: CGColor = UIColor(hex: "#E4E4E4").cgColor
+        static let layerBorderColor: CGColor = UIColor(hex: "#E4E4E4", alpha: 0.6).cgColor
     }
 
     private let trendingImageView: UIImageView = {
@@ -34,7 +44,7 @@ final class GlobalSummaryCollectionViewCell: UICollectionViewCell {
     private let title: UILabel = {
         let label = UILabel()
         label.textAlignment = .center
-        label.font = UIFont.systemFont(ofSize: 17, weight: UIFont.Weight.regular)
+        label.font = UIFont.systemFont(ofSize: CellOptions.titleFontSize, weight: UIFont.Weight.regular)
         label.numberOfLines = CellOptions.labelTextNumberOfLines
         return label
     }()
@@ -42,6 +52,7 @@ final class GlobalSummaryCollectionViewCell: UICollectionViewCell {
     private let casesCountLabel: UILabel = {
         let label = UILabel()
         label.textAlignment = .center
+        label.font = UIFont.systemFont(ofSize: CellOptions.casesCountLabelFontSize, weight: UIFont.Weight.semibold)
         label.numberOfLines = CellOptions.labelTextNumberOfLines
         return label
        }()
@@ -91,21 +102,21 @@ extension GlobalSummaryCollectionViewCell {
         casesCountLabel.translatesAutoresizingMaskIntoConstraints = false
 
         NSLayoutConstraint.activate([
-             trendingImageView.leadingAnchor.constraint(equalTo: title.trailingAnchor, constant: 2.0),
-             trendingImageView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -16.0),
-             trendingImageView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 16.0)
+            title.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: CellLayoutOptions .titleHorizontalPadding),
+            title.trailingAnchor.constraint(equalTo: trendingImageView.leadingAnchor, constant: CellLayoutOptions .titleHorizontalPadding),
+            title.topAnchor.constraint(equalTo: contentView.topAnchor, constant: CellLayoutOptions.titleVerticalPadding)
         ])
 
         NSLayoutConstraint.activate([
-             title.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 16.0),
-             title.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -40.0),
-             title.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 16.0)
+            trendingImageView.leadingAnchor.constraint(equalTo: title.trailingAnchor, constant: CellLayoutOptions .imageHorizontalPadding),
+            trendingImageView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -CellLayoutOptions .imageHorizontalPadding),
+            trendingImageView.centerYAnchor.constraint(equalTo: title.centerYAnchor)
         ])
 
         NSLayoutConstraint.activate([
-             casesCountLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 16.0),
-             casesCountLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -16.0),
-             casesCountLabel.topAnchor.constraint(equalTo: title.bottomAnchor, constant: 16.0)
+            casesCountLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: CellLayoutOptions .casesCountLabelHorizontalPadding),
+             casesCountLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -CellLayoutOptions .casesCountLabelHorizontalPadding),
+             casesCountLabel.topAnchor.constraint(equalTo: title.bottomAnchor, constant: CellLayoutOptions .casesCountLabelHorizontalPadding)
         ])
     }
 }
