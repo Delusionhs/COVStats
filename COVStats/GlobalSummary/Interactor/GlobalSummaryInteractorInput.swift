@@ -10,4 +10,5 @@ import Foundation
 
 protocol GlobalSummaryInteractorInput: class {
     func fetchSummaryData()
+    func fetchHistoricalData()
 }

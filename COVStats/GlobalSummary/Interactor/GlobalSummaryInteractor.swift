@@ -19,4 +19,10 @@ extension GlobalSummaryInteractor: GlobalSummaryInteractorInput {
             self?.output.globalSummaryDataDidRiceive(data: data)
         }
     }
+
+    func fetchHistoricalData() {
+        statisticsService.fetchGlobalHistoricalData { [weak self] data in
+            self?.output.globalHistoricalDataDidRiceive(data: data)
+        }
+    }
 }

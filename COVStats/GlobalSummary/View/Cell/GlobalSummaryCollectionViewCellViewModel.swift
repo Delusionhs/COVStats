@@ -20,3 +20,7 @@ struct GlobalSummaryCollectionViewCellViewModel {
     let casesCountText: String
     let trending: Trending
 }
+
+struct GlobalSummaryGraphViewModel {
+    let cases: [Int]
+}

@@ -81,6 +81,9 @@ extension GlobalSummaryViewController: UICollectionViewDataSource {
         if let CellViewModel = output.cellViewModel(for: indexPath) {
             cell.configure(viewModel: CellViewModel)
         }
+        if let graphViewModel = output.graphViewModel(for: indexPath) {
+            cell.setTrendingGraphData(xAxisData: Array(1...15), yAxisData: graphViewModel.cases)
+        }
         return cell
     }
 }

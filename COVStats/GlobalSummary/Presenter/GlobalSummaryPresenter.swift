@@ -16,39 +16,54 @@ class GlobalSummaryPresenter {
     var router: GlobalSummaryRouterInput!
 
     var cellViewModels: [GlobalSummaryCollectionViewCellViewModel] = []
+    var graphViewModels: [GlobalSummaryGraphViewModel] = []
 
-    func setupCellViewModels(data: GlobalSummaryCovidCases) {
+    private func setupCellViewModels(data: GlobalSummaryCovidCases) {
         for type in GlobalSummaryCollectionViewCellType.allCases {
             switch type {
             case .totalCases:
                 cellViewModels.append(GlobalSummaryCollectionViewCellViewModel(type: type,
                                                                                casesCountText: String(data.cases),
-                                                                               trending: .down))
+                                                                               trending: .up))
             case .totatDeath:
                 cellViewModels.append(GlobalSummaryCollectionViewCellViewModel(type: type,
                                                                                casesCountText: String(data.deaths),
-                                                                               trending: .down))
+                                                                               trending: .up))
             case .totalRecovered:
                 cellViewModels.append(GlobalSummaryCollectionViewCellViewModel(type: type,
                                                                                casesCountText: String(data.recovered),
-                                                                               trending: .up))
+                                                                               trending: .down))
             case .activeCases:
                 cellViewModels.append(GlobalSummaryCollectionViewCellViewModel(type: type,
                                                                                casesCountText: String(data.active),
-                                                                               trending: .down))
+                                                                               trending: .up))
             }
         }
+    }
+
+    private func setupGraphViewModels(data: GlobalSummaryHistorical) {
+        graphViewModels.append(GlobalSummaryGraphViewModel(cases: data.casesTimeline))
+        graphViewModels.append(GlobalSummaryGraphViewModel(cases: data.deathTimeline))
+        graphViewModels.append(GlobalSummaryGraphViewModel(cases: data.recoveredTimeline))
     }
 }
 
 extension GlobalSummaryPresenter: GlobalSummaryViewOutput {
+
+
     func viewIsReady() {
         interactor.fetchSummaryData()
+        interactor.fetchHistoricalData()
     }
 
     func cellViewModel(for indexPath: IndexPath) -> GlobalSummaryCollectionViewCellViewModel? {
         guard cellViewModels.count > indexPath.row else { return nil }
         return cellViewModels[indexPath.row]
+    }
+
+    func graphViewModel(for indexPath: IndexPath) -> GlobalSummaryGraphViewModel? {
+        guard graphViewModels.count > indexPath.row else { return nil }
+        return graphViewModels[indexPath.row]
     }
 }
 
@@ -57,6 +72,12 @@ extension GlobalSummaryPresenter: GlobalSummaryInteractorOutput {
     func globalSummaryDataDidRiceive(data: GlobalSummaryCovidCases?) {
         guard let data = data else { return }
         setupCellViewModels(data: data)
+        view.reloadCollectionViewData()
+    }
+
+    func globalHistoricalDataDidRiceive(data: GlobalSummaryHistorical?) {
+        guard let data = data else { return }
+        setupGraphViewModels(data: data)
         view.reloadCollectionViewData()
     }
 }
