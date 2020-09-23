@@ -12,4 +12,5 @@ struct GlobalSummaryCovidCases: Decodable {
     let cases: Int
     let deaths: Int
     let recovered: Int
+    let active: Int
 }

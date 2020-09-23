@@ -34,7 +34,7 @@ class GlobalSummaryPresenter {
                                                                                trending: .up))
             case .activeCases:
                 cellViewModels.append(GlobalSummaryCollectionViewCellViewModel(type: type,
-                                                                               casesCountText: String(data.cases-data.recovered),
+                                                                               casesCountText: String(data.active),
                                                                                trending: .down))
             }
         }

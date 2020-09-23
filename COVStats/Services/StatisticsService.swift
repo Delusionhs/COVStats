@@ -15,7 +15,7 @@ protocol StatisticsServiceProtocol {
 class StatisticsService: StatisticsServiceProtocol {
 
     private enum ApiURL {
-        static let global = "https://coronavirus-19-api.herokuapp.com/all"
+        static let global = "https://disease.sh/v3/covid-19/all"
     }
 
     private let networkService = NetworkService()
