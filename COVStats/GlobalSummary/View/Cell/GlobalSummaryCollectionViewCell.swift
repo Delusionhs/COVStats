@@ -75,10 +75,10 @@ final class GlobalSummaryCollectionViewCell: UICollectionViewCell {
 // MARK: - Setup Layout
 extension GlobalSummaryCollectionViewCell {
 
-    func setup(title: String, countText: String, trending: Trending) {
-        self.title.text = title
-        self.casesCountLabel.text = countText
-        self.trendingImageView.image = getImageForTrending(trending: trending)
+    func configure(viewModel: GlobalSummaryCollectionViewCellViewModel) {
+        self.title.text = viewModel.type.rawValue
+        self.casesCountLabel.text = viewModel.casesCountText
+        self.trendingImageView.image = getImageForTrending(trending: viewModel.trending)
     }
 
     private func setupViews() {
@@ -234,7 +234,7 @@ fileprivate class mockViewController: UIViewController, UICollectionViewDelegate
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as! GlobalSummaryCollectionViewCell
-        cell.setup(title: "Total Cases", countText: "360,524", trending: .up)
+        cell.configure(viewModel: GlobalSummaryCollectionViewCellViewModel(type: .activeCases, casesCountText: "356,014", trending: .down))
         cell.setTrendingGraphData(xAxisData: CellOption.trendingX, yAxisData: CellOption.trendingY )
         return cell
     }

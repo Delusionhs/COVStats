@@ -12,7 +12,7 @@ import UIKit
 class GlobalSummaryViewController: UIViewController{
 
     private enum CollectionOption {
-        static let collectionViewCellCount = 4
+        static let collectionViewCellCount = GlobalSummaryCollectionViewCellType.allCases.count
     }
 
     var output: GlobalSummaryViewOutput!
