@@ -9,7 +9,11 @@
 import Foundation
 import UIKit
 
-class GlobalSummaryViewController: UIViewController, GlobalSummaryViewInput {
+class GlobalSummaryViewController: UIViewController{
+
+    private enum CollectionOption {
+        static let collectionViewCellCount = 4
+    }
 
     var output: GlobalSummaryViewOutput!
 
@@ -25,23 +29,20 @@ class GlobalSummaryViewController: UIViewController, GlobalSummaryViewInput {
     override func viewDidLoad() {
         super.viewDidLoad()
         configurator.configure(with: self)
-        testSetup()
+        setupCollectionView()
         collectionView.reloadData()
         setupLayouts()
     }
 
-    func testSetup() {
+    private func setupCollectionView() {
         view.addSubview(collectionView)
-
         collectionView.dataSource = self
         collectionView.delegate = self
-        collectionView.register(GlobalSummaryCollectionViewCell.self, forCellWithReuseIdentifier: "cell")
+        collectionView.register(GlobalSummaryCollectionViewCell.self, forCellWithReuseIdentifier: GlobalSummaryCollectionViewCell.identifier)
         
     }
     private func setupLayouts() {
         collectionView.translatesAutoresizingMaskIntoConstraints = false
-
-        // Layout constraints for `collectionView`
         NSLayoutConstraint.activate([
             collectionView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
             collectionView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
@@ -53,17 +54,25 @@ class GlobalSummaryViewController: UIViewController, GlobalSummaryViewInput {
 
 }
 
+//MARK: -  GlobalSummaryViewInput
+
+extension GlobalSummaryViewController: GlobalSummaryViewInput {
+
+}
+
+// MARK: - UICollectionViewDelegate & DataSource
+
 extension GlobalSummaryViewController: UICollectionViewDelegate {
 
 }
 
 extension GlobalSummaryViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        4
+        CollectionOption.collectionViewCellCount
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as! GlobalSummaryCollectionViewCell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: GlobalSummaryCollectionViewCell.identifier, for: indexPath) as! GlobalSummaryCollectionViewCell
         return cell
     }
 }

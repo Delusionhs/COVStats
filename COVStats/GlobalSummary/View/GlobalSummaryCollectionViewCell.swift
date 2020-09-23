@@ -12,7 +12,7 @@ import Charts
 
 final class GlobalSummaryCollectionViewCell: UICollectionViewCell {
 
-    private enum CellLayoutOptions {
+    private enum CellLayoutOption {
         static let titleVerticalPadding: CGFloat = 28
         static let titleHorizontalPadding: CGFloat = 10
         static let imageHorizontalPadding: CGFloat = 10
@@ -23,7 +23,7 @@ final class GlobalSummaryCollectionViewCell: UICollectionViewCell {
         static let trendingGraphBottomPadding: CGFloat = 38
     }
 
-    private enum CellOptions {
+    private enum CellOption {
         static let labelTextNumberOfLines = 1
         static let titleFontSize:CGFloat = 17
         static let casesCountLabelFontSize: CGFloat = 28
@@ -43,16 +43,16 @@ final class GlobalSummaryCollectionViewCell: UICollectionViewCell {
     private let title: UILabel = {
         let label = UILabel()
         label.textAlignment = .center
-        label.font = UIFont.systemFont(ofSize: CellOptions.titleFontSize, weight: UIFont.Weight.regular)
-        label.numberOfLines = CellOptions.labelTextNumberOfLines
+        label.font = UIFont.systemFont(ofSize: CellOption.titleFontSize, weight: UIFont.Weight.regular)
+        label.numberOfLines = CellOption.labelTextNumberOfLines
         return label
     }()
 
     private let casesCountLabel: UILabel = {
         let label = UILabel()
         label.textAlignment = .center
-        label.font = UIFont.systemFont(ofSize: CellOptions.casesCountLabelFontSize, weight: UIFont.Weight.semibold)
-        label.numberOfLines = CellOptions.labelTextNumberOfLines
+        label.font = UIFont.systemFont(ofSize: CellOption.casesCountLabelFontSize, weight: UIFont.Weight.semibold)
+        label.numberOfLines = CellOption.labelTextNumberOfLines
         return label
     }()
 
@@ -88,13 +88,12 @@ extension GlobalSummaryCollectionViewCell {
         addSubview(trendingGraph)
         setupBorder()
         setupGraph()
-        setTrendingGraphData(xAxisData: [], yAxisData: [])
     }
 
     private func setupBorder() {
-        contentView.layer.borderWidth = CellOptions.layerBorderWidth
-        contentView.layer.cornerRadius = CellOptions.layerCornerRadius
-        contentView.layer.borderColor = CellOptions.layerBorderColor
+        contentView.layer.borderWidth = CellOption.layerBorderWidth
+        contentView.layer.cornerRadius = CellOption.layerCornerRadius
+        contentView.layer.borderColor = CellOption.layerBorderColor
     }
 
     private func setupGraph() {
@@ -131,28 +130,28 @@ extension GlobalSummaryCollectionViewCell {
         trendingGraph.translatesAutoresizingMaskIntoConstraints = false
 
         NSLayoutConstraint.activate([
-            title.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: CellLayoutOptions .titleHorizontalPadding),
-            title.trailingAnchor.constraint(equalTo: trendingImageView.leadingAnchor, constant: CellLayoutOptions .titleHorizontalPadding),
-            title.topAnchor.constraint(equalTo: contentView.topAnchor, constant: CellLayoutOptions.titleVerticalPadding)
+            title.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: CellLayoutOption .titleHorizontalPadding),
+            title.trailingAnchor.constraint(equalTo: trendingImageView.leadingAnchor, constant: CellLayoutOption .titleHorizontalPadding),
+            title.topAnchor.constraint(equalTo: contentView.topAnchor, constant: CellLayoutOption.titleVerticalPadding)
         ])
 
         NSLayoutConstraint.activate([
-            trendingImageView.leadingAnchor.constraint(equalTo: title.trailingAnchor, constant: CellLayoutOptions .imageHorizontalPadding),
-            trendingImageView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -CellLayoutOptions .imageHorizontalPadding),
+            trendingImageView.leadingAnchor.constraint(equalTo: title.trailingAnchor, constant: CellLayoutOption .imageHorizontalPadding),
+            trendingImageView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -CellLayoutOption .imageHorizontalPadding),
             trendingImageView.centerYAnchor.constraint(equalTo: title.centerYAnchor)
         ])
 
         NSLayoutConstraint.activate([
-            casesCountLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: CellLayoutOptions .casesCountLabelHorizontalPadding),
-             casesCountLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -CellLayoutOptions .casesCountLabelHorizontalPadding),
-             casesCountLabel.topAnchor.constraint(equalTo: title.bottomAnchor, constant: CellLayoutOptions .casesCountLabelHorizontalPadding)
+            casesCountLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: CellLayoutOption .casesCountLabelHorizontalPadding),
+             casesCountLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -CellLayoutOption .casesCountLabelHorizontalPadding),
+             casesCountLabel.topAnchor.constraint(equalTo: title.bottomAnchor, constant: CellLayoutOption .casesCountLabelHorizontalPadding)
         ])
 
         NSLayoutConstraint.activate([
-            trendingGraph.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: CellLayoutOptions .trendingGraphHorizontalPadding),
-            trendingGraph.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -CellLayoutOptions .trendingGraphHorizontalPadding),
-            trendingGraph.topAnchor.constraint(equalTo: casesCountLabel.bottomAnchor, constant: CellLayoutOptions.trendingGraphTopPadding),
-            trendingGraph.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -CellLayoutOptions.trendingGraphBottomPadding)
+            trendingGraph.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: CellLayoutOption .trendingGraphHorizontalPadding),
+            trendingGraph.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -CellLayoutOption .trendingGraphHorizontalPadding),
+            trendingGraph.topAnchor.constraint(equalTo: casesCountLabel.bottomAnchor, constant: CellLayoutOption.trendingGraphTopPadding),
+            trendingGraph.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -CellLayoutOption.trendingGraphBottomPadding)
         ])
     }
 }
@@ -162,15 +161,21 @@ extension GlobalSummaryCollectionViewCell {
     func getImageForTrending(trending: Trending) -> UIImage {
         switch trending {
         case .up:
-            if let image = UIImage(named: CellOptions.trendingUpImageName) {
+            if let image = UIImage(named: CellOption.trendingUpImageName) {
                 return image
             }
         case .down:
-            if let image = UIImage(named: CellOptions.trendingDownImageName) {
+            if let image = UIImage(named: CellOption.trendingDownImageName) {
                 return image
             }
         }
         return UIImage()
+    }
+}
+
+extension GlobalSummaryCollectionViewCell {
+    static var identifier: String {
+        return String(describing: self)
     }
 }
 
@@ -190,9 +195,11 @@ struct GlobalSummaryCollectionViewCellPreview: PreviewProvider {
 
 fileprivate class mockViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout  {
 
-    private enum CellOptions {
+    private enum CellOption {
         static let cellHeight: CGFloat = 208.0
         static let cellWidth: CGFloat = 157.0
+        static let trendingX = [1,2,3,4,5,6,7,8,9,10]
+        static let trendingY = [76,150,180,180,195,195,190,164,136,120]
     }
 
     private let collectionView: UICollectionView = {
@@ -229,13 +236,13 @@ fileprivate class mockViewController: UIViewController, UICollectionViewDelegate
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as! GlobalSummaryCollectionViewCell
         cell.setup(title: "Total Cases", countText: "360,524", trending: .up)
-        cell.setTrendingGraphData(xAxisData: [1,2,3,4,5,6,7,8,9,10], yAxisData: [76,150,180,180,195,195,190,164,136,120])
+        cell.setTrendingGraphData(xAxisData: CellOption.trendingX, yAxisData: CellOption.trendingY )
         return cell
     }
 
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
 
-        return CGSize(width: CellOptions.cellWidth, height: CellOptions.cellHeight)
+        return CGSize(width: CellOption.cellWidth, height: CellOption.cellHeight)
     }
 
 }
