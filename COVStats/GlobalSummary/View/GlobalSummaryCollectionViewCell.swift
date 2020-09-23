@@ -131,7 +131,6 @@ extension GlobalSummaryCollectionViewCell {
 
         NSLayoutConstraint.activate([
             title.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: CellLayoutOption .titleHorizontalPadding),
-            title.trailingAnchor.constraint(equalTo: trendingImageView.leadingAnchor, constant: CellLayoutOption .titleHorizontalPadding),
             title.topAnchor.constraint(equalTo: contentView.topAnchor, constant: CellLayoutOption.titleVerticalPadding)
         ])
 
