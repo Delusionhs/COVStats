@@ -36,6 +36,7 @@ class GlobalSummaryViewController: UIViewController{
 
     private func setupCollectionView() {
         view.addSubview(collectionView)
+        self.view.backgroundColor = .white
         collectionView.dataSource = self
         collectionView.delegate = self
         collectionView.register(GlobalSummaryCollectionViewCell.self, forCellWithReuseIdentifier: GlobalSummaryCollectionViewCell.identifier)

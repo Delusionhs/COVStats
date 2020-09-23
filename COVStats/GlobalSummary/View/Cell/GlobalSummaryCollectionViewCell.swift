@@ -26,7 +26,7 @@ final class GlobalSummaryCollectionViewCell: UICollectionViewCell {
     private enum CellOption {
         static let labelTextNumberOfLines = 1
         static let titleFontSize:CGFloat = 17
-        static let casesCountLabelFontSize: CGFloat = 18
+        static let casesCountLabelFontSize: CGFloat = 24
         static let layerBorderWidth: CGFloat = 1
         static let layerCornerRadius: CGFloat = 10
         static let trendingUpImageName = "trendingUpRed"
@@ -136,7 +136,8 @@ extension GlobalSummaryCollectionViewCell {
 
         NSLayoutConstraint.activate([
             trendingImageView.leadingAnchor.constraint(equalTo: title.trailingAnchor, constant: CellLayoutOption .imageHorizontalPadding),
-            trendingImageView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -CellLayoutOption .imageHorizontalPadding),
+            trendingImageView.trailingAnchor.constraint(lessThanOrEqualTo: contentView.trailingAnchor, constant: -CellLayoutOption .imageHorizontalPadding),
+
             trendingImageView.centerYAnchor.constraint(equalTo: title.centerYAnchor)
         ])
 
