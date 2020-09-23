@@ -26,7 +26,7 @@ final class GlobalSummaryCollectionViewCell: UICollectionViewCell {
     private enum CellOption {
         static let labelTextNumberOfLines = 1
         static let titleFontSize:CGFloat = 17
-        static let casesCountLabelFontSize: CGFloat = 28
+        static let casesCountLabelFontSize: CGFloat = 18
         static let layerBorderWidth: CGFloat = 1
         static let layerCornerRadius: CGFloat = 10
         static let trendingUpImageName = "trendingUpRed"
@@ -234,7 +234,7 @@ fileprivate class mockViewController: UIViewController, UICollectionViewDelegate
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as! GlobalSummaryCollectionViewCell
-        cell.configure(viewModel: GlobalSummaryCollectionViewCellViewModel(type: .activeCases, casesCountText: "356,014", trending: .down))
+        cell.configure(viewModel: GlobalSummaryCollectionViewCellViewModel(type: .activeCases, casesCountText: "356,014,000,0", trending: .down))
         cell.setTrendingGraphData(xAxisData: CellOption.trendingX, yAxisData: CellOption.trendingY )
         return cell
     }

@@ -15,19 +15,48 @@ class GlobalSummaryPresenter {
     var interactor: GlobalSummaryInteractorInput!
     var router: GlobalSummaryRouterInput!
 
-    var globalSummaryData: GlobalSummaryCovidCases?
+    var cellViewModels: [GlobalSummaryCollectionViewCellViewModel] = []
+
+    func setupCellViewModels(data: GlobalSummaryCovidCases) {
+        for type in GlobalSummaryCollectionViewCellType.allCases {
+            switch type {
+            case .totalCases:
+                cellViewModels.append(GlobalSummaryCollectionViewCellViewModel(type: type,
+                                                                               casesCountText: String(data.cases),
+                                                                               trending: .down))
+            case .totatDeath:
+                cellViewModels.append(GlobalSummaryCollectionViewCellViewModel(type: type,
+                                                                               casesCountText: String(data.deaths),
+                                                                               trending: .down))
+            case .totalRecovered:
+                cellViewModels.append(GlobalSummaryCollectionViewCellViewModel(type: type,
+                                                                               casesCountText: String(data.recovered),
+                                                                               trending: .up))
+            case .activeCases:
+                cellViewModels.append(GlobalSummaryCollectionViewCellViewModel(type: type,
+                                                                               casesCountText: String(data.cases-data.recovered),
+                                                                               trending: .down))
+            }
+        }
+    }
 }
 
 extension GlobalSummaryPresenter: GlobalSummaryViewOutput {
     func viewIsReady() {
         interactor.fetchSummaryData()
     }
+
+    func cellViewModel(for indexPath: IndexPath) -> GlobalSummaryCollectionViewCellViewModel? {
+        guard cellViewModels.count > indexPath.row else { return nil }
+        return cellViewModels[indexPath.row]
+    }
 }
 
 
 extension GlobalSummaryPresenter: GlobalSummaryInteractorOutput {
     func globalSummaryDataDidRiceive(data: GlobalSummaryCovidCases?) {
-        self.globalSummaryData = data
+        guard let data = data else { return }
+        setupCellViewModels(data: data)
         view.reloadCollectionViewData()
     }
 }

@@ -77,6 +77,9 @@ extension GlobalSummaryViewController: UICollectionViewDataSource {
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: GlobalSummaryCollectionViewCell.identifier, for: indexPath) as! GlobalSummaryCollectionViewCell
+        if let CellViewModel = output.cellViewModel(for: indexPath) {
+            cell.configure(viewModel: CellViewModel)
+        }
         return cell
     }
 }

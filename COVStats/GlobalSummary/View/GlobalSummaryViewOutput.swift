@@ -10,4 +10,5 @@ import Foundation
 
 protocol GlobalSummaryViewOutput: class {
     func viewIsReady()
+    func cellViewModel(for indexPath: IndexPath) -> GlobalSummaryCollectionViewCellViewModel?
 }
