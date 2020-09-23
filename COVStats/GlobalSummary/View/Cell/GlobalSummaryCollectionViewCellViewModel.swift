@@ -10,9 +10,9 @@ import Foundation
 
 enum GlobalSummaryCollectionViewCellType: String, CaseIterable {
     case totalCases = "Total Cases"
-    case totatDeath = "Total Death"
     case totalRecovered = "Recovered"
     case activeCases = "Active Cases"
+    case totatDeath = "Total Death"
 }
 
 struct GlobalSummaryCollectionViewCellViewModel {

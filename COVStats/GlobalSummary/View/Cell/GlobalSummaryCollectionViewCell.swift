@@ -117,7 +117,7 @@ extension GlobalSummaryCollectionViewCell {
         let lineData = LineChartData()
         lineData.addDataSet(lineDataSet)
         lineData.setDrawValues(false)
-        //lineDataSet.mode = .cubicBezier
+        lineDataSet.mode = .cubicBezier
         lineDataSet.colors = [UIColor.red]
         lineDataSet.drawCirclesEnabled = false
         trendingGraph.data = lineData
