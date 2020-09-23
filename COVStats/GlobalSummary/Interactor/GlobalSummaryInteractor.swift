@@ -8,6 +8,14 @@
 
 import Foundation
 
-class GlobalSummaryInteractor: GlobalSummaryInteractorInput {
+class GlobalSummaryInteractor {
     weak var output: GlobalSummaryInteractorOutput!
+    let statisticsService: StatisticsService = StatisticsService()
+}
+
+extension GlobalSummaryInteractor: GlobalSummaryInteractorInput {
+    func fetchSummaryData() {
+        statisticsService.fetchGlobalSummaryData { data in
+        }
+    }
 }

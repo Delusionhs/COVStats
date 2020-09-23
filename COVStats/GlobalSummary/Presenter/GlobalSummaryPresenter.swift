@@ -9,8 +9,25 @@
 import Foundation
 
 
-class GlobalSummaryPresenter: GlobalSummaryViewOutput,GlobalSummaryInteractorOutput {
+class GlobalSummaryPresenter {
+
     weak var view: GlobalSummaryViewInput!
     var interactor: GlobalSummaryInteractorInput!
     var router: GlobalSummaryRouterInput!
+
+    var globalSummaryData: GlobalSummaryCovidCases?
+}
+
+extension GlobalSummaryPresenter: GlobalSummaryViewOutput {
+    func viewIsReady() {
+        interactor.fetchSummaryData()
+    }
+}
+
+
+extension GlobalSummaryPresenter: GlobalSummaryInteractorOutput {
+    func globalSummaryDataDidRiceive(data: GlobalSummaryCovidCases) {
+        self.globalSummaryData = data
+        view.reloadCollectionViewData()
+    }
 }

@@ -30,7 +30,6 @@ class GlobalSummaryViewController: UIViewController{
         super.viewDidLoad()
         configurator.configure(with: self)
         setupCollectionView()
-        collectionView.reloadData()
         setupLayouts()
     }
 
@@ -57,7 +56,11 @@ class GlobalSummaryViewController: UIViewController{
 //MARK: -  GlobalSummaryViewInput
 
 extension GlobalSummaryViewController: GlobalSummaryViewInput {
-
+    func reloadCollectionViewData() {
+        DispatchQueue.main.async {
+            self.collectionView.reloadData()
+        }
+    }
 }
 
 // MARK: - UICollectionViewDelegate & DataSource

@@ -105,7 +105,7 @@ extension GlobalSummaryCollectionViewCell {
         trendingGraph.leftAxis.enabled = false
     }
 
-   func setTrendingGraphData(xAxisData: [Int], yAxisData: [Int]) {
+    func setTrendingGraphData(xAxisData: [Int], yAxisData: [Int]) {
         
         var lineDataEntry: [ChartDataEntry] = []
 
@@ -143,8 +143,8 @@ extension GlobalSummaryCollectionViewCell {
 
         NSLayoutConstraint.activate([
             casesCountLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: CellLayoutOption .casesCountLabelHorizontalPadding),
-             casesCountLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -CellLayoutOption .casesCountLabelHorizontalPadding),
-             casesCountLabel.topAnchor.constraint(equalTo: title.bottomAnchor, constant: CellLayoutOption .casesCountLabelHorizontalPadding)
+            casesCountLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -CellLayoutOption .casesCountLabelHorizontalPadding),
+            casesCountLabel.topAnchor.constraint(equalTo: title.bottomAnchor, constant: CellLayoutOption .casesCountLabelHorizontalPadding)
         ])
 
         NSLayoutConstraint.activate([

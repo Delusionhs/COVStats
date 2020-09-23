@@ -9,4 +9,5 @@
 import Foundation
 
 protocol GlobalSummaryInteractorOutput: class {
+    func globalSummaryDataDidRiceive (data: GlobalSummaryCovidCases)
 }
