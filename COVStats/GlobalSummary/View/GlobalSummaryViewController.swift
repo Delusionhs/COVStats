@@ -29,6 +29,7 @@ class GlobalSummaryViewController: UIViewController{
     override func viewDidLoad() {
         super.viewDidLoad()
         configurator.configure(with: self)
+        output.viewIsReady()
         setupCollectionView()
         setupLayouts()
     }

@@ -26,7 +26,7 @@ extension GlobalSummaryPresenter: GlobalSummaryViewOutput {
 
 
 extension GlobalSummaryPresenter: GlobalSummaryInteractorOutput {
-    func globalSummaryDataDidRiceive(data: GlobalSummaryCovidCases) {
+    func globalSummaryDataDidRiceive(data: GlobalSummaryCovidCases?) {
         self.globalSummaryData = data
         view.reloadCollectionViewData()
     }

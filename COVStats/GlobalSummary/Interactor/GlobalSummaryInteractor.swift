@@ -15,7 +15,8 @@ class GlobalSummaryInteractor {
 
 extension GlobalSummaryInteractor: GlobalSummaryInteractorInput {
     func fetchSummaryData() {
-        statisticsService.fetchGlobalSummaryData { data in
+        statisticsService.fetchGlobalSummaryData { [weak self] data in
+            self?.output.globalSummaryDataDidRiceive(data: data)
         }
     }
 }
