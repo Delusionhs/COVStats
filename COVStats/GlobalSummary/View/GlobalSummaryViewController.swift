@@ -14,6 +14,9 @@ class GlobalSummaryViewController: UIViewController{
     private enum CollectionOption {
         static let collectionViewCellCount = GlobalSummaryCollectionViewCellType.allCases.count
         static let collectionViewCellOrder: [GlobalSummaryCollectionViewCellType] = [.totalCases,.totalRecovered,.activeCases,.totatDeath]
+        static let cellSpacing: CGFloat = 13.0
+        static let cellHeight: CGFloat = 208.0
+        static let cellInset: CGFloat = 10
     }
 
     var output: GlobalSummaryViewOutput!
@@ -45,6 +48,7 @@ class GlobalSummaryViewController: UIViewController{
     }
     private func setupLayouts() {
         collectionView.translatesAutoresizingMaskIntoConstraints = false
+        collectionView.contentInset = UIEdgeInsets(top: CollectionOption.cellInset, left: CollectionOption.cellInset,bottom: CollectionOption.cellInset, right: CollectionOption.cellInset)
         NSLayoutConstraint.activate([
             collectionView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
             collectionView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
@@ -92,7 +96,19 @@ extension GlobalSummaryViewController: UICollectionViewDataSource {
 
 extension GlobalSummaryViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: 157.0, height: 208.0)
+
+        let width = itemWidth(for: view.frame.width, spacing: CollectionOption.cellSpacing)
+
+        return CGSize(width: width, height: CollectionOption.cellHeight)
+    }
+
+    func itemWidth(for width: CGFloat, spacing: CGFloat) -> CGFloat {
+        let itemsInRow: CGFloat = 2
+
+        let totalSpacing: CGFloat = 2 * spacing + (itemsInRow - 1) * spacing
+        let finalWidth = (width - totalSpacing) / itemsInRow
+
+        return floor(finalWidth)
     }
 
 }

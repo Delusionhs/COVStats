@@ -32,8 +32,8 @@ final class GlobalSummaryCollectionViewCell: UICollectionViewCell {
         static let trendingUpImageName = "trendingUpRed"
         static let trendingDownImageName = "trendingUpGreen"
         static let layerBorderColor: CGColor = UIColor(hex: "#E4E4E4", alpha: 0.6).cgColor
-        static let colorForRecoveredCount: UIColor = UIColor(hex: "#00C48C")
-        static let colorForDeathCount: UIColor = UIColor(hex: "#FF647C")
+        static let defaultGreenColorShade: UIColor = UIColor(hex: "#00C48C")
+        static let defaultRedColorShade: UIColor = UIColor(hex: "#FF647C")
     }
 
     private let trendingImageView: UIImageView = {
@@ -78,26 +78,27 @@ final class GlobalSummaryCollectionViewCell: UICollectionViewCell {
 extension GlobalSummaryCollectionViewCell {
 
     func configureForType(type: GlobalSummaryCollectionViewCellType) {
-        self.title.text = type.rawValue
+        title.text = type.rawValue
         switch type {
         case .totalCases:
-            self.trendingImageView.image = getImageForTrending(trending: .up)
-            self.casesCountLabel.textColor = .black
+            trendingImageView.image = getImageForTrending(trending: .up)
+            casesCountLabel.textColor = .black
         case .totalRecovered:
-            self.trendingImageView.image = getImageForTrending(trending: .down)
-            self.casesCountLabel.textColor = CellOption.colorForRecoveredCount
+            trendingImageView.image = getImageForTrending(trending: .down)
+            casesCountLabel.textColor = CellOption.defaultGreenColorShade
+
         case .activeCases:
-            self.trendingImageView.image = getImageForTrending(trending: .up)
-            self.casesCountLabel.textColor = .black
+            trendingImageView.image = getImageForTrending(trending: .up)
+            casesCountLabel.textColor = .black
         case .totatDeath:
-            self.trendingImageView.image = getImageForTrending(trending: .up)
-            self.casesCountLabel.textColor = CellOption.colorForDeathCount
+            trendingImageView.image = getImageForTrending(trending: .up)
+            casesCountLabel.textColor = CellOption.defaultRedColorShade
         }
     }
 
     func configure(viewModel: GlobalSummaryCollectionViewCellViewModel) {
-        self.title.text = viewModel.type.rawValue
-        self.casesCountLabel.text = viewModel.casesCountText
+        title.text = viewModel.type.rawValue
+        casesCountLabel.text = viewModel.casesCountText
     }
 
     private func setupViews() {
@@ -137,7 +138,7 @@ extension GlobalSummaryCollectionViewCell {
         lineData.addDataSet(lineDataSet)
         lineData.setDrawValues(false)
         lineDataSet.mode = .cubicBezier
-        lineDataSet.colors = [UIColor.red]
+        lineDataSet.colors = [CellOption.defaultRedColorShade]
         lineDataSet.drawCirclesEnabled = false
         trendingGraph.data = lineData
     }
