@@ -46,6 +46,7 @@ class GlobalSummaryViewController: UIViewController{
         collectionView.register(GlobalSummaryCollectionViewCell.self, forCellWithReuseIdentifier: GlobalSummaryCollectionViewCell.identifier)
         
     }
+
     private func setupLayouts() {
         collectionView.translatesAutoresizingMaskIntoConstraints = false
         collectionView.contentInset = UIEdgeInsets(top: CollectionOption.cellInset, left: CollectionOption.cellInset,bottom: CollectionOption.cellInset, right: CollectionOption.cellInset)

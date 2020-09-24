@@ -14,17 +14,59 @@ class CountryListViewController: UIViewController, CountryListViewInput {
 
     private let configurator: CountryListConfiguratorProtocol = CountryListConfigurator()
 
+    private let tableView: UITableView = {
+        let tableView = UITableView(frame: .zero)
+        return tableView
+    }()
+
     // MARK: Life cycle
     override func viewDidLoad() {
         configurator.configure(with: self)
         super.viewDidLoad()
         output.viewIsReady()
+        setupTableView()
+        setupLayouts()
+    }
+
+    private func setupTableView() {
+        view.addSubview(tableView)
+        tableView.dataSource = self
+        tableView.delegate = self
+    }
+
+    private func setupLayouts() {
+        tableView.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            tableView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+            tableView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
+            tableView.leftAnchor.constraint(equalTo: view.leftAnchor),
+            tableView.rightAnchor.constraint(equalTo: view.rightAnchor)
+        ])
     }
 
 
     // MARK: CountryListViewInput
+}
+
+//MARK: - TableView Delegate & DataSource
+
+extension CountryListViewController: UITableViewDelegate {
 
 }
+
+extension CountryListViewController: UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        1
+    }
+
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        return UITableViewCell()
+    }
+
+
+}
+
+//MARK: - Preview
 
 #if DEBUG
 import SwiftUI
