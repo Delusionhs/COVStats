@@ -10,12 +10,37 @@ import UIKit
 
 class CountryListTableViewCell: UITableViewCell {
 
+    let flagImage : UIImageView = {
+        let imgView = UIImageView()
+        imgView.contentMode = .scaleAspectFill
+        imgView.layer.cornerRadius = 7
+        imgView.clipsToBounds = true
+        imgView.isUserInteractionEnabled = true
+        return imgView
+    }()
+
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
+        setupViews()
+        setupLayouts()
     }
 
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+
+    private func setupViews() {
+        self.addSubview(flagImage)
+    }
+
+    
+    private func setupLayouts() {
+        flagImage.translatesAutoresizingMaskIntoConstraints = false
+
+        NSLayoutConstraint.activate([
+            flagImage.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 10),
+            flagImage.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 10)
+        ])
     }
 }
 
@@ -38,10 +63,6 @@ fileprivate class mockViewController: UIViewController, UITableViewDelegate, UIT
 
 
     private enum CellOption {
-        static let cellHeight: CGFloat = 208.0
-        static let cellWidth: CGFloat = 157.0
-        static let trendingX = [1,2,3,4,5,6,7,8,9,10]
-        static let trendingY = [76,150,180,180,195,195,190,164,136,120]
     }
 
     private let tableView: UITableView = {
@@ -75,12 +96,13 @@ fileprivate class mockViewController: UIViewController, UITableViewDelegate, UIT
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        1
+        2
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
-        cell.textLabel?.text = "test"
+        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! CountryListTableViewCell
+        //cell.textLabel?.text = "test"
+        cell.flagImage.image = UIImage(named: "trendingUpGreen")
         return cell
     }
 
