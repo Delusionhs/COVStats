@@ -42,10 +42,10 @@ class GlobalSummaryPresenter {
     }
 
     private func setupGraphViewModels(data: GlobalSummaryHistorical) {
-        graphViewModels.append(GlobalSummaryGraphViewModel(cases: data.casesTimeline))
-        graphViewModels.append(GlobalSummaryGraphViewModel(cases: data.recoveredTimeline))
-        graphViewModels.append(GlobalSummaryGraphViewModel(cases: data.activeTimeline))
-        graphViewModels.append(GlobalSummaryGraphViewModel(cases: data.deathTimeline))
+        graphViewModels.append(GlobalSummaryGraphViewModel(yAxisData: data.casesTimeline))
+        graphViewModels.append(GlobalSummaryGraphViewModel(yAxisData: data.recoveredTimeline))
+        graphViewModels.append(GlobalSummaryGraphViewModel(yAxisData: data.activeTimeline))
+        graphViewModels.append(GlobalSummaryGraphViewModel(yAxisData: data.deathTimeline))
     }
 }
 
