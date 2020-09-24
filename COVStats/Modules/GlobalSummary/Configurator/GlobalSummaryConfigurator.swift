@@ -6,8 +6,6 @@
 //  Copyright © 2020 Igor Podolskiy. All rights reserved.
 //
 
-import Foundation
-
 class GlobalSummaryConfigurator: GlobalSummaryConfiguratorProtocol {
 
     func configure(with viewController: GlobalSummaryViewController) {

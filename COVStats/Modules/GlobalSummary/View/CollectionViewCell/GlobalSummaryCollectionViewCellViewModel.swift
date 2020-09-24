@@ -6,8 +6,6 @@
 //  Copyright © 2020 Igor Podolskiy. All rights reserved.
 //
 
-import Foundation
-
 struct GlobalSummaryCollectionViewCellViewModel {
     let type: GlobalSummaryCollectionViewCellType
     let casesCountText: String

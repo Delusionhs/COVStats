@@ -6,8 +6,6 @@
 //  Copyright © 2020 Igor Podolskiy. All rights reserved.
 //
 
-import Foundation
-
 struct GlobalSummaryGraphViewModel {
     let yAxisData: [Int]
 

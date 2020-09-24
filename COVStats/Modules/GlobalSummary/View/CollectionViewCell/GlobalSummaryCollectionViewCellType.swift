@@ -6,7 +6,7 @@
 //  Copyright © 2020 Igor Podolskiy. All rights reserved.
 //
 
-import Foundation
+
 
 enum GlobalSummaryCollectionViewCellType: String, CaseIterable {
     case totalCases = "Total Cases"
