@@ -33,6 +33,7 @@ class CountryListViewController: UIViewController, CountryListViewInput {
         self.view.backgroundColor = .white
         tableView.dataSource = self
         tableView.delegate = self
+        tableView.register(CountryListTableViewCell.self, forCellReuseIdentifier: "cell")
     }
 
     private func setupLayouts() {
