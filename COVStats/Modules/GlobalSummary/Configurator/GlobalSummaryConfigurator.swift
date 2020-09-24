@@ -24,5 +24,4 @@ class GlobalSummaryConfigurator: GlobalSummaryConfiguratorProtocol {
         presenter.interactor = interactor
         viewController.output = presenter
     }
-
 }
