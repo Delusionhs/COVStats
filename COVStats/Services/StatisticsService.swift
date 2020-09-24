@@ -15,9 +15,13 @@ protocol StatisticsServiceProtocol {
 
 class StatisticsService: StatisticsServiceProtocol {
 
+    private enum QueryOption {
+        static let historycalDaysCount = 15
+    }
+
     private enum ApiURL {
         static let globalSummary = "https://disease.sh/v3/covid-19/all"
-        static let globalHistorical = "https://disease.sh/v3/covid-19/historical/all?lastdays=15"
+        static let globalHistorical = "https://disease.sh/v3/covid-19/historical/all?lastdays=" + String(QueryOption.historycalDaysCount)
     }
 
     private let networkService = NetworkService()

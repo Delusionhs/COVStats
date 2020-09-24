@@ -61,26 +61,5 @@ struct GlobalSummaryHistorical: Decodable {
             dynamicTimeline.append(cases[i]-deaths[i]-recovered[i])
         }
         return dynamicTimeline
-
-//        var cases: [Int] = []
-//        var deaths: [Int] = []
-//        var recovered: [Int] = []
-//        var timeline: [Int] = []
-//        for (_,value) in self.cases {
-//            cases.append(value)
-//        }
-//        cases = cases.sorted()
-//        for (_,value) in self.deaths {
-//            deaths.append(value)
-//        }
-//        deaths = deaths.sorted()
-//        for (_,value) in self.recovered {
-//            recovered.append(value)
-//        }
-//        recovered = recovered.sorted()
-//        for i in 0..<min(cases.count,deaths.count,recovered.count) {
-//            timeline.append(cases[i]-deaths[i]-recovered[i])
-//        }
-//        return timeline
     }
 }
