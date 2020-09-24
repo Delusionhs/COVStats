@@ -140,7 +140,7 @@ fileprivate class mockViewController: UIViewController, UITableViewDelegate, UIT
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! CountryListTableViewCell
-        cell.flagImage.image = UIImage(named: "usFlag")
+        cell.flagImage.image = UIImage(named: "usaFlag")
         cell.trendingImage.image = UIImage(named: "chevronUp")
         cell.countryNameLabel.text = "United States"
         cell.countLabel.text = "4343,34343"
