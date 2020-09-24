@@ -13,6 +13,7 @@ class GlobalSummaryViewController: UIViewController{
 
     private enum CollectionOption {
         static let collectionViewCellCount = GlobalSummaryCollectionViewCellType.allCases.count
+        static let collectionViewCellOrder: [GlobalSummaryCollectionViewCellType] = [.totalCases,.totalRecovered,.activeCases,.totatDeath]
     }
 
     var output: GlobalSummaryViewOutput!
@@ -78,6 +79,7 @@ extension GlobalSummaryViewController: UICollectionViewDataSource {
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: GlobalSummaryCollectionViewCell.identifier, for: indexPath) as! GlobalSummaryCollectionViewCell
+        cell.configureForType(type: CollectionOption.collectionViewCellOrder[indexPath.row])
         if let CellViewModel = output.cellViewModel(for: indexPath) {
             cell.configure(viewModel: CellViewModel)
         }

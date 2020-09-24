@@ -11,5 +11,4 @@ import Foundation
 struct GlobalSummaryCollectionViewCellViewModel {
     let type: GlobalSummaryCollectionViewCellType
     let casesCountText: String
-    let trending: Trending
 }

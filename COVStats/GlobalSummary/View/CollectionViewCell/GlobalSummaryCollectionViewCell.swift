@@ -32,6 +32,8 @@ final class GlobalSummaryCollectionViewCell: UICollectionViewCell {
         static let trendingUpImageName = "trendingUpRed"
         static let trendingDownImageName = "trendingUpGreen"
         static let layerBorderColor: CGColor = UIColor(hex: "#E4E4E4", alpha: 0.6).cgColor
+        static let colorForRecoveredCount: UIColor = UIColor(hex: "#00C48C")
+        static let colorForDeathCount: UIColor = UIColor(hex: "#FF647C")
     }
 
     private let trendingImageView: UIImageView = {
@@ -75,10 +77,27 @@ final class GlobalSummaryCollectionViewCell: UICollectionViewCell {
 // MARK: - Setup Layout
 extension GlobalSummaryCollectionViewCell {
 
+    func configureForType(type: GlobalSummaryCollectionViewCellType) {
+        self.title.text = type.rawValue
+        switch type {
+        case .totalCases:
+            self.trendingImageView.image = getImageForTrending(trending: .up)
+            self.casesCountLabel.textColor = .black
+        case .totalRecovered:
+            self.trendingImageView.image = getImageForTrending(trending: .down)
+            self.casesCountLabel.textColor = CellOption.colorForRecoveredCount
+        case .activeCases:
+            self.trendingImageView.image = getImageForTrending(trending: .up)
+            self.casesCountLabel.textColor = .black
+        case .totatDeath:
+            self.trendingImageView.image = getImageForTrending(trending: .up)
+            self.casesCountLabel.textColor = CellOption.colorForDeathCount
+        }
+    }
+
     func configure(viewModel: GlobalSummaryCollectionViewCellViewModel) {
         self.title.text = viewModel.type.rawValue
         self.casesCountLabel.text = viewModel.casesCountText
-        self.trendingImageView.image = getImageForTrending(trending: viewModel.trending)
     }
 
     private func setupViews() {
@@ -235,7 +254,7 @@ fileprivate class mockViewController: UIViewController, UICollectionViewDelegate
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as! GlobalSummaryCollectionViewCell
-        cell.configure(viewModel: GlobalSummaryCollectionViewCellViewModel(type: .activeCases, casesCountText: "356,014,000,0", trending: .down))
+        cell.configure(viewModel: GlobalSummaryCollectionViewCellViewModel(type: .activeCases, casesCountText: "356,014,000,0"))
         cell.setTrendingGraphData(xAxisData: CellOption.trendingX, yAxisData: CellOption.trendingY )
         return cell
     }

@@ -23,20 +23,16 @@ class GlobalSummaryPresenter {
             switch type {
             case .totalCases:
                 cellViewModels.append(GlobalSummaryCollectionViewCellViewModel(type: type,
-                                                                               casesCountText: String(data.cases),
-                                                                               trending: .up))
+                                                                               casesCountText: String(data.cases)))
             case .totatDeath:
                 cellViewModels.append(GlobalSummaryCollectionViewCellViewModel(type: type,
-                                                                               casesCountText: String(data.deaths),
-                                                                               trending: .up))
+                                                                               casesCountText: String(data.deaths)))
             case .totalRecovered:
                 cellViewModels.append(GlobalSummaryCollectionViewCellViewModel(type: type,
-                                                                               casesCountText: String(data.recovered),
-                                                                               trending: .down))
+                                                                               casesCountText: String(data.recovered)))
             case .activeCases:
                 cellViewModels.append(GlobalSummaryCollectionViewCellViewModel(type: type,
-                                                                               casesCountText: String(data.active),
-                                                                               trending: .up))
+                                                                               casesCountText: String(data.active)))
             }
         }
     }
