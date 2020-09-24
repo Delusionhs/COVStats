@@ -30,6 +30,7 @@ class CountryListViewController: UIViewController, CountryListViewInput {
 
     private func setupTableView() {
         view.addSubview(tableView)
+        self.view.backgroundColor = .white
         tableView.dataSource = self
         tableView.delegate = self
     }
