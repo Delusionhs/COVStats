@@ -129,6 +129,7 @@
 		20E89E761AAE94B93754C70E /* View */ = {
 			isa = PBXGroup;
 			children = (
+				78D1BA82251D2B0C000A21C8 /* TableViewCell */,
 				551B19753D69B3FD755B688A /* CountryListViewInput.swift */,
 				AE79C5712B88CC676927F158 /* CountryListViewOutput.swift */,
 				92924876E4E75354AC645502 /* CountryListViewController.swift */,
@@ -172,6 +173,13 @@
 				C278F2E6FA46EA2F7E6462DD /* CountryList */,
 			);
 			path = Modules;
+			sourceTree = "<group>";
+		};
+		78D1BA82251D2B0C000A21C8 /* TableViewCell */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = TableViewCell;
 			sourceTree = "<group>";
 		};
 		78F46FD92518D39E0008637C = {

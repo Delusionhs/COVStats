@@ -12,8 +12,11 @@ class CountryListViewController: UIViewController, CountryListViewInput {
 
     var output: CountryListViewOutput!
 
+    private let configurator: CountryListConfiguratorProtocol = CountryListConfigurator()
+
     // MARK: Life cycle
     override func viewDidLoad() {
+        configurator.configure(with: self)
         super.viewDidLoad()
         output.viewIsReady()
     }
@@ -22,3 +25,15 @@ class CountryListViewController: UIViewController, CountryListViewInput {
     // MARK: CountryListViewInput
 
 }
+
+#if DEBUG
+import SwiftUI
+
+@available(iOS 13, *)
+struct CountryListViewControllerPreview: PreviewProvider {
+
+    static var previews: some View {
+        CountryListViewController().toPreview()
+    }
+}
+#endif
