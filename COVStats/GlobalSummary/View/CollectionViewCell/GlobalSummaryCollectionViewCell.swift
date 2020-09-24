@@ -74,7 +74,7 @@ final class GlobalSummaryCollectionViewCell: UICollectionViewCell {
     }
 }
 
-// MARK: - Setup Layout
+// MARK: - Setup Views & Layout
 extension GlobalSummaryCollectionViewCell {
 
     func configureForType(type: GlobalSummaryCollectionViewCellType) {
@@ -125,7 +125,7 @@ extension GlobalSummaryCollectionViewCell {
         trendingGraph.leftAxis.enabled = false
     }
 
-    func setTrendingGraphData(xAxisData: [Int], yAxisData: [Int]) {
+    func configureTrendingGraph(xAxisData: [Int], yAxisData: [Int], type: GlobalSummaryCollectionViewCellType) {
         
         var lineDataEntry: [ChartDataEntry] = []
 
@@ -138,9 +138,16 @@ extension GlobalSummaryCollectionViewCell {
         lineData.addDataSet(lineDataSet)
         lineData.setDrawValues(false)
         lineDataSet.mode = .cubicBezier
-        lineDataSet.colors = [CellOption.defaultRedColorShade]
+        // set color for graph
+        if type == .totalRecovered {
+            lineDataSet.colors = [CellOption.defaultGreenColorShade]
+        } else {
+            lineDataSet.colors = [CellOption.defaultRedColorShade]
+        }
+
         lineDataSet.drawCirclesEnabled = false
         trendingGraph.data = lineData
+
     }
 
     private func setupLayouts() {
@@ -256,7 +263,7 @@ fileprivate class mockViewController: UIViewController, UICollectionViewDelegate
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as! GlobalSummaryCollectionViewCell
         cell.configure(viewModel: GlobalSummaryCollectionViewCellViewModel(type: .activeCases, casesCountText: "356,014,000,0"))
-        cell.setTrendingGraphData(xAxisData: CellOption.trendingX, yAxisData: CellOption.trendingY )
+        cell.configureTrendingGraph(xAxisData: CellOption.trendingX, yAxisData: CellOption.trendingY,type: .totalRecovered )
         return cell
     }
 
