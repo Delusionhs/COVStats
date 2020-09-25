@@ -63,7 +63,9 @@ class CountryListTableViewCell: UITableViewCell {
 
         NSLayoutConstraint.activate([
             flagImage.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 10),
-            flagImage.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 10)
+            flagImage.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 10),
+            flagImage.heightAnchor.constraint(equalToConstant: 47),
+            flagImage.widthAnchor.constraint(equalToConstant: 47)
         ])
 
         NSLayoutConstraint.activate([
@@ -74,7 +76,9 @@ class CountryListTableViewCell: UITableViewCell {
 
         NSLayoutConstraint.activate([
             trendingImage.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -10),
-            trendingImage.centerYAnchor.constraint(equalTo: flagImage.centerYAnchor)
+            trendingImage.centerYAnchor.constraint(equalTo: flagImage.centerYAnchor),
+            trendingImage.heightAnchor.constraint(equalToConstant: 28),
+            trendingImage.widthAnchor.constraint(equalToConstant: 28)
         ])
 
         NSLayoutConstraint.activate([
