@@ -68,7 +68,8 @@ class CountryListTableViewCell: UITableViewCell {
 
         NSLayoutConstraint.activate([
             countryNameLabel.leadingAnchor.constraint(equalTo: flagImage.trailingAnchor, constant: 17),
-            countryNameLabel.centerYAnchor.constraint(equalTo: flagImage.centerYAnchor)
+            countryNameLabel.centerYAnchor.constraint(equalTo: flagImage.centerYAnchor),
+            countryNameLabel.trailingAnchor.constraint(equalTo: countLabel.leadingAnchor)
         ])
 
         NSLayoutConstraint.activate([
@@ -142,7 +143,7 @@ fileprivate class mockViewController: UIViewController, UITableViewDelegate, UIT
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! CountryListTableViewCell
         cell.flagImage.image = UIImage(named: "usaFlag")
         cell.trendingImage.image = UIImage(named: "chevronUp")
-        cell.countryNameLabel.text = "United States"
+        cell.countryNameLabel.text = "USA"
         cell.countLabel.text = "4343,34343"
         return cell
     }
