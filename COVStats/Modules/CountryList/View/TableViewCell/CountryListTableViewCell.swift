@@ -11,7 +11,8 @@ import UIKit
 class CountryListTableViewCell: UITableViewCell {
 
     private enum CellLayoutOption {
-        static let flagImageSize: CGFloat = 47.0
+        static let flagImageHeight: CGFloat = 34.0
+        static let flagImageWidth: CGFloat = 47.0
         static let flagImageHorisontalPadding: CGFloat = 10.0
         static let countryNameLabelVerticalPadding: CGFloat = 17.0
         static let trendingImageSize: CGFloat = 28
@@ -31,6 +32,9 @@ class CountryListTableViewCell: UITableViewCell {
     let flagImage : UIImageView = {
         let imgView = UIImageView()
         imgView.contentMode = .scaleAspectFill
+        imgView.layer.cornerRadius = CellOption.layerCornerRadius
+        imgView.layer.borderWidth = CellOption.layerBorderWidth
+        imgView.layer.borderColor = CellOption.layerBorderColor
         imgView.clipsToBounds = true
         return imgView
     }()
@@ -65,6 +69,12 @@ class CountryListTableViewCell: UITableViewCell {
         fatalError("init(coder:) has not been implemented")
     }
 
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        self.layer.frame = layer.frame.inset(by: UIEdgeInsets(top: 0, left: CellLayoutOption.margin, bottom: 0, right: CellLayoutOption.margin))
+        self.contentView.frame = contentView.frame.inset(by: UIEdgeInsets(top: 0, left: CellLayoutOption.margin, bottom: 0, right: CellLayoutOption.margin*2))
+    }
+
     private func setupViews() {
         self.contentView.addSubview(flagImage)
         self.contentView.addSubview(countryNameLabel)
@@ -75,13 +85,7 @@ class CountryListTableViewCell: UITableViewCell {
     private func setupBorder() {
         layer.borderWidth = CellOption.layerBorderWidth
         layer.cornerRadius = CellOption.layerCornerRadius
-        //layer.borderColor = CellOption.layerBorderColor
-    }
-
-    override func layoutSubviews() {
-        super.layoutSubviews()
-        self.layer.frame = layer.frame.inset(by: UIEdgeInsets(top: 0, left: CellLayoutOption.margin, bottom: 0, right: CellLayoutOption.margin))
-        self.contentView.frame = contentView.frame.inset(by: UIEdgeInsets(top: 0, left: CellLayoutOption.margin, bottom: 0, right: CellLayoutOption.margin*2))
+        layer.borderColor = CellOption.layerBorderColor
     }
 
     
@@ -94,8 +98,8 @@ class CountryListTableViewCell: UITableViewCell {
         NSLayoutConstraint.activate([
             flagImage.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
             flagImage.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: CellLayoutOption.flagImageHorisontalPadding),
-            flagImage.heightAnchor.constraint(equalToConstant: CellLayoutOption.flagImageSize),
-            flagImage.widthAnchor.constraint(equalToConstant: CellLayoutOption.flagImageSize)
+            flagImage.heightAnchor.constraint(equalToConstant: CellLayoutOption.flagImageHeight),
+            flagImage.widthAnchor.constraint(equalToConstant: CellLayoutOption.flagImageWidth)
         ])
 
         NSLayoutConstraint.activate([
@@ -118,12 +122,6 @@ class CountryListTableViewCell: UITableViewCell {
         NSLayoutConstraint.activate([
             countryNameLabel.trailingAnchor.constraint(lessThanOrEqualTo: countLabel.leadingAnchor)
         ])
-
-        self.contentView.layoutMargins = UIEdgeInsets(top: self.contentView.layoutMargins.top,
-                                               left: 64,
-                                               bottom: self.contentView.layoutMargins.bottom,
-                                               right: 64)
-
     }
 }
 
@@ -166,10 +164,6 @@ fileprivate class mockViewController: UIViewController, UITableViewDelegate, UIT
         tableView.dataSource = self
         tableView.delegate = self
         tableView.register(CountryListTableViewCell.self, forCellReuseIdentifier: "cell")
-        tableView.layoutMargins = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
-        tableView.separatorInset = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
-
-
 
     }
 
@@ -204,7 +198,7 @@ fileprivate class mockViewController: UIViewController, UITableViewDelegate, UIT
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! CountryListTableViewCell
-        cell.flagImage.image = UIImage(named: "usaFlag")
+        cell.flagImage.image = UIImage(named: "esFlag")
         cell.trendingImage.image = UIImage(named: "chevronUp")
         cell.countryNameLabel.text = "USA"
         cell.countLabel.text = "4343,34343"
