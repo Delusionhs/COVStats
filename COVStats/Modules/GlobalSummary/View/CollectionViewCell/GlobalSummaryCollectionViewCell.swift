@@ -101,10 +101,10 @@ extension GlobalSummaryCollectionViewCell {
     }
 
     private func setupViews() {
-        addSubview(casesCountLabel)
-        addSubview(title)
-        addSubview(trendingImageView)
-        addSubview(trendingGraph)
+        self.contentView.addSubview(casesCountLabel)
+        self.contentView.addSubview(title)
+        self.contentView.addSubview(trendingImageView)
+        self.contentView.addSubview(trendingGraph)
         setupBorder()
         setupGraph()
     }
