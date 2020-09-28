@@ -18,6 +18,8 @@ class CountryListTableViewCell: UITableViewCell {
         static let trendingImageSize: CGFloat = 28
         static let trendingImageTrailingPadding: CGFloat = -10
         static let countlabelLeadingPadding: CGFloat = -4.0
+        static let countryNameLabelFontSize: CGFloat = 22
+        static let countNameLabelFontSize: CGFloat = 17
     }
 
     let flagImage : UIImageView = {
@@ -36,14 +38,13 @@ class CountryListTableViewCell: UITableViewCell {
 
     let countryNameLabel : UILabel = {
         let label = UILabel()
-        label.font = UIFont.boldSystemFont(ofSize: 22)
+        label.font = UIFont.boldSystemFont(ofSize: CellOption.countryNameLabelFontSize)
         return label
     }()
 
     let countLabel : UILabel = {
         let label = UILabel()
-        label.font = UIFont.boldSystemFont(ofSize: 17)
-        UIFont.systemFont(ofSize: 17, weight: UIFont.Weight.semibold)
+        label.font = UIFont.systemFont(ofSize: CellOption.countNameLabelFontSize, weight: UIFont.Weight.semibold)
         return label
     }()
 
