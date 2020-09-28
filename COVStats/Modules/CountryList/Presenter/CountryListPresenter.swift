@@ -6,17 +6,28 @@
 //  Copyright © 2020 Igor Podolskiy. All rights reserved.
 //
 
-class CountryListPresenter: CountryListViewOutput, CountryListInteractorOutput {
+class CountryListPresenter {
 
     weak var view: CountryListViewInput!
     var interactor: CountryListInteractorInput!
     var router: CountryListRouterInput!
 
-    func viewIsReady() {
-        setupHeader()
-    }
-
     private func setupHeader() {
         view.setupHeader(titleText: "Life Reports", subTitleText: "Top countries")
     }
+}
+
+extension CountryListPresenter: CountryListViewOutput {
+    func viewIsReady() {
+        setupHeader()
+        interactor.fetchCountrySummaryData()
+    }
+}
+
+extension CountryListPresenter: CountryListInteractorOutput {
+    func countrySummaryDataDidRiceive(data: [СountrySummary]?) {
+        print(data)
+    }
+
+
 }

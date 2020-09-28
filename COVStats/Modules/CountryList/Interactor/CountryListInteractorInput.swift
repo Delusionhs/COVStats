@@ -9,5 +9,5 @@
 import Foundation
 
 protocol CountryListInteractorInput {
-
+    func fetchCountrySummaryData()
 }

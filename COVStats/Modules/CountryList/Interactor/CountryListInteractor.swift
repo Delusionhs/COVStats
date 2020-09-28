@@ -6,8 +6,16 @@
 //  Copyright © 2020 Igor Podolskiy. All rights reserved.
 //
 
-class CountryListInteractor: CountryListInteractorInput {
-
+class CountryListInteractor {
     weak var output: CountryListInteractorOutput!
+    let statisticsService: StatisticsServiceProtocol = StatisticsService()
 
+}
+
+extension CountryListInteractor: CountryListInteractorInput {
+    func fetchCountrySummaryData() {
+        statisticsService.fetchСountrySummaryData { [weak self] data in
+            self?.output.countrySummaryDataDidRiceive(data: data)
+        }
+    }
 }

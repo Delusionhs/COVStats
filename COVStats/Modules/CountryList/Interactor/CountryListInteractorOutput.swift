@@ -9,5 +9,5 @@
 import Foundation
 
 protocol CountryListInteractorOutput: class {
-
+    func countrySummaryDataDidRiceive (data: [СountrySummary]?)
 }

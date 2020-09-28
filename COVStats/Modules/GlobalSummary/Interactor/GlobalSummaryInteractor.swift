@@ -10,7 +10,7 @@ import Foundation
 
 class GlobalSummaryInteractor {
     weak var output: GlobalSummaryInteractorOutput!
-    let statisticsService: StatisticsService = StatisticsService()
+    let statisticsService: StatisticsServiceProtocol = StatisticsService()
 }
 
 extension GlobalSummaryInteractor: GlobalSummaryInteractorInput {

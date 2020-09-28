@@ -15,6 +15,7 @@
 		78516E71251A5F6E00FBDBDE /* Trending.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78516E70251A5F6E00FBDBDE /* Trending.swift */; };
 		78516E7A251A935800FBDBDE /* UIVIewController+Preview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78516E79251A935800FBDBDE /* UIVIewController+Preview.swift */; };
 		78B8BC132522765F00E8210F /* CountryListTableViewHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78B8BC122522765F00E8210F /* CountryListTableViewHeader.swift */; };
+		78B8BC18252292A700E8210F /* СountrySummary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78B8BC17252292A700E8210F /* СountrySummary.swift */; };
 		78D1BA5D251B9F8B000A21C8 /* GlobalSummaryCollectionViewCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78D1BA5C251B9F8B000A21C8 /* GlobalSummaryCollectionViewCellViewModel.swift */; };
 		78D1BA61251BE56C000A21C8 /* GlobalSummaryHistorical.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78D1BA60251BE56C000A21C8 /* GlobalSummaryHistorical.swift */; };
 		78D1BA67251CCEAC000A21C8 /* GlobalSummaryCollectionViewCellType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78D1BA66251CCEAC000A21C8 /* GlobalSummaryCollectionViewCellType.swift */; };
@@ -67,6 +68,7 @@
 		78516E70251A5F6E00FBDBDE /* Trending.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Trending.swift; sourceTree = "<group>"; };
 		78516E79251A935800FBDBDE /* UIVIewController+Preview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIVIewController+Preview.swift"; sourceTree = "<group>"; };
 		78B8BC122522765F00E8210F /* CountryListTableViewHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryListTableViewHeader.swift; sourceTree = "<group>"; };
+		78B8BC17252292A700E8210F /* СountrySummary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "СountrySummary.swift"; sourceTree = "<group>"; };
 		78D1BA5C251B9F8B000A21C8 /* GlobalSummaryCollectionViewCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlobalSummaryCollectionViewCellViewModel.swift; sourceTree = "<group>"; };
 		78D1BA60251BE56C000A21C8 /* GlobalSummaryHistorical.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlobalSummaryHistorical.swift; sourceTree = "<group>"; };
 		78D1BA66251CCEAC000A21C8 /* GlobalSummaryCollectionViewCellType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlobalSummaryCollectionViewCellType.swift; sourceTree = "<group>"; };
@@ -293,6 +295,7 @@
 			children = (
 				78F470172519092D0008637C /* GlobalSummaryCovidCases.swift */,
 				78D1BA60251BE56C000A21C8 /* GlobalSummaryHistorical.swift */,
+				78B8BC17252292A700E8210F /* СountrySummary.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -571,6 +574,7 @@
 			files = (
 				78F470082518E6120008637C /* HomeInteractorInput.swift in Sources */,
 				78F4704C251A1C600008637C /* GlobalSummaryInteractorOutput.swift in Sources */,
+				78B8BC18252292A700E8210F /* СountrySummary.swift in Sources */,
 				78516E71251A5F6E00FBDBDE /* Trending.swift in Sources */,
 				78F470152518E9F20008637C /* HomeConfiguratorProtocol.swift in Sources */,
 				78F46FE62518D39E0008637C /* AppDelegate.swift in Sources */,

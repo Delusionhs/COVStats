@@ -11,6 +11,7 @@ import Foundation
 protocol StatisticsServiceProtocol {
     func fetchGlobalSummaryData(completion: @escaping (GlobalSummaryCovidCases?) -> Void)
     func fetchGlobalHistoricalData(completion: @escaping (GlobalSummaryHistorical?) -> Void)
+    func fetchСountrySummaryData(completion: @escaping ([СountrySummary]?) -> Void)
 }
 
 class StatisticsService: StatisticsServiceProtocol {
@@ -22,6 +23,7 @@ class StatisticsService: StatisticsServiceProtocol {
     private enum ApiURL {
         static let globalSummary = "https://disease.sh/v3/covid-19/all"
         static let globalHistorical = "https://disease.sh/v3/covid-19/historical/all?lastdays=" + String(QueryOption.historycalDaysCount)
+        static let countrySummary = "https://disease.sh/v3/covid-19/countries"
     }
 
     private let networkService = NetworkService()
@@ -42,6 +44,16 @@ class StatisticsService: StatisticsServiceProtocol {
             if let data = data {
                 let historical = try? JSONDecoder().decode(GlobalSummaryHistorical.self, from: data)
                     completion(historical)
+            }
+        }
+    }
+
+    func fetchСountrySummaryData(completion: @escaping ([СountrySummary]?) -> Void) {
+        guard let url = URL(string: ApiURL.countrySummary) else { return }
+        networkService.getJSONData(URL: url) { data in
+            if let data = data {
+                let summary = try? JSONDecoder().decode([СountrySummary].self, from: data)
+                    completion(summary)
             }
         }
     }
