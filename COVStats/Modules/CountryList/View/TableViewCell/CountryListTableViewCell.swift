@@ -13,11 +13,11 @@ class CountryListTableViewCell: UITableViewCell {
     private enum CellLayoutOption {
         static let flagImageSize: CGFloat = 47.0
         static let flagImageHorisontalPadding: CGFloat = 10.0
-        static let flagImageVerticalPadding: CGFloat = 10.0
         static let countryNameLabelVerticalPadding: CGFloat = 17.0
         static let trendingImageSize: CGFloat = 28
         static let trendingImageTrailingPadding: CGFloat = -10
         static let countlabelLeadingPadding: CGFloat = -4.0
+        static let margin: CGFloat = 10
     }
 
     private enum CellOption {
@@ -78,6 +78,12 @@ class CountryListTableViewCell: UITableViewCell {
         //layer.borderColor = CellOption.layerBorderColor
     }
 
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        self.layer.frame = layer.frame.inset(by: UIEdgeInsets(top: 0, left: CellLayoutOption.margin, bottom: 0, right: CellLayoutOption.margin))
+        self.contentView.frame = contentView.frame.inset(by: UIEdgeInsets(top: 0, left: CellLayoutOption.margin, bottom: 0, right: CellLayoutOption.margin*2))
+    }
+
     
     private func setupLayouts() {
         flagImage.translatesAutoresizingMaskIntoConstraints = false
@@ -86,7 +92,7 @@ class CountryListTableViewCell: UITableViewCell {
         countLabel.translatesAutoresizingMaskIntoConstraints = false
 
         NSLayoutConstraint.activate([
-            flagImage.topAnchor.constraint(equalTo: contentView.topAnchor, constant: CellLayoutOption.flagImageVerticalPadding),
+            flagImage.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
             flagImage.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: CellLayoutOption.flagImageHorisontalPadding),
             flagImage.heightAnchor.constraint(equalToConstant: CellLayoutOption.flagImageSize),
             flagImage.widthAnchor.constraint(equalToConstant: CellLayoutOption.flagImageSize)
@@ -112,6 +118,11 @@ class CountryListTableViewCell: UITableViewCell {
         NSLayoutConstraint.activate([
             countryNameLabel.trailingAnchor.constraint(lessThanOrEqualTo: countLabel.leadingAnchor)
         ])
+
+        self.contentView.layoutMargins = UIEdgeInsets(top: self.contentView.layoutMargins.top,
+                                               left: 64,
+                                               bottom: self.contentView.layoutMargins.bottom,
+                                               right: 64)
 
     }
 }
@@ -155,6 +166,11 @@ fileprivate class mockViewController: UIViewController, UITableViewDelegate, UIT
         tableView.dataSource = self
         tableView.delegate = self
         tableView.register(CountryListTableViewCell.self, forCellReuseIdentifier: "cell")
+        tableView.layoutMargins = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
+        tableView.separatorInset = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
+
+
+
     }
 
     private func setupLayouts() {
@@ -165,6 +181,7 @@ fileprivate class mockViewController: UIViewController, UITableViewDelegate, UIT
             tableView.leftAnchor.constraint(equalTo: view.leftAnchor),
             tableView.rightAnchor.constraint(equalTo: view.rightAnchor)
         ])
+
     }
 
     func numberOfSections(in tableView: UITableView) -> Int {
