@@ -8,7 +8,11 @@
 
 import UIKit
 
-class CountryListViewController: UIViewController, CountryListViewInput {
+class CountryListViewController: UIViewController {
+
+    private enum HeaderOptions {
+        static let headerHeight: CGFloat = 85
+    }
 
     var output: CountryListViewOutput!
 
@@ -17,6 +21,11 @@ class CountryListViewController: UIViewController, CountryListViewInput {
     private let tableView: UITableView = {
         let tableView = UITableView(frame: .zero)
         return tableView
+    }()
+
+    private let header: CountryListTableViewHeader = {
+        let header = CountryListTableViewHeader()
+        return header
     }()
 
     // MARK: Life cycle
@@ -29,25 +38,40 @@ class CountryListViewController: UIViewController, CountryListViewInput {
     }
 
     private func setupTableView() {
+        view.addSubview(header)
         view.addSubview(tableView)
         self.view.backgroundColor = .white
         tableView.dataSource = self
         tableView.delegate = self
-        tableView.register(CountryListTableViewCell.self, forCellReuseIdentifier: "cell")
+        tableView.register(CountryListTableViewCell.self, forCellReuseIdentifier: CountryListTableViewCell.identifier)
     }
 
     private func setupLayouts() {
+        header.translatesAutoresizingMaskIntoConstraints = false
         tableView.translatesAutoresizingMaskIntoConstraints = false
+
         NSLayoutConstraint.activate([
-            tableView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+            header.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+            header.leftAnchor.constraint(equalTo: view.leftAnchor),
+            header.rightAnchor.constraint(equalTo: view.rightAnchor),
+            header.heightAnchor.constraint(equalToConstant: HeaderOptions.headerHeight)
+        ])
+
+        NSLayoutConstraint.activate([
+            tableView.topAnchor.constraint(equalTo: header.bottomAnchor),
             tableView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
             tableView.leftAnchor.constraint(equalTo: view.leftAnchor),
             tableView.rightAnchor.constraint(equalTo: view.rightAnchor)
         ])
     }
+}
 
+// MARK: CountryListViewInput
 
-    // MARK: CountryListViewInput
+extension CountryListViewController: CountryListViewInput {
+    func setupHeader(titleText: String, subTitleText: String) {
+        header.configure(title: titleText, subTitle: subTitleText)
+    }
 }
 
 //MARK: - TableView Delegate & DataSource
@@ -64,8 +88,6 @@ extension CountryListViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         return UITableViewCell()
     }
-
-
 }
 
 //MARK: - Preview

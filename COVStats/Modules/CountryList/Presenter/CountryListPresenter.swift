@@ -13,6 +13,10 @@ class CountryListPresenter: CountryListViewOutput, CountryListInteractorOutput {
     var router: CountryListRouterInput!
 
     func viewIsReady() {
+        setupHeader()
+    }
 
+    private func setupHeader() {
+        view.setupHeader(titleText: "Life Reports", subTitleText: "Top countries")
     }
 }

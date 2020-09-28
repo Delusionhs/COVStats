@@ -63,7 +63,8 @@ class CountryListTableViewHeader: UIView {
         NSLayoutConstraint.activate([
             subTitle.topAnchor.constraint(equalTo: title.bottomAnchor, constant: ViewLayoutOption.subtitleTopPadding),
             subTitle.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: ViewLayoutOption.subTitleLeading),
-            subTitle.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -ViewLayoutOption.subTitleLeading)
+            subTitle.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -ViewLayoutOption.subTitleLeading),
+            subTitle.bottomAnchor.constraint(lessThanOrEqualTo: self.bottomAnchor)
         ])
     }
 

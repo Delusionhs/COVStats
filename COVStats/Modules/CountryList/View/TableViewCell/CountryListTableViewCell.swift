@@ -29,7 +29,7 @@ class CountryListTableViewCell: UITableViewCell {
         static let layerBorderColor: CGColor = UIColor(hex: "#E4E4E4", alpha: 0.6).cgColor
     }
 
-    let flagImage : UIImageView = {
+    let flagImage: UIImageView = {
         let imgView = UIImageView()
         imgView.contentMode = .scaleAspectFill
         imgView.layer.cornerRadius = CellOption.layerCornerRadius
@@ -39,20 +39,27 @@ class CountryListTableViewCell: UITableViewCell {
         return imgView
     }()
 
-    let trendingImage : UIImageView = {
+    let trendingImage: UIImageView = {
         let imgView = UIImageView()
         imgView.contentMode = .scaleAspectFill
         imgView.clipsToBounds = true
         return imgView
     }()
 
-    let countryNameLabel : UILabel = {
+    let countryNameLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont.systemFont(ofSize: CellOption.countryNameLabelFontSize, weight: UIFont.Weight.light)
         return label
     }()
 
-    let countLabel : UILabel = {
+    let countLabel: UILabel = {
+        let label = UILabel()
+        label.font = UIFont.systemFont(ofSize: CellOption.countNameLabelFontSize, weight: UIFont.Weight.semibold)
+        return label
+    }()
+
+
+    let deatchCountLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont.systemFont(ofSize: CellOption.countNameLabelFontSize, weight: UIFont.Weight.semibold)
         return label
@@ -124,6 +131,14 @@ class CountryListTableViewCell: UITableViewCell {
         ])
     }
 }
+
+// MARK: - Helpers
+extension CountryListTableViewCell {
+    static var identifier: String {
+        return String(describing: self)
+    }
+}
+
 
 // MARK: - Preview
 
