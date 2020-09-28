@@ -9,10 +9,10 @@
 import Foundation
 
 struct СountrySummary: Decodable {
+    let cases: Int
     let country: String
     let countryInfo: CountryInfo
-    let cases: Int
-    let death: Int
+    let deaths: Int
 }
 
 struct CountryInfo: Decodable {
