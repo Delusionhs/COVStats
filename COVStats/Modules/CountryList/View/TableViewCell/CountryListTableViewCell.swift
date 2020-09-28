@@ -48,7 +48,7 @@ class CountryListTableViewCell: UITableViewCell {
 
     let countryNameLabel : UILabel = {
         let label = UILabel()
-        label.font = UIFont.boldSystemFont(ofSize: CellOption.countryNameLabelFontSize)
+        label.font = UIFont.systemFont(ofSize: CellOption.countryNameLabelFontSize, weight: UIFont.Weight.light)
         return label
     }()
 
@@ -160,11 +160,10 @@ fileprivate class mockViewController: UIViewController, UITableViewDelegate, UIT
 
     private func setupTableView() {
         view.addSubview(tableView)
-        self.view.backgroundColor = .white
+        view.backgroundColor = .white
         tableView.dataSource = self
         tableView.delegate = self
         tableView.register(CountryListTableViewCell.self, forCellReuseIdentifier: "cell")
-
     }
 
     private func setupLayouts() {
@@ -200,7 +199,7 @@ fileprivate class mockViewController: UIViewController, UITableViewDelegate, UIT
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! CountryListTableViewCell
         cell.flagImage.image = UIImage(named: "esFlag")
         cell.trendingImage.image = UIImage(named: "chevronUp")
-        cell.countryNameLabel.text = "USA"
+        cell.countryNameLabel.text = "Spain"
         cell.countLabel.text = "4343,34343"
         return cell
     }
