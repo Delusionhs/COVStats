@@ -10,6 +10,15 @@ import UIKit
 
 class CountryListTableViewCell: UITableViewCell {
 
+    private enum CellOption {
+        static let flagImageSize: CGFloat = 47.0
+        static let flagImageHorisontalPadding: CGFloat = 10.0
+        static let flagImageVerticalPadding: CGFloat = 10.0
+        static let countryNameLabelVerticalPadding: CGFloat = 17.0
+        static let trendingImageSize: CGFloat = 28
+        static let trendingImageTrailingPadding: CGFloat = -10
+    }
+
     let flagImage : UIImageView = {
         let imgView = UIImageView()
         imgView.contentMode = .scaleAspectFill
@@ -62,28 +71,30 @@ class CountryListTableViewCell: UITableViewCell {
         countLabel.translatesAutoresizingMaskIntoConstraints = false
 
         NSLayoutConstraint.activate([
-            flagImage.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 10),
-            flagImage.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 10),
-            flagImage.heightAnchor.constraint(equalToConstant: 47),
-            flagImage.widthAnchor.constraint(equalToConstant: 47)
+            flagImage.topAnchor.constraint(equalTo: contentView.topAnchor, constant: CellOption.flagImageVerticalPadding),
+            flagImage.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: CellOption.flagImageHorisontalPadding),
+            flagImage.heightAnchor.constraint(equalToConstant: CellOption.flagImageSize),
+            flagImage.widthAnchor.constraint(equalToConstant: CellOption.flagImageSize)
         ])
 
         NSLayoutConstraint.activate([
-            countryNameLabel.leadingAnchor.constraint(equalTo: flagImage.trailingAnchor, constant: 17),
             countryNameLabel.centerYAnchor.constraint(equalTo: flagImage.centerYAnchor),
-            countryNameLabel.trailingAnchor.constraint(equalTo: countLabel.leadingAnchor)
+            countryNameLabel.leadingAnchor.constraint(equalTo: flagImage.trailingAnchor, constant: CellOption.countryNameLabelVerticalPadding),
+//            countryNameLabel.trailingAnchor.constraint(equalTo: countLabel.leadingAnchor)
         ])
 
         NSLayoutConstraint.activate([
-            trendingImage.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -10),
+//            trendingImage.leadingAnchor.constraint(equalTo: countLabel.trailingAnchor, constant: CellOption.trendingImageLeadingPadding),
             trendingImage.centerYAnchor.constraint(equalTo: flagImage.centerYAnchor),
-            trendingImage.heightAnchor.constraint(equalToConstant: 28),
-            trendingImage.widthAnchor.constraint(equalToConstant: 28)
+            trendingImage.heightAnchor.constraint(equalToConstant: CellOption.trendingImageSize),
+            trendingImage.widthAnchor.constraint(equalToConstant: CellOption.trendingImageSize),
+            trendingImage.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: CellOption.trendingImageTrailingPadding)
         ])
 
         NSLayoutConstraint.activate([
+            countLabel.centerYAnchor.constraint(equalTo: flagImage.centerYAnchor),
             countLabel.trailingAnchor.constraint(equalTo: trendingImage.leadingAnchor, constant: -4),
-            countLabel.centerYAnchor.constraint(equalTo: flagImage.centerYAnchor)
+            countLabel.leadingAnchor.constraint(equalTo: countryNameLabel.trailingAnchor, constant: 40)
         ])
     }
 }
