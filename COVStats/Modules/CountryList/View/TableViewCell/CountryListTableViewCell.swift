@@ -10,7 +10,7 @@ import UIKit
 
 class CountryListTableViewCell: UITableViewCell {
 
-    private enum CellOption {
+    private enum CellLayoutOption {
         static let flagImageSize: CGFloat = 47.0
         static let flagImageHorisontalPadding: CGFloat = 10.0
         static let flagImageVerticalPadding: CGFloat = 10.0
@@ -18,8 +18,14 @@ class CountryListTableViewCell: UITableViewCell {
         static let trendingImageSize: CGFloat = 28
         static let trendingImageTrailingPadding: CGFloat = -10
         static let countlabelLeadingPadding: CGFloat = -4.0
-        static let countryNameLabelFontSize: CGFloat = 22
-        static let countNameLabelFontSize: CGFloat = 17
+    }
+
+    private enum CellOption {
+        static let countryNameLabelFontSize:CGFloat = 22
+        static let countNameLabelFontSize:CGFloat = 17
+        static let layerBorderWidth: CGFloat = 1
+        static let layerCornerRadius: CGFloat = 10
+        static let layerBorderColor: CGColor = UIColor(hex: "#E4E4E4", alpha: 0.6).cgColor
     }
 
     let flagImage : UIImageView = {
@@ -52,6 +58,7 @@ class CountryListTableViewCell: UITableViewCell {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         setupViews()
         setupLayouts()
+        setupBorder()
     }
 
     required init?(coder: NSCoder) {
@@ -65,6 +72,12 @@ class CountryListTableViewCell: UITableViewCell {
         self.contentView.addSubview(countLabel)
     }
 
+    private func setupBorder() {
+        layer.borderWidth = CellOption.layerBorderWidth
+        layer.cornerRadius = CellOption.layerCornerRadius
+        //layer.borderColor = CellOption.layerBorderColor
+    }
+
     
     private func setupLayouts() {
         flagImage.translatesAutoresizingMaskIntoConstraints = false
@@ -73,33 +86,32 @@ class CountryListTableViewCell: UITableViewCell {
         countLabel.translatesAutoresizingMaskIntoConstraints = false
 
         NSLayoutConstraint.activate([
-            flagImage.topAnchor.constraint(equalTo: contentView.topAnchor, constant: CellOption.flagImageVerticalPadding),
-            flagImage.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: CellOption.flagImageHorisontalPadding),
-            flagImage.heightAnchor.constraint(equalToConstant: CellOption.flagImageSize),
-            flagImage.widthAnchor.constraint(equalToConstant: CellOption.flagImageSize)
+            flagImage.topAnchor.constraint(equalTo: contentView.topAnchor, constant: CellLayoutOption.flagImageVerticalPadding),
+            flagImage.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: CellLayoutOption.flagImageHorisontalPadding),
+            flagImage.heightAnchor.constraint(equalToConstant: CellLayoutOption.flagImageSize),
+            flagImage.widthAnchor.constraint(equalToConstant: CellLayoutOption.flagImageSize)
         ])
 
         NSLayoutConstraint.activate([
             countryNameLabel.centerYAnchor.constraint(equalTo: flagImage.centerYAnchor),
-            countryNameLabel.leadingAnchor.constraint(equalTo: flagImage.trailingAnchor, constant: CellOption.countryNameLabelVerticalPadding),
+            countryNameLabel.leadingAnchor.constraint(equalTo: flagImage.trailingAnchor, constant: CellLayoutOption.countryNameLabelVerticalPadding),
         ])
 
         NSLayoutConstraint.activate([
             trendingImage.centerYAnchor.constraint(equalTo: flagImage.centerYAnchor),
-            trendingImage.heightAnchor.constraint(equalToConstant: CellOption.trendingImageSize),
-            trendingImage.widthAnchor.constraint(equalToConstant: CellOption.trendingImageSize),
-            trendingImage.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: CellOption.trendingImageTrailingPadding)
+            trendingImage.heightAnchor.constraint(equalToConstant: CellLayoutOption.trendingImageSize),
+            trendingImage.widthAnchor.constraint(equalToConstant: CellLayoutOption.trendingImageSize),
+            trendingImage.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: CellLayoutOption.trendingImageTrailingPadding)
         ])
 
         NSLayoutConstraint.activate([
             countLabel.centerYAnchor.constraint(equalTo: flagImage.centerYAnchor),
-            countLabel.trailingAnchor.constraint(equalTo: trendingImage.leadingAnchor, constant: CellOption.countlabelLeadingPadding),
+            countLabel.trailingAnchor.constraint(equalTo: trendingImage.leadingAnchor, constant: CellLayoutOption.countlabelLeadingPadding),
         ])
 
         NSLayoutConstraint.activate([
             countryNameLabel.trailingAnchor.constraint(lessThanOrEqualTo: countLabel.leadingAnchor)
         ])
-
 
     }
 }
@@ -122,7 +134,7 @@ fileprivate class mockViewController: UIViewController, UITableViewDelegate, UIT
 
 
 
-    private enum CellOption {
+    private enum CellLayoutOption {
     }
 
     private let tableView: UITableView = {
@@ -155,8 +167,22 @@ fileprivate class mockViewController: UIViewController, UITableViewDelegate, UIT
         ])
     }
 
+    func numberOfSections(in tableView: UITableView) -> Int {
+          return 2
+      }
+
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        2
+        1
+    }
+
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let headerView = UIView()
+        headerView.backgroundColor = UIColor.clear
+        return headerView
+    }
+
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 15
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -171,6 +197,5 @@ fileprivate class mockViewController: UIViewController, UITableViewDelegate, UIT
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 80
     }
-
 }
 #endif
