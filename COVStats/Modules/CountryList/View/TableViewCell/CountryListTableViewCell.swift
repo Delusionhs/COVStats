@@ -26,7 +26,7 @@ class CountryListTableViewCell: UITableViewCell {
         static let countNameLabelFontSize:CGFloat = 17
         static let layerBorderWidth: CGFloat = 1
         static let layerCornerRadius: CGFloat = 10
-        static let layerBorderColor: CGColor = UIColor(hex: "#E4E4E4", alpha: 0.6).cgColor
+        static let layerBorderColor: CGColor = UIColor(hex: "#999999", alpha: 0.6).cgColor
     }
 
     let flagImage: UIImageView = {
