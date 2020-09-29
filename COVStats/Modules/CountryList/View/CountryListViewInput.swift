@@ -8,4 +8,5 @@
 
 protocol CountryListViewInput: class {
     func setupHeader(titleText: String, subTitleText: String)
+    func reloadTableViewData()
 }

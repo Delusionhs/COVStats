@@ -8,7 +8,6 @@
 
 import Foundation
 
-
 class GlobalSummaryPresenter {
 
     weak var view: GlobalSummaryViewInput!

@@ -6,12 +6,10 @@
 //  Copyright © 2020 Igor Podolskiy. All rights reserved.
 //
 
+import Foundation
+
 protocol CountryListViewOutput {
-
-    /**
-        @author Igor Podolsiy
-        Notify presenter that view is ready
-    */
-
     func viewIsReady()
+    func numberOfRows() -> Int
+    func cellViewModel(for indexPath: IndexPath) -> CountryListTableViewCellViewModel?
 }

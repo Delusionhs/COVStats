@@ -14,6 +14,11 @@ class CountryListViewController: UIViewController {
         static let headerHeight: CGFloat = 85
     }
 
+    private enum TableViewOptions {
+        static let cellSpaing: CGFloat = 15
+        static let cellHeight: CGFloat = 80
+    }
+
     var output: CountryListViewOutput!
 
     private let configurator: CountryListConfiguratorProtocol = CountryListConfigurator()
@@ -72,6 +77,12 @@ extension CountryListViewController: CountryListViewInput {
     func setupHeader(titleText: String, subTitleText: String) {
         header.configure(title: titleText, subTitle: subTitleText)
     }
+
+    func reloadTableViewData() {
+        DispatchQueue.main.async {
+            self.tableView.reloadData()
+        }
+    }
 }
 
 //MARK: - TableView Delegate & DataSource
@@ -82,11 +93,35 @@ extension CountryListViewController: UITableViewDelegate {
 
 extension CountryListViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        1
+        //because instead of row, sections are used to implement spacing
+        return 1
+    }
+
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return output.numberOfRows()
+    }
+
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        // header for fows spacing
+        let headerView = UIView()
+        headerView.backgroundColor = UIColor.clear
+        return headerView
+    }
+
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return TableViewOptions.cellSpaing
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        return UITableViewCell()
+        let cell = tableView.dequeueReusableCell(withIdentifier: CountryListTableViewCell.identifier, for: indexPath) as! CountryListTableViewCell
+        if let cellViewModel = output.cellViewModel(for: indexPath) {
+            cell.configure(with: cellViewModel)
+        }
+        return cell
+    }
+
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return TableViewOptions.cellHeight
     }
 }
 
