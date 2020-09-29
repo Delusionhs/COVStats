@@ -10,11 +10,17 @@ import UIKit
 
 class CountryListViewController: UIViewController {
 
-    private enum HeaderOptions {
+    private enum ViewOption {
+        static let layerBorderWidth: CGFloat = 1
+        static let layerBorderCornerRadius: CGFloat = 10
+        static let layerBorderColor: CGColor = UIColor(hex: "#E4E4E4", alpha: 0.6).cgColor
+    }
+
+    private enum HeaderOption {
         static let headerHeight: CGFloat = 85
     }
 
-    private enum TableViewOptions {
+    private enum TableViewOption {
         static let cellSpaing: CGFloat = 15
         static let cellHeight: CGFloat = 80
     }
@@ -64,14 +70,7 @@ class CountryListViewController: UIViewController {
             header.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
             header.leftAnchor.constraint(equalTo: view.leftAnchor),
             header.rightAnchor.constraint(equalTo: view.rightAnchor),
-            header.heightAnchor.constraint(equalToConstant: HeaderOptions.headerHeight)
-        ])
-
-        NSLayoutConstraint.activate([
-            header.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
-            header.leftAnchor.constraint(equalTo: view.leftAnchor),
-            header.rightAnchor.constraint(equalTo: view.rightAnchor),
-            header.heightAnchor.constraint(equalToConstant: HeaderOptions.headerHeight)
+            header.heightAnchor.constraint(equalToConstant: HeaderOption.headerHeight)
         ])
 
         NSLayoutConstraint.activate([
@@ -83,9 +82,9 @@ class CountryListViewController: UIViewController {
     }
 
     private func setupBorder() {
-        view.layer.borderWidth = 1
-        view.layer.cornerRadius = 10
-//        view.layer.borderColor = CellOption.layerBorderColor
+        view.layer.borderWidth = ViewOption.layerBorderWidth
+        view.layer.cornerRadius = ViewOption.layerBorderCornerRadius
+        view.layer.borderColor = ViewOption.layerBorderColor
     }
 }
 
@@ -127,7 +126,7 @@ extension CountryListViewController: UITableViewDataSource {
     }
 
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return TableViewOptions.cellSpaing
+        return TableViewOption.cellSpaing
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -139,7 +138,7 @@ extension CountryListViewController: UITableViewDataSource {
     }
 
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return TableViewOptions.cellHeight
+        return TableViewOption.cellHeight
     }
 }
 
