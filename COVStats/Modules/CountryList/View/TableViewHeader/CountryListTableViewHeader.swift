@@ -103,7 +103,6 @@ fileprivate class mockViewController: UIViewController {
 
     }
 
-
     private func setupLayouts() {
         header.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([

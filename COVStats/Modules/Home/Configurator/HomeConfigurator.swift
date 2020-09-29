@@ -13,6 +13,7 @@ class HomeConfigurator: HomeConfiguratorProtocol {
     func configure(with viewController: HomeViewController) {
 
         let router = HomeRouter()
+        router.viewController = viewController
 
         let presenter = HomePresenter()
         presenter.view = viewController

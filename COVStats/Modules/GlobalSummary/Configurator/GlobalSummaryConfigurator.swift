@@ -6,6 +6,8 @@
 //  Copyright © 2020 Igor Podolskiy. All rights reserved.
 //
 
+import UIKit
+
 class GlobalSummaryConfigurator: GlobalSummaryConfiguratorProtocol {
 
     func configure(with viewController: GlobalSummaryViewController) {
@@ -21,5 +23,11 @@ class GlobalSummaryConfigurator: GlobalSummaryConfiguratorProtocol {
 
         presenter.interactor = interactor
         viewController.output = presenter
+    }
+
+    func assemblyModule() -> UIViewController {
+        let viewController = GlobalSummaryViewController()
+        configure(with: viewController)
+        return viewController
     }
 }

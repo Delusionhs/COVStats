@@ -6,6 +6,9 @@
 //  Copyright © 2020 Igor Podolskiy. All rights reserved.
 //
 
+import UIKit
+
 protocol GlobalSummaryConfiguratorProtocol {
     func configure(with viewController: GlobalSummaryViewController)
+    func assemblyModule() -> UIViewController
 }

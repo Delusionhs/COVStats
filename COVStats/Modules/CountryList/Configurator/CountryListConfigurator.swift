@@ -25,4 +25,10 @@ class CountryListConfigurator: CountryListConfiguratorProtocol {
         viewController.output = presenter
     }
 
+    func assemblyModule() -> UIViewController {
+        let viewController = CountryListViewController()
+        configure(with: viewController)
+        return viewController
+    }
+
 }

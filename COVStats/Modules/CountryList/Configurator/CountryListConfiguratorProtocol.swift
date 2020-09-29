@@ -7,8 +7,10 @@
 //
 
 import Foundation
+import UIKit
 
 protocol CountryListConfiguratorProtocol {
     func configure(with viewController: CountryListViewController)
+    func assemblyModule() -> UIViewController
 }
 
