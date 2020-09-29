@@ -14,7 +14,7 @@ final class GlobalSummaryCollectionViewCell: UICollectionViewCell {
     private enum CellLayoutOption {
         static let titleVerticalPadding: CGFloat = 28
         static let titleHorizontalPadding: CGFloat = 10
-        static let imageHorizontalPadding: CGFloat = 10
+        static let trendingImageHorizontalPadding: CGFloat = 13
         static let casesCountLabelHorizontalPadding: CGFloat = 10
         static let casesCountLabelVerticalPadding: CGFloat = 10
         static let trendingGraphHorizontalPadding: CGFloat = 16
@@ -31,9 +31,10 @@ final class GlobalSummaryCollectionViewCell: UICollectionViewCell {
         static let layerCornerRadius: CGFloat = 10
         static let trendingUpImageName = "trendingUpRed"
         static let trendingDownImageName = "trendingUpGreen"
-        static let layerBorderColor: CGColor = UIColor(hex: "#000000", alpha: 0.6).cgColor
+        static let layerBorderColor: CGColor = UIColor(hex: "#E4E4E4", alpha: 0.6).cgColor
         static let defaultGreenColorShade: UIColor = UIColor(hex: "#00C48C")
         static let defaultRedColorShade: UIColor = UIColor(hex: "#FF647C")
+        static let titleFontColor: UIColor = UIColor(hex: "#999999")
     }
 
     private let trendingImageView: UIImageView = {
@@ -46,6 +47,7 @@ final class GlobalSummaryCollectionViewCell: UICollectionViewCell {
         let label = UILabel()
         label.textAlignment = .center
         label.font = UIFont.systemFont(ofSize: CellOption.titleFontSize, weight: UIFont.Weight.regular)
+        label.textColor = CellOption.titleFontColor
         label.numberOfLines = CellOption.labelTextNumberOfLines
         return label
     }()
@@ -162,7 +164,7 @@ extension GlobalSummaryCollectionViewCell {
         ])
 
         NSLayoutConstraint.activate([
-            trendingImageView.trailingAnchor.constraint(lessThanOrEqualTo: contentView.trailingAnchor, constant: -CellLayoutOption .imageHorizontalPadding),
+            trendingImageView.trailingAnchor.constraint(lessThanOrEqualTo: contentView.trailingAnchor, constant: -CellLayoutOption .trendingImageHorizontalPadding),
             trendingImageView.centerYAnchor.constraint(equalTo: title.centerYAnchor),
             trendingImageView.heightAnchor.constraint(equalToConstant: CellLayoutOption.trendingImageSize),
             trendingImageView.widthAnchor.constraint(equalToConstant: CellLayoutOption.trendingImageSize)

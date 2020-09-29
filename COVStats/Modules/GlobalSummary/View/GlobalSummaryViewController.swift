@@ -14,9 +14,9 @@ class GlobalSummaryViewController: UIViewController{
     private enum CollectionOption {
         static let collectionViewCellCount = GlobalSummaryCollectionViewCellType.allCases.count
         static let collectionViewCellOrder: [GlobalSummaryCollectionViewCellType] = [.totalCases,.totalRecovered,.activeCases,.totatDeath]
-        static let cellSpacing: CGFloat = 13.0
+        static let cellSpacing: CGFloat = 22.0
         static let cellHeight: CGFloat = 208.0
-        static let cellInset: CGFloat = 10
+        static let cellInset: CGFloat = 15
     }
 
     var output: GlobalSummaryViewOutput!
