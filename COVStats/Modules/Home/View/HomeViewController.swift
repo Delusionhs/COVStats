@@ -12,6 +12,8 @@ import UIKit
 class HomeViewController: UIViewController, HomeViewInput {
 
     var output: HomeViewOutput!
+    var globalSummaryViewController: UIViewController!
+    var countryListViewController: UIViewController!
 
     private let configurator: HomeConfiguratorProtocol = HomeConfigurator()
 

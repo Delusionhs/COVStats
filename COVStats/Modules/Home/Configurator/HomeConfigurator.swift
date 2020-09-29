@@ -10,6 +10,9 @@ import Foundation
 
 class HomeConfigurator: HomeConfiguratorProtocol {
 
+    private let countryListConfigurator: CountryListConfiguratorProtocol = CountryListConfigurator()
+    private let globalSummaryConfigurator: GlobalSummaryConfiguratorProtocol = GlobalSummaryConfigurator()
+
     func configure(with viewController: HomeViewController) {
 
         let router = HomeRouter()
@@ -24,6 +27,9 @@ class HomeConfigurator: HomeConfiguratorProtocol {
 
         presenter.interactor = interactor
         viewController.output = presenter
+
+        viewController.countryListViewController = countryListConfigurator.assemblyModule()
+        viewController.globalSummaryViewController = globalSummaryConfigurator.assemblyModule()
     }
 
 }

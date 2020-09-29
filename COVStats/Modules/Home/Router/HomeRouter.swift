@@ -10,9 +10,6 @@ import Foundation
 class HomeRouter {
     weak var viewController: HomeViewInput?
 
-    private let countryListConfigurator: CountryListConfiguratorProtocol = CountryListConfigurator()
-    private let globalSummaryConfigurator: GlobalSummaryConfiguratorProtocol = GlobalSummaryConfigurator()
-
 }
 
 extension HomeRouter: HomeRouterInput {
