@@ -76,10 +76,10 @@ class CountryListTableViewCell: UITableViewCell {
     }
 
     private func setupViews() {
-        self.contentView.addSubview(flagImage)
-        self.contentView.addSubview(countryNameLabel)
-        self.contentView.addSubview(trendingImage)
-        self.contentView.addSubview(countLabel)
+        contentView.addSubview(flagImage)
+        contentView.addSubview(countryNameLabel)
+        contentView.addSubview(trendingImage)
+        contentView.addSubview(countLabel)
     }
 
     private func setupBorder() {
@@ -125,11 +125,12 @@ class CountryListTableViewCell: UITableViewCell {
     }
 
     func configure(with viewModel: CountryListTableViewCellViewModel) {
-        self.countryNameLabel.text = viewModel.country
-        self.countLabel.text = viewModel.cases
+        countryNameLabel.text = viewModel.country
+        countLabel.text = viewModel.cases
         if let url = URL(string: viewModel.flagImageURL) {
-            self.flagImage.kf.setImage(with: url)
+            flagImage.kf.setImage(with: url)
         }
+        trendingImage.image = UIImage(named: "chevronDown")
     }
 }
 

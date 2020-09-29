@@ -42,14 +42,15 @@ class CountryListViewController: UIViewController {
         configurator.configure(with: self)
         super.viewDidLoad()
         output.viewIsReady()
+        view.addSubview(header)
+        view.addSubview(tableView)
+        view.backgroundColor = .white
         setupTableView()
         setupLayouts()
+        setupBorder()
     }
 
     private func setupTableView() {
-        view.addSubview(header)
-        view.addSubview(tableView)
-        self.view.backgroundColor = .white
         tableView.dataSource = self
         tableView.delegate = self
         tableView.register(CountryListTableViewCell.self, forCellReuseIdentifier: CountryListTableViewCell.identifier)
@@ -67,11 +68,24 @@ class CountryListViewController: UIViewController {
         ])
 
         NSLayoutConstraint.activate([
+            header.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+            header.leftAnchor.constraint(equalTo: view.leftAnchor),
+            header.rightAnchor.constraint(equalTo: view.rightAnchor),
+            header.heightAnchor.constraint(equalToConstant: HeaderOptions.headerHeight)
+        ])
+
+        NSLayoutConstraint.activate([
             tableView.topAnchor.constraint(equalTo: header.bottomAnchor),
             tableView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
             tableView.leftAnchor.constraint(equalTo: view.leftAnchor, constant: TableViewLayoutOption.margin),
             tableView.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -TableViewLayoutOption.margin)
         ])
+    }
+
+    private func setupBorder() {
+        view.layer.borderWidth = 1
+        view.layer.cornerRadius = 10
+//        view.layer.borderColor = CellOption.layerBorderColor
     }
 }
 
@@ -106,7 +120,7 @@ extension CountryListViewController: UITableViewDataSource {
     }
 
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        // header for fows spacing
+        // header for rows spacing
         let headerView = UIView()
         headerView.backgroundColor = UIColor.clear
         return headerView
