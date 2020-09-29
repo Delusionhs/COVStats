@@ -18,7 +18,7 @@ class CountryListTableViewCell: UITableViewCell {
         static let trendingImageSize: CGFloat = 28
         static let trendingImageTrailingPadding: CGFloat = -10
         static let countlabelLeadingPadding: CGFloat = -4.0
-        static let margin: CGFloat = 10
+        //static let margin: CGFloat = 10
     }
 
     private enum CellOption {
@@ -71,8 +71,8 @@ class CountryListTableViewCell: UITableViewCell {
 
     override func layoutSubviews() {
         super.layoutSubviews()
-        self.layer.frame = layer.frame.inset(by: UIEdgeInsets(top: 0, left: CellLayoutOption.margin, bottom: 0, right: CellLayoutOption.margin))
-        self.contentView.frame = contentView.frame.inset(by: UIEdgeInsets(top: 0, left: CellLayoutOption.margin, bottom: 0, right: CellLayoutOption.margin*2))
+        //self.layer.frame = layer.frame.inset(by: UIEdgeInsets(top: 0, left: CellLayoutOption.margin, bottom: 0, right: CellLayoutOption.margin))
+        //self.contentView.frame = contentView.frame.inset(by: UIEdgeInsets(top: 0, left: CellLayoutOption.margin, bottom: 0, right: CellLayoutOption.margin*2))
     }
 
     private func setupViews() {

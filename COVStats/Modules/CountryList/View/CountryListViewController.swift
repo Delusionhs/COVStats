@@ -19,6 +19,10 @@ class CountryListViewController: UIViewController {
         static let cellHeight: CGFloat = 80
     }
 
+    private enum TableViewLayoutOption {
+        static let margin: CGFloat = 10
+    }
+
     var output: CountryListViewOutput!
 
     private let configurator: CountryListConfiguratorProtocol = CountryListConfigurator()
@@ -65,8 +69,8 @@ class CountryListViewController: UIViewController {
         NSLayoutConstraint.activate([
             tableView.topAnchor.constraint(equalTo: header.bottomAnchor),
             tableView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
-            tableView.leftAnchor.constraint(equalTo: view.leftAnchor),
-            tableView.rightAnchor.constraint(equalTo: view.rightAnchor)
+            tableView.leftAnchor.constraint(equalTo: view.leftAnchor, constant: TableViewLayoutOption.margin),
+            tableView.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -TableViewLayoutOption.margin)
         ])
     }
 }
