@@ -8,7 +8,7 @@
 import Foundation
 
 extension Int {
-    func toStringWithCommas() -> String {
+    func toStringWithDecimalStyle() -> String {
         let numberFormatter = NumberFormatter()
         numberFormatter.numberStyle = .decimal
         return numberFormatter.string(from: NSNumber(value:self)) ?? ""

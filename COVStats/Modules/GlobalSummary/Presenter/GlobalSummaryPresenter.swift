@@ -22,16 +22,16 @@ class GlobalSummaryPresenter {
             switch type {
             case .totalCases:
                 cellViewModels.append(GlobalSummaryCollectionViewCellViewModel(type: type,
-                                                                               casesCountText: data.cases.toStringWithCommas()))
+                                                                               casesCountText: data.cases.toStringWithDecimalStyle()))
             case .totatDeath:
                 cellViewModels.append(GlobalSummaryCollectionViewCellViewModel(type: type,
-                                                                               casesCountText: data.deaths.toStringWithCommas()))
+                                                                               casesCountText: data.deaths.toStringWithDecimalStyle()))
             case .totalRecovered:
                 cellViewModels.append(GlobalSummaryCollectionViewCellViewModel(type: type,
-                                                                               casesCountText: data.recovered.toStringWithCommas()))
+                                                                               casesCountText: data.recovered.toStringWithDecimalStyle()))
             case .activeCases:
                 cellViewModels.append(GlobalSummaryCollectionViewCellViewModel(type: type,
-                                                                               casesCountText: data.active.toStringWithCommas()))
+                                                                               casesCountText: data.active.toStringWithDecimalStyle()))
             }
         }
     }

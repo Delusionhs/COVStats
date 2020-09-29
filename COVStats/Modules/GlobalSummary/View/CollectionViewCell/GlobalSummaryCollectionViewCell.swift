@@ -51,7 +51,7 @@ final class GlobalSummaryCollectionViewCell: UICollectionViewCell {
 
     private let casesCountLabel: UILabel = {
         let label = UILabel()
-        label.textAlignment = .center
+        label.textAlignment = .left
         label.font = UIFont.systemFont(ofSize: CellOption.casesCountLabelFontSize, weight: UIFont.Weight.semibold)
         label.numberOfLines = CellOption.labelTextNumberOfLines
         return label
