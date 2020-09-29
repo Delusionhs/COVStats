@@ -119,6 +119,7 @@ extension GlobalSummaryCollectionViewCell {
     }
 
     private func setupGraph() {
+        trendingGraph.isUserInteractionEnabled = false
         trendingGraph.xAxis.drawGridLinesEnabled = false
         trendingGraph.xAxis.drawAxisLineEnabled = false
         trendingGraph.xAxis.drawLabelsEnabled = false
