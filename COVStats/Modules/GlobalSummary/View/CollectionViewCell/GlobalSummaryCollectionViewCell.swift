@@ -20,6 +20,7 @@ final class GlobalSummaryCollectionViewCell: UICollectionViewCell {
         static let trendingGraphHorizontalPadding: CGFloat = 16
         static let trendingGraphTopPadding: CGFloat = 24
         static let trendingGraphBottomPadding: CGFloat = 38
+        static let trendingImageSize: CGFloat = 28
     }
 
     private enum CellOption {
@@ -30,7 +31,7 @@ final class GlobalSummaryCollectionViewCell: UICollectionViewCell {
         static let layerCornerRadius: CGFloat = 10
         static let trendingUpImageName = "trendingUpRed"
         static let trendingDownImageName = "trendingUpGreen"
-        static let layerBorderColor: CGColor = UIColor(hex: "#E4E4E4", alpha: 0.6).cgColor
+        static let layerBorderColor: CGColor = UIColor(hex: "#000000", alpha: 0.6).cgColor
         static let defaultGreenColorShade: UIColor = UIColor(hex: "#00C48C")
         static let defaultRedColorShade: UIColor = UIColor(hex: "#FF647C")
     }
@@ -161,10 +162,10 @@ extension GlobalSummaryCollectionViewCell {
         ])
 
         NSLayoutConstraint.activate([
-            trendingImageView.leadingAnchor.constraint(equalTo: title.trailingAnchor, constant: CellLayoutOption .imageHorizontalPadding),
             trendingImageView.trailingAnchor.constraint(lessThanOrEqualTo: contentView.trailingAnchor, constant: -CellLayoutOption .imageHorizontalPadding),
-
-            trendingImageView.centerYAnchor.constraint(equalTo: title.centerYAnchor)
+            trendingImageView.centerYAnchor.constraint(equalTo: title.centerYAnchor),
+            trendingImageView.heightAnchor.constraint(equalToConstant: CellLayoutOption.trendingImageSize),
+            trendingImageView.widthAnchor.constraint(equalToConstant: CellLayoutOption.trendingImageSize)
         ])
 
         NSLayoutConstraint.activate([
