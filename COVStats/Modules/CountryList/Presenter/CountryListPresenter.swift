@@ -20,7 +20,7 @@ class CountryListPresenter {
     }
 
     private func cellViewModelFromData(data: СountrySummary) -> CountryListTableViewCellViewModel {
-        return CountryListTableViewCellViewModel(cases: String(data.cases), country: data.country, flagImageURL: data.countryInfo.flag)
+        return CountryListTableViewCellViewModel(cases: data.cases.toStringWithCommas(), country: data.country, flagImageURL: data.countryInfo.flag)
     }
 }
 
