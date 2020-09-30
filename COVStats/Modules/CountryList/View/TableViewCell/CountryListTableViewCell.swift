@@ -10,7 +10,7 @@ import Kingfisher
 
 class CountryListTableViewCell: UITableViewCell {
 
-    private enum CellLayoutOption {
+    private enum CellLayoutOptions {
         static let flagImageHeight: CGFloat = 34.0
         static let flagImageWidth: CGFloat = 47.0
         static let flagImageHorisontalPadding: CGFloat = 10.0
@@ -21,7 +21,7 @@ class CountryListTableViewCell: UITableViewCell {
         //static let margin: CGFloat = 10
     }
 
-    private enum CellOption {
+    private enum CellOptions {
         static let countryNameLabelFontSize:CGFloat = 22
         static let countNameLabelFontSize:CGFloat = 17
         static let layerBorderWidth: CGFloat = 1
@@ -33,9 +33,9 @@ class CountryListTableViewCell: UITableViewCell {
     let flagImage: UIImageView = {
         let imgView = UIImageView()
         imgView.contentMode = .scaleAspectFill
-        imgView.layer.cornerRadius = CellOption.layerCornerRadius
-        imgView.layer.borderWidth = CellOption.layerBorderWidth
-        imgView.layer.borderColor = CellOption.flagImageLayerBorderColor
+        imgView.layer.cornerRadius = CellOptions.layerCornerRadius
+        imgView.layer.borderWidth = CellOptions.layerBorderWidth
+        imgView.layer.borderColor = CellOptions.flagImageLayerBorderColor
         imgView.clipsToBounds = true
         return imgView
     }()
@@ -49,13 +49,13 @@ class CountryListTableViewCell: UITableViewCell {
 
     let countryNameLabel: UILabel = {
         let label = UILabel()
-        label.font = UIFont.systemFont(ofSize: CellOption.countryNameLabelFontSize, weight: UIFont.Weight.light)
+        label.font = UIFont.systemFont(ofSize: CellOptions.countryNameLabelFontSize, weight: UIFont.Weight.light)
         return label
     }()
 
     let countLabel: UILabel = {
         let label = UILabel()
-        label.font = UIFont.systemFont(ofSize: CellOption.countNameLabelFontSize, weight: UIFont.Weight.semibold)
+        label.font = UIFont.systemFont(ofSize: CellOptions.countNameLabelFontSize, weight: UIFont.Weight.semibold)
         return label
     }()
 
@@ -84,9 +84,9 @@ class CountryListTableViewCell: UITableViewCell {
     }
 
     private func setupBorder() {
-        layer.borderWidth = CellOption.layerBorderWidth
-        layer.cornerRadius = CellOption.layerCornerRadius
-        layer.borderColor = CellOption.layerBorderColor
+        layer.borderWidth = CellOptions.layerBorderWidth
+        layer.cornerRadius = CellOptions.layerCornerRadius
+        layer.borderColor = CellOptions.layerBorderColor
     }
 
     
@@ -98,26 +98,26 @@ class CountryListTableViewCell: UITableViewCell {
 
         NSLayoutConstraint.activate([
             flagImage.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
-            flagImage.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: CellLayoutOption.flagImageHorisontalPadding),
-            flagImage.heightAnchor.constraint(equalToConstant: CellLayoutOption.flagImageHeight),
-            flagImage.widthAnchor.constraint(equalToConstant: CellLayoutOption.flagImageWidth)
+            flagImage.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: CellLayoutOptions.flagImageHorisontalPadding),
+            flagImage.heightAnchor.constraint(equalToConstant: CellLayoutOptions.flagImageHeight),
+            flagImage.widthAnchor.constraint(equalToConstant: CellLayoutOptions.flagImageWidth)
         ])
 
         NSLayoutConstraint.activate([
             countryNameLabel.centerYAnchor.constraint(equalTo: flagImage.centerYAnchor),
-            countryNameLabel.leadingAnchor.constraint(equalTo: flagImage.trailingAnchor, constant: CellLayoutOption.countryNameLabelVerticalPadding),
+            countryNameLabel.leadingAnchor.constraint(equalTo: flagImage.trailingAnchor, constant: CellLayoutOptions.countryNameLabelVerticalPadding),
         ])
 
         NSLayoutConstraint.activate([
             trendingImage.centerYAnchor.constraint(equalTo: flagImage.centerYAnchor),
-            trendingImage.heightAnchor.constraint(equalToConstant: CellLayoutOption.trendingImageSize),
-            trendingImage.widthAnchor.constraint(equalToConstant: CellLayoutOption.trendingImageSize),
-            trendingImage.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: CellLayoutOption.trendingImageTrailingPadding)
+            trendingImage.heightAnchor.constraint(equalToConstant: CellLayoutOptions.trendingImageSize),
+            trendingImage.widthAnchor.constraint(equalToConstant: CellLayoutOptions.trendingImageSize),
+            trendingImage.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: CellLayoutOptions.trendingImageTrailingPadding)
         ])
 
         NSLayoutConstraint.activate([
             countLabel.centerYAnchor.constraint(equalTo: flagImage.centerYAnchor),
-            countLabel.trailingAnchor.constraint(equalTo: trendingImage.leadingAnchor, constant: CellLayoutOption.countlabelLeadingPadding),
+            countLabel.trailingAnchor.constraint(equalTo: trendingImage.leadingAnchor, constant: CellLayoutOptions.countlabelLeadingPadding),
         ])
 
         NSLayoutConstraint.activate([

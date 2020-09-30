@@ -22,7 +22,7 @@ struct GlobalSummaryCollectionViewCellPreview: PreviewProvider {
 
 fileprivate class mockViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout  {
 
-    private enum CellLayoutOption {
+    private enum CellLayoutOptions {
         static let cellHeight: CGFloat = 208.0
         static let cellWidth: CGFloat = 157.0
         static let trendingX = [1,2,3,4,5,6,7,8,9,10]
@@ -63,13 +63,13 @@ fileprivate class mockViewController: UIViewController, UICollectionViewDelegate
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as! GlobalSummaryCollectionViewCell
         cell.configure(viewModel: GlobalSummaryCollectionViewCellViewModel(type: .activeCases, casesCountText: "356,014,000,0"))
-        cell.configureTrendingGraph(xAxisData: CellLayoutOption.trendingX, yAxisData: CellLayoutOption.trendingY,type: .totalRecovered )
+        cell.configureTrendingGraph(xAxisData: CellLayoutOptions.trendingX, yAxisData: CellLayoutOptions.trendingY,type: .totalRecovered )
         return cell
     }
 
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
 
-        return CGSize(width: CellLayoutOption.cellWidth, height: CellLayoutOption.cellHeight)
+        return CGSize(width: CellLayoutOptions.cellWidth, height: CellLayoutOptions.cellHeight)
     }
 
 }

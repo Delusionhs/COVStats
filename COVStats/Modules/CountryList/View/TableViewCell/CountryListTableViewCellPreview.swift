@@ -25,7 +25,7 @@ fileprivate class mockViewController: UIViewController, UITableViewDelegate, UIT
 
 
 
-    private enum CellLayoutOption {
+    private enum CellLayoutOptions {
     }
 
     private let tableView: UITableView = {

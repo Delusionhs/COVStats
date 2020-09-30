@@ -46,8 +46,8 @@ class CountryListTableViewHeader: UIView {
     }
 
     private func setupViews() {
-        self.addSubview(title)
-        self.addSubview(subTitle)
+        addSubview(title)
+        addSubview(subTitle)
     }
 
     private func setupLayouts() {
