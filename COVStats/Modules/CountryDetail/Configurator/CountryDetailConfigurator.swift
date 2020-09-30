@@ -8,7 +8,7 @@
 
 import UIKit
 
-class CountryDetailModuleConfigurator: CountryDetailConfiguratorProtocol {
+class CountryDetailConfigurator: CountryDetailConfiguratorProtocol {
 
     func configure(with viewController: CountryDetailViewController) {
 

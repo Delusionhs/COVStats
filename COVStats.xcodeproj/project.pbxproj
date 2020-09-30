@@ -21,6 +21,8 @@
 		780CACC52524BF2B00B77AC1 /* CountryDetailConfiguratorProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 780CACC42524BF2B00B77AC1 /* CountryDetailConfiguratorProtocol.swift */; };
 		780CACCF25253CE900B77AC1 /* CountryDetailHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 780CACCE25253CE900B77AC1 /* CountryDetailHeaderView.swift */; };
 		780CACD325253D4400B77AC1 /* CountryDetailHeaderViewPreview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 780CACD225253D4400B77AC1 /* CountryDetailHeaderViewPreview.swift */; };
+		780CACD825254CDB00B77AC1 /* CountryDetailGraphView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 780CACD725254CDB00B77AC1 /* CountryDetailGraphView.swift */; };
+		780CACDC25254D2400B77AC1 /* CountryDetailGraphViewPreview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 780CACDB25254D2400B77AC1 /* CountryDetailGraphViewPreview.swift */; };
 		781019CC2523EB3C00462CFC /* Int+Formatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 781019CB2523EB3C00462CFC /* Int+Formatter.swift */; };
 		78516E71251A5F6E00FBDBDE /* Trending.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78516E70251A5F6E00FBDBDE /* Trending.swift */; };
 		78516E7A251A935800FBDBDE /* UIVIewController+Preview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78516E79251A935800FBDBDE /* UIVIewController+Preview.swift */; };
@@ -90,6 +92,8 @@
 		780CACC42524BF2B00B77AC1 /* CountryDetailConfiguratorProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryDetailConfiguratorProtocol.swift; sourceTree = "<group>"; };
 		780CACCE25253CE900B77AC1 /* CountryDetailHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryDetailHeaderView.swift; sourceTree = "<group>"; };
 		780CACD225253D4400B77AC1 /* CountryDetailHeaderViewPreview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryDetailHeaderViewPreview.swift; sourceTree = "<group>"; };
+		780CACD725254CDB00B77AC1 /* CountryDetailGraphView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryDetailGraphView.swift; sourceTree = "<group>"; };
+		780CACDB25254D2400B77AC1 /* CountryDetailGraphViewPreview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryDetailGraphViewPreview.swift; sourceTree = "<group>"; };
 		781019CB2523EB3C00462CFC /* Int+Formatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Int+Formatter.swift"; sourceTree = "<group>"; };
 		78516E70251A5F6E00FBDBDE /* Trending.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Trending.swift; sourceTree = "<group>"; };
 		78516E79251A935800FBDBDE /* UIVIewController+Preview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIVIewController+Preview.swift"; sourceTree = "<group>"; };
@@ -213,6 +217,7 @@
 		4901786CE2D865EEE344F5A8 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				780CACD625254B1F00B77AC1 /* Graph */,
 				780CACD125253D2600B77AC1 /* Header */,
 				97882A3436119DEE22AA51E7 /* CountryDetailViewInput.swift */,
 				2504FD0D609A79E007A41958 /* CountryDetailViewOutput.swift */,
@@ -228,6 +233,15 @@
 				780CACD225253D4400B77AC1 /* CountryDetailHeaderViewPreview.swift */,
 			);
 			path = Header;
+			sourceTree = "<group>";
+		};
+		780CACD625254B1F00B77AC1 /* Graph */ = {
+			isa = PBXGroup;
+			children = (
+				780CACD725254CDB00B77AC1 /* CountryDetailGraphView.swift */,
+				780CACDB25254D2400B77AC1 /* CountryDetailGraphViewPreview.swift */,
+			);
+			path = Graph;
 			sourceTree = "<group>";
 		};
 		78516E6F251A5F6100FBDBDE /* Common */ = {
@@ -685,6 +699,7 @@
 				78F470082518E6120008637C /* HomeInteractorInput.swift in Sources */,
 				78F4704C251A1C600008637C /* GlobalSummaryInteractorOutput.swift in Sources */,
 				78B8BC18252292A700E8210F /* СountrySummary.swift in Sources */,
+				780CACD825254CDB00B77AC1 /* CountryDetailGraphView.swift in Sources */,
 				78516E71251A5F6E00FBDBDE /* Trending.swift in Sources */,
 				78F470152518E9F20008637C /* HomeConfiguratorProtocol.swift in Sources */,
 				78F46FE62518D39E0008637C /* AppDelegate.swift in Sources */,
@@ -740,6 +755,7 @@
 				780CACC52524BF2B00B77AC1 /* CountryDetailConfiguratorProtocol.swift in Sources */,
 				47927BBE950CE7D71D2DA754 /* CountryDetailViewInput.swift in Sources */,
 				367A76942AB36CC77FA8BFB8 /* CountryDetailViewOutput.swift in Sources */,
+				780CACDC25254D2400B77AC1 /* CountryDetailGraphViewPreview.swift in Sources */,
 				944589AE71A01F13BB572878 /* CountryDetailViewController.swift in Sources */,
 				773A1A9AA9189E8226B72E87 /* CountryDetailModuleInput.swift in Sources */,
 				4739F61EA30E27F21E6B21B9 /* CountryDetailPresenter.swift in Sources */,
