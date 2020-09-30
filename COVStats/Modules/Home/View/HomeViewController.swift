@@ -27,8 +27,8 @@ class HomeViewController: UIViewController, HomeViewInput {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .white
         configurator.configure(with: self)
+        view.backgroundColor = .white
         setupSubViews()
         setupLayouts()
     }
