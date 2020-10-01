@@ -71,30 +71,47 @@ class CountryDetailGraphView: UIView {
         layer.borderColor = ViewOptions.layerBorderColor
     }
 
-    func configureTrendingGraph(xAxisData: [Int], yAxisData: [Int]) {
+    func configureTrendingGraph(xAxisData: [Int], affectedYAxisData: [Int], deathYAxisData: [Int]) {
 
-        var lineDataEntry: [ChartDataEntry] = []
+        var deathLineDataEntry: [ChartDataEntry] = []
+        var affectedLineDataEntry: [ChartDataEntry] = []
 
-        for i in 0..<min(xAxisData.count, yAxisData.count) {
-            lineDataEntry.append(ChartDataEntry(x: Double(xAxisData[i]), y: Double(yAxisData[i])))
+        for i in 0..<min(xAxisData.count, deathYAxisData.count) {
+            deathLineDataEntry.append(ChartDataEntry(x: Double(xAxisData[i]), y: Double(deathYAxisData[i])))
         }
 
-        let lineDataSet = LineChartDataSet(entries: lineDataEntry, label: "Cases")
+        for i in 0..<min(xAxisData.count, affectedYAxisData.count) {
+            affectedLineDataEntry.append(ChartDataEntry(x: Double(xAxisData[i]), y: Double(affectedYAxisData[i])))
+        }
+
+        let deathLineDataSet = LineChartDataSet(entries: deathLineDataEntry, label: "Death")
+        let affectedLineDataSet = LineChartDataSet(entries: affectedLineDataEntry, label: "Affected")
         let lineData = LineChartData()
-        lineData.addDataSet(lineDataSet)
         lineData.setDrawValues(false)
-        lineDataSet.mode = .cubicBezier
-        lineDataSet.drawCirclesEnabled = false
-        lineDataSet.colors = [.red]
+        deathLineDataSet.mode = .cubicBezier
+        deathLineDataSet.drawCirclesEnabled = false
+        deathLineDataSet.colors = [UIColor.clear]
+        affectedLineDataSet.mode = .cubicBezier
+        affectedLineDataSet.drawCirclesEnabled = false
+        affectedLineDataSet.colors = [UIColor.clear]
         //gradient colors
-        let gradientColors = [UIColor(hex: "#FF647C").cgColor,UIColor(hex: "#FFCBD3").cgColor] as CFArray
-        let colorLocation: [CGFloat] = [0.3,1.0]
-        if let gradient = CGGradient.init(colorsSpace: CGColorSpaceCreateDeviceRGB(), colors: gradientColors, locations: colorLocation) {
-            lineDataSet.fill = Fill.fillWithLinearGradient(gradient, angle: 1.0)
-            lineDataSet.drawFilledEnabled = true
+        let deathGradientColors = [UIColor(hex: "#FF647C").cgColor,UIColor(hex: "#FFCBD3").cgColor] as CFArray
+        let affectedGradientColors = [UIColor(hex: "#00C48C").cgColor,UIColor(hex: "#96FFE1").cgColor] as CFArray
+        let colorLocation: [CGFloat] = [0.0,1.0]
+        if let gradient = CGGradient.init(colorsSpace: CGColorSpaceCreateDeviceRGB(), colors: affectedGradientColors, locations: colorLocation) {
+            affectedLineDataSet.fill = Fill.fillWithLinearGradient(gradient, angle: -30)
+            affectedLineDataSet.drawFilledEnabled = true
         }
+        if let gradient = CGGradient.init(colorsSpace: CGColorSpaceCreateDeviceRGB(), colors: deathGradientColors, locations: colorLocation) {
+            deathLineDataSet.fill = Fill.fillWithLinearGradient(gradient, angle: -30)
+            deathLineDataSet.drawFilledEnabled = true
+        }
+        affectedLineDataSet.fillAlpha = 0.9
+        deathLineDataSet.fillAlpha = 0.9
+        lineData.addDataSet(affectedLineDataSet)
+        lineData.addDataSet(deathLineDataSet)
+        lineData.setDrawValues(false)
         //
         trendingGraph.data = lineData
     }
-
 }

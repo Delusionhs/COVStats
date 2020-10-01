@@ -150,6 +150,7 @@ extension GlobalSummaryCollectionViewCell {
 
         lineDataSet.drawCirclesEnabled = false
         trendingGraph.data = lineData
+
     }
 
     private func setupLayouts() {
