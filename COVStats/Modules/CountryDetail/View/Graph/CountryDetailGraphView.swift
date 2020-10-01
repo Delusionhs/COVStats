@@ -17,6 +17,18 @@ class CountryDetailGraphView: UIView {
         static let layerBorderColor: CGColor = UIColor(hex: "#E4E4E4", alpha: 0.6).cgColor
     }
 
+    private enum GraphOptions {
+        static let gradientColorLocation: [CGFloat] = [0.0,1.0]
+        static let gradientFillAlpha: CGFloat = 0.9
+        static let gradientAngle: CGFloat = -30
+        static let casesGradientStartColor = UIColor(hex: "#00C48C")
+        static let casesGradientEndColor = UIColor(hex: "#96FFE1")
+        static let deathGradientStatColor = UIColor(hex: "#FF647C")
+        static let deathGradientEndColor = UIColor(hex: "#FFCBD3")
+        static let deathDataSetLabel = "Death"
+        static let casesDataSetLabel = "Affected"
+    }
+
     private enum LayoutOptions {
     }
 
@@ -84,8 +96,8 @@ class CountryDetailGraphView: UIView {
             affectedLineDataEntry.append(ChartDataEntry(x: Double(xAxisData[i]), y: Double(affectedYAxisData[i])))
         }
 
-        let deathLineDataSet = LineChartDataSet(entries: deathLineDataEntry, label: "Death")
-        let affectedLineDataSet = LineChartDataSet(entries: affectedLineDataEntry, label: "Affected")
+        let deathLineDataSet = LineChartDataSet(entries: deathLineDataEntry, label: GraphOptions.deathDataSetLabel)
+        let affectedLineDataSet = LineChartDataSet(entries: affectedLineDataEntry, label: GraphOptions.casesDataSetLabel)
         let lineData = LineChartData()
         lineData.setDrawValues(false)
         deathLineDataSet.mode = .cubicBezier
@@ -94,24 +106,34 @@ class CountryDetailGraphView: UIView {
         affectedLineDataSet.mode = .cubicBezier
         affectedLineDataSet.drawCirclesEnabled = false
         affectedLineDataSet.colors = [UIColor.clear]
-        //gradient colors
-        let deathGradientColors = [UIColor(hex: "#FF647C").cgColor,UIColor(hex: "#FFCBD3").cgColor] as CFArray
-        let affectedGradientColors = [UIColor(hex: "#00C48C").cgColor,UIColor(hex: "#96FFE1").cgColor] as CFArray
-        let colorLocation: [CGFloat] = [0.0,1.0]
-        if let gradient = CGGradient.init(colorsSpace: CGColorSpaceCreateDeviceRGB(), colors: affectedGradientColors, locations: colorLocation) {
-            affectedLineDataSet.fill = Fill.fillWithLinearGradient(gradient, angle: -30)
+
+        if let gradient = getGradient(fromColor: GraphOptions.casesGradientStartColor, toColor: GraphOptions.casesGradientEndColor, location: GraphOptions.gradientColorLocation) {
+            affectedLineDataSet.fill = Fill.fillWithLinearGradient(gradient, angle: GraphOptions.gradientAngle)
             affectedLineDataSet.drawFilledEnabled = true
         }
-        if let gradient = CGGradient.init(colorsSpace: CGColorSpaceCreateDeviceRGB(), colors: deathGradientColors, locations: colorLocation) {
-            deathLineDataSet.fill = Fill.fillWithLinearGradient(gradient, angle: -30)
+        if let gradient = getGradient(fromColor: GraphOptions.deathGradientStatColor, toColor: GraphOptions.deathGradientEndColor, location: GraphOptions.gradientColorLocation) {
+            deathLineDataSet.fill = Fill.fillWithLinearGradient(gradient, angle: GraphOptions.gradientAngle)
             deathLineDataSet.drawFilledEnabled = true
         }
-        affectedLineDataSet.fillAlpha = 0.9
-        deathLineDataSet.fillAlpha = 0.9
+
+        affectedLineDataSet.fillAlpha = GraphOptions.gradientFillAlpha
+        deathLineDataSet.fillAlpha = GraphOptions.gradientFillAlpha
         lineData.addDataSet(affectedLineDataSet)
         lineData.addDataSet(deathLineDataSet)
         lineData.setDrawValues(false)
-        //
         trendingGraph.data = lineData
+    }
+
+
+}
+
+//MARK: - Helpers
+extension CountryDetailGraphView {
+    private func getGradient(fromColor: UIColor, toColor: UIColor, location: [CGFloat]) -> CGGradient? {
+        let gradientColors = [fromColor.cgColor, toColor.cgColor] as CFArray
+        if let gradient = CGGradient.init(colorsSpace: CGColorSpaceCreateDeviceRGB(), colors: gradientColors, locations: location) {
+            return gradient
+        }
+        return nil
     }
 }
