@@ -14,6 +14,7 @@ class CountryDetailViewController: UIViewController {
         static let headerTopMargin: CGFloat = 40
         static let headerHorizontalMargin: CGFloat = 14
         static let headerViewHeight: CGFloat = 240
+        static let graphToHeaderDistanse: CGFloat = 25
     }
 
     var output: CountryDetailViewOutput!
@@ -21,6 +22,7 @@ class CountryDetailViewController: UIViewController {
     private let configurator: CountryDetailConfiguratorProtocol = CountryDetailConfigurator()
 
     private let headerView = CountryDetailHeaderView()
+    private let trendingGraph = CountryDetailGraphView()
 
     // MARK: Life cycle
     override func viewDidLoad() {
@@ -33,16 +35,24 @@ class CountryDetailViewController: UIViewController {
 
     private func setupViews() {
         view.addSubview(headerView)
+        view.addSubview(trendingGraph)
     }
 
     private func setupLayouts() {
         headerView.translatesAutoresizingMaskIntoConstraints = false
+        trendingGraph.translatesAutoresizingMaskIntoConstraints = false
 
         NSLayoutConstraint.activate([
             headerView.heightAnchor.constraint(equalToConstant: LayoutOptions.headerViewHeight),
             headerView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: LayoutOptions.headerHorizontalMargin),
             headerView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -LayoutOptions.headerHorizontalMargin),
             headerView.topAnchor.constraint(equalTo: view.topAnchor, constant: LayoutOptions.headerTopMargin)
+        ])
+
+        NSLayoutConstraint.activate([
+            trendingGraph.topAnchor.constraint(equalTo: headerView.bottomAnchor, constant: LayoutOptions.graphToHeaderDistanse),
+            trendingGraph.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: LayoutOptions.headerHorizontalMargin),
+            trendingGraph.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -LayoutOptions.headerHorizontalMargin), trendingGraph.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)
         ])
     }
 }
