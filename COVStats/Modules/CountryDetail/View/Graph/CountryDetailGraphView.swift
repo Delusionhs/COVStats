@@ -85,6 +85,15 @@ class CountryDetailGraphView: UIView {
         lineData.setDrawValues(false)
         lineDataSet.mode = .cubicBezier
         lineDataSet.drawCirclesEnabled = false
+        lineDataSet.colors = [.red]
+        //gradient colors
+        let gradientColors = [UIColor(hex: "#FF647C").cgColor,UIColor(hex: "#FFCBD3").cgColor] as CFArray
+        let colorLocation: [CGFloat] = [0.3,1.0]
+        if let gradient = CGGradient.init(colorsSpace: CGColorSpaceCreateDeviceRGB(), colors: gradientColors, locations: colorLocation) {
+            lineDataSet.fill = Fill.fillWithLinearGradient(gradient, angle: 1.0)
+            lineDataSet.drawFilledEnabled = true
+        }
+        //
         trendingGraph.data = lineData
     }
 

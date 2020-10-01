@@ -23,6 +23,7 @@ fileprivate class mockViewController: UIViewController {
 
     private let header: CountryDetailGraphView = {
         let view = CountryDetailGraphView()
+        view.configureTrendingGraph(xAxisData: [1,2,3,4,5], yAxisData: [1000,1100,1250,800,500])
         return view
     }()
 
@@ -36,7 +37,7 @@ fileprivate class mockViewController: UIViewController {
         header.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             header.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor,constant: 10),
-            header.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor,constant: -10),
+            header.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor,constant: -500),
             header.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 10),
             header.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -10)
         ])
