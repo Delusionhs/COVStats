@@ -11,8 +11,8 @@ import UIKit
 class AppCoordinator {
 
     private let window: UIWindow
-    private let tabBarController = UITabBarController()
-    private let navigationControllers = UINavigationController()
+    private var tabBarController = UITabBarController()
+    private var navigationControllers = UINavigationController()
     private let homeConfigurator: HomeConfiguratorProtocol = HomeConfigurator()
 
     init(window: UIWindow) {
@@ -20,17 +20,16 @@ class AppCoordinator {
     }
 
     func start() {
-        navigationControllers.setViewControllers([homeConfigurator.assemblyModule()], animated: false)
-        tabBarController.setViewControllers([navigationControllers], animated: false)
-        navigationControllers.tabBarItem = UITabBarItem(title: "Home", image: UIImage(named: "homeTab"), selectedImage: UIImage(named: "homeTabSelected"))
-        window.rootViewController = tabBarController // associate VC as root VC
+        setupHome()
+        window.rootViewController = tabBarController 
         window.makeKeyAndVisible()
     }
 }
 
 extension AppCoordinator {
-}
-
-fileprivate enum NavControllerType: Int, CaseIterable {
-    case feed, prize, video, thumbsUp, podcasts
+    func setupHome() {
+        navigationControllers.setViewControllers([homeConfigurator.assemblyModule()], animated: false)
+        tabBarController.setViewControllers([navigationControllers], animated: false)
+        navigationControllers.tabBarItem = UITabBarItem(title: "Home", image: UIImage(named: "homeTab"), selectedImage: UIImage(named: "homeTabSelected"))
+    }
 }

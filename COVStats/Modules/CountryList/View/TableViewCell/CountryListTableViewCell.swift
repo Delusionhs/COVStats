@@ -129,7 +129,7 @@ class CountryListTableViewCell: UITableViewCell {
         countryNameLabel.text = viewModel.country
         countLabel.text = viewModel.cases
         if let url = URL(string: viewModel.flagImageURL) {
-            flagImage.kf.setImage(with: url)
+            flagImage.setImage(with: url)
         }
         trendingImage.image = UIImage(named: "chevronDown")
     }
