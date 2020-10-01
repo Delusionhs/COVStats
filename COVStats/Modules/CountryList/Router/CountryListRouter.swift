@@ -13,7 +13,6 @@ class CountryListRouter {
 
 extension CountryListRouter: CountryListRouterInput {
     func openCountryDetailsViewController() {
-        viewController.present(countryDetailConfigurator.assemblyModule(), animated: true, completion: nil)
-        //viewController.navigationController?.pushViewController(countryDetailConfigurator.assemblyModule(), animated: true)
+        viewController.navigationController?.pushViewController(countryDetailConfigurator.assemblyModule(), animated: true)
     }
 }
