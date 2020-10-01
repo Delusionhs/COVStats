@@ -47,7 +47,7 @@ class CountryDetailViewController: UIViewController {
             headerView.heightAnchor.constraint(equalToConstant: LayoutOptions.headerViewHeight),
             headerView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: LayoutOptions.headerHorizontalMargin),
             headerView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -LayoutOptions.headerHorizontalMargin),
-            headerView.topAnchor.constraint(equalTo: view.topAnchor, constant: LayoutOptions.headerTopMargin)
+            headerView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: LayoutOptions.headerTopMargin)
         ])
 
         NSLayoutConstraint.activate([
