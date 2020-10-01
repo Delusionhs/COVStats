@@ -12,4 +12,5 @@ protocol CountryListViewOutput {
     func viewIsReady()
     func numberOfRows() -> Int
     func cellViewModel(for indexPath: IndexPath) -> CountryListTableViewCellViewModel?
+    func showCountryDetails(for indexPath: IndexPath)
 }

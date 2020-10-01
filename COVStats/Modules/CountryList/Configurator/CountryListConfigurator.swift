@@ -13,6 +13,7 @@ class CountryListConfigurator: CountryListConfiguratorProtocol {
     func configure(with viewController: CountryListViewController) {
 
         let router = CountryListRouter()
+        router.viewController = viewController
 
         let presenter = CountryListPresenter()
         presenter.view = viewController

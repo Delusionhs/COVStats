@@ -6,6 +6,14 @@
 //  Copyright © 2020 Igor Podolskiy. All rights reserved.
 //
 
-class CountryListRouter: CountryListRouterInput {
+class CountryListRouter {
+    weak var viewController: CountryListViewController!
+    private let countryDetailConfigurator: CountryDetailConfiguratorProtocol = CountryDetailConfigurator()
+}
 
+extension CountryListRouter: CountryListRouterInput {
+    func openCountryDetailsViewController() {
+        viewController.present(countryDetailConfigurator.assemblyModule(), animated: true, completion: nil)
+        //viewController.navigationController?.pushViewController(countryDetailConfigurator.assemblyModule(), animated: true)
+    }
 }

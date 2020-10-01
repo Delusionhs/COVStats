@@ -25,6 +25,10 @@ class CountryListPresenter {
 }
 
 extension CountryListPresenter: CountryListViewOutput {
+    func showCountryDetails(for indexPath: IndexPath) {
+        router.openCountryDetailsViewController()
+    }
+
     func viewIsReady() {
         setupHeader()
         interactor.fetchCountrySummaryData()

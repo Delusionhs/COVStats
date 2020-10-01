@@ -25,4 +25,9 @@ class CountryDetailConfigurator: CountryDetailConfiguratorProtocol {
         viewController.output = presenter
     }
 
+    func assemblyModule() -> UIViewController {
+        let viewController = CountryDetailViewController()
+        configure(with: viewController)
+        return viewController
+    }
 }

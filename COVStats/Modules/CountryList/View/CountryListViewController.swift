@@ -140,6 +140,11 @@ extension CountryListViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return TableViewOptions.cellHeight
     }
+
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+        output.showCountryDetails(for: indexPath)
+    }
 }
 
 //MARK: - Preview
