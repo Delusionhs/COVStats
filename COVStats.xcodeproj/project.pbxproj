@@ -37,6 +37,7 @@
 		78D1BA6B251CCEC5000A21C8 /* GlobalSummaryGraphViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78D1BA6A251CCEC5000A21C8 /* GlobalSummaryGraphViewModel.swift */; };
 		78D1BA7F251D0BC8000A21C8 /* CountryListConfiguratorProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78D1BA7E251D0BC8000A21C8 /* CountryListConfiguratorProtocol.swift */; };
 		78D1BA89251D2EAE000A21C8 /* CountryListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78D1BA88251D2EAE000A21C8 /* CountryListTableViewCell.swift */; };
+		78F1691C252680FC00D77BFE /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78F1691B252680FC00D77BFE /* AppCoordinator.swift */; };
 		78F46FE62518D39E0008637C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78F46FE52518D39E0008637C /* AppDelegate.swift */; };
 		78F46FE82518D39E0008637C /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78F46FE72518D39E0008637C /* SceneDelegate.swift */; };
 		78F46FEF2518D39E0008637C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 78F46FEE2518D39E0008637C /* Assets.xcassets */; };
@@ -108,6 +109,7 @@
 		78D1BA6A251CCEC5000A21C8 /* GlobalSummaryGraphViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlobalSummaryGraphViewModel.swift; sourceTree = "<group>"; };
 		78D1BA7E251D0BC8000A21C8 /* CountryListConfiguratorProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryListConfiguratorProtocol.swift; sourceTree = "<group>"; };
 		78D1BA88251D2EAE000A21C8 /* CountryListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryListTableViewCell.swift; sourceTree = "<group>"; };
+		78F1691B252680FC00D77BFE /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
 		78F46FE22518D39E0008637C /* COVStats.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = COVStats.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		78F46FE52518D39E0008637C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		78F46FE72518D39E0008637C /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -321,6 +323,7 @@
 				78F47016251901A80008637C /* Model */,
 				78F47052251A2F1E0008637C /* Resources */,
 				78F46FE52518D39E0008637C /* AppDelegate.swift */,
+				78F1691B252680FC00D77BFE /* AppCoordinator.swift */,
 				78F46FE72518D39E0008637C /* SceneDelegate.swift */,
 				78F46FF02518D39E0008637C /* LaunchScreen.storyboard */,
 			);
@@ -758,6 +761,7 @@
 				780CACDC25254D2400B77AC1 /* CountryDetailGraphViewPreview.swift in Sources */,
 				944589AE71A01F13BB572878 /* CountryDetailViewController.swift in Sources */,
 				773A1A9AA9189E8226B72E87 /* CountryDetailModuleInput.swift in Sources */,
+				78F1691C252680FC00D77BFE /* AppCoordinator.swift in Sources */,
 				4739F61EA30E27F21E6B21B9 /* CountryDetailPresenter.swift in Sources */,
 				0EE58AC14579E9EDF055E55E /* CountryDetailInteractorInput.swift in Sources */,
 				60228DA65932FA1D5FB63E5F /* CountryDetailInteractorOutput.swift in Sources */,
