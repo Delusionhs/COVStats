@@ -7,4 +7,5 @@
 //
 
 protocol CountryDetailViewInput: class {
+    func configureHeader(with viewModel: CountryDetailHeaderViewModel)
 }

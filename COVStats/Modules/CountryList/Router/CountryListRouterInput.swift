@@ -9,5 +9,5 @@
 import Foundation
 
 protocol CountryListRouterInput {
-    func openCountryDetailsViewController()
+    func openCountryDetailsViewController(with data: СountrySummary)
 }

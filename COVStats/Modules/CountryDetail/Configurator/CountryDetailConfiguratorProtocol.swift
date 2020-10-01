@@ -12,4 +12,5 @@ import UIKit
 protocol CountryDetailConfiguratorProtocol {
     func configure(with viewController: CountryDetailViewController)
     func assemblyModule() -> UIViewController
+    func assemblyWithViewModel(viewModel: CountryDetailHeaderViewModel) -> UIViewController
 }

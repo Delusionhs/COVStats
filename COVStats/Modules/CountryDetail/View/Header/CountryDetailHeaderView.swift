@@ -160,5 +160,16 @@ class CountryDetailHeaderView: UIView {
         deathCountLabel.text = deathCountText
         todayDeathCountLabel.text = todayCasesCountText
     }
+
+    func configure(with viewModel: CountryDetailHeaderViewModel) {
+        if let url = URL(string: viewModel.flagImageURL) {
+            flagImage.setImage(with: url)
+        }
+        countryNameLabel.text = viewModel.country
+        casesCountLabel.text = viewModel.cases
+        todayCasesCountLabel.text = viewModel.todayCases
+        deathCountLabel.text = viewModel.death
+        todayDeathCountLabel.text = viewModel.todayDeath
+    }
 }
 

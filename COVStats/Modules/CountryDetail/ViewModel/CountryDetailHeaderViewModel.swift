@@ -12,5 +12,7 @@ struct CountryDetailHeaderViewModel {
     let country: String
     let cases: String
     let death: String
+    let todayCases: String
+    let todayDeath: String
     let flagImageURL: String
 }

@@ -68,15 +68,14 @@ class CountryDetailGraphView: UIView {
     }
 
     private func setupGraph() {
-//        trendingGraph.isUserInteractionEnabled = false
-//        trendingGraph.xAxis.drawGridLinesEnabled = false
-//        trendingGraph.xAxis.drawAxisLineEnabled = false
-//        trendingGraph.xAxis.drawLabelsEnabled = false
-//        trendingGraph.rightAxis.enabled = false
-//        trendingGraph.leftAxis.enabled = false
-//        trendingGraph.legend.enabled = false
+        trendingGraph.isUserInteractionEnabled = false
+        trendingGraph.xAxis.drawGridLinesEnabled = false
+        trendingGraph.xAxis.drawAxisLineEnabled = false
+        trendingGraph.xAxis.drawLabelsEnabled = false
+        trendingGraph.rightAxis.enabled = false
+        trendingGraph.leftAxis.enabled = false
+        trendingGraph.legend.enabled = false
         trendingGraph.minOffset = 0
-
 //        trendingGraph.legend.enabled = true
 //        trendingGraph.legend.form = .circle
     }

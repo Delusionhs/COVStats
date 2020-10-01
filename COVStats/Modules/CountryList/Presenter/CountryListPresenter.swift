@@ -26,7 +26,8 @@ class CountryListPresenter {
 
 extension CountryListPresenter: CountryListViewOutput {
     func showCountryDetails(for indexPath: IndexPath) {
-        router.openCountryDetailsViewController()
+        guard let data = countrySummaryData, data.count > indexPath.section else { return }
+        router.openCountryDetailsViewController(with: data[indexPath.section])
     }
 
     func viewIsReady() {

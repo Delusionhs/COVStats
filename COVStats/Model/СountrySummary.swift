@@ -13,6 +13,8 @@ struct СountrySummary: Decodable {
     let country: String
     let countryInfo: CountryInfo
     let deaths: Int
+    let todayDeaths: Int
+    let todayCases: Int
 }
 
 struct CountryInfo: Decodable {

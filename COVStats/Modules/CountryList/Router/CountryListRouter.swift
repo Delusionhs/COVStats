@@ -12,7 +12,13 @@ class CountryListRouter {
 }
 
 extension CountryListRouter: CountryListRouterInput {
-    func openCountryDetailsViewController() {
-        viewController.navigationController?.pushViewController(countryDetailConfigurator.assemblyModule(), animated: true)
+    func openCountryDetailsViewController(with data: СountrySummary) {
+        let viewModel = CountryDetailHeaderViewModel(country: data.country,
+                                                     cases: data.cases.toStringWithDecimalStyle(),
+                                                     death: data.deaths.toStringWithDecimalStyle(),
+                                                     todayCases: data.todayCases.toStringWithDecimalStyle(),
+                                                     todayDeath: data.todayDeaths.toStringWithDecimalStyle(),
+                                                     flagImageURL: data.countryInfo.flag)
+        viewController.navigationController?.pushViewController(countryDetailConfigurator.assemblyWithViewModel(viewModel: viewModel), animated: true)
     }
 }

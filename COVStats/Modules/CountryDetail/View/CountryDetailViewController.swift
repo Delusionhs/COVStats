@@ -28,6 +28,7 @@ class CountryDetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         configurator.configure(with: self)
+        view.backgroundColor = .white
         output.viewIsReady()
         setupViews()
         setupLayouts()
@@ -58,7 +59,9 @@ class CountryDetailViewController: UIViewController {
 }
 
 extension CountryDetailViewController: CountryDetailViewInput {
-
+    func configureHeader(with viewModel: CountryDetailHeaderViewModel) {
+        headerView.configure(with: viewModel)
+    }
 }
 
 

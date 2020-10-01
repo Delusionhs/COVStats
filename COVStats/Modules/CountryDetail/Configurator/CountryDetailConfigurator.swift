@@ -30,4 +30,11 @@ class CountryDetailConfigurator: CountryDetailConfiguratorProtocol {
         configure(with: viewController)
         return viewController
     }
+
+    func assemblyWithViewModel(viewModel: CountryDetailHeaderViewModel) -> UIViewController {
+        let viewController = CountryDetailViewController()
+        viewController.configureHeader(with: viewModel)
+        configure(with: viewController)
+        return viewController
+    }
 }
