@@ -11,16 +11,19 @@ import UIKit
 class AppCoordinator {
 
     private let window: UIWindow
-    private lazy var tabBarController = UITabBarController()
-    private var navigationControllers = UINavigationController()
+    private let tabBarController = UITabBarController()
+    private let navigationControllers = UINavigationController()
+    private let homeConfigurator: HomeConfiguratorProtocol = HomeConfigurator()
 
     init(window: UIWindow) {
         self.window = window
     }
 
     func start() {
-        let viewController = HomeViewController() //init VC
-        window.rootViewController = viewController // associate VC as root VC
+        navigationControllers.setViewControllers([homeConfigurator.assemblyModule()], animated: false)
+        tabBarController.setViewControllers([navigationControllers], animated: false)
+        navigationControllers.tabBarItem = UITabBarItem(title: "Home", image: UIImage(named: "homeTab"), selectedImage: UIImage(named: "homeTabSelected"))
+        window.rootViewController = tabBarController // associate VC as root VC
         window.makeKeyAndVisible()
     }
 }

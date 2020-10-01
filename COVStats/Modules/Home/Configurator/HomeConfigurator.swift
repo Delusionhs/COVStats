@@ -6,7 +6,7 @@
 //  Copyright © 2020 Igor Podolskiy. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
 class HomeConfigurator: HomeConfiguratorProtocol {
 
@@ -30,6 +30,12 @@ class HomeConfigurator: HomeConfiguratorProtocol {
 
         viewController.countryListViewController = countryListConfigurator.assemblyModule()
         viewController.globalSummaryViewController = globalSummaryConfigurator.assemblyModule()
+    }
+
+    func assemblyModule() -> UIViewController {
+        let viewController = HomeViewController()
+        configure(with: viewController)
+        return viewController
     }
 
 }

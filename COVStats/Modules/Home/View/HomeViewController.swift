@@ -11,6 +11,10 @@ import UIKit
 
 class HomeViewController: UIViewController, HomeViewInput {
 
+    private enum ViewOptions {
+        static let navigationItemTitle = "Covid - 19"
+    }
+
     private enum LayoutOptions {
         static let globalSummaryViewHeight: CGFloat = 500
         static let countryListViewMargin: CGFloat = 10
@@ -28,6 +32,7 @@ class HomeViewController: UIViewController, HomeViewInput {
     override func viewDidLoad() {
         super.viewDidLoad()
         configurator.configure(with: self)
+        navigationItem.title = ViewOptions.navigationItemTitle
         view.backgroundColor = .white
         setupSubViews()
         setupLayouts()

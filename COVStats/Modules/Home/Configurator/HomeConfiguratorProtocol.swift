@@ -6,8 +6,9 @@
 //  Copyright © 2020 Igor Podolskiy. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
 protocol HomeConfiguratorProtocol {
     func configure(with viewController: HomeViewController)
+    func assemblyModule() -> UIViewController
 }
