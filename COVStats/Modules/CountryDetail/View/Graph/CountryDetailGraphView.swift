@@ -15,6 +15,8 @@ class CountryDetailGraphView: UIView {
         static let layerBorderWidth: CGFloat = 1
         static let layerBorderCornerRadius: CGFloat = 10
         static let layerBorderColor: CGColor = UIColor(hex: "#E4E4E4", alpha: 0.6).cgColor
+        static let titleFontSize: CGFloat = 15
+        static let titleText = "Affected and death daily changes"
     }
 
     private enum GraphOptions {
@@ -30,11 +32,20 @@ class CountryDetailGraphView: UIView {
     }
 
     private enum LayoutOptions {
+        static let titleMargin: CGFloat = 15
     }
 
     private let trendingGraph: LineChartView = {
         let lineChartView = LineChartView()
         return lineChartView
+    }()
+
+    private let trendingGraphTitle: UILabel = {
+        let label = UILabel()
+        label.textAlignment = .center
+        label.font = UIFont.systemFont(ofSize: ViewOptions.titleFontSize, weight: UIFont.Weight.semibold)
+        label.text = ViewOptions.titleText
+        return label
     }()
 
     override init(frame: CGRect) {
@@ -52,6 +63,7 @@ class CountryDetailGraphView: UIView {
 
     private func setupViews() {
         addSubview(trendingGraph)
+        addSubview(trendingGraphTitle)
         setupGraph()
     }
 
@@ -60,19 +72,30 @@ class CountryDetailGraphView: UIView {
         trendingGraph.xAxis.drawGridLinesEnabled = false
         trendingGraph.xAxis.drawAxisLineEnabled = false
         trendingGraph.xAxis.drawLabelsEnabled = false
-        trendingGraph.legend.enabled = false
         trendingGraph.rightAxis.enabled = false
         trendingGraph.leftAxis.enabled = false
+        trendingGraph.legend.enabled = false
+        trendingGraph.minOffset = 0
+
+//        trendingGraph.legend.enabled = true
+//        trendingGraph.legend.form = .circle
     }
     
 
     private func setupLayouts() {
         trendingGraph.translatesAutoresizingMaskIntoConstraints = false
+        trendingGraphTitle.translatesAutoresizingMaskIntoConstraints = false
+
+        NSLayoutConstraint.activate([
+            trendingGraph.leadingAnchor.constraint(equalTo: self.leadingAnchor,constant: LayoutOptions.titleMargin),
+            trendingGraph.trailingAnchor.constraint(equalTo: self.trailingAnchor,constant: -LayoutOptions.titleMargin),
+            trendingGraph.topAnchor.constraint(equalTo: self.topAnchor,constant: LayoutOptions.titleMargin),
+        ])
 
         NSLayoutConstraint.activate([
             trendingGraph.leadingAnchor.constraint(equalTo: self.leadingAnchor),
             trendingGraph.trailingAnchor.constraint(equalTo: self.trailingAnchor),
-            trendingGraph.topAnchor.constraint(equalTo: self.topAnchor),
+            trendingGraph.topAnchor.constraint(equalTo: trendingGraph.bottomAnchor),
             trendingGraph.bottomAnchor.constraint(equalTo: self.bottomAnchor)
         ])
     }

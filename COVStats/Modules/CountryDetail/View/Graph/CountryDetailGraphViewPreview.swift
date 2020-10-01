@@ -39,7 +39,7 @@ fileprivate class mockViewController: UIViewController {
             header.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor,constant: 10),
             header.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor,constant: -500),
             header.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 10),
-            header.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -10)
+            header.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -10)
         ])
     }
 }
