@@ -40,6 +40,8 @@
 		78F1691C252680FC00D77BFE /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78F1691B252680FC00D77BFE /* AppCoordinator.swift */; };
 		78F169242526904B00D77BFE /* CountryDetailHeaderViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78F169232526904B00D77BFE /* CountryDetailHeaderViewModel.swift */; };
 		78F169282526909E00D77BFE /* UIImageView + URL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78F169272526909E00D77BFE /* UIImageView + URL.swift */; };
+		78F1694D2527647300D77BFE /* GlobalSummaryRecoveryGraph.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78F1694C2527647300D77BFE /* GlobalSummaryRecoveryGraph.swift */; };
+		78F169512527648D00D77BFE /* GlobalSummaryRecoveryGraphPreview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78F169502527648D00D77BFE /* GlobalSummaryRecoveryGraphPreview.swift */; };
 		78F46FE62518D39E0008637C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78F46FE52518D39E0008637C /* AppDelegate.swift */; };
 		78F46FE82518D39E0008637C /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78F46FE72518D39E0008637C /* SceneDelegate.swift */; };
 		78F46FEF2518D39E0008637C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 78F46FEE2518D39E0008637C /* Assets.xcassets */; };
@@ -114,6 +116,8 @@
 		78F1691B252680FC00D77BFE /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
 		78F169232526904B00D77BFE /* CountryDetailHeaderViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryDetailHeaderViewModel.swift; sourceTree = "<group>"; };
 		78F169272526909E00D77BFE /* UIImageView + URL.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView + URL.swift"; sourceTree = "<group>"; };
+		78F1694C2527647300D77BFE /* GlobalSummaryRecoveryGraph.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlobalSummaryRecoveryGraph.swift; sourceTree = "<group>"; };
+		78F169502527648D00D77BFE /* GlobalSummaryRecoveryGraphPreview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlobalSummaryRecoveryGraphPreview.swift; sourceTree = "<group>"; };
 		78F46FE22518D39E0008637C /* COVStats.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = COVStats.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		78F46FE52518D39E0008637C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		78F46FE72518D39E0008637C /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -322,6 +326,15 @@
 			path = ViewModel;
 			sourceTree = "<group>";
 		};
+		78F1694B2527644A00D77BFE /* RecoveryGraph */ = {
+			isa = PBXGroup;
+			children = (
+				78F1694C2527647300D77BFE /* GlobalSummaryRecoveryGraph.swift */,
+				78F169502527648D00D77BFE /* GlobalSummaryRecoveryGraphPreview.swift */,
+			);
+			path = RecoveryGraph;
+			sourceTree = "<group>";
+		};
 		78F46FD92518D39E0008637C = {
 			isa = PBXGroup;
 			children = (
@@ -458,6 +471,7 @@
 		78F47037251A1C600008637C /* View */ = {
 			isa = PBXGroup;
 			children = (
+				78F1694B2527644A00D77BFE /* RecoveryGraph */,
 				78D1BA5B251B9F4F000A21C8 /* CollectionViewCell */,
 				78F47038251A1C600008637C /* GlobalSummaryViewInput.swift */,
 				78F4703A251A1C600008637C /* GlobalSummaryViewOutput.swift */,
@@ -737,6 +751,7 @@
 				78F470152518E9F20008637C /* HomeConfiguratorProtocol.swift in Sources */,
 				78F46FE62518D39E0008637C /* AppDelegate.swift in Sources */,
 				78F47048251A1C600008637C /* GlobalSummaryViewOutput.swift in Sources */,
+				78F169512527648D00D77BFE /* GlobalSummaryRecoveryGraphPreview.swift in Sources */,
 				78F46FFB2518E0170008637C /* HomeViewController.swift in Sources */,
 				78F470042518E5BC0008637C /* HomeViewInput.swift in Sources */,
 				78F46FE82518D39E0008637C /* SceneDelegate.swift in Sources */,
@@ -763,6 +778,7 @@
 				78F4704A251A1C600008637C /* GlobalSummaryConfigurator.swift in Sources */,
 				78F47049251A1C600008637C /* GlobalSummaryConfiguratorProtocol.swift in Sources */,
 				78F4701B25190DEE0008637C /* NetworkService.swift in Sources */,
+				78F1694D2527647300D77BFE /* GlobalSummaryRecoveryGraph.swift in Sources */,
 				78D1BA6B251CCEC5000A21C8 /* GlobalSummaryGraphViewModel.swift in Sources */,
 				78F4704E251A1C600008637C /* GlobalSummaryRouter.swift in Sources */,
 				78B8BC132522765F00E8210F /* CountryListTableViewHeader.swift in Sources */,
