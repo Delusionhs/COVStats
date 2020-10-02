@@ -31,6 +31,11 @@ fileprivate class mockViewController: UIViewController {
         super.viewDidLoad()
         self.view.addSubview(header)
         setupLayouts()
+
+    }
+
+    override func viewDidLayoutSubviews() {
+        header.configure(affected: 338225, recovered: 96958)
     }
 
     private func setupLayouts() {

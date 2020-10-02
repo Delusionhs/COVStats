@@ -21,7 +21,7 @@ class CountryDetailHeaderView: UIView {
         static let deathCountTextColor = UIColor(hex: "#FF647C")
         static let layerBorderWidth: CGFloat = 1
         static let layerBorderCornerRadius: CGFloat = 10
-        static let layerBorderColor: CGColor = UIColor(hex: "#999999", alpha: 0.6).cgColor
+        static let layerBorderColor: CGColor = UIColor(hex: "#E4E4E4", alpha: 0.6).cgColor
     }
 
     private enum LayoutOptions {

@@ -14,7 +14,7 @@ class CountryDetailGraphView: UIView {
     private enum ViewOptions {
         static let layerBorderWidth: CGFloat = 1
         static let layerBorderCornerRadius: CGFloat = 10
-        static let layerBorderColor: CGColor = UIColor(hex: "#999999", alpha: 0.6).cgColor
+        static let layerBorderColor: CGColor = UIColor(hex: "#E4E4E4", alpha: 0.6).cgColor
         static let titleFontSize: CGFloat = 15
         static let titleText = "Affected and death daily changes"
     }
