@@ -42,6 +42,8 @@
 		78F169282526909E00D77BFE /* UIImageView + URL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78F169272526909E00D77BFE /* UIImageView + URL.swift */; };
 		78F1694D2527647300D77BFE /* GlobalSummaryRecoveryGraph.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78F1694C2527647300D77BFE /* GlobalSummaryRecoveryGraph.swift */; };
 		78F169512527648D00D77BFE /* GlobalSummaryRecoveryGraphPreview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78F169502527648D00D77BFE /* GlobalSummaryRecoveryGraphPreview.swift */; };
+		78F169542527869C00D77BFE /* GlobalSummaryRecoveryGraphLegend.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78F169532527869C00D77BFE /* GlobalSummaryRecoveryGraphLegend.swift */; };
+		78F16957252786C700D77BFE /* GlobalSummaryRecoveryGraphLegendPreview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78F16956252786C700D77BFE /* GlobalSummaryRecoveryGraphLegendPreview.swift */; };
 		78F46FE62518D39E0008637C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78F46FE52518D39E0008637C /* AppDelegate.swift */; };
 		78F46FE82518D39E0008637C /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78F46FE72518D39E0008637C /* SceneDelegate.swift */; };
 		78F46FEF2518D39E0008637C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 78F46FEE2518D39E0008637C /* Assets.xcassets */; };
@@ -118,6 +120,8 @@
 		78F169272526909E00D77BFE /* UIImageView + URL.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView + URL.swift"; sourceTree = "<group>"; };
 		78F1694C2527647300D77BFE /* GlobalSummaryRecoveryGraph.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlobalSummaryRecoveryGraph.swift; sourceTree = "<group>"; };
 		78F169502527648D00D77BFE /* GlobalSummaryRecoveryGraphPreview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlobalSummaryRecoveryGraphPreview.swift; sourceTree = "<group>"; };
+		78F169532527869C00D77BFE /* GlobalSummaryRecoveryGraphLegend.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlobalSummaryRecoveryGraphLegend.swift; sourceTree = "<group>"; };
+		78F16956252786C700D77BFE /* GlobalSummaryRecoveryGraphLegendPreview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlobalSummaryRecoveryGraphLegendPreview.swift; sourceTree = "<group>"; };
 		78F46FE22518D39E0008637C /* COVStats.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = COVStats.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		78F46FE52518D39E0008637C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		78F46FE72518D39E0008637C /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -331,6 +335,8 @@
 			children = (
 				78F1694C2527647300D77BFE /* GlobalSummaryRecoveryGraph.swift */,
 				78F169502527648D00D77BFE /* GlobalSummaryRecoveryGraphPreview.swift */,
+				78F169532527869C00D77BFE /* GlobalSummaryRecoveryGraphLegend.swift */,
+				78F16956252786C700D77BFE /* GlobalSummaryRecoveryGraphLegendPreview.swift */,
 			);
 			path = RecoveryGraph;
 			sourceTree = "<group>";
@@ -756,6 +762,7 @@
 				78F470042518E5BC0008637C /* HomeViewInput.swift in Sources */,
 				78F46FE82518D39E0008637C /* SceneDelegate.swift in Sources */,
 				78F47047251A1C600008637C /* GlobalSummaryViewController.swift in Sources */,
+				78F16957252786C700D77BFE /* GlobalSummaryRecoveryGraphLegendPreview.swift in Sources */,
 				78F4704F251A1C600008637C /* GlobalSummaryRouterInput.swift in Sources */,
 				78F4704D251A1C600008637C /* GlobalSummaryInteractor.swift in Sources */,
 				78B8BC2D25237DE200E8210F /* CountryListTableViewCellPreview.swift in Sources */,
@@ -810,6 +817,7 @@
 				944589AE71A01F13BB572878 /* CountryDetailViewController.swift in Sources */,
 				773A1A9AA9189E8226B72E87 /* CountryDetailModuleInput.swift in Sources */,
 				78F1691C252680FC00D77BFE /* AppCoordinator.swift in Sources */,
+				78F169542527869C00D77BFE /* GlobalSummaryRecoveryGraphLegend.swift in Sources */,
 				4739F61EA30E27F21E6B21B9 /* CountryDetailPresenter.swift in Sources */,
 				0EE58AC14579E9EDF055E55E /* CountryDetailInteractorInput.swift in Sources */,
 				60228DA65932FA1D5FB63E5F /* CountryDetailInteractorOutput.swift in Sources */,
