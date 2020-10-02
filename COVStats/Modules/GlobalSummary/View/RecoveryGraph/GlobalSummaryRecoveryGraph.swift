@@ -14,7 +14,7 @@ class GlobalSummaryRecoveryGraph: UIView  {
     private enum ViewOptions {
         static let layerBorderWidth: CGFloat = 1
         static let layerBorderCornerRadius: CGFloat = 10
-        static let layerBorderColor: CGColor = UIColor(hex: "#E4E4E4", alpha: 0.6).cgColor
+        static let layerBorderColor: CGColor = UIColor(hex: "#999999", alpha: 0.6).cgColor
         static let percentCountLabelFontSize: CGFloat = 22
         static let percentLabelFontsize: CGFloat = 17
         static let titleLabelFontsize: CGFloat = 17
@@ -34,6 +34,8 @@ class GlobalSummaryRecoveryGraph: UIView  {
 
     private enum LayoutOptions {
         static let titleTextPadding: CGFloat = 17
+        static let legendHorizontalPadding: CGFloat = 50
+        static let legendVercicalPadding: CGFloat = 30
     }
 
     private let titleLabel: UILabel = {
@@ -57,6 +59,9 @@ class GlobalSummaryRecoveryGraph: UIView  {
         return label
     }()
 
+    private let affectedLegend = GlobalSummaryRecoveryGraphLegend()
+    private let recoveredLegend = GlobalSummaryRecoveryGraphLegend()
+
     override init(frame: CGRect) {
         super.init(frame: frame)
         setupViews()
@@ -72,6 +77,8 @@ class GlobalSummaryRecoveryGraph: UIView  {
         addSubview(percentCountLabel)
         addSubview(percentLabel)
         addSubview(titleLabel)
+        addSubview(affectedLegend)
+        addSubview(recoveredLegend)
 
     }
 
@@ -79,6 +86,8 @@ class GlobalSummaryRecoveryGraph: UIView  {
         percentLabel.translatesAutoresizingMaskIntoConstraints = false
         percentCountLabel.translatesAutoresizingMaskIntoConstraints = false
         titleLabel.translatesAutoresizingMaskIntoConstraints = false
+        affectedLegend.translatesAutoresizingMaskIntoConstraints = false
+        recoveredLegend.translatesAutoresizingMaskIntoConstraints = false
 
         NSLayoutConstraint.activate([
             titleLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: LayoutOptions.titleTextPadding),
@@ -94,6 +103,16 @@ class GlobalSummaryRecoveryGraph: UIView  {
         NSLayoutConstraint.activate([
             percentCountLabel.centerXAnchor.constraint(equalTo: centerXAnchor),
             percentCountLabel.bottomAnchor.constraint(equalTo: centerYAnchor)
+        ])
+
+        NSLayoutConstraint.activate([
+            affectedLegend.leadingAnchor.constraint(equalTo: leadingAnchor, constant: LayoutOptions.legendHorizontalPadding),
+            affectedLegend.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -LayoutOptions.legendVercicalPadding)
+        ])
+
+        NSLayoutConstraint.activate([
+            recoveredLegend.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -LayoutOptions.legendHorizontalPadding),
+            recoveredLegend.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -LayoutOptions.legendVercicalPadding)
         ])
     }
 
@@ -137,6 +156,8 @@ class GlobalSummaryRecoveryGraph: UIView  {
     }
 
     func configure(affected: Int, recovered: Int) {
+        recoveredLegend.configure(count: recovered, name: "Recovered", color: GraphOptions.recoveredShapeColor)
+        affectedLegend.configure(count: affected, name: "Affected", color: GraphOptions.affectedShapeColor)
         setupInnerCircleShape()
         let affected = Double(affected)
         let recovered = Double(recovered)

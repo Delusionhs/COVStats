@@ -29,7 +29,7 @@ fileprivate class mockViewController: UIViewController {
         super.viewDidLoad()
         self.view.addSubview(header)
         setupLayouts()
-        header.configure(count: 325932, name: "Affected")
+        header.configure(count: 325932, name: "Affected", color: UIColor.blue.cgColor)
 
     }
 

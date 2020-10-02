@@ -13,7 +13,7 @@ class GlobalSummaryRecoveryGraphLegend: UIView {
     private enum ViewOptions {
         static let countLabelFontSize: CGFloat = 12
         static let nameLabelFontSize: CGFloat = 11
-
+        static let colorCircleRadius: CGFloat = 5
     }
 
     private enum LayoutOptions {
@@ -43,8 +43,8 @@ class GlobalSummaryRecoveryGraphLegend: UIView {
     }
 
     private func setupViews() {
-        self.addSubview(countLabel)
-        self.addSubview(nameLabel)
+        addSubview(countLabel)
+        addSubview(nameLabel)
 
     }
 
@@ -53,21 +53,30 @@ class GlobalSummaryRecoveryGraphLegend: UIView {
         nameLabel.translatesAutoresizingMaskIntoConstraints = false
 
         NSLayoutConstraint.activate([
-            countLabel.leadingAnchor.constraint(equalTo: leadingAnchor),
-            countLabel.trailingAnchor.constraint(equalTo: trailingAnchor),
-            countLabel.bottomAnchor.constraint(equalTo: centerYAnchor)
+            countLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: ViewOptions.colorCircleRadius*3),
+            countLabel.topAnchor.constraint(equalTo: topAnchor)
         ])
 
         NSLayoutConstraint.activate([
             nameLabel.leadingAnchor.constraint(equalTo: leadingAnchor),
             nameLabel.trailingAnchor.constraint(equalTo: trailingAnchor),
-            nameLabel.topAnchor.constraint(equalTo: centerYAnchor)
+            nameLabel.topAnchor.constraint(equalTo: countLabel.bottomAnchor),
+            nameLabel.bottomAnchor.constraint(equalTo: bottomAnchor)
         ])
     }
 
-    func configure(count: Int, name: String) {
+    private func drawLegendColorCircle(color: CGColor) {
+        let shapeLayer = CAShapeLayer()
+        let circularPath = UIBezierPath(arcCenter: CGPoint(x: ViewOptions.colorCircleRadius, y: ViewOptions.colorCircleRadius*1.3), radius: ViewOptions.colorCircleRadius, startAngle: 0 * CGFloat.pi, endAngle: 2 * CGFloat.pi, clockwise: true)
+        shapeLayer.path = circularPath.cgPath
+        layer.addSublayer(shapeLayer)
+        shapeLayer.fillColor = color
+    }
+
+    func configure(count: Int, name: String, color: CGColor) {
         countLabel.text = count.toStringWithDecimalStyle()
         nameLabel.text = name
+        drawLegendColorCircle(color: color)
     }
     
 }
