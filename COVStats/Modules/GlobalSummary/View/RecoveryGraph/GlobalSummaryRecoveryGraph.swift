@@ -15,6 +15,8 @@ class GlobalSummaryRecoveryGraph: UIView  {
         static let layerBorderWidth: CGFloat = 1
         static let layerBorderCornerRadius: CGFloat = 10
         static let layerBorderColor: CGColor = UIColor(hex: "#E4E4E4", alpha: 0.6).cgColor
+        static let percentCountLabelFontSize: CGFloat = 22
+        static let percentLabelFontsize: CGFloat = 17
     }
 
     private enum GraphOptions {
@@ -28,6 +30,19 @@ class GlobalSummaryRecoveryGraph: UIView  {
         static let shapesStartAngle: CGFloat = 0.5
     }
 
+    private let percentCountLabel: UILabel = {
+        let label = UILabel()
+        label.font = UIFont.systemFont(ofSize: ViewOptions.percentCountLabelFontSize, weight: UIFont.Weight.semibold)
+        return label
+    }()
+
+    private let percentLabel: UILabel = {
+        let label = UILabel()
+        label.text = "%"
+        label.font = UIFont.systemFont(ofSize: ViewOptions.percentLabelFontsize, weight: UIFont.Weight.light)
+        return label
+    }()
+
     override init(frame: CGRect) {
         super.init(frame: frame)
         setupViews()
@@ -39,14 +54,24 @@ class GlobalSummaryRecoveryGraph: UIView  {
         fatalError("init(coder:) has not been implemented")
     }
 
-    override func layoutSubviews() {
-        setupInnerCircleShape()
-    }
-
     private func setupViews() {
+        self.addSubview(percentCountLabel)
+        self.addSubview(percentLabel)
     }
 
     private func setupLayouts() {
+        percentLabel.translatesAutoresizingMaskIntoConstraints = false
+        percentCountLabel.translatesAutoresizingMaskIntoConstraints = false
+
+        NSLayoutConstraint.activate([
+            percentLabel.centerXAnchor.constraint(equalTo: centerXAnchor),
+            percentLabel.topAnchor.constraint(equalTo: centerYAnchor)
+        ])
+
+        NSLayoutConstraint.activate([
+            percentCountLabel.centerXAnchor.constraint(equalTo: centerXAnchor),
+            percentCountLabel.bottomAnchor.constraint(equalTo: centerYAnchor)
+        ])
     }
 
     private func setupBorder() {
@@ -89,9 +114,11 @@ class GlobalSummaryRecoveryGraph: UIView  {
     }
 
     func configure(affected: Int, recovered: Int) {
+        setupInnerCircleShape()
         let affected = Double(affected)
         let recovered = Double(recovered)
         let recoveredRatio = recovered/affected
+        percentCountLabel.text = String(format: "%.1f", recoveredRatio*100)
         setupRecoveredShape(endAngleFactor: 2.0*CGFloat(recoveredRatio)+0.5)
         setupAffectedShape(endAngleFactor: 2.5-(2.0*CGFloat(recoveredRatio)))
     }

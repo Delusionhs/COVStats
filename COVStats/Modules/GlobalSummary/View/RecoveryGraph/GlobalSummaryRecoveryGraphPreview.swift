@@ -41,10 +41,10 @@ fileprivate class mockViewController: UIViewController {
     private func setupLayouts() {
         header.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            header.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor,constant: 10),
-            header.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor,constant: -10),
-            header.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 10),
-            header.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -10)
+            header.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor,constant: 0),
+            header.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor,constant: 0),
+            header.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 0),
+            header.rightAnchor.constraint(equalTo: view.rightAnchor, constant: 0)
         ])
     }
 }
