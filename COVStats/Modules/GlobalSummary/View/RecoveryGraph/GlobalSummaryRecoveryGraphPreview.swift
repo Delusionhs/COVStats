@@ -35,16 +35,16 @@ fileprivate class mockViewController: UIViewController {
     }
 
     override func viewDidLayoutSubviews() {
-        header.configure(affected: 338225, recovered: 96958)
+        header.configure(affected: 338225, recovered: 96958, center: CGPoint(x: header.bounds.maxX/2, y: header.bounds.maxY/2))
     }
 
     private func setupLayouts() {
         header.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            header.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor,constant: 0),
-            header.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor,constant: -400),
-            header.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 0),
-            header.rightAnchor.constraint(equalTo: view.rightAnchor, constant: 0)
+            header.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor,constant: 10),
+            header.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 10),
+            header.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -10),
+            header.heightAnchor.constraint(equalToConstant: 400)
         ])
     }
 }

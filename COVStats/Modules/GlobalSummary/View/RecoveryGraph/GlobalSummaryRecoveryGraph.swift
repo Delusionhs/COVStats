@@ -122,7 +122,7 @@ class GlobalSummaryRecoveryGraph: UIView  {
         layer.borderColor = ViewOptions.layerBorderColor
     }
 
-    private func setupAffectedShape(endAngleFactor: CGFloat) {
+    private func setupAffectedShape(endAngleFactor: CGFloat, center: CGPoint) {
         let shapeLayer = CAShapeLayer()
         let circularPath = UIBezierPath(arcCenter: center, radius: GraphOptions.affectedShapeRadius, startAngle: GraphOptions.shapesStartAngle * CGFloat.pi, endAngle: endAngleFactor * CGFloat.pi, clockwise: true)
         shapeLayer.path = circularPath.cgPath
@@ -133,7 +133,7 @@ class GlobalSummaryRecoveryGraph: UIView  {
         shapeLayer.lineWidth = GraphOptions.shapeLineWidth
     }
 
-    private func setupRecoveredShape(endAngleFactor: CGFloat) {
+    private func setupRecoveredShape(endAngleFactor: CGFloat, center: CGPoint) {
         let shapeLayer = CAShapeLayer()
         let circularPath = UIBezierPath(arcCenter: center, radius: GraphOptions.recoveredShapeRadius, startAngle: GraphOptions.shapesStartAngle * CGFloat.pi, endAngle: endAngleFactor * CGFloat.pi, clockwise: true)
         shapeLayer.path = circularPath.cgPath
@@ -144,7 +144,7 @@ class GlobalSummaryRecoveryGraph: UIView  {
         shapeLayer.lineWidth = GraphOptions.shapeLineWidth
     }
 
-    private func setupInnerCircleShape() {
+    private func setupInnerCircleShape(center: CGPoint) {
         let shapeLayer = CAShapeLayer()
         let circularPath = UIBezierPath(arcCenter: center, radius: GraphOptions.innerCircleShapeRadius, startAngle: 0, endAngle: 2 * CGFloat.pi, clockwise: true)
         shapeLayer.path = circularPath.cgPath
@@ -155,16 +155,16 @@ class GlobalSummaryRecoveryGraph: UIView  {
         shapeLayer.lineWidth = GraphOptions.shapeLineWidth
     }
 
-    func configure(affected: Int, recovered: Int) {
+    func configure(affected: Int, recovered: Int, center: CGPoint) {
         recoveredLegend.configure(count: recovered, name: "Recovered", color: GraphOptions.recoveredShapeColor)
         affectedLegend.configure(count: affected, name: "Affected", color: GraphOptions.affectedShapeColor)
-        setupInnerCircleShape()
+        setupInnerCircleShape(center: center)
         let affected = Double(affected)
         let recovered = Double(recovered)
         let recoveredRatio = recovered/affected
         percentCountLabel.text = String(format: "%.1f", recoveredRatio*100)
-        setupRecoveredShape(endAngleFactor: 2.0*CGFloat(recoveredRatio)+0.5)
-        setupAffectedShape(endAngleFactor: 2.5-(2.0*CGFloat(recoveredRatio)))
+        setupRecoveredShape(endAngleFactor: 2.0*CGFloat(recoveredRatio)+0.5, center: center)
+        setupAffectedShape(endAngleFactor: 2.5-(2.0*CGFloat(recoveredRatio)), center: center)
     }
 
 }
