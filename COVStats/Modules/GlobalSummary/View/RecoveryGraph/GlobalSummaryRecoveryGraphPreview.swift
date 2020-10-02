@@ -42,7 +42,7 @@ fileprivate class mockViewController: UIViewController {
         header.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             header.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor,constant: 0),
-            header.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor,constant: 0),
+            header.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor,constant: -400),
             header.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 0),
             header.rightAnchor.constraint(equalTo: view.rightAnchor, constant: 0)
         ])

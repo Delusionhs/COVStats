@@ -17,6 +17,8 @@ class GlobalSummaryRecoveryGraph: UIView  {
         static let layerBorderColor: CGColor = UIColor(hex: "#E4E4E4", alpha: 0.6).cgColor
         static let percentCountLabelFontSize: CGFloat = 22
         static let percentLabelFontsize: CGFloat = 17
+        static let titleLabelFontsize: CGFloat = 17
+        static let titleText = "Ratio of Recovery"
     }
 
     private enum GraphOptions {
@@ -29,6 +31,18 @@ class GlobalSummaryRecoveryGraph: UIView  {
         static let innerCircleShapeRadius: CGFloat = 60
         static let shapesStartAngle: CGFloat = 0.5
     }
+
+    private enum LayoutOptions {
+        static let titleTextPadding: CGFloat = 17
+    }
+
+    private let titleLabel: UILabel = {
+        let label = UILabel()
+        label.text = ViewOptions.titleText
+        label.textAlignment = .left
+        label.font = UIFont.systemFont(ofSize: ViewOptions.titleLabelFontsize, weight: UIFont.Weight.semibold)
+        return label
+    }()
 
     private let percentCountLabel: UILabel = {
         let label = UILabel()
@@ -55,13 +69,22 @@ class GlobalSummaryRecoveryGraph: UIView  {
     }
 
     private func setupViews() {
-        self.addSubview(percentCountLabel)
-        self.addSubview(percentLabel)
+        addSubview(percentCountLabel)
+        addSubview(percentLabel)
+        addSubview(titleLabel)
+
     }
 
     private func setupLayouts() {
         percentLabel.translatesAutoresizingMaskIntoConstraints = false
         percentCountLabel.translatesAutoresizingMaskIntoConstraints = false
+        titleLabel.translatesAutoresizingMaskIntoConstraints = false
+
+        NSLayoutConstraint.activate([
+            titleLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: LayoutOptions.titleTextPadding),
+            titleLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: LayoutOptions.titleTextPadding),
+            titleLabel.topAnchor.constraint(equalTo: topAnchor, constant: LayoutOptions.titleTextPadding)
+        ])
 
         NSLayoutConstraint.activate([
             percentLabel.centerXAnchor.constraint(equalTo: centerXAnchor),
