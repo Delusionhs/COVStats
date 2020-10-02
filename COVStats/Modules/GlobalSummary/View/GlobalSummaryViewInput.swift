@@ -7,5 +7,6 @@
 //
 
 protocol GlobalSummaryViewInput: class {
-    func reloadCollectionViewData() 
+    func reloadCollectionViewData()
+    func configureRecoveryGraph(viewModel: GlobalSummaryRecoveryGraphViewModel)
 }

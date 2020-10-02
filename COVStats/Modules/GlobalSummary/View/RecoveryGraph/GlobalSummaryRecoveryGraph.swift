@@ -14,7 +14,7 @@ class GlobalSummaryRecoveryGraph: UIView  {
     private enum ViewOptions {
         static let layerBorderWidth: CGFloat = 1
         static let layerBorderCornerRadius: CGFloat = 10
-        static let layerBorderColor: CGColor = UIColor(hex: "#999999", alpha: 0.6).cgColor
+        static let layerBorderColor: CGColor = UIColor(hex: "#E4E4E4", alpha: 0.6).cgColor
         static let percentCountLabelFontSize: CGFloat = 22
         static let percentLabelFontsize: CGFloat = 17
         static let titleLabelFontsize: CGFloat = 17
@@ -30,6 +30,9 @@ class GlobalSummaryRecoveryGraph: UIView  {
         static let recoveredShapeRadius: CGFloat = 80
         static let innerCircleShapeRadius: CGFloat = 60
         static let shapesStartAngle: CGFloat = 0.5
+        static let maxGraphAngle: CGFloat = 2.25
+        static let recoveredLegendName = "Recovered"
+        static let affectedLegendName = "Affected"
     }
 
     private enum LayoutOptions {
@@ -155,16 +158,16 @@ class GlobalSummaryRecoveryGraph: UIView  {
         shapeLayer.lineWidth = GraphOptions.shapeLineWidth
     }
 
-    func configure(affected: Int, recovered: Int, center: CGPoint) {
-        recoveredLegend.configure(count: recovered, name: "Recovered", color: GraphOptions.recoveredShapeColor)
-        affectedLegend.configure(count: affected, name: "Affected", color: GraphOptions.affectedShapeColor)
+    func configure(viewModel: GlobalSummaryRecoveryGraphViewModel, center: CGPoint) {
+        recoveredLegend.configure(count: viewModel.recovered, name: GraphOptions.recoveredLegendName, color: GraphOptions.recoveredShapeColor)
+        affectedLegend.configure(count: viewModel.affected, name: GraphOptions.affectedLegendName, color: GraphOptions.affectedShapeColor)
         setupInnerCircleShape(center: center)
-        let affected = Double(affected)
-        let recovered = Double(recovered)
+        let affected = Double(viewModel.affected)
+        let recovered = Double(viewModel.recovered)
         let recoveredRatio = recovered/affected
         percentCountLabel.text = String(format: "%.1f", recoveredRatio*100)
-        setupRecoveredShape(endAngleFactor: 2.0*CGFloat(recoveredRatio)+0.5, center: center)
-        setupAffectedShape(endAngleFactor: 2.5-(2.0*CGFloat(recoveredRatio)), center: center)
+        setupRecoveredShape(endAngleFactor: 2.0*CGFloat(recoveredRatio)+GraphOptions.maxGraphAngle-2, center: center)
+        setupAffectedShape(endAngleFactor: GraphOptions.maxGraphAngle, center: center)
     }
 
 }

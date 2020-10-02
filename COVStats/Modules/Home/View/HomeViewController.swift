@@ -16,7 +16,7 @@ class HomeViewController: UIViewController, HomeViewInput {
     }
 
     private enum LayoutOptions {
-        static let globalSummaryViewHeight: CGFloat = 500
+        static let globalSummaryViewHeight: CGFloat = 920
         static let countryListViewMargin: CGFloat = 10
         static let countryListViewHeight: CGFloat = 670
     }

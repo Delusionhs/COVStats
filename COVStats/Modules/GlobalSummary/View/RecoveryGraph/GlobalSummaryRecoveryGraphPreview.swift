@@ -31,11 +31,10 @@ fileprivate class mockViewController: UIViewController {
         super.viewDidLoad()
         self.view.addSubview(header)
         setupLayouts()
-
     }
 
     override func viewDidLayoutSubviews() {
-        header.configure(affected: 338225, recovered: 96958, center: CGPoint(x: header.bounds.maxX/2, y: header.bounds.maxY/2))
+        header.configure( viewModel: GlobalSummaryRecoveryGraphViewModel(affected: 338225, recovered: 96958), center: CGPoint(x: header.bounds.maxX/2, y: header.bounds.maxY/2))
     }
 
     private func setupLayouts() {

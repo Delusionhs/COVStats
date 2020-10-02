@@ -68,6 +68,7 @@ extension GlobalSummaryPresenter: GlobalSummaryInteractorOutput {
     func globalSummaryDataDidRiceive(data: GlobalSummaryCovidCases?) {
         guard let data = data else { return }
         setupCellViewModels(data: data)
+        view.configureRecoveryGraph(viewModel: GlobalSummaryRecoveryGraphViewModel(affected: data.cases, recovered: data.recovered))
         view.reloadCollectionViewData()
     }
 

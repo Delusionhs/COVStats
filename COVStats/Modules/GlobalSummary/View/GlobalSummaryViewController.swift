@@ -19,6 +19,11 @@ class GlobalSummaryViewController: UIViewController{
         static let cellInset: CGFloat = 15
     }
 
+    private enum LayoutOptions {
+        static let viewSpacing: CGFloat = 25
+        static let recoveryGraphMargin: CGFloat = 10
+    }
+
     var output: GlobalSummaryViewOutput!
 
     private let configurator: GlobalSummaryConfiguratorProtocol = GlobalSummaryConfigurator()
@@ -30,11 +35,14 @@ class GlobalSummaryViewController: UIViewController{
         return collectionView
     }()
 
+    private let recoveryGraph = GlobalSummaryRecoveryGraph()
+
     override func viewDidLoad() {
         super.viewDidLoad()
         configurator.configure(with: self)
         output.viewIsReady()
         setupCollectionView()
+        view.addSubview(recoveryGraph)
         setupLayouts()
     }
 
@@ -44,17 +52,26 @@ class GlobalSummaryViewController: UIViewController{
         collectionView.dataSource = self
         collectionView.delegate = self
         collectionView.register(GlobalSummaryCollectionViewCell.self, forCellWithReuseIdentifier: GlobalSummaryCollectionViewCell.identifier)
-        
     }
 
     private func setupLayouts() {
         collectionView.translatesAutoresizingMaskIntoConstraints = false
+        recoveryGraph.translatesAutoresizingMaskIntoConstraints = false
+
         collectionView.contentInset = UIEdgeInsets(top: CollectionOption.cellInset, left: CollectionOption.cellInset,bottom: CollectionOption.cellInset, right: CollectionOption.cellInset)
+
         NSLayoutConstraint.activate([
             collectionView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
-            collectionView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
+            collectionView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -view.frame.height/2),
             collectionView.leftAnchor.constraint(equalTo: view.leftAnchor),
             collectionView.rightAnchor.constraint(equalTo: view.rightAnchor)
+        ])
+
+        NSLayoutConstraint.activate([
+            recoveryGraph.topAnchor.constraint(equalTo: collectionView.bottomAnchor, constant: LayoutOptions.viewSpacing),
+            recoveryGraph.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
+            recoveryGraph.leftAnchor.constraint(equalTo: view.leftAnchor, constant: LayoutOptions.recoveryGraphMargin),
+            recoveryGraph.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -LayoutOptions.recoveryGraphMargin)
         ])
     }
 
@@ -68,6 +85,10 @@ extension GlobalSummaryViewController: GlobalSummaryViewInput {
         DispatchQueue.main.async {
             self.collectionView.reloadData()
         }
+    }
+
+    func configureRecoveryGraph(viewModel: GlobalSummaryRecoveryGraphViewModel) {
+        recoveryGraph.configure(viewModel: viewModel, center: CGPoint(x: recoveryGraph.bounds.maxX/2, y: recoveryGraph.bounds.maxY/2))
     }
 }
 
