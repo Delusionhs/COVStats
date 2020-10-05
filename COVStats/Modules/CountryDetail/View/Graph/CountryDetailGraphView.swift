@@ -105,7 +105,7 @@ class CountryDetailGraphView: UIView {
         layer.borderColor = ViewOptions.layerBorderColor
     }
 
-    func configureTrendingGraph(xAxisData: [Int], affectedYAxisData: [Int], deathYAxisData: [Int]) {
+    private func configureWithData(xAxisData: [Int], affectedYAxisData: [Int], deathYAxisData: [Int]) {
 
         var deathLineDataEntry: [ChartDataEntry] = []
         var affectedLineDataEntry: [ChartDataEntry] = []
@@ -144,6 +144,10 @@ class CountryDetailGraphView: UIView {
         lineData.addDataSet(deathLineDataSet)
         lineData.setDrawValues(false)
         trendingGraph.data = lineData
+    }
+
+    func configure(with viewModel: CountryDetailGraphViewModel) {
+        configureWithData(xAxisData: viewModel.xAxisData, affectedYAxisData: viewModel.affectedYAxisData, deathYAxisData: viewModel.deathYAxisData)
     }
 
 

@@ -23,7 +23,7 @@ fileprivate class mockViewController: UIViewController {
 
     private let header: CountryDetailGraphView = {
         let view = CountryDetailGraphView()
-        view.configureTrendingGraph(xAxisData: [1,2,3,4,5], affectedYAxisData: [5000,5200,5500,4500,5900], deathYAxisData: [2000,2100,2250,1800,2240])
+        view.configure(with: CountryDetailGraphViewModel(affectedYAxisData: [5000,5200,5500,4500,5900], deathYAxisData: [2000,2100,2250,1800,2240]))
         return view
     }()
 

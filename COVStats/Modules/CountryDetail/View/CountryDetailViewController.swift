@@ -61,6 +61,10 @@ extension CountryDetailViewController: CountryDetailViewInput {
         headerView.configure(with: viewModel)
         output.countryDetailDidSet(country: viewModel.country)
     }
+
+    func configureGraph(viewModel: CountryDetailGraphViewModel) {
+        trendingGraph.configure(with: viewModel)
+    }
 }
 
 

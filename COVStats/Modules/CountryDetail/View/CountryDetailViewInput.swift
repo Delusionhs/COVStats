@@ -8,4 +8,5 @@
 
 protocol CountryDetailViewInput: class {
     func configureHeader(with viewModel: CountryDetailHeaderViewModel)
+    func configureGraph(viewModel: CountryDetailGraphViewModel)
 }
