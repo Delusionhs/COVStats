@@ -19,8 +19,6 @@ class CountryDetailViewController: UIViewController {
 
     var output: CountryDetailViewOutput!
 
-    private let configurator: CountryDetailConfiguratorProtocol = CountryDetailConfigurator()
-
     private let headerView = CountryDetailHeaderView()
     private let trendingGraph = CountryDetailGraphView()
 
@@ -28,7 +26,6 @@ class CountryDetailViewController: UIViewController {
     // MARK: Life cycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        configurator.configure(with: self)
         view.backgroundColor = .white
         output.viewIsReady()
         setupViews()
