@@ -40,7 +40,7 @@ class GlobalSummaryPresenter {
         graphViewModels.append(GlobalSummaryGraphViewModel(yAxisData: data.casesTimeline))
         graphViewModels.append(GlobalSummaryGraphViewModel(yAxisData: data.recoveredTimeline))
         graphViewModels.append(GlobalSummaryGraphViewModel(yAxisData: data.activeTimeline))
-        graphViewModels.append(GlobalSummaryGraphViewModel(yAxisData: data.deathTimeline))
+        graphViewModels.append(GlobalSummaryGraphViewModel(yAxisData: data.deathsTimeline))
     }
 }
 

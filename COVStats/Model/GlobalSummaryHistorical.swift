@@ -26,7 +26,7 @@ struct GlobalSummaryHistorical: Decodable {
         return dynamicTimeline
     }
 
-    var deathTimeline: [Int] {
+    var deathsTimeline: [Int] {
         var timeline: [Int] = []
         var dynamicTimeline: [Int] = []
         for (_,value) in deaths {
@@ -54,7 +54,7 @@ struct GlobalSummaryHistorical: Decodable {
 
     var activeTimeline: [Int] {
         let cases: [Int] = casesTimeline
-        let deaths: [Int] = deathTimeline
+        let deaths: [Int] = deathsTimeline
         let recovered: [Int] = recoveredTimeline
         var dynamicTimeline: [Int] = []
         for i in 0..<min(cases.count,deaths.count,recovered.count) {

@@ -6,7 +6,7 @@
 //  Copyright © 2020 Igor Podolskiy. All rights reserved.
 //
 
-class CountryDetailPresenter: CountryDetailModuleInput {
+class CountryDetailPresenter {
 
     weak var view: CountryDetailViewInput!
     var interactor: CountryDetailInteractorInput!
@@ -15,12 +15,17 @@ class CountryDetailPresenter: CountryDetailModuleInput {
 
 extension CountryDetailPresenter: CountryDetailViewOutput {
     func viewIsReady() {
-        interactor.fetchCountryHistoricalData(country: "Russia")
+    }
+
+    func countryDetailDidSet(country: String) {
+        interactor.fetchCountryHistoricalData(country: country)
     }
 }
 
 extension CountryDetailPresenter: CountryDetailInteractorOutput {
     func countryHistoricalDataDidRiceive(data: CountryHistorical?) {
-        print(data)
     }
+}
+
+extension CountryDetailPresenter: CountryDetailModuleInput {
 }

@@ -14,4 +14,5 @@ protocol CountryDetailViewOutput {
     */
 
     func viewIsReady()
+    func countryDetailDidSet(country: String)
 }

@@ -24,6 +24,7 @@ class CountryDetailViewController: UIViewController {
     private let headerView = CountryDetailHeaderView()
     private let trendingGraph = CountryDetailGraphView()
 
+
     // MARK: Life cycle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -61,6 +62,7 @@ class CountryDetailViewController: UIViewController {
 extension CountryDetailViewController: CountryDetailViewInput {
     func configureHeader(with viewModel: CountryDetailHeaderViewModel) {
         headerView.configure(with: viewModel)
+        output.countryDetailDidSet(country: viewModel.country)
     }
 }
 

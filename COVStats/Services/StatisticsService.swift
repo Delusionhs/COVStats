@@ -61,8 +61,9 @@ class StatisticsService: StatisticsServiceProtocol {
     }
 
     func fetchCountryHistoricalData(country: String, completion: @escaping (CountryHistorical?) -> Void) {
-        guard let url = URL(string: ApiURL.countrySummary) else { return }
-        networkService.getJSONData(URL: url, parameters: ["country": country, "lastdays": "all"]) { data in
+        guard let country = country.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) else { return }
+        guard let url = URL(string: ApiURL.countryHistorical+country) else { return }
+        networkService.getJSONData(URL: url, parameters: ["lastdays": "all"]) { data in
             if let data = data {
                 let summary = try? JSONDecoder().decode(CountryHistorical.self, from: data)
                     completion(summary)

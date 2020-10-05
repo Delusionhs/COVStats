@@ -33,8 +33,8 @@ class CountryDetailConfigurator: CountryDetailConfiguratorProtocol {
 
     func assemblyWithViewModel(viewModel: CountryDetailHeaderViewModel) -> UIViewController {
         let viewController = CountryDetailViewController()
-        viewController.configureHeader(with: viewModel)
         configure(with: viewController)
+        viewController.configureHeader(with: viewModel)
         return viewController
     }
 }
