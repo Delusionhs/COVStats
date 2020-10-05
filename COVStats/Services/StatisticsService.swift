@@ -24,6 +24,7 @@ class StatisticsService: StatisticsServiceProtocol {
         static let globalSummary = "https://disease.sh/v3/covid-19/all"
         static let globalHistorical = "https://disease.sh/v3/covid-19/historical/all?lastdays=" + String(QueryOption.historycalDaysCount)
         static let countrySummary = "https://disease.sh/v3/covid-19/countries?sort=cases"
+        static let countryHistorical = "https://disease.sh/v3/covid-19/historical/"
     }
 
     private let networkService = NetworkService()
