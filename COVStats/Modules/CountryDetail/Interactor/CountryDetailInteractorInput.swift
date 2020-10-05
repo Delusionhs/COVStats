@@ -9,5 +9,5 @@
 import Foundation
 
 protocol CountryDetailInteractorInput {
-
+    func fetchCountryHistoricalData(country: String)
 }

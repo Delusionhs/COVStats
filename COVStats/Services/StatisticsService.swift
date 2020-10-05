@@ -12,6 +12,7 @@ protocol StatisticsServiceProtocol {
     func fetchGlobalSummaryData(completion: @escaping (GlobalSummaryCovidCases?) -> Void)
     func fetchGlobalHistoricalData(completion: @escaping (GlobalSummaryHistorical?) -> Void)
     func fetchСountrySummaryData(completion: @escaping ([СountrySummary]?) -> Void)
+    func fetchCountryHistoricalData(country: String, completion: @escaping (CountryHistorical?) -> Void)
 }
 
 class StatisticsService: StatisticsServiceProtocol {
@@ -54,6 +55,16 @@ class StatisticsService: StatisticsServiceProtocol {
         networkService.getJSONData(URL: url) { data in
             if let data = data {
                 let summary = try? JSONDecoder().decode([СountrySummary].self, from: data)
+                    completion(summary)
+            }
+        }
+    }
+
+    func fetchCountryHistoricalData(country: String, completion: @escaping (CountryHistorical?) -> Void) {
+        guard let url = URL(string: ApiURL.countrySummary) else { return }
+        networkService.getJSONData(URL: url, parameters: ["country": country, "lastdays": "all"]) { data in
+            if let data = data {
+                let summary = try? JSONDecoder().decode(CountryHistorical.self, from: data)
                     completion(summary)
             }
         }
