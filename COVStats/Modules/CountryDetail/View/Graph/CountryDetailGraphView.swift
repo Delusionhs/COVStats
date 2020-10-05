@@ -76,6 +76,7 @@ class CountryDetailGraphView: UIView {
         trendingGraph.leftAxis.enabled = false
         trendingGraph.legend.enabled = false
         trendingGraph.minOffset = 0
+        trendingGraph.leftAxis.axisMinimum = 0
 //        trendingGraph.legend.enabled = true
 //        trendingGraph.legend.form = .circle
     }
