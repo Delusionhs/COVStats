@@ -26,8 +26,6 @@ class GlobalSummaryViewController: UIViewController{
 
     var output: GlobalSummaryViewOutput!
 
-    private let configurator: GlobalSummaryConfiguratorProtocol = GlobalSummaryConfigurator()
-
     private let collectionView: UICollectionView = {
         let viewLayout = UICollectionViewFlowLayout()
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: viewLayout)
@@ -39,7 +37,6 @@ class GlobalSummaryViewController: UIViewController{
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        configurator.configure(with: self)
         output.viewIsReady()
         setupCollectionView()
         view.addSubview(recoveryGraph)

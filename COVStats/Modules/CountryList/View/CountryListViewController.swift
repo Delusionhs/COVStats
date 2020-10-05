@@ -31,8 +31,6 @@ class CountryListViewController: UIViewController {
 
     var output: CountryListViewOutput!
 
-    private let configurator: CountryListConfiguratorProtocol = CountryListConfigurator()
-
     private let tableView: UITableView = {
         let tableView = UITableView(frame: .zero)
         return tableView
@@ -45,7 +43,6 @@ class CountryListViewController: UIViewController {
 
     // MARK: Life cycle
     override func viewDidLoad() {
-        configurator.configure(with: self)
         super.viewDidLoad()
         output.viewIsReady()
         view.addSubview(header)

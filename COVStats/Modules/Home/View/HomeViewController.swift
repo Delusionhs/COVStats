@@ -25,13 +25,11 @@ class HomeViewController: UIViewController, HomeViewInput {
     var globalSummaryViewController: UIViewController!
     var countryListViewController: UIViewController!
 
-    private let configurator: HomeConfiguratorProtocol = HomeConfigurator()
     private let scrollView = UIScrollView()
     private let scrollViewContentView = UIView()
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        configurator.configure(with: self)
         navigationItem.title = ViewOptions.navigationItemTitle
         view.backgroundColor = .white
         setupSubViews()
