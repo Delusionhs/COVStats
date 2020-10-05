@@ -10,10 +10,6 @@ class CountryDetailInteractor {
 
     weak var output: CountryDetailInteractorOutput!
     let statisticsService: StatisticsServiceProtocol = StatisticsService()
-
-    deinit {
-        print("kuda nahuy ya")
-    }
 }
 
 extension CountryDetailInteractor: CountryDetailInteractorInput {
