@@ -6,7 +6,6 @@
 //  Copyright © 2020 Igor Podolskiy. All rights reserved.
 //
 import UIKit
-import Kingfisher
 
 class CountryListTableViewCell: UITableViewCell {
 
