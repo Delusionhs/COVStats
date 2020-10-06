@@ -8,12 +8,30 @@
 
 import UIKit
 
+fileprivate enum NavigationControllerKey: Int, CaseIterable {
+    case home
+    case news
+
+    var title: String {
+        switch self {
+        case .home:
+            return "Home"
+        case .news:
+            return "News"
+        }
+    }
+}
+
 class AppCoordinator {
+
+
 
     private let window: UIWindow
     private var tabBarController = UITabBarController()
-    private var navigationControllers = UINavigationController()
+    private var navigationController = UINavigationController()
     private let homeConfigurator: HomeConfiguratorProtocol = HomeConfigurator()
+
+    private lazy var navigationControllers = AppCoordinator.makeNavigationControllers()
 
     init(window: UIWindow) {
         self.window = window
@@ -28,8 +46,22 @@ class AppCoordinator {
 
 extension AppCoordinator {
     func setupHome() {
-        navigationControllers.setViewControllers([homeConfigurator.assemblyModule()], animated: false)
-        tabBarController.setViewControllers([navigationControllers], animated: false)
-        navigationControllers.tabBarItem = UITabBarItem(title: "Home", image: UIImage(named: "homeTab"), selectedImage: UIImage(named: "homeTabSelected"))
+        navigationController.setViewControllers([homeConfigurator.assemblyModule()], animated: false)
+        tabBarController.setViewControllers([navigationController], animated: false)
+        navigationController.tabBarItem = UITabBarItem(title: "Home", image: UIImage(named: "homeTab"), selectedImage: UIImage(named: "homeTabSelected"))
+    }
+
+    static private func makeNavigationControllers() -> [NavigationControllerKey: UINavigationController] {
+        var result: [NavigationControllerKey: UINavigationController] = [:]
+        NavigationControllerKey.allCases.forEach { navControllerKey in
+            let navigationController = UINavigationController()
+            let tabBarItem = UITabBarItem(title: navControllerKey.title,
+                                          image: UIImage(named: "homeTab"),
+                                          tag: navControllerKey.rawValue)
+            navigationController.tabBarItem = tabBarItem
+            navigationController.navigationBar.prefersLargeTitles = true
+            result[navControllerKey] = navigationController
+        }
+        return result
     }
 }
