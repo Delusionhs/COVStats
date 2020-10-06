@@ -15,6 +15,7 @@ class NewsTableViewCell: UITableViewCell {
 
     private enum CellOptions {
         static let titleLabelFontSize: CGFloat = 22
+        static let readingTimeLabelSize: CGFloat = 12
         static let titleLabelNumberOfLines = 2
         static let toReadButtonFontSize: CGFloat = 12
     }
@@ -41,6 +42,11 @@ class NewsTableViewCell: UITableViewCell {
         return button
     }()
 
+    let readingTimeLabel: UILabel = {
+        let label = UILabel()
+        label.font = UIFont.systemFont(ofSize: CellOptions.readingTimeLabelSize, weight: UIFont.Weight.light)
+        return label
+    }()
 
 
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
@@ -57,8 +63,10 @@ class NewsTableViewCell: UITableViewCell {
         contentView.addSubview(newsImage)
         contentView.addSubview(titleLabel)
         contentView.addSubview(toReadButton)
+        contentView.addSubview(readingTimeLabel)
         newsImage.image = UIImage(named: "esFlag")
         titleLabel.text = "Italy's first wave of the COVID-19 pandemic has ended: no excess mortality in May, 2020"
+        readingTimeLabel.text = "12 MIN READ"
         toReadButton.setTitle("Continue Reading", for: .normal)
     }
 
@@ -67,6 +75,7 @@ class NewsTableViewCell: UITableViewCell {
         newsImage.translatesAutoresizingMaskIntoConstraints = false
         titleLabel.translatesAutoresizingMaskIntoConstraints = false
         toReadButton.translatesAutoresizingMaskIntoConstraints = false
+        readingTimeLabel.translatesAutoresizingMaskIntoConstraints = false
 
 
         NSLayoutConstraint.activate([
@@ -76,18 +85,23 @@ class NewsTableViewCell: UITableViewCell {
         ])
 
         NSLayoutConstraint.activate([
-            titleLabel.topAnchor.constraint(equalTo: newsImage.bottomAnchor, constant: 5),
+            titleLabel.topAnchor.constraint(lessThanOrEqualTo: newsImage.bottomAnchor, constant: 25),
             titleLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
             titleLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor)
         ])
 
         NSLayoutConstraint.activate([
             toReadButton.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 25),
-            toReadButton.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -25),
+            //toReadButton.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -25),
             toReadButton.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -30),
             toReadButton.topAnchor.constraint(equalTo: titleLabel.bottomAnchor)
         ])
 
+        NSLayoutConstraint.activate([
+            readingTimeLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -25),
+            readingTimeLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -30),
+            readingTimeLabel.centerYAnchor.constraint(equalTo: toReadButton.centerYAnchor),
+        ])
 
     }
 
