@@ -18,27 +18,27 @@ struct CountryHistoricalTimeline: Decodable {
 
     var casesPerDayTimeline: [Int] {
         var timeline: [Int] = []
-        //var dynamicTimeline: [Int] = []
+        var dynamicTimeline: [Int] = []
         for (_,value) in cases {
             timeline.append(value)
         }
         timeline = timeline.sorted()
-//        for i in 0..<timeline.count-1 {
-//            dynamicTimeline.append(timeline[i+1]-timeline[i])
-//        }
-        return timeline
+        for i in 0..<timeline.count-1 {
+            dynamicTimeline.append(timeline[i+1]-timeline[i])
+        }
+        return dynamicTimeline
     }
 
     var deathsPerDayTimeline: [Int] {
         var timeline: [Int] = []
-        //var dynamicTimeline: [Int] = []
+        var dynamicTimeline: [Int] = []
         for (_,value) in deaths {
             timeline.append(value)
         }
         timeline = timeline.sorted()
-//        for i in 0..<timeline.count-1 {
-//            dynamicTimeline.append(timeline[i+1]-timeline[i])
-//        }
-        return timeline
+        for i in 0..<timeline.count-1 {
+            dynamicTimeline.append(timeline[i+1]-timeline[i])
+        }
+        return dynamicTimeline
     }
 }

@@ -111,6 +111,7 @@ class CountryDetailGraphView: UIView {
         var deathLineDataEntry: [ChartDataEntry] = []
         var affectedLineDataEntry: [ChartDataEntry] = []
 
+
         for i in 0..<min(xAxisData.count, deathYAxisData.count) {
             deathLineDataEntry.append(ChartDataEntry(x: Double(xAxisData[i]), y: Double(deathYAxisData[i])))
         }
@@ -122,13 +123,15 @@ class CountryDetailGraphView: UIView {
         let deathLineDataSet = LineChartDataSet(entries: deathLineDataEntry, label: GraphOptions.deathDataSetLabel)
         let affectedLineDataSet = LineChartDataSet(entries: affectedLineDataEntry, label: GraphOptions.casesDataSetLabel)
         let lineData = LineChartData()
-        lineData.setDrawValues(false)
         deathLineDataSet.mode = .cubicBezier
-        deathLineDataSet.drawCirclesEnabled = false
         deathLineDataSet.colors = [UIColor.clear]
+        deathLineDataSet.drawCirclesEnabled = false
         affectedLineDataSet.mode = .cubicBezier
-        affectedLineDataSet.drawCirclesEnabled = false
         affectedLineDataSet.colors = [UIColor.clear]
+        affectedLineDataSet.drawCirclesEnabled = false
+
+        //let maxAffectedLineDataSet = LineChartDataSet(entries: maxDeathLineDataEntry, label: GraphOptions.deathDataSetLabel)
+
 
         if let gradient = getGradient(fromColor: GraphOptions.casesGradientStartColor, toColor: GraphOptions.casesGradientEndColor, location: GraphOptions.gradientColorLocation) {
             affectedLineDataSet.fill = Fill.fillWithLinearGradient(gradient, angle: GraphOptions.gradientAngle)
@@ -138,12 +141,11 @@ class CountryDetailGraphView: UIView {
             deathLineDataSet.fill = Fill.fillWithLinearGradient(gradient, angle: GraphOptions.gradientAngle)
             deathLineDataSet.drawFilledEnabled = true
         }
-
         affectedLineDataSet.fillAlpha = GraphOptions.gradientFillAlpha
         deathLineDataSet.fillAlpha = GraphOptions.gradientFillAlpha
         lineData.addDataSet(affectedLineDataSet)
         lineData.addDataSet(deathLineDataSet)
-        lineData.setDrawValues(false)
+        //lineData.setDrawValues(false)
         trendingGraph.data = lineData
     }
 

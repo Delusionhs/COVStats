@@ -25,8 +25,6 @@ extension CountryDetailPresenter: CountryDetailViewOutput {
 extension CountryDetailPresenter: CountryDetailInteractorOutput {
     func countryHistoricalDataDidRiceive(data: CountryHistorical?) {
         guard let data = data else { return }
-        print(data.timeline.casesPerDayTimeline)
-        print(data.timeline.deathsPerDayTimeline)
         view.configureGraph(viewModel: CountryDetailGraphViewModel(affectedYAxisData: data.timeline.casesPerDayTimeline, deathYAxisData: data.timeline.deathsPerDayTimeline))
     }
 }
