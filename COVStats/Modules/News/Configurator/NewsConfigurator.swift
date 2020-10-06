@@ -8,7 +8,7 @@
 
 import UIKit
 
-class NewsModuleConfigurator: NewsNewsConfiguratorProtocol {
+class NewsConfigurator: NewsConfiguratorProtocol {
 
     func configure(with viewController: NewsViewController) {
 
