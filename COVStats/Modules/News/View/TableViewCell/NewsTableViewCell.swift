@@ -11,6 +11,10 @@ import UIKit
 class NewsTableViewCell: UITableViewCell {
 
     private enum CellLayoutOptions {
+        static let textHorizontalPadding: CGFloat = 25
+        static let titleVerticalPadding: CGFloat = 25
+        static let toReadButtonTopPadding: CGFloat = 20
+        static let toReadButtonBottomPadding: CGFloat = 30
     }
 
     private enum CellOptions {
@@ -85,21 +89,20 @@ class NewsTableViewCell: UITableViewCell {
         ])
 
         NSLayoutConstraint.activate([
-            titleLabel.topAnchor.constraint(lessThanOrEqualTo: newsImage.bottomAnchor, constant: 25),
-            titleLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
-            titleLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor)
+            titleLabel.topAnchor.constraint(equalTo: newsImage.bottomAnchor, constant: CellLayoutOptions.titleVerticalPadding),
+            titleLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: CellLayoutOptions.textHorizontalPadding),
+            titleLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -CellLayoutOptions.textHorizontalPadding)
         ])
 
         NSLayoutConstraint.activate([
-            toReadButton.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 25),
-            //toReadButton.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -25),
-            toReadButton.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -30),
-            toReadButton.topAnchor.constraint(equalTo: titleLabel.bottomAnchor)
+            toReadButton.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: CellLayoutOptions.textHorizontalPadding),
+            toReadButton.trailingAnchor.constraint(lessThanOrEqualTo: readingTimeLabel.leadingAnchor),
+            toReadButton.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -CellLayoutOptions.toReadButtonBottomPadding),
+            toReadButton.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: CellLayoutOptions.toReadButtonTopPadding)
         ])
 
         NSLayoutConstraint.activate([
-            readingTimeLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -25),
-            readingTimeLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -30),
+            readingTimeLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -CellLayoutOptions.textHorizontalPadding),
             readingTimeLabel.centerYAnchor.constraint(equalTo: toReadButton.centerYAnchor),
         ])
 
