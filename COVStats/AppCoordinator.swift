@@ -18,6 +18,7 @@ class AppCoordinator {
     private var tabBarController = UITabBarController()
     private let homeConfigurator: HomeConfiguratorProtocol = HomeConfigurator()
     private let newsConfigurator: NewsConfiguratorProtocol = NewsConfigurator()
+    private let educationConfigurator: EducationConfiguratorProtocol = EducationConfigurator()
 
     private lazy var navigationControllers = AppCoordinator.makeNavigationControllers()
 
@@ -28,6 +29,7 @@ class AppCoordinator {
     func start() {
         setupHome()
         setupNews()
+        setupEducation()
         setupTabBar()
         window.rootViewController = tabBarController 
         window.makeKeyAndVisible()
@@ -35,6 +37,7 @@ class AppCoordinator {
 }
 
 extension AppCoordinator {
+
     private func setupTabBar() {
         tabBarController.tabBar.tintColor = TabBarOptions.tintColor
         let navigationControllers = NavigationControllerType.allCases.compactMap {
@@ -42,6 +45,7 @@ extension AppCoordinator {
         }
         tabBarController.setViewControllers(navigationControllers, animated: true)
     }
+
     private func setupHome() {
         guard let navigationController = self.navigationControllers[.home] else {
             fatalError("can't find navigationController")
@@ -57,6 +61,15 @@ extension AppCoordinator {
         }
         let viewController = newsConfigurator.assemblyModule()
         viewController.navigationItem.title = NavigationControllerType.news.navigationItemTitle
+        navigationController.setViewControllers([viewController], animated: false)
+    }
+
+    private func setupEducation() {
+        guard let navigationController = self.navigationControllers[.education] else {
+            fatalError("can't find navigationController")
+        }
+        let viewController = educationConfigurator.assemblyModule()
+        viewController.navigationItem.title = NavigationControllerType.education.navigationItemTitle
         navigationController.setViewControllers([viewController], animated: false)
     }
 
@@ -78,6 +91,7 @@ extension AppCoordinator {
     private enum NavigationControllerType: Int, CaseIterable {
         case home
         case news
+        case education
 
         var tabBarTitle: String {
             switch self {
@@ -85,6 +99,8 @@ extension AppCoordinator {
                 return "Home"
             case .news:
                 return "News"
+            case .education:
+                return "Education"
             }
         }
 
@@ -94,6 +110,8 @@ extension AppCoordinator {
                 return "Covid-19"
             case .news:
                 return "News"
+            case .education:
+                return "Education"
             }
         }
 
@@ -103,6 +121,8 @@ extension AppCoordinator {
                 return "homeTab"
             case .news:
                 return "newsTab"
+            case .education:
+                return "educationTab"
             }
         }
     }

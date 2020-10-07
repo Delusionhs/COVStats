@@ -33,6 +33,8 @@
 		780CACDC25254D2400B77AC1 /* CountryDetailGraphViewPreview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 780CACDB25254D2400B77AC1 /* CountryDetailGraphViewPreview.swift */; };
 		781019CC2523EB3C00462CFC /* Int+Formatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 781019CB2523EB3C00462CFC /* Int+Formatter.swift */; };
 		781CC7C8252E6359007E30A5 /* EducationConfiguratorProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 781CC7C7252E6359007E30A5 /* EducationConfiguratorProtocol.swift */; };
+		781CC7CC252E66BF007E30A5 /* EducationHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 781CC7CB252E66BF007E30A5 /* EducationHeaderView.swift */; };
+		781CC7D0252E670D007E30A5 /* EducationHeaderViewPreview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 781CC7CF252E670D007E30A5 /* EducationHeaderViewPreview.swift */; };
 		78516E71251A5F6E00FBDBDE /* Trending.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78516E70251A5F6E00FBDBDE /* Trending.swift */; };
 		78516E7A251A935800FBDBDE /* UIVIewController+Preview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78516E79251A935800FBDBDE /* UIVIewController+Preview.swift */; };
 		78B1335C252B6034008E2883 /* CountryDetailGraphViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78B1335B252B6034008E2883 /* CountryDetailGraphViewModel.swift */; };
@@ -146,6 +148,8 @@
 		780CACDB25254D2400B77AC1 /* CountryDetailGraphViewPreview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryDetailGraphViewPreview.swift; sourceTree = "<group>"; };
 		781019CB2523EB3C00462CFC /* Int+Formatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Int+Formatter.swift"; sourceTree = "<group>"; };
 		781CC7C7252E6359007E30A5 /* EducationConfiguratorProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EducationConfiguratorProtocol.swift; sourceTree = "<group>"; };
+		781CC7CB252E66BF007E30A5 /* EducationHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EducationHeaderView.swift; sourceTree = "<group>"; };
+		781CC7CF252E670D007E30A5 /* EducationHeaderViewPreview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EducationHeaderViewPreview.swift; sourceTree = "<group>"; };
 		78516E70251A5F6E00FBDBDE /* Trending.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Trending.swift; sourceTree = "<group>"; };
 		78516E79251A935800FBDBDE /* UIVIewController+Preview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIVIewController+Preview.swift"; sourceTree = "<group>"; };
 		78B1335B252B6034008E2883 /* CountryDetailGraphViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryDetailGraphViewModel.swift; sourceTree = "<group>"; };
@@ -372,6 +376,15 @@
 				780CACDB25254D2400B77AC1 /* CountryDetailGraphViewPreview.swift */,
 			);
 			path = Graph;
+			sourceTree = "<group>";
+		};
+		781CC7CA252E6666007E30A5 /* Header */ = {
+			isa = PBXGroup;
+			children = (
+				781CC7CB252E66BF007E30A5 /* EducationHeaderView.swift */,
+				781CC7CF252E670D007E30A5 /* EducationHeaderViewPreview.swift */,
+			);
+			path = Header;
 			sourceTree = "<group>";
 		};
 		78516E6F251A5F6100FBDBDE /* Common */ = {
@@ -719,6 +732,7 @@
 		85BAA29ADFD70B3B615C7583 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				781CC7CA252E6666007E30A5 /* Header */,
 				656215BA6C38543E6A3BF632 /* EducationViewInput.swift */,
 				173932C72E6FE32CA36C3374 /* EducationViewOutput.swift */,
 				10147C5E4F1CB09746FEA6EB /* EducationViewController.swift */,
@@ -1045,7 +1059,9 @@
 				78F169542527869C00D77BFE /* GlobalSummaryRecoveryGraphLegend.swift in Sources */,
 				4739F61EA30E27F21E6B21B9 /* CountryDetailPresenter.swift in Sources */,
 				0EE58AC14579E9EDF055E55E /* CountryDetailInteractorInput.swift in Sources */,
+				781CC7CC252E66BF007E30A5 /* EducationHeaderView.swift in Sources */,
 				60228DA65932FA1D5FB63E5F /* CountryDetailInteractorOutput.swift in Sources */,
+				781CC7D0252E670D007E30A5 /* EducationHeaderViewPreview.swift in Sources */,
 				A52F33A7922F73884A8F86C6 /* CountryDetailInteractor.swift in Sources */,
 				7B525C5606BD1842CA05FB60 /* CountryDetailRouterInput.swift in Sources */,
 				AB033E71EEFDF9B913D10A9A /* CountryDetailRouter.swift in Sources */,
