@@ -43,7 +43,7 @@ fileprivate class mockViewController: UIViewController, UITableViewDelegate, UIT
         view.backgroundColor = .white
         tableView.dataSource = self
         tableView.delegate = self
-        tableView.register(NewsTableViewCell.self, forCellReuseIdentifier: "cell")
+        tableView.register(NewsTableViewCell.self, forCellReuseIdentifier: NewsTableViewCell.identifier)
     }
 
     private func setupLayouts() {
@@ -62,7 +62,7 @@ fileprivate class mockViewController: UIViewController, UITableViewDelegate, UIT
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! NewsTableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: NewsTableViewCell.identifier, for: indexPath) as! NewsTableViewCell
         return cell
     }
 
