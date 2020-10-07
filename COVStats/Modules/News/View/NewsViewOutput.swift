@@ -11,4 +11,5 @@ protocol NewsViewOutput {
     func viewIsReady()
     func numberOfRows() -> Int
     func cellViewModel(for indexPath: IndexPath) -> NewsTableViewCellViewModel?
+    func openNews(indexPath: IndexPath)
 }

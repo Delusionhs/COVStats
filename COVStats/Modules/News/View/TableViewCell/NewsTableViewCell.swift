@@ -22,6 +22,7 @@ class NewsTableViewCell: UITableViewCell {
         static let readingTimeLabelSize: CGFloat = 12
         static let titleLabelNumberOfLines = 2
         static let toReadButtonFontSize: CGFloat = 12
+        static let toReadButtonTitle = "CONTINUE READING"
     }
 
     let newsImage: UIImageView = {
@@ -39,11 +40,12 @@ class NewsTableViewCell: UITableViewCell {
         return label
     }()
 
-    let toReadButton: UIButton = {
-        let button = UIButton()
-        button.setTitleColor(UIColor.black, for: .normal)
-        button.titleLabel?.font = UIFont.systemFont(ofSize: CellOptions.toReadButtonFontSize, weight: UIFont.Weight.light)
-        return button
+    let toReadLabel: UILabel = {
+        let label = UILabel()
+        label.textColor = .black
+        label.text = CellOptions.toReadButtonTitle
+        label.font = UIFont.systemFont(ofSize: CellOptions.toReadButtonFontSize, weight: UIFont.Weight.light)
+        return label
     }()
 
     let readingTimeLabel: UILabel = {
@@ -66,7 +68,7 @@ class NewsTableViewCell: UITableViewCell {
     private func setupViews() {
         contentView.addSubview(newsImage)
         contentView.addSubview(titleLabel)
-        contentView.addSubview(toReadButton)
+        contentView.addSubview(toReadLabel)
         contentView.addSubview(readingTimeLabel)
     }
 
@@ -74,7 +76,7 @@ class NewsTableViewCell: UITableViewCell {
     private func setupLayouts() {
         newsImage.translatesAutoresizingMaskIntoConstraints = false
         titleLabel.translatesAutoresizingMaskIntoConstraints = false
-        toReadButton.translatesAutoresizingMaskIntoConstraints = false
+        toReadLabel.translatesAutoresizingMaskIntoConstraints = false
         readingTimeLabel.translatesAutoresizingMaskIntoConstraints = false
 
 
@@ -91,15 +93,15 @@ class NewsTableViewCell: UITableViewCell {
         ])
 
         NSLayoutConstraint.activate([
-            toReadButton.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: CellLayoutOptions.textHorizontalPadding),
-            toReadButton.trailingAnchor.constraint(lessThanOrEqualTo: readingTimeLabel.leadingAnchor),
-            toReadButton.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -CellLayoutOptions.toReadButtonBottomPadding),
-            toReadButton.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: CellLayoutOptions.toReadButtonTopPadding)
+            toReadLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: CellLayoutOptions.textHorizontalPadding),
+            toReadLabel.trailingAnchor.constraint(lessThanOrEqualTo: readingTimeLabel.leadingAnchor),
+            toReadLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -CellLayoutOptions.toReadButtonBottomPadding),
+            toReadLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: CellLayoutOptions.toReadButtonTopPadding)
         ])
 
         NSLayoutConstraint.activate([
             readingTimeLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -CellLayoutOptions.textHorizontalPadding),
-            readingTimeLabel.centerYAnchor.constraint(equalTo: toReadButton.centerYAnchor),
+            readingTimeLabel.centerYAnchor.constraint(equalTo: toReadLabel.centerYAnchor),
         ])
 
     }

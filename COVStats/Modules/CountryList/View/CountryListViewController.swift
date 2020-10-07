@@ -31,15 +31,8 @@ class CountryListViewController: UIViewController {
 
     var output: CountryListViewOutput!
 
-    private let tableView: UITableView = {
-        let tableView = UITableView()
-        return tableView
-    }()
-
-    private let header: CountryListTableViewHeader = {
-        let header = CountryListTableViewHeader()
-        return header
-    }()
+    private let tableView: UITableView = UITableView()
+    private let header: CountryListTableViewHeader = CountryListTableViewHeader()
 
     // MARK: Life cycle
     override func viewDidLoad() {

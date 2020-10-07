@@ -28,6 +28,14 @@ extension NewsPresenter: NewsInteractorOutput {
 }
 
 extension NewsPresenter: NewsViewOutput {
+    func openNews(indexPath: IndexPath) {
+        guard let data = newsResponse?.articles, data.count > indexPath.row else { return }
+        guard let url = URL(string: data[indexPath.row].url) else {
+            return
+        }
+        router.openNewsWithURL(url: url)
+    }
+
     func viewIsReady() {
         interactor.fetchCovidNews()
     }

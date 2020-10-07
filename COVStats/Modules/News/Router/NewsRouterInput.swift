@@ -9,5 +9,5 @@
 import Foundation
 
 protocol NewsRouterInput {
-
+    func openNewsWithURL(url: URL)
 }

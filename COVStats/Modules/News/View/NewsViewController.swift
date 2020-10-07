@@ -12,10 +12,7 @@ class NewsViewController: UIViewController {
 
     var output: NewsViewOutput!
 
-    private let tableView: UITableView = {
-        let tableView = UITableView()
-        return tableView
-    }()
+    private let tableView: UITableView = UITableView()
 
     // MARK: Life cycle
     override func viewDidLoad() {
@@ -70,6 +67,10 @@ extension NewsViewController: UITableViewDelegate, UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return tableView.frame.height/2
+    }
+
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        output.openNews(indexPath: indexPath)
     }
 }
 
