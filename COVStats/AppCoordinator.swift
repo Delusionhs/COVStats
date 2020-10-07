@@ -8,29 +8,6 @@
 
 import UIKit
 
-fileprivate enum NavigationControllerType: Int, CaseIterable {
-    case home
-    case news
-
-    var tabBarTitle: String {
-        switch self {
-        case .home:
-            return "Home"
-        case .news:
-            return "News"
-        }
-    }
-
-    var navigationItemTitle: String {
-        switch self {
-        case .home:
-            return "Covid-19"
-        case .news:
-            return "News"
-        }
-    }
-}
-
 class AppCoordinator {
 
 
@@ -79,14 +56,48 @@ extension AppCoordinator {
 
     static private func makeNavigationControllers() -> [NavigationControllerType: UINavigationController] {
         var result: [NavigationControllerType: UINavigationController] = [:]
-        NavigationControllerType.allCases.forEach { navControllerKey in
+        NavigationControllerType.allCases.forEach { navigationControllerKey in
             let navigationController = UINavigationController()
-            let tabBarItem = UITabBarItem(title: navControllerKey.tabBarTitle,
-                                          image: UIImage(named: "homeTab"),
-                                          tag: navControllerKey.rawValue)
+            let tabBarItem = UITabBarItem(title: navigationControllerKey.tabBarTitle,
+                                          image: UIImage(named: navigationControllerKey.imageName),
+                                          tag: navigationControllerKey.rawValue)
             navigationController.tabBarItem = tabBarItem
-            result[navControllerKey] = navigationController
+            result[navigationControllerKey] = navigationController
         }
         return result
+    }
+}
+
+extension AppCoordinator {
+    private enum NavigationControllerType: Int, CaseIterable {
+        case home
+        case news
+
+        var tabBarTitle: String {
+            switch self {
+            case .home:
+                return "Home"
+            case .news:
+                return "News"
+            }
+        }
+
+        var navigationItemTitle: String {
+            switch self {
+            case .home:
+                return "Covid-19"
+            case .news:
+                return "News"
+            }
+        }
+
+        var imageName: String {
+            switch self {
+            case .home:
+                return "homeTab"
+            case .news:
+                return "newsTab"
+            }
+        }
     }
 }
