@@ -104,6 +104,13 @@ class NewsTableViewCell: UITableViewCell {
 
     }
 
+    func configure(with viewModel: NewsTableViewCellViewModel) {
+        if let url = URL(string: viewModel.imageURL) {
+            newsImage.setImage(with: url)
+        }
+        titleLabel.text = viewModel.title
+    }
+
 }
 
 // MARK: - Helpers

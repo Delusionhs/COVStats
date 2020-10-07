@@ -8,7 +8,7 @@
 
 class CountryListInteractor {
     weak var output: CountryListInteractorOutput!
-    let statisticsService: StatisticsServiceProtocol = StatisticsService()
+    private let statisticsService: StatisticsServiceProtocol = StatisticsService()
 
 }
 

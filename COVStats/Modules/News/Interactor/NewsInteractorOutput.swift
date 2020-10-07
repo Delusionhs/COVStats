@@ -9,5 +9,5 @@
 import Foundation
 
 protocol NewsInteractorOutput: class {
-
+    func CovidNewsDataDidRiceive(data: NewsResponse?)
 }

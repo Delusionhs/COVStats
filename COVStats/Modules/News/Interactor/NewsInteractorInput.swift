@@ -9,5 +9,5 @@
 import Foundation
 
 protocol NewsInteractorInput {
-
+    func fetchCovidNews()
 }

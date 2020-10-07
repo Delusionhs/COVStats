@@ -7,4 +7,5 @@
 //
 
 protocol NewsViewInput: class {
+    func reloadTableViewData()
 }

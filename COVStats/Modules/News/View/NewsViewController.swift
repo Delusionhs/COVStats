@@ -8,7 +8,7 @@
 
 import UIKit
 
-class NewsViewController: UIViewController, NewsViewInput {
+class NewsViewController: UIViewController {
 
     var output: NewsViewOutput!
 
@@ -21,6 +21,7 @@ class NewsViewController: UIViewController, NewsViewInput {
     override func viewDidLoad() {
         super.viewDidLoad()
         output.viewIsReady()
+        view.backgroundColor = .white
         view.addSubview(tableView)
         setupTableView()
         setupLayouts()
@@ -29,6 +30,7 @@ class NewsViewController: UIViewController, NewsViewInput {
     private func setupTableView() {
         tableView.dataSource = self
         tableView.delegate = self
+        tableView.tableFooterView = UIView()
         tableView.register(NewsTableViewCell.self, forCellReuseIdentifier: NewsTableViewCell.identifier)
     }
 
@@ -43,14 +45,26 @@ class NewsViewController: UIViewController, NewsViewInput {
         ])
     }
 }
+// MARK: - NewsViewInput
+extension NewsViewController: NewsViewInput {
+    func reloadTableViewData() {
+        DispatchQueue.main.async {
+            self.tableView.reloadData()
+        }
+    }
+}
 
+// MARK: - UITableViewDelegate, UITableViewDataSource
 extension NewsViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        1
+        output.numberOfRows()
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: NewsTableViewCell.identifier, for: indexPath) as! NewsTableViewCell
+        if let cellViewModel = output.cellViewModel(for: indexPath) {
+            cell.configure(with: cellViewModel)
+        }
         return cell
     }
 
