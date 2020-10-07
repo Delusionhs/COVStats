@@ -12,7 +12,8 @@ import UIKit
 class HomeViewController: UIViewController, HomeViewInput {
 
     private enum ViewOptions {
-        static let navigationItemTitle = "Covid - 19"
+        //issued in appcoordinator
+        //static let navigationItemTitle = "Covid - 19"
     }
 
     private enum LayoutOptions {
@@ -30,7 +31,6 @@ class HomeViewController: UIViewController, HomeViewInput {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        navigationItem.title = ViewOptions.navigationItemTitle
         view.backgroundColor = .white
         setupSubViews()
         setupLayouts()

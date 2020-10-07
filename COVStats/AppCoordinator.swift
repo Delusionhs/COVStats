@@ -12,10 +12,19 @@ fileprivate enum NavigationControllerType: Int, CaseIterable {
     case home
     case news
 
-    var title: String {
+    var tabBarTitle: String {
         switch self {
         case .home:
             return "Home"
+        case .news:
+            return "News"
+        }
+    }
+
+    var navigationItemTitle: String {
+        switch self {
+        case .home:
+            return "Covid-19"
         case .news:
             return "News"
         }
@@ -54,21 +63,25 @@ extension AppCoordinator {
         guard let navigationController = self.navigationControllers[.home] else {
             fatalError("can't find navController")
         }
-        navigationController.setViewControllers([homeConfigurator.assemblyModule()], animated: false)
+        let viewController = homeConfigurator.assemblyModule()
+        viewController.navigationItem.title = NavigationControllerType.home.navigationItemTitle
+        navigationController.setViewControllers([viewController], animated: false)
     }
 
     func setupNews() {
         guard let navigationController = self.navigationControllers[.news] else {
             fatalError("can't find navController")
         }
-        navigationController.setViewControllers([newsConfigurator.assemblyModule()], animated: false)
+        let viewController = newsConfigurator.assemblyModule()
+        viewController.navigationItem.title = NavigationControllerType.news.navigationItemTitle
+        navigationController.setViewControllers([viewController], animated: false)
     }
 
     static private func makeNavigationControllers() -> [NavigationControllerType: UINavigationController] {
         var result: [NavigationControllerType: UINavigationController] = [:]
         NavigationControllerType.allCases.forEach { navControllerKey in
             let navigationController = UINavigationController()
-            let tabBarItem = UITabBarItem(title: navControllerKey.title,
+            let tabBarItem = UITabBarItem(title: navControllerKey.tabBarTitle,
                                           image: UIImage(named: "homeTab"),
                                           tag: navControllerKey.rawValue)
             navigationController.tabBarItem = tabBarItem
