@@ -10,6 +10,10 @@ import UIKit
 
 class AppCoordinator {
 
+    private enum TabBarOptions {
+        static let tintColor = UIColor(hex: "#FF647C")
+    }
+
 
 
     private let window: UIWindow
@@ -26,17 +30,21 @@ class AppCoordinator {
     func start() {
         setupHome()
         setupNews()
-        let navigationControllers = NavigationControllerType.allCases.compactMap {
-            self.navigationControllers[$0]
-        }
-        tabBarController.setViewControllers(navigationControllers, animated: true)
+        setupTabBar()
         window.rootViewController = tabBarController 
         window.makeKeyAndVisible()
     }
 }
 
 extension AppCoordinator {
-    func setupHome() {
+    private func setupTabBar() {
+        tabBarController.tabBar.tintColor = TabBarOptions.tintColor
+        let navigationControllers = NavigationControllerType.allCases.compactMap {
+            self.navigationControllers[$0]
+        }
+        tabBarController.setViewControllers(navigationControllers, animated: true)
+    }
+    private func setupHome() {
         guard let navigationController = self.navigationControllers[.home] else {
             fatalError("can't find navController")
         }
@@ -45,7 +53,7 @@ extension AppCoordinator {
         navigationController.setViewControllers([viewController], animated: false)
     }
 
-    func setupNews() {
+    private func setupNews() {
         guard let navigationController = self.navigationControllers[.news] else {
             fatalError("can't find navController")
         }
