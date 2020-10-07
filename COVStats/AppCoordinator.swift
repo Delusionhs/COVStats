@@ -14,8 +14,6 @@ class AppCoordinator {
         static let tintColor = UIColor(hex: "#FF647C")
     }
 
-
-
     private let window: UIWindow
     private var tabBarController = UITabBarController()
     private let homeConfigurator: HomeConfiguratorProtocol = HomeConfigurator()
@@ -46,7 +44,7 @@ extension AppCoordinator {
     }
     private func setupHome() {
         guard let navigationController = self.navigationControllers[.home] else {
-            fatalError("can't find navController")
+            fatalError("can't find navigationController")
         }
         let viewController = homeConfigurator.assemblyModule()
         viewController.navigationItem.title = NavigationControllerType.home.navigationItemTitle
@@ -55,7 +53,7 @@ extension AppCoordinator {
 
     private func setupNews() {
         guard let navigationController = self.navigationControllers[.news] else {
-            fatalError("can't find navController")
+            fatalError("can't find navigationController")
         }
         let viewController = newsConfigurator.assemblyModule()
         viewController.navigationItem.title = NavigationControllerType.news.navigationItemTitle

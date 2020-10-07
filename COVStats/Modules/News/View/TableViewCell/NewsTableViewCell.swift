@@ -68,10 +68,6 @@ class NewsTableViewCell: UITableViewCell {
         contentView.addSubview(titleLabel)
         contentView.addSubview(toReadButton)
         contentView.addSubview(readingTimeLabel)
-        newsImage.image = UIImage(named: "esFlag")
-        titleLabel.text = "Italy's first wave of the COVID-19 pandemic has ended: no excess mortality in May, 2020"
-        readingTimeLabel.text = "12 MIN READ"
-        toReadButton.setTitle("Continue Reading", for: .normal)
     }
 
 
@@ -109,3 +105,11 @@ class NewsTableViewCell: UITableViewCell {
     }
 
 }
+
+// MARK: - Helpers
+extension NewsTableViewCell {
+    static var identifier: String {
+        return String(describing: self)
+    }
+}
+

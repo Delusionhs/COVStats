@@ -32,7 +32,7 @@ class CountryListViewController: UIViewController {
     var output: CountryListViewOutput!
 
     private let tableView: UITableView = {
-        let tableView = UITableView(frame: .zero)
+        let tableView = UITableView()
         return tableView
     }()
 

@@ -7,11 +7,4 @@
 //
 
 protocol NewsViewInput: class {
-
-    /**
-        @author Igor Podolsiy
-        Setup initial state of the view
-    */
-
-    func setupInitialState()
 }
