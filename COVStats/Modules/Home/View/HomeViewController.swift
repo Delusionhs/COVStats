@@ -31,14 +31,14 @@ class HomeViewController: UIViewController, HomeViewInput {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .white
         setupSubViews()
         setupLayouts()
     }
 
     private func setupSubViews() {
+        view.backgroundColor = .white
         view.addSubview(scrollView)
-        scrollView.addSubview( scrollViewContentView)
+        scrollView.addSubview(scrollViewContentView)
         addChild(globalSummaryViewController)
         addChild(countryListViewController)
         scrollViewContentView.addSubview(globalSummaryViewController.view)

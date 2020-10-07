@@ -21,6 +21,7 @@ class EducationHeaderView: UIView {
         static let textLabelFontSize: CGFloat = 16
         static let textLabelNumberOfLines = 0
         static let textLabelFontColor = UIColor(hex: "#999999")
+        static let seeMoreButtonImage = UIImage(named: "seeMoreButton")
 
     }
 
@@ -51,7 +52,7 @@ class EducationHeaderView: UIView {
 
     private let seeMoreButton: UIButton = {
         let button = UIButton()
-        button.setImage(UIImage(named: "seeMoreButton"), for: .normal)
+        button.setImage(ViewOptions.seeMoreButtonImage, for: .normal)
         return button
     }()
 
