@@ -14,6 +14,7 @@
 		0EE58AC14579E9EDF055E55E /* CountryDetailInteractorInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05F7CC75D8885BDCE7BFE53D /* CountryDetailInteractorInput.swift */; };
 		14A29933EB75EB7A21262977 /* NewsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABE2A436278FE2AE06CC8667 /* NewsViewController.swift */; };
 		16886C1366C96200726E756D /* NewsViewOutput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C5A1C5C4116DA9E7F466AC0 /* NewsViewOutput.swift */; };
+		343937445F0E38C27C729DE5 /* InitialModuleInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = D801E71957967C92DC4407FB /* InitialModuleInput.swift */; };
 		367A76942AB36CC77FA8BFB8 /* CountryDetailViewOutput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2504FD0D609A79E007A41958 /* CountryDetailViewOutput.swift */; };
 		4155857672F4231250611E7B /* CountryListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92924876E4E75354AC645502 /* CountryListViewController.swift */; };
 		430FABFA9CE885D3320B3F65 /* EducationRouterInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E59F9EFDF0239376F94923C /* EducationRouterInput.swift */; };
@@ -21,10 +22,15 @@
 		4739F61EA30E27F21E6B21B9 /* CountryDetailPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDE538361A076B1673BAB273 /* CountryDetailPresenter.swift */; };
 		47927BBE950CE7D71D2DA754 /* CountryDetailViewInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97882A3436119DEE22AA51E7 /* CountryDetailViewInput.swift */; };
 		496549E65E7B46A64B905FE7 /* NewsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 400B2D83E2596AF4E8FDB089 /* NewsPresenter.swift */; };
+		514F2F8BC9982C6FCD0121A1 /* InitialViewOutput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81CFE66D241F674DCE43FDC2 /* InitialViewOutput.swift */; };
 		572737333E3E4BAAEA979C00 /* Pods_COVStats.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9D2A6164830B54906DFC83E9 /* Pods_COVStats.framework */; };
 		5942EFE46BA20C241BB80038 /* EducationInteractorOutput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 835D836CB4802312E8C4E34A /* EducationInteractorOutput.swift */; };
+		5C94FC88C32CF5DC70E107F7 /* InitialViewInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = A668E44C5CE6921F7CED73FC /* InitialViewInput.swift */; };
 		60228DA65932FA1D5FB63E5F /* CountryDetailInteractorOutput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89EEB026D199094EDF69C199 /* CountryDetailInteractorOutput.swift */; };
+		6697622EF7BD5A9A03D9C01F /* InitialInteractorOutput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66790BCDED80A279D57A5136 /* InitialInteractorOutput.swift */; };
 		6C05557EA5E487F254854DE4 /* CountryListViewOutput.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE79C5712B88CC676927F158 /* CountryListViewOutput.swift */; };
+		6F836CEB77F47D722F8D741B /* InitialRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A374EAB9680F1ED620AC8D5 /* InitialRouter.swift */; };
+		72E7B888FDBA2454354D92D0 /* InitialConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DA05410FD2F85EDD20B0572 /* InitialConfigurator.swift */; };
 		773A1A9AA9189E8226B72E87 /* CountryDetailModuleInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53AF654E4524889E49529801 /* CountryDetailModuleInput.swift */; };
 		780CACC52524BF2B00B77AC1 /* CountryDetailConfiguratorProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 780CACC42524BF2B00B77AC1 /* CountryDetailConfiguratorProtocol.swift */; };
 		780CACCF25253CE900B77AC1 /* CountryDetailHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 780CACCE25253CE900B77AC1 /* CountryDetailHeaderView.swift */; };
@@ -37,6 +43,7 @@
 		781CC7D0252E670D007E30A5 /* EducationHeaderViewPreview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 781CC7CF252E670D007E30A5 /* EducationHeaderViewPreview.swift */; };
 		78516E71251A5F6E00FBDBDE /* Trending.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78516E70251A5F6E00FBDBDE /* Trending.swift */; };
 		78516E7A251A935800FBDBDE /* UIVIewController+Preview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78516E79251A935800FBDBDE /* UIVIewController+Preview.swift */; };
+		786DA4FD252FC93F002B688F /* InitialConfiguratorProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 786DA4FC252FC93F002B688F /* InitialConfiguratorProtocol.swift */; };
 		78B1335C252B6034008E2883 /* CountryDetailGraphViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78B1335B252B6034008E2883 /* CountryDetailGraphViewModel.swift */; };
 		78B1335F252B630D008E2883 /* CountryHistorical.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78B1335E252B630D008E2883 /* CountryHistorical.swift */; };
 		78B13372252CBC0F008E2883 /* NewsConfiguratorProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78B13371252CBC0F008E2883 /* NewsConfiguratorProtocol.swift */; };
@@ -100,17 +107,22 @@
 		7B441A292C808C3010E31CC8 /* EducationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10147C5E4F1CB09746FEA6EB /* EducationViewController.swift */; };
 		7B525C5606BD1842CA05FB60 /* CountryDetailRouterInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F49740B032D3F3C3B34AA37 /* CountryDetailRouterInput.swift */; };
 		7F5B2004B6993727803A77A7 /* EducationViewOutput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 173932C72E6FE32CA36C3374 /* EducationViewOutput.swift */; };
+		86C88894FA958882F99E7CAE /* InitialRouterInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = C32B77FDF0788C8FDC275C5C /* InitialRouterInput.swift */; };
 		8E83B1D7238D7A321D9AAB93 /* NewsInteractorOutput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 821106C3DE0405B0D957B942 /* NewsInteractorOutput.swift */; };
 		92F522CCB12FE79AAC2BDEE7 /* CountryDetailConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C02A8B28BA28AA218FAF502 /* CountryDetailConfigurator.swift */; };
 		944589AE71A01F13BB572878 /* CountryDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AC7E2D3964DFA55E2B9A95B /* CountryDetailViewController.swift */; };
 		96EB32C47AF9BBD880DEE44D /* NewsRouterInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C20D9E27974F6A693BBE0DE /* NewsRouterInput.swift */; };
+		96F4FBC8EB5C13AEEAC10865 /* InitialPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF393CE4038DD126A6AB7BCD /* InitialPresenter.swift */; };
 		9B5E14D6B10573950125CCF8 /* CountryListInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A8CCC2796EE55F602A66C92 /* CountryListInteractor.swift */; };
 		A52F33A7922F73884A8F86C6 /* CountryDetailInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBBA7D055A22925B6F987A78 /* CountryDetailInteractor.swift */; };
 		AB033E71EEFDF9B913D10A9A /* CountryDetailRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7825DCF474C61B1E809296F /* CountryDetailRouter.swift */; };
+		AC3A66681A5725F753CF529B /* InitialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC47D6CAB3630FA4865B93DC /* InitialViewController.swift */; };
 		B987AECC210604C010627EEC /* CountryListRouterInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51EE422A5FD0737FFFAA4ECA /* CountryListRouterInput.swift */; };
 		BB4C531EDF684C0B41F54A93 /* EducationRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7A75D1159C7E723BF3DB472 /* EducationRouter.swift */; };
 		BE2BADEDE3BAD4BC1F7B1B0A /* NewsInteractorInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFE95D5E8EFD0DD014771088 /* NewsInteractorInput.swift */; };
 		C51A08C819F11AA7FCBD20DC /* CountryListViewInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 551B19753D69B3FD755B688A /* CountryListViewInput.swift */; };
+		D24EC8DB4149956E9EB659F3 /* InitialInteractorInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = E124386070489F1C64E6A793 /* InitialInteractorInput.swift */; };
+		D4E4ECBC8B3BFA3B05082A71 /* InitialInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3E5F0F6F8A0678E28589CE7 /* InitialInteractor.swift */; };
 		DC42EA5371831CE7B86400D6 /* NewsRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E45D175B6ED577E63CFB3AE /* NewsRouter.swift */; };
 		E25E94BCAF2D3761ACE78E8A /* NewsViewInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A308BFC82B64D8EAD26F25A /* NewsViewInput.swift */; };
 		E315A495C73A20779D6C66C6 /* EducationInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DA35C98849DDB5B559607AC /* EducationInteractor.swift */; };
@@ -132,6 +144,7 @@
 		2504FD0D609A79E007A41958 /* CountryDetailViewOutput.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = CountryDetailViewOutput.swift; sourceTree = "<group>"; };
 		2C20D9E27974F6A693BBE0DE /* NewsRouterInput.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = NewsRouterInput.swift; sourceTree = "<group>"; };
 		3A8CCC2796EE55F602A66C92 /* CountryListInteractor.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = CountryListInteractor.swift; sourceTree = "<group>"; };
+		3DA05410FD2F85EDD20B0572 /* InitialConfigurator.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = InitialConfigurator.swift; sourceTree = "<group>"; };
 		3F49740B032D3F3C3B34AA37 /* CountryDetailRouterInput.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = CountryDetailRouterInput.swift; sourceTree = "<group>"; };
 		400B2D83E2596AF4E8FDB089 /* NewsPresenter.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = NewsPresenter.swift; sourceTree = "<group>"; };
 		510EEEAACD0DF9AF377F16D2 /* NewsInteractor.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = NewsInteractor.swift; sourceTree = "<group>"; };
@@ -140,6 +153,7 @@
 		53AF654E4524889E49529801 /* CountryDetailModuleInput.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = CountryDetailModuleInput.swift; sourceTree = "<group>"; };
 		551B19753D69B3FD755B688A /* CountryListViewInput.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = CountryListViewInput.swift; sourceTree = "<group>"; };
 		656215BA6C38543E6A3BF632 /* EducationViewInput.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = EducationViewInput.swift; sourceTree = "<group>"; };
+		66790BCDED80A279D57A5136 /* InitialInteractorOutput.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = InitialInteractorOutput.swift; sourceTree = "<group>"; };
 		6E59F9EFDF0239376F94923C /* EducationRouterInput.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = EducationRouterInput.swift; sourceTree = "<group>"; };
 		780CACC42524BF2B00B77AC1 /* CountryDetailConfiguratorProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryDetailConfiguratorProtocol.swift; sourceTree = "<group>"; };
 		780CACCE25253CE900B77AC1 /* CountryDetailHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryDetailHeaderView.swift; sourceTree = "<group>"; };
@@ -152,6 +166,7 @@
 		781CC7CF252E670D007E30A5 /* EducationHeaderViewPreview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EducationHeaderViewPreview.swift; sourceTree = "<group>"; };
 		78516E70251A5F6E00FBDBDE /* Trending.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Trending.swift; sourceTree = "<group>"; };
 		78516E79251A935800FBDBDE /* UIVIewController+Preview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIVIewController+Preview.swift"; sourceTree = "<group>"; };
+		786DA4FC252FC93F002B688F /* InitialConfiguratorProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InitialConfiguratorProtocol.swift; sourceTree = "<group>"; };
 		78B1335B252B6034008E2883 /* CountryDetailGraphViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryDetailGraphViewModel.swift; sourceTree = "<group>"; };
 		78B1335E252B630D008E2883 /* CountryHistorical.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryHistorical.swift; sourceTree = "<group>"; };
 		78B13371252CBC0F008E2883 /* NewsConfiguratorProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsConfiguratorProtocol.swift; sourceTree = "<group>"; };
@@ -215,25 +230,34 @@
 		7AC7E2D3964DFA55E2B9A95B /* CountryDetailViewController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = CountryDetailViewController.swift; sourceTree = "<group>"; };
 		7E45D175B6ED577E63CFB3AE /* NewsRouter.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = NewsRouter.swift; sourceTree = "<group>"; };
 		7F1F79691E1DA571B8BE78D4 /* NewsModuleInput.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = NewsModuleInput.swift; sourceTree = "<group>"; };
+		81CFE66D241F674DCE43FDC2 /* InitialViewOutput.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = InitialViewOutput.swift; sourceTree = "<group>"; };
 		821106C3DE0405B0D957B942 /* NewsInteractorOutput.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = NewsInteractorOutput.swift; sourceTree = "<group>"; };
 		835D836CB4802312E8C4E34A /* EducationInteractorOutput.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = EducationInteractorOutput.swift; sourceTree = "<group>"; };
 		89EEB026D199094EDF69C199 /* CountryDetailInteractorOutput.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = CountryDetailInteractorOutput.swift; sourceTree = "<group>"; };
+		8A374EAB9680F1ED620AC8D5 /* InitialRouter.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = InitialRouter.swift; sourceTree = "<group>"; };
 		8C02A8B28BA28AA218FAF502 /* CountryDetailConfigurator.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = CountryDetailConfigurator.swift; sourceTree = "<group>"; };
 		92924876E4E75354AC645502 /* CountryListViewController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = CountryListViewController.swift; sourceTree = "<group>"; };
 		97882A3436119DEE22AA51E7 /* CountryDetailViewInput.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = CountryDetailViewInput.swift; sourceTree = "<group>"; };
 		9D2A6164830B54906DFC83E9 /* Pods_COVStats.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_COVStats.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9D9BCB792327FBC601E4F8BB /* CountryListRouter.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = CountryListRouter.swift; sourceTree = "<group>"; };
 		9DA35C98849DDB5B559607AC /* EducationInteractor.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = EducationInteractor.swift; sourceTree = "<group>"; };
+		A668E44C5CE6921F7CED73FC /* InitialViewInput.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = InitialViewInput.swift; sourceTree = "<group>"; };
 		A85D7C8F092CB2E1B77B2F95 /* EducationConfigurator.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = EducationConfigurator.swift; sourceTree = "<group>"; };
 		ABE2A436278FE2AE06CC8667 /* NewsViewController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = NewsViewController.swift; sourceTree = "<group>"; };
+		AC47D6CAB3630FA4865B93DC /* InitialViewController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = InitialViewController.swift; sourceTree = "<group>"; };
 		AC5300C7E644A10C68B3D819 /* CountryListInteractorInput.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = CountryListInteractorInput.swift; sourceTree = "<group>"; };
 		AE79C5712B88CC676927F158 /* CountryListViewOutput.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = CountryListViewOutput.swift; sourceTree = "<group>"; };
 		B67ACE1E50E522D40A0964C3 /* EducationPresenter.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = EducationPresenter.swift; sourceTree = "<group>"; };
 		B6AFB45A3FBD25ED4582C8B8 /* CountryListInteractorOutput.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = CountryListInteractorOutput.swift; sourceTree = "<group>"; };
+		BF393CE4038DD126A6AB7BCD /* InitialPresenter.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = InitialPresenter.swift; sourceTree = "<group>"; };
+		C32B77FDF0788C8FDC275C5C /* InitialRouterInput.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = InitialRouterInput.swift; sourceTree = "<group>"; };
 		C645B465657C6CF4752C07E5 /* EducationInteractorInput.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = EducationInteractorInput.swift; sourceTree = "<group>"; };
 		C7A75D1159C7E723BF3DB472 /* EducationRouter.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = EducationRouter.swift; sourceTree = "<group>"; };
 		CE4474A91B25393609C92B35 /* CountryListPresenter.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = CountryListPresenter.swift; sourceTree = "<group>"; };
 		D7B5ADE79A4AC9CC6A577DCC /* Pods-COVStats.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-COVStats.release.xcconfig"; path = "Target Support Files/Pods-COVStats/Pods-COVStats.release.xcconfig"; sourceTree = "<group>"; };
+		D801E71957967C92DC4407FB /* InitialModuleInput.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = InitialModuleInput.swift; sourceTree = "<group>"; };
+		E124386070489F1C64E6A793 /* InitialInteractorInput.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = InitialInteractorInput.swift; sourceTree = "<group>"; };
+		E3E5F0F6F8A0678E28589CE7 /* InitialInteractor.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = InitialInteractor.swift; sourceTree = "<group>"; };
 		E6743936026E95E4B1F99C13 /* Pods-COVStats.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-COVStats.debug.xcconfig"; path = "Target Support Files/Pods-COVStats/Pods-COVStats.debug.xcconfig"; sourceTree = "<group>"; };
 		EBBA7D055A22925B6F987A78 /* CountryDetailInteractor.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = CountryDetailInteractor.swift; sourceTree = "<group>"; };
 		ECFCF96A4CDE32E1F0EB2CDE /* CountryListConfigurator.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = CountryListConfigurator.swift; sourceTree = "<group>"; };
@@ -307,6 +331,26 @@
 				91326CA12A23BD47A3CFA8C0 /* Configurator */,
 			);
 			path = Education;
+			sourceTree = "<group>";
+		};
+		3F66D04BA9A4778F7F31B393 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				A668E44C5CE6921F7CED73FC /* InitialViewInput.swift */,
+				81CFE66D241F674DCE43FDC2 /* InitialViewOutput.swift */,
+				AC47D6CAB3630FA4865B93DC /* InitialViewController.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		41FF76D9CCC1CDD6DB739E03 /* Interactor */ = {
+			isa = PBXGroup;
+			children = (
+				E124386070489F1C64E6A793 /* InitialInteractorInput.swift */,
+				66790BCDED80A279D57A5136 /* InitialInteractorOutput.swift */,
+				E3E5F0F6F8A0678E28589CE7 /* InitialInteractor.swift */,
+			);
+			path = Interactor;
 			sourceTree = "<group>";
 		};
 		4901786CE2D865EEE344F5A8 /* View */ = {
@@ -431,6 +475,7 @@
 				1EA4059D0928293C714B45A3 /* CountryDetail */,
 				A07F0313764BEAC63D969FBE /* News */,
 				3C797FFC637042FABB753763 /* Education */,
+				F8ABBE8EFCCDA3B2894D6F1F /* Initial */,
 			);
 			path = Modules;
 			sourceTree = "<group>";
@@ -757,6 +802,15 @@
 			path = Presenter;
 			sourceTree = "<group>";
 		};
+		89F7C51549F4CBA9E6C34965 /* Router */ = {
+			isa = PBXGroup;
+			children = (
+				C32B77FDF0788C8FDC275C5C /* InitialRouterInput.swift */,
+				8A374EAB9680F1ED620AC8D5 /* InitialRouter.swift */,
+			);
+			path = Router;
+			sourceTree = "<group>";
+		};
 		8D3AADFD1BE88DB0C0EF5A3B /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -793,6 +847,15 @@
 			path = Configurator;
 			sourceTree = "<group>";
 		};
+		97407A8B775DCC2E660D1638 /* Configurator */ = {
+			isa = PBXGroup;
+			children = (
+				3DA05410FD2F85EDD20B0572 /* InitialConfigurator.swift */,
+				786DA4FC252FC93F002B688F /* InitialConfiguratorProtocol.swift */,
+			);
+			path = Configurator;
+			sourceTree = "<group>";
+		};
 		9DB7743D89CC7DB335E9399A /* Presenter */ = {
 			isa = PBXGroup;
 			children = (
@@ -813,6 +876,15 @@
 				503728AFA464CF445283814C /* Configurator */,
 			);
 			path = News;
+			sourceTree = "<group>";
+		};
+		B8CF9C3E69F83E5E90A7B596 /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				D801E71957967C92DC4407FB /* InitialModuleInput.swift */,
+				BF393CE4038DD126A6AB7BCD /* InitialPresenter.swift */,
+			);
+			path = Presenter;
 			sourceTree = "<group>";
 		};
 		C278F2E6FA46EA2F7E6462DD /* CountryList */ = {
@@ -863,6 +935,18 @@
 				9D9BCB792327FBC601E4F8BB /* CountryListRouter.swift */,
 			);
 			path = Router;
+			sourceTree = "<group>";
+		};
+		F8ABBE8EFCCDA3B2894D6F1F /* Initial */ = {
+			isa = PBXGroup;
+			children = (
+				3F66D04BA9A4778F7F31B393 /* View */,
+				B8CF9C3E69F83E5E90A7B596 /* Presenter */,
+				41FF76D9CCC1CDD6DB739E03 /* Interactor */,
+				89F7C51549F4CBA9E6C34965 /* Router */,
+				97407A8B775DCC2E660D1638 /* Configurator */,
+			);
+			path = Initial;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -1026,6 +1110,7 @@
 				78FC579A252E1DE500D872ED /* NewsService.swift in Sources */,
 				781019CC2523EB3C00462CFC /* Int+Formatter.swift in Sources */,
 				78FC57A3252E291A00D872ED /* NewsTableViewCellViewModel.swift in Sources */,
+				786DA4FD252FC93F002B688F /* InitialConfiguratorProtocol.swift in Sources */,
 				78F470132518E8E70008637C /* HomeConfigurator.swift in Sources */,
 				78D1BA5D251B9F8B000A21C8 /* GlobalSummaryCollectionViewCellViewModel.swift in Sources */,
 				78F47057251A46B00008637C /* UIColor+Hex.swift in Sources */,
@@ -1089,6 +1174,17 @@
 				430FABFA9CE885D3320B3F65 /* EducationRouterInput.swift in Sources */,
 				BB4C531EDF684C0B41F54A93 /* EducationRouter.swift in Sources */,
 				FBAD5949998B52FA8A597DD5 /* EducationConfigurator.swift in Sources */,
+				5C94FC88C32CF5DC70E107F7 /* InitialViewInput.swift in Sources */,
+				514F2F8BC9982C6FCD0121A1 /* InitialViewOutput.swift in Sources */,
+				AC3A66681A5725F753CF529B /* InitialViewController.swift in Sources */,
+				343937445F0E38C27C729DE5 /* InitialModuleInput.swift in Sources */,
+				96F4FBC8EB5C13AEEAC10865 /* InitialPresenter.swift in Sources */,
+				D24EC8DB4149956E9EB659F3 /* InitialInteractorInput.swift in Sources */,
+				6697622EF7BD5A9A03D9C01F /* InitialInteractorOutput.swift in Sources */,
+				D4E4ECBC8B3BFA3B05082A71 /* InitialInteractor.swift in Sources */,
+				86C88894FA958882F99E7CAE /* InitialRouterInput.swift in Sources */,
+				6F836CEB77F47D722F8D741B /* InitialRouter.swift in Sources */,
+				72E7B888FDBA2454354D92D0 /* InitialConfigurator.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
