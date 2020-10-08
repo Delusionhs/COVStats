@@ -47,6 +47,7 @@ class CountryDetailHeaderView: UIView {
 
     private let countryNameLabel: UILabel = {
         let label = UILabel()
+        label.adjustsFontSizeToFitWidth = true
         label.font = UIFont.systemFont(ofSize: ViewOptions.countryNameLabelFontSize, weight: UIFont.Weight.regular)
         return label
     }()
@@ -117,26 +118,27 @@ class CountryDetailHeaderView: UIView {
         NSLayoutConstraint.activate([
             countryNameLabel.centerYAnchor.constraint(equalTo: flagImage.centerYAnchor),
             countryNameLabel.leadingAnchor.constraint(equalTo: flagImage.trailingAnchor, constant: LayoutOptions.countryNameLabelVerticalPadding),
+            countryNameLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -LayoutOptions.countryNameLabelVerticalPadding)
         ])
 
         NSLayoutConstraint.activate([
             casesCountLabel.topAnchor.constraint(equalTo: flagImage.bottomAnchor, constant: LayoutOptions.casesCountLabelTopPadding),
-            casesCountLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: LayoutOptions.textLeading)
+            casesCountLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: LayoutOptions.textLeading)
         ])
 
         NSLayoutConstraint.activate([
             todayCasesCountLabel.topAnchor.constraint(equalTo: casesCountLabel.bottomAnchor, constant: LayoutOptions.todayTextTopPadding),
-            todayCasesCountLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: LayoutOptions.textLeading)
+            todayCasesCountLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: LayoutOptions.textLeading)
         ])
 
         NSLayoutConstraint.activate([
             deathCountLabel.topAnchor.constraint(equalTo: todayCasesCountLabel.bottomAnchor, constant: LayoutOptions.deathCountLabelTopPadding),
-            deathCountLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: LayoutOptions.textLeading)
+            deathCountLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: LayoutOptions.textLeading)
         ])
 
         NSLayoutConstraint.activate([
             todayDeathCountLabel.topAnchor.constraint(equalTo: deathCountLabel.bottomAnchor, constant: LayoutOptions.todayTextTopPadding),
-            todayDeathCountLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: LayoutOptions.textLeading)
+            todayDeathCountLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: LayoutOptions.textLeading)
         ])
 
     }
