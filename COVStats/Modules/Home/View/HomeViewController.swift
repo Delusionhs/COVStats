@@ -69,7 +69,7 @@ class HomeViewController: UIViewController, HomeViewInput {
         NSLayoutConstraint.activate([
             globalSummaryViewController.view.leadingAnchor.constraint(equalTo:  scrollViewContentView.leadingAnchor),
             globalSummaryViewController.view.trailingAnchor.constraint(equalTo:  scrollViewContentView.trailingAnchor),
-            globalSummaryViewController.view.topAnchor.constraint(equalTo:  scrollViewContentView.topAnchor),
+            globalSummaryViewController.view.topAnchor.constraint(equalTo: scrollViewContentView.topAnchor),
             globalSummaryViewController.view.heightAnchor.constraint(equalToConstant: LayoutOptions.globalSummaryViewHeight)
         ])
 

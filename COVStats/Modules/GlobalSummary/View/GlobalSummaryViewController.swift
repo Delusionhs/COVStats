@@ -14,14 +14,15 @@ class GlobalSummaryViewController: UIViewController{
     private enum CollectionOption {
         static let collectionViewCellCount = GlobalSummaryCollectionViewCellType.allCases.count
         static let collectionViewCellOrder: [GlobalSummaryCollectionViewCellType] = [.totalCases,.totalRecovered,.activeCases,.totatDeath]
-        static let cellSpacing: CGFloat = 22.0
+        static let cellSpacing: CGFloat = 50
         static let cellHeight: CGFloat = 208.0
         static let cellInset: CGFloat = 15
     }
 
     private enum LayoutOptions {
-        static let viewSpacing: CGFloat = 25
+        static let viewSpacing: CGFloat = 10
         static let recoveryGraphMargin: CGFloat = 10
+        static let collectionViewHeight: CGFloat = 460
     }
 
     var output: GlobalSummaryViewOutput!
@@ -59,7 +60,7 @@ class GlobalSummaryViewController: UIViewController{
 
         NSLayoutConstraint.activate([
             collectionView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
-            collectionView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -view.frame.height/2),
+            collectionView.heightAnchor.constraint(equalToConstant: LayoutOptions.collectionViewHeight),
             collectionView.leftAnchor.constraint(equalTo: view.leftAnchor),
             collectionView.rightAnchor.constraint(equalTo: view.rightAnchor)
         ])
@@ -124,7 +125,7 @@ extension GlobalSummaryViewController: UICollectionViewDelegateFlowLayout {
     func itemWidth(for width: CGFloat, spacing: CGFloat) -> CGFloat {
         let itemsInRow: CGFloat = 2
 
-        let totalSpacing: CGFloat = 2 * spacing + (itemsInRow - 1) * spacing
+        let totalSpacing: CGFloat = spacing
         let finalWidth = (width - totalSpacing) / itemsInRow
 
         return floor(finalWidth)
@@ -132,16 +133,3 @@ extension GlobalSummaryViewController: UICollectionViewDelegateFlowLayout {
 
 }
 
-// MARK: - Preview
-
-#if DEBUG
-import SwiftUI
-
-@available(iOS 13, *)
-struct GlobalSummaryViewControllerPreview: PreviewProvider {
-
-    static var previews: some View {
-        GlobalSummaryViewController().toPreview()
-    }
-}
-#endif

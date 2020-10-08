@@ -90,8 +90,8 @@ extension AppCoordinator {
 extension AppCoordinator {
     private enum NavigationControllerType: Int, CaseIterable {
         case home
-        case news
         case education
+        case news
 
         var tabBarTitle: String {
             switch self {

@@ -48,6 +48,7 @@ class CountryListTableViewCell: UITableViewCell {
 
     let countryNameLabel: UILabel = {
         let label = UILabel()
+        label.adjustsFontSizeToFitWidth = true
         label.font = UIFont.systemFont(ofSize: CellOptions.countryNameLabelFontSize, weight: UIFont.Weight.light)
         return label
     }()
@@ -103,11 +104,6 @@ class CountryListTableViewCell: UITableViewCell {
         ])
 
         NSLayoutConstraint.activate([
-            countryNameLabel.centerYAnchor.constraint(equalTo: flagImage.centerYAnchor),
-            countryNameLabel.leadingAnchor.constraint(equalTo: flagImage.trailingAnchor, constant: CellLayoutOptions.countryNameLabelVerticalPadding),
-        ])
-
-        NSLayoutConstraint.activate([
             trendingImage.centerYAnchor.constraint(equalTo: flagImage.centerYAnchor),
             trendingImage.heightAnchor.constraint(equalToConstant: CellLayoutOptions.trendingImageSize),
             trendingImage.widthAnchor.constraint(equalToConstant: CellLayoutOptions.trendingImageSize),
@@ -120,7 +116,9 @@ class CountryListTableViewCell: UITableViewCell {
         ])
 
         NSLayoutConstraint.activate([
-            countryNameLabel.trailingAnchor.constraint(lessThanOrEqualTo: countLabel.leadingAnchor)
+            countryNameLabel.centerYAnchor.constraint(equalTo: flagImage.centerYAnchor),
+            countryNameLabel.leadingAnchor.constraint(equalTo: flagImage.trailingAnchor, constant: CellLayoutOptions.countryNameLabelVerticalPadding),
+            countryNameLabel.widthAnchor.constraint(equalToConstant: contentView.frame.height*2)
         ])
     }
 

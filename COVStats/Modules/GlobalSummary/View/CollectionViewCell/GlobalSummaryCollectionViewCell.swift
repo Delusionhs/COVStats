@@ -46,6 +46,7 @@ final class GlobalSummaryCollectionViewCell: UICollectionViewCell {
     private let title: UILabel = {
         let label = UILabel()
         label.textAlignment = .center
+        label.adjustsFontSizeToFitWidth = true
         label.font = UIFont.systemFont(ofSize: CellOption.titleFontSize, weight: UIFont.Weight.regular)
         label.textColor = CellOption.titleFontColor
         label.numberOfLines = CellOption.labelTextNumberOfLines
@@ -55,6 +56,7 @@ final class GlobalSummaryCollectionViewCell: UICollectionViewCell {
     private let casesCountLabel: UILabel = {
         let label = UILabel()
         label.textAlignment = .left
+        label.adjustsFontSizeToFitWidth = true
         label.font = UIFont.systemFont(ofSize: CellOption.casesCountLabelFontSize, weight: UIFont.Weight.semibold)
         label.numberOfLines = CellOption.labelTextNumberOfLines
         return label
@@ -161,7 +163,8 @@ extension GlobalSummaryCollectionViewCell {
 
         NSLayoutConstraint.activate([
             title.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: CellLayoutOption .titleHorizontalPadding),
-            title.topAnchor.constraint(equalTo: contentView.topAnchor, constant: CellLayoutOption.titleVerticalPadding)
+            title.topAnchor.constraint(equalTo: contentView.topAnchor, constant: CellLayoutOption.titleVerticalPadding),
+            title.trailingAnchor.constraint(lessThanOrEqualTo: trendingImageView.leadingAnchor)
         ])
 
         NSLayoutConstraint.activate([
