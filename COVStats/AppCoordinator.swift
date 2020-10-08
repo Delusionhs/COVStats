@@ -19,6 +19,7 @@ class AppCoordinator {
     private let homeConfigurator: HomeConfiguratorProtocol = HomeConfigurator()
     private let newsConfigurator: NewsConfiguratorProtocol = NewsConfigurator()
     private let educationConfigurator: EducationConfiguratorProtocol = EducationConfigurator()
+    private let initialConfigurator: InitialConfiguratorProtocol = InitialConfigurator()
 
     private lazy var navigationControllers = AppCoordinator.makeNavigationControllers()
 
@@ -31,7 +32,8 @@ class AppCoordinator {
         setupNews()
         setupEducation()
         setupTabBar()
-        window.rootViewController = tabBarController 
+        window.rootViewController = initialConfigurator.assemblyModule()
+        //window.rootViewController = tabBarController
         window.makeKeyAndVisible()
     }
 }
