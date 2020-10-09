@@ -37,6 +37,7 @@ class InitialPageContentViewController: UIViewController {
     private let titleLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont.systemFont(ofSize: ViewOptions.titleLabelFontSize, weight: UIFont.Weight.semibold)
+        label.textAlignment = .center
         return label
     }()
 
@@ -85,16 +86,16 @@ class InitialPageContentViewController: UIViewController {
         ])
 
         NSLayoutConstraint.activate([
-            pageControl.topAnchor.constraint(greaterThanOrEqualTo: textLabel.bottomAnchor),
+            pageControl.topAnchor.constraint(equalTo: textLabel.bottomAnchor),
             pageControl.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             pageControl.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: LayoutOptions.pageControlBottomPadding)
         ])
 
         NSLayoutConstraint.activate([
             titleLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            titleLabel.topAnchor.constraint(equalTo: symptomImage.bottomAnchor, constant: LayoutOptions.titleLabelTopPadding),
-            textLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: LayoutOptions.textHorizontalPadding),
-            textLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -LayoutOptions.textHorizontalPadding)
+            titleLabel.topAnchor.constraint(lessThanOrEqualTo: symptomImage.bottomAnchor, constant: LayoutOptions.titleLabelTopPadding),
+            titleLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: LayoutOptions.textHorizontalPadding),
+            titleLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -LayoutOptions.textHorizontalPadding)
         ])
 
         NSLayoutConstraint.activate([
