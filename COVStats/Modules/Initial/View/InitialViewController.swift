@@ -32,12 +32,6 @@ class InitialViewController: UIViewController, InitialViewInput, UIPageViewContr
     }
 
     private func setupViews() {
-
-//        view.backgroundColor = .white
-//        view.addSubview(scrollView)
-//        scrollView.addSubview(scrollViewContentView)
-//        scrollViewContentView.addSubview(headerView)
-
     }
 
     private func setupLayouts() {
@@ -49,8 +43,6 @@ class InitialViewController: UIViewController, InitialViewInput, UIPageViewContr
             pageViewController.view.topAnchor.constraint(equalTo: view.topAnchor),
             pageViewController.view.bottomAnchor.constraint(equalTo: view.bottomAnchor)
         ])
-
-
     }
 }
 

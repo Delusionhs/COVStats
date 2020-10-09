@@ -17,6 +17,7 @@ class InitialPageContentViewController: UIViewController {
         static let titleLabelFontSize: CGFloat = 28
         static let textLabelFontSize: CGFloat = 16
         static let textLabelFontColor = UIColor(hex: "#999999")
+        static let numberOfPages = 3
     }
 
     private enum LayoutOptions {
@@ -31,14 +32,12 @@ class InitialPageContentViewController: UIViewController {
         let imgView = UIImageView()
         imgView.contentMode = .scaleAspectFill
         imgView.clipsToBounds = true
-        imgView.image = UIImage(named: "breathInitial")
         return imgView
     }()
 
     let titleLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont.systemFont(ofSize: ViewOptions.titleLabelFontSize, weight: UIFont.Weight.semibold)
-        label.text = "Fever"
         return label
     }()
 
@@ -46,7 +45,6 @@ class InitialPageContentViewController: UIViewController {
         let label = UILabel()
         label.font = UIFont.systemFont(ofSize: ViewOptions.textLabelFontSize, weight: UIFont.Weight.light)
         label.textColor = ViewOptions.textLabelFontColor
-        label.text = "He severity of COVID-19 symptoms can range from very mild to severe. Some people have no symptoms. People who are older or have existing chronic medical conditions."
         label.numberOfLines = 0
         label.textAlignment = .center
         return label
@@ -54,8 +52,7 @@ class InitialPageContentViewController: UIViewController {
 
     private let pageControl: UIPageControl = {
         let pageControl = UIPageControl()
-        pageControl.currentPage = 0
-        pageControl.numberOfPages = 3
+        pageControl.numberOfPages = ViewOptions.numberOfPages
         pageControl.pageIndicatorTintColor = ViewOptions.pageControlUnselectedColor
         pageControl.currentPageIndicatorTintColor = ViewOptions.pageControlSelectedColor
         return pageControl
@@ -109,5 +106,11 @@ class InitialPageContentViewController: UIViewController {
             textLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -LayoutOptions.textHorizontalPadding)
         ])
 
+    }
+
+    func configure(with viewModel: InitialPageContentViewModel) {
+        symptomImage.image = UIImage(named: viewModel.imageName)
+        titleLabel.text = viewModel.title
+        textLabel.text = viewModel.text
     }
 }
