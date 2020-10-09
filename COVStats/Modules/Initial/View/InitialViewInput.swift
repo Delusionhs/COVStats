@@ -7,4 +7,5 @@
 //
 
 protocol InitialViewInput: class {
+    func configureInitPage(with viewModel: InitialPageContentViewModel)
 }

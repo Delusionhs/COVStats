@@ -12,4 +12,5 @@ struct InitialPageContentViewModel {
     let imageName: String
     let title: String
     let text: String
+    let pagesCount: Int
 }

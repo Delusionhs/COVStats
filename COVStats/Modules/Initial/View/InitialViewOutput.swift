@@ -7,11 +7,7 @@
 //
 
 protocol InitialViewOutput {
-
-    /**
-        @author Igor Podolsiy
-        Notify presenter that view is ready
-    */
-
     func viewIsReady()
+    func pageViewModelForPage(pageIndex: Int) -> InitialPageContentViewModel?
+    func pagesMaxIndex() -> Int
 }

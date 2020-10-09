@@ -17,7 +17,6 @@ class InitialPageContentViewController: UIViewController {
         static let titleLabelFontSize: CGFloat = 28
         static let textLabelFontSize: CGFloat = 16
         static let textLabelFontColor = UIColor(hex: "#999999")
-        static let numberOfPages = 3
     }
 
     private enum LayoutOptions {
@@ -52,7 +51,6 @@ class InitialPageContentViewController: UIViewController {
 
     private let pageControl: UIPageControl = {
         let pageControl = UIPageControl()
-        pageControl.numberOfPages = ViewOptions.numberOfPages
         pageControl.pageIndicatorTintColor = ViewOptions.pageControlUnselectedColor
         pageControl.currentPageIndicatorTintColor = ViewOptions.pageControlSelectedColor
         return pageControl
@@ -112,5 +110,6 @@ class InitialPageContentViewController: UIViewController {
         symptomImage.image = UIImage(named: viewModel.imageName)
         titleLabel.text = viewModel.title
         textLabel.text = viewModel.text
+        pageControl.numberOfPages = viewModel.pagesCount
     }
 }

@@ -14,15 +14,10 @@ class InitialPresenter: InitialInteractorOutput {
 
     private lazy var pagesViewModels: [InitialPageContentViewModel] = makePagesViewModels()
 
-    private func pageViewModelForPage(pageIndex: Int) -> InitialPageContentViewModel? {
-        guard pageIndex <= pagesData.allCases.count else { return nil }
-        return pagesViewModels[pageIndex]
-    }
-
     private func makePagesViewModels() -> [InitialPageContentViewModel] {
         var result: [InitialPageContentViewModel] = []
         pagesData.allCases.forEach { page in
-            result.append(InitialPageContentViewModel(imageName: page.imageName, title: page.title, text: page.text))
+            result.append(InitialPageContentViewModel(imageName: page.imageName, title: page.title, text: page.text, pagesCount: pagesData.allCases.count))
         }
         return result
     }
@@ -31,6 +26,19 @@ class InitialPresenter: InitialInteractorOutput {
 
 extension InitialPresenter: InitialViewOutput {
     func viewIsReady() {
+        guard pagesViewModels.indices.count >= 0 else {
+            return
+        }
+        view.configureInitPage(with: pagesViewModels[0])
+    }
+
+    func pageViewModelForPage(pageIndex: Int) -> InitialPageContentViewModel? {
+        guard pagesData.allCases.indices.contains(pageIndex) else { return nil }
+        return pagesViewModels[pageIndex]
+    }
+
+    func pagesMaxIndex() -> Int {
+        return pagesData.allCases.count == 0 ? 0 : pagesData.allCases.count-1
     }
 
 }

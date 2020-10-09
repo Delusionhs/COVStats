@@ -8,18 +8,20 @@
 
 import UIKit
 
-class InitialViewController: UIViewController, InitialViewInput, UIPageViewControllerDelegate {
+class InitialViewController: UIViewController {
 
     var output: InitialViewOutput!
 
     private let pageViewController = UIPageViewController()
+    private var currentPageNumber = 0
+    private let pageCount = 0
 
     // MARK: Life cycle
     override func viewDidLoad() {
         super.viewDidLoad()
         output.viewIsReady()
-        setupViews()
         setupPageController()
+        setupViews()
         setupLayouts()
     }
 
@@ -28,7 +30,6 @@ class InitialViewController: UIViewController, InitialViewInput, UIPageViewContr
         pageViewController.delegate = self
         addChild(pageViewController)
         view.addSubview(pageViewController.view)
-        pageViewController.setViewControllers([InitialPageContentViewController()], direction: .forward, animated: true, completion: nil)
     }
 
     private func setupViews() {
@@ -44,22 +45,47 @@ class InitialViewController: UIViewController, InitialViewInput, UIPageViewContr
             pageViewController.view.bottomAnchor.constraint(equalTo: view.bottomAnchor)
         ])
     }
+
+    private func configurePageViewController(with viewModel: InitialPageContentViewModel) -> InitialPageContentViewController {
+        let pageContentViewController = InitialPageContentViewController()
+        pageContentViewController.configure(with: viewModel)
+        return pageContentViewController
+    }
 }
 
-extension InitialViewController: UIPageViewControllerDataSource {
+extension InitialViewController: InitialViewInput {
+    func configureInitPage(with viewModel: InitialPageContentViewModel) {
+        let pageContentViewController = InitialPageContentViewController()
+        pageContentViewController.configure(with: viewModel)
+        pageViewController.setViewControllers([pageContentViewController], direction: .forward, animated: true, completion: nil)
+    }
+}
 
-    // Переход на одну страницу назад
+extension InitialViewController: UIPageViewControllerDataSource, UIPageViewControllerDelegate {
+
     func pageViewController(_ pageViewController: UIPageViewController,
                             viewControllerBefore viewController: UIViewController) -> UIViewController? {
+        guard currentPageNumber > 0 else {
+            return nil
+        }
+        currentPageNumber -= 1
+        print(currentPageNumber)
+        guard let viewModel = output.pageViewModelForPage(pageIndex: currentPageNumber) else { return nil }
 
-        return InitialPageContentViewController()
+        return configurePageViewController(with: viewModel)
     }
 
     // Перход на одну страницу вперед
     func pageViewController(_ pageViewController: UIPageViewController,
                             viewControllerAfter viewController: UIViewController) -> UIViewController? {
+        guard currentPageNumber < output.pagesMaxIndex() else {
+            return nil
+        }
+        currentPageNumber += 1
+        print(currentPageNumber)
+        guard let viewModel = output.pageViewModelForPage(pageIndex: currentPageNumber) else { return nil }
 
-        return InitialPageContentViewController()
+        return configurePageViewController(with: viewModel)
     }
 }
 
