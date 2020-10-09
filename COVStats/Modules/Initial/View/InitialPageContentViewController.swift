@@ -34,13 +34,13 @@ class InitialPageContentViewController: UIViewController {
         return imgView
     }()
 
-    let titleLabel: UILabel = {
+    private let titleLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont.systemFont(ofSize: ViewOptions.titleLabelFontSize, weight: UIFont.Weight.semibold)
         return label
     }()
 
-    let textLabel: UILabel = {
+    private let textLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont.systemFont(ofSize: ViewOptions.textLabelFontSize, weight: UIFont.Weight.light)
         label.textColor = ViewOptions.textLabelFontColor
@@ -112,5 +112,9 @@ class InitialPageContentViewController: UIViewController {
         textLabel.text = viewModel.text
         pageControl.numberOfPages = viewModel.pagesCount
         pageControl.currentPage = viewModel.currentPage
+    }
+
+    func currentPage() -> Int {
+        return pageControl.currentPage
     }
 }

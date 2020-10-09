@@ -44,7 +44,7 @@ extension InitialPresenter: InitialViewOutput {
 }
 
 extension InitialPresenter {
-    private enum pagesData: Int, CaseIterable {
+    enum pagesData: Int, CaseIterable {
         case fever
         case cough
         case breath

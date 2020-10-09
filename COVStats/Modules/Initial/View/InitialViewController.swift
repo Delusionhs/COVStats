@@ -13,7 +13,6 @@ class InitialViewController: UIViewController {
     var output: InitialViewOutput!
 
     private let pageViewController = UIPageViewController(transitionStyle: .scroll, navigationOrientation: .horizontal)
-    private var currentPageNumber = 0
 
     // MARK: Life cycle
     override func viewDidLoad() {
@@ -32,6 +31,7 @@ class InitialViewController: UIViewController {
     }
 
     private func setupViews() {
+        view.backgroundColor = .white
     }
 
     private func setupLayouts() {
@@ -63,22 +63,17 @@ extension InitialViewController: UIPageViewControllerDataSource, UIPageViewContr
 
     func pageViewController(_ pageViewController: UIPageViewController,
                             viewControllerBefore viewController: UIViewController) -> UIViewController? {
-        guard currentPageNumber > 0 else {
-            return nil
-        }
-        currentPageNumber -= 1
-        guard let viewModel = output.pageViewModelForPage(pageIndex: currentPageNumber) else { return nil }
+        guard let viewController = viewController as? InitialPageContentViewController else { return nil }
+        let currentPage = viewController.currentPage()
+        guard let viewModel = output.pageViewModelForPage(pageIndex: currentPage-1) else { return nil }
         return configurePageViewController(with: viewModel)
     }
 
-    // Перход на одну страницу вперед
     func pageViewController(_ pageViewController: UIPageViewController,
                             viewControllerAfter viewController: UIViewController) -> UIViewController? {
-        guard currentPageNumber < output.pagesMaxIndex() else {
-            return nil
-        }
-        currentPageNumber += 1
-        guard let viewModel = output.pageViewModelForPage(pageIndex: currentPageNumber) else { return nil }
+        guard let viewController = viewController as? InitialPageContentViewController else { return nil }
+        let currentPage = viewController.currentPage()
+        guard let viewModel = output.pageViewModelForPage(pageIndex: currentPage+1) else { return nil }
         return configurePageViewController(with: viewModel)
     }
 }
