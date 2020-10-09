@@ -12,9 +12,8 @@ class InitialViewController: UIViewController {
 
     var output: InitialViewOutput!
 
-    private let pageViewController = UIPageViewController()
+    private let pageViewController = UIPageViewController(transitionStyle: .scroll, navigationOrientation: .horizontal)
     private var currentPageNumber = 0
-    private let pageCount = 0
 
     // MARK: Life cycle
     override func viewDidLoad() {
@@ -37,7 +36,6 @@ class InitialViewController: UIViewController {
 
     private func setupLayouts() {
         pageViewController.view.translatesAutoresizingMaskIntoConstraints = false
-
         NSLayoutConstraint.activate([
             pageViewController.view.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             pageViewController.view.leadingAnchor.constraint(equalTo: view.leadingAnchor),
@@ -70,7 +68,6 @@ extension InitialViewController: UIPageViewControllerDataSource, UIPageViewContr
         }
         currentPageNumber -= 1
         guard let viewModel = output.pageViewModelForPage(pageIndex: currentPageNumber) else { return nil }
-
         return configurePageViewController(with: viewModel)
     }
 
@@ -82,7 +79,6 @@ extension InitialViewController: UIPageViewControllerDataSource, UIPageViewContr
         }
         currentPageNumber += 1
         guard let viewModel = output.pageViewModelForPage(pageIndex: currentPageNumber) else { return nil }
-
         return configurePageViewController(with: viewModel)
     }
 }
