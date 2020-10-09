@@ -111,5 +111,6 @@ class InitialPageContentViewController: UIViewController {
         titleLabel.text = viewModel.title
         textLabel.text = viewModel.text
         pageControl.numberOfPages = viewModel.pagesCount
+        pageControl.currentPage = viewModel.currentPage
     }
 }

@@ -17,7 +17,7 @@ class InitialPresenter: InitialInteractorOutput {
     private func makePagesViewModels() -> [InitialPageContentViewModel] {
         var result: [InitialPageContentViewModel] = []
         pagesData.allCases.forEach { page in
-            result.append(InitialPageContentViewModel(imageName: page.imageName, title: page.title, text: page.text, pagesCount: pagesData.allCases.count))
+            result.append(InitialPageContentViewModel(imageName: page.imageName, title: page.title, text: page.text, pagesCount: pagesData.allCases.count, currentPage: page.rawValue))
         }
         return result
     }

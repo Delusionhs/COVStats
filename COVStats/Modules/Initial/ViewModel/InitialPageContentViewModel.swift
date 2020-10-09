@@ -13,4 +13,5 @@ struct InitialPageContentViewModel {
     let title: String
     let text: String
     let pagesCount: Int
+    let currentPage: Int
 }

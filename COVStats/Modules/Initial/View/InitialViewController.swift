@@ -69,7 +69,6 @@ extension InitialViewController: UIPageViewControllerDataSource, UIPageViewContr
             return nil
         }
         currentPageNumber -= 1
-        print(currentPageNumber)
         guard let viewModel = output.pageViewModelForPage(pageIndex: currentPageNumber) else { return nil }
 
         return configurePageViewController(with: viewModel)
@@ -82,7 +81,6 @@ extension InitialViewController: UIPageViewControllerDataSource, UIPageViewContr
             return nil
         }
         currentPageNumber += 1
-        print(currentPageNumber)
         guard let viewModel = output.pageViewModelForPage(pageIndex: currentPageNumber) else { return nil }
 
         return configurePageViewController(with: viewModel)
