@@ -27,6 +27,11 @@ class InitialPageContentViewController: UIViewController {
         static let textLabelTopPadding: CGFloat = 14
     }
 
+    private enum Localization {
+        static let nextButtonTitle = "Next"
+        static let skipButtonTitle = "Skip"
+    }
+
     private let symptomImage: UIImageView = {
         let imgView = UIImageView()
         imgView.contentMode = .scaleAspectFill
@@ -57,6 +62,20 @@ class InitialPageContentViewController: UIViewController {
         return pageControl
     }()
 
+    private let nextButton: UIButton = {
+        let button = UIButton()
+        button.setTitle(Localization.nextButtonTitle, for: .normal)
+        button.setTitleColor(.black, for: .normal)
+        return button
+    }()
+
+    private let skipButton: UIButton = {
+        let button = UIButton()
+        button.setTitle(Localization.skipButtonTitle, for: .normal)
+        button.setTitleColor(.black, for: .normal)
+        return button
+    }()
+
     override func viewDidLoad() {
         super.viewDidLoad()
         setupViews()
@@ -69,7 +88,8 @@ class InitialPageContentViewController: UIViewController {
         view.addSubview(pageControl)
         view.addSubview(titleLabel)
         view.addSubview(textLabel)
-
+        view.addSubview(nextButton)
+        view.addSubview(skipButton)
     }
 
     private func setupLayouts() {
@@ -77,6 +97,8 @@ class InitialPageContentViewController: UIViewController {
         pageControl.translatesAutoresizingMaskIntoConstraints = false
         titleLabel.translatesAutoresizingMaskIntoConstraints = false
         textLabel.translatesAutoresizingMaskIntoConstraints = false
+        nextButton.translatesAutoresizingMaskIntoConstraints = false
+        skipButton.translatesAutoresizingMaskIntoConstraints = false
 
         NSLayoutConstraint.activate([
             symptomImage.centerXAnchor.constraint(equalTo: view.centerXAnchor),
@@ -103,6 +125,18 @@ class InitialPageContentViewController: UIViewController {
             textLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: LayoutOptions.textLabelTopPadding),
             textLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: LayoutOptions.textHorizontalPadding),
             textLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -LayoutOptions.textHorizontalPadding)
+        ])
+
+        NSLayoutConstraint.activate([
+            nextButton.centerYAnchor.constraint(equalTo: pageControl.centerYAnchor),
+            nextButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -LayoutOptions.textHorizontalPadding),
+            nextButton.leadingAnchor.constraint(greaterThanOrEqualTo: pageControl.trailingAnchor)
+        ])
+
+        NSLayoutConstraint.activate([
+            skipButton.centerYAnchor.constraint(equalTo: pageControl.centerYAnchor),
+            skipButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: LayoutOptions.textHorizontalPadding),
+            skipButton.trailingAnchor.constraint(lessThanOrEqualTo: pageControl.leadingAnchor)
         ])
 
     }
