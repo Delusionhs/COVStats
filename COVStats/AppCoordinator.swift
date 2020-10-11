@@ -60,6 +60,7 @@ extension AppCoordinator {
 
     private func setupTabBar() {
         tabBarController.tabBar.tintColor = TabBarOptions.tintColor
+        tabBarController.view.backgroundColor = .white
         let navigationControllers = NavigationControllerType.allCases.compactMap {
             self.navigationControllers[$0]
         }
