@@ -47,6 +47,7 @@ class InitialViewController: UIViewController {
     private func configurePageViewController(with viewModel: InitialPageContentViewModel) -> InitialPageContentViewController {
         let pageContentViewController = InitialPageContentViewController()
         pageContentViewController.configure(with: viewModel)
+        pageContentViewController.delegate = self
         return pageContentViewController
     }
 }
@@ -55,6 +56,7 @@ extension InitialViewController: InitialViewInput {
     func configureInitPage(with viewModel: InitialPageContentViewModel) {
         let pageContentViewController = InitialPageContentViewController()
         pageContentViewController.configure(with: viewModel)
+        pageContentViewController.delegate = self
         pageViewController.setViewControllers([pageContentViewController], direction: .forward, animated: true, completion: nil)
     }
 }
@@ -78,3 +80,13 @@ extension InitialViewController: UIPageViewControllerDataSource, UIPageViewContr
     }
 }
 
+extension InitialViewController: InitialPageContentViewControllerButtonTapDelegate {
+
+    func nextButtonTap() {
+        print("test next")
+    }
+
+    func skipButtonTap() {
+        print("test skip")
+    }
+}
