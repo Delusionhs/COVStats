@@ -6,6 +6,11 @@
 //  Copyright © 2020 Igor Podolskiy. All rights reserved.
 //
 
+protocol InitialPageContentViewControllerButtonTapDelegate: class {
+    func nextButtonTap()
+    func skipButtonTap()
+}
+
 import UIKit
 
 class InitialPageContentViewController: UIViewController {
@@ -31,6 +36,8 @@ class InitialPageContentViewController: UIViewController {
         static let nextButtonTitle = "Next"
         static let skipButtonTitle = "Skip"
     }
+
+    weak var delegate: InitialPageContentViewControllerButtonTapDelegate?
 
     private let symptomImage: UIImageView = {
         let imgView = UIImageView()
@@ -66,6 +73,7 @@ class InitialPageContentViewController: UIViewController {
         let button = UIButton()
         button.setTitle(Localization.nextButtonTitle, for: .normal)
         button.setTitleColor(.black, for: .normal)
+        button.addTarget(self, action: #selector(nextButtonAction), for: .touchUpInside)
         return button
     }()
 
@@ -73,6 +81,7 @@ class InitialPageContentViewController: UIViewController {
         let button = UIButton()
         button.setTitle(Localization.skipButtonTitle, for: .normal)
         button.setTitleColor(.black, for: .normal)
+        button.addTarget(self, action: #selector(skipButtonAction), for: .touchUpInside)
         return button
     }()
 
@@ -151,5 +160,17 @@ class InitialPageContentViewController: UIViewController {
 
     func currentPage() -> Int {
         return pageControl.currentPage
+    }
+}
+
+//MARK: - UI Actions
+
+extension InitialPageContentViewController {
+    @objc func skipButtonAction() {
+        delegate?.skipButtonTap()
+    }
+
+    @objc func nextButtonAction() {
+        delegate?.nextButtonTap()
     }
 }
