@@ -7,6 +7,12 @@
 //
 
 class InitialRouter: InitialRouterInput {
+    weak var viewController: InitialViewController!
+    
     func initialScreenFinished() {
+
+        viewController.navigationController?.navigationBar.isHidden = false
+        viewController.tabBarController?.tabBar.isHidden = false
+        viewController.navigationController?.popViewController(animated: true)
     }
 }

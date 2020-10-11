@@ -13,6 +13,7 @@ class InitialConfigurator: InitialConfiguratorProtocol {
     private func configure(with viewController: InitialViewController) {
 
         let router = InitialRouter()
+        router.viewController = viewController
 
         let presenter = InitialPresenter()
         presenter.view = viewController

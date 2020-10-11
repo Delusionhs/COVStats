@@ -8,7 +8,11 @@
 
 import UIKit
 
-class AppCoordinator {
+protocol AppCoordinatorProtocol {
+    func start()
+}
+
+class AppCoordinator: AppCoordinatorProtocol {
 
     private enum TabBarOptions {
         static let tintColor = UIColor(hex: "#FF647C")
@@ -28,13 +32,27 @@ class AppCoordinator {
     }
 
     func start() {
-        setupHome()
+        startHome()
+        window.makeKeyAndVisible()
+    }
+
+    func startInitial() {
+        let viewController = initialConfigurator.assemblyModule()
+        window.rootViewController = viewController
+    }
+
+    func startHome() {
         setupNews()
+        setupHome()
         setupEducation()
         setupTabBar()
-        window.rootViewController = initialConfigurator.assemblyModule()
-        //window.rootViewController = tabBarController
-        window.makeKeyAndVisible()
+        window.rootViewController = tabBarController
+        if let navigationController = tabBarController.viewControllers?.first as? UINavigationController {
+            let initialViewController = initialConfigurator.assemblyModule()
+            navigationController.pushViewController(initialViewController, animated: false)
+            initialViewController.navigationController?.navigationBar.isHidden = true
+            initialViewController.tabBarController?.tabBar.isHidden = true
+        }
     }
 }
 
@@ -46,6 +64,7 @@ extension AppCoordinator {
             self.navigationControllers[$0]
         }
         tabBarController.setViewControllers(navigationControllers, animated: true)
+
     }
 
     private func setupHome() {
