@@ -20,6 +20,7 @@ class EducationViewController: UIViewController{
     override func viewDidLoad() {
         super.viewDidLoad()
         output.viewIsReady()
+        headerView.delegate = self
         setupViews()
         setupLayouts()
     }
@@ -63,4 +64,10 @@ class EducationViewController: UIViewController{
 
 extension EducationViewController: EducationViewInput {
 
+}
+
+extension EducationViewController: EducationHeaderViewButtonDelegate {
+    func seeMoreButtonTap() {
+        output.seeMoreButtonPressed()
+    }
 }

@@ -75,7 +75,10 @@ extension InitialViewController: UIPageViewControllerDataSource, UIPageViewContr
                             viewControllerAfter viewController: UIViewController) -> UIViewController? {
         guard let viewController = viewController as? InitialPageContentViewController else { return nil }
         let currentPage = viewController.currentPage()
-        guard let viewModel = output.pageViewModelForPage(pageIndex: currentPage+1) else { return nil }
+        guard let viewModel = output.pageViewModelForPage(pageIndex: currentPage+1) else {
+            output.skipInitial()
+            return nil
+        }
         return configurePageViewController(with: viewModel)
     }
 }
@@ -85,11 +88,13 @@ extension InitialViewController: InitialPageContentViewControllerButtonDelegate 
     func nextButtonTap() {
         guard let viewController = pageViewController.viewControllers?[0] as? InitialPageContentViewController else { return }
         let currentPage = viewController.currentPage()
-        guard let viewModel = output.pageViewModelForPage(pageIndex: currentPage+1) else { return }
+        guard let viewModel = output.pageViewModelForPage(pageIndex: currentPage+1) else {
+            output.skipInitial()
+            return }
         pageViewController.setViewControllers([configurePageViewController(with: viewModel)], direction: .forward, animated: true, completion: nil)
     }
 
     func skipButtonTap() {
-        output.skipButtonPress()
+        output.skipInitial()
     }
 }

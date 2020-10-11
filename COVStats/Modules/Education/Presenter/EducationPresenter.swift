@@ -6,13 +6,21 @@
 //  Copyright © 2020 Igor Podolskiy. All rights reserved.
 //
 
-class EducationPresenter: EducationModuleInput, EducationViewOutput, EducationInteractorOutput {
+class EducationPresenter: EducationInteractorOutput {
 
     weak var view: EducationViewInput!
     var interactor: EducationInteractorInput!
     var router: EducationRouterInput!
 
+}
+
+extension EducationPresenter: EducationViewOutput {
+    func seeMoreButtonPressed() {
+        router.openWhoWebsite()
+    }
+
     func viewIsReady() {
 
     }
 }
+

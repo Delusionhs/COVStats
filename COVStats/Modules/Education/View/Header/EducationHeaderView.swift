@@ -8,9 +8,13 @@
 
 import UIKit
 
+protocol EducationHeaderViewButtonDelegate: class {
+    func seeMoreButtonTap()
+}
+
 class EducationHeaderView: UIView {
 
-    private enum LocalizationOptions {
+    private enum Localization {
         static let titleLabelText = "Coronavirus disease (COVID - 19) advice for the public"
         static let textLabelText = "Stay aware of the latest information on the COVID-19 outbreak, available on the WHO website and through your national and local public health authority. Most people who become infected experience mild illness and recover, but it can be more severe for others. Take care of your health and protect others by doing the following:"
     }
@@ -33,9 +37,11 @@ class EducationHeaderView: UIView {
         static let seeMoreButtonTopPadding: CGFloat = 25
     }
 
+    weak var delegate: EducationHeaderViewButtonDelegate?
+
     private let titleLabel: UILabel = {
         let label = UILabel()
-        label.text = LocalizationOptions.titleLabelText
+        label.text = Localization.titleLabelText
         label.numberOfLines = ViewOptions.titleLabelNumberOfLines
         label.font = UIFont.systemFont(ofSize: ViewOptions.titleLabelFontSize, weight: UIFont.Weight.semibold)
         return label
@@ -43,7 +49,7 @@ class EducationHeaderView: UIView {
 
     private let textLabel: UILabel = {
         let label = UILabel()
-        label.text = LocalizationOptions.textLabelText
+        label.text = Localization.textLabelText
         label.numberOfLines = ViewOptions.textLabelNumberOfLines
         label.font = UIFont.systemFont(ofSize: ViewOptions.textLabelFontSize, weight: UIFont.Weight.regular)
         label.textColor = ViewOptions.textLabelFontColor
@@ -53,6 +59,7 @@ class EducationHeaderView: UIView {
     private let seeMoreButton: UIButton = {
         let button = UIButton()
         button.setImage(ViewOptions.seeMoreButtonImage, for: .normal)
+        button.addTarget(self, action: #selector(seeMoreButtonAction), for: .touchUpInside)
         return button
     }()
 
@@ -97,4 +104,10 @@ class EducationHeaderView: UIView {
 
     }
 
+}
+
+extension EducationHeaderView {
+    @objc func seeMoreButtonAction() {
+        delegate?.seeMoreButtonTap()
+    }
 }

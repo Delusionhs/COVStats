@@ -25,7 +25,7 @@ class InitialPresenter: InitialInteractorOutput {
 }
 
 extension InitialPresenter: InitialViewOutput {
-    func skipButtonPress() {
+    func skipInitial() {
         router.initialScreenFinished()
     }
 

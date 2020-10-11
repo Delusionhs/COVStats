@@ -10,5 +10,5 @@ protocol InitialViewOutput {
     func viewIsReady()
     func pageViewModelForPage(pageIndex: Int) -> InitialPageContentViewModel?
     func pagesMaxIndex() -> Int
-    func skipButtonPress()
+    func skipInitial()
 }

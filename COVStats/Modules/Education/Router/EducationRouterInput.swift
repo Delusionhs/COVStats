@@ -9,5 +9,5 @@
 import Foundation
 
 protocol EducationRouterInput {
-
+    func openWhoWebsite()
 }

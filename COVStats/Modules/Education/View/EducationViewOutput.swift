@@ -7,11 +7,6 @@
 //
 
 protocol EducationViewOutput {
-
-    /**
-        @author Igor Podolsiy
-        Notify presenter that view is ready
-    */
-
     func viewIsReady()
+    func seeMoreButtonPressed()
 }
