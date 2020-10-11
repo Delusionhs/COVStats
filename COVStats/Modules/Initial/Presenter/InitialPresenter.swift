@@ -25,6 +25,10 @@ class InitialPresenter: InitialInteractorOutput {
 }
 
 extension InitialPresenter: InitialViewOutput {
+    func skipButtonPress() {
+        router.initialScreenFinished()
+    }
+
     func viewIsReady() {
         guard pagesViewModels.indices.count >= 0 else {
             return

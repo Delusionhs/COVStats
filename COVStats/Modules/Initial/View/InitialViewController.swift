@@ -80,7 +80,7 @@ extension InitialViewController: UIPageViewControllerDataSource, UIPageViewContr
     }
 }
 
-extension InitialViewController: InitialPageContentViewControllerButtonTapDelegate {
+extension InitialViewController: InitialPageContentViewControllerButtonDelegate {
 
     func nextButtonTap() {
         guard let viewController = pageViewController.viewControllers?[0] as? InitialPageContentViewController else { return }
@@ -90,6 +90,6 @@ extension InitialViewController: InitialPageContentViewControllerButtonTapDelega
     }
 
     func skipButtonTap() {
-        dismiss(animated: true, completion: nil)
+        output.skipButtonPress()
     }
 }

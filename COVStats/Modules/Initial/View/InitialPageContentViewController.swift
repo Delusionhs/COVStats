@@ -6,7 +6,7 @@
 //  Copyright © 2020 Igor Podolskiy. All rights reserved.
 //
 
-protocol InitialPageContentViewControllerButtonTapDelegate: class {
+protocol InitialPageContentViewControllerButtonDelegate: class {
     func nextButtonTap()
     func skipButtonTap()
 }
@@ -37,7 +37,7 @@ class InitialPageContentViewController: UIViewController {
         static let skipButtonTitle = "Skip"
     }
 
-    weak var delegate: InitialPageContentViewControllerButtonTapDelegate?
+    weak var delegate: InitialPageContentViewControllerButtonDelegate?
 
     private let symptomImage: UIImageView = {
         let imgView = UIImageView()

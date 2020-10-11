@@ -7,5 +7,6 @@
 //
 
 class InitialRouter: InitialRouterInput {
-
+    func initialScreenFinished() {
+    }
 }
