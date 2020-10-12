@@ -29,6 +29,7 @@ class CountryDetailGraphView: UIView {
         static let deathGradientEndColor = UIColor(hex: "#FFCBD3")
         static let deathDataSetLabel = "Death"
         static let casesDataSetLabel = "Affected"
+        static let graphGridColor = UIColor(hex: "#E4E4E4")
     }
 
     private enum LayoutOptions {
@@ -69,7 +70,8 @@ class CountryDetailGraphView: UIView {
 
     private func setupGraph() {
         trendingGraph.isUserInteractionEnabled = false
-        trendingGraph.xAxis.drawGridLinesEnabled = false
+        trendingGraph.xAxis.drawGridLinesEnabled = true
+        trendingGraph.xAxis.gridColor = GraphOptions.graphGridColor
         trendingGraph.xAxis.drawAxisLineEnabled = false
         trendingGraph.xAxis.drawLabelsEnabled = false
         trendingGraph.rightAxis.enabled = false
