@@ -23,7 +23,7 @@ struct EducationBodyViewPreview: PreviewProvider {
 fileprivate class mockViewController: UIViewController {
 
     private let header: EducationBodyView = {
-        let view = EducationBodyView()
+        let view = EducationBodyView(frame: .zero)
         return view
     }()
 

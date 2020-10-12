@@ -13,6 +13,7 @@ class EducationViewController: UIViewController{
     var output: EducationViewOutput!
 
     private let headerView = EducationHeaderView()
+    private let bodyView = EducationBodyView()
     private let scrollView = UIScrollView()
     private let scrollViewContentView = UIView()
 
@@ -30,13 +31,15 @@ class EducationViewController: UIViewController{
         view.addSubview(scrollView)
         scrollView.addSubview(scrollViewContentView)
         scrollViewContentView.addSubview(headerView)
-
+        scrollViewContentView.addSubview(bodyView)
+  
     }
 
     private func setupLayouts() {
         scrollView.translatesAutoresizingMaskIntoConstraints = false
         scrollViewContentView.translatesAutoresizingMaskIntoConstraints = false
         headerView.translatesAutoresizingMaskIntoConstraints = false
+        bodyView.translatesAutoresizingMaskIntoConstraints = false
 
         NSLayoutConstraint.activate([
             scrollView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
@@ -56,9 +59,15 @@ class EducationViewController: UIViewController{
             headerView.leadingAnchor.constraint(equalTo: scrollViewContentView.leadingAnchor),
             headerView.trailingAnchor.constraint(equalTo: scrollViewContentView.trailingAnchor),
             headerView.topAnchor.constraint(equalTo: scrollViewContentView.topAnchor),
-            headerView.bottomAnchor.constraint(equalTo: scrollViewContentView.bottomAnchor)
+            //headerView.bottomAnchor.constraint(equalTo: scrollViewContentView.bottomAnchor)
         ])
 
+        NSLayoutConstraint.activate([
+            bodyView.leadingAnchor.constraint(equalTo: scrollViewContentView.leadingAnchor),
+            bodyView.trailingAnchor.constraint(equalTo: scrollViewContentView.trailingAnchor),
+            bodyView.topAnchor.constraint(equalTo: headerView.bottomAnchor),
+            bodyView.bottomAnchor.constraint(equalTo: scrollViewContentView.bottomAnchor)
+        ])
     }
 }
 
