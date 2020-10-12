@@ -20,6 +20,7 @@ class HomeViewController: UIViewController, HomeViewInput {
         static let globalSummaryViewHeight: CGFloat = 920
         static let countryListViewMargin: CGFloat = 10
         static let countryListViewHeight: CGFloat = 670
+        static let countryListViewTopMargin: CGFloat = 25
     }
 
     var output: HomeViewOutput!
@@ -74,7 +75,7 @@ class HomeViewController: UIViewController, HomeViewInput {
         ])
 
         NSLayoutConstraint.activate([
-            countryListViewController.view.topAnchor.constraint(equalTo: globalSummaryViewController.view.bottomAnchor),
+            countryListViewController.view.topAnchor.constraint(equalTo: globalSummaryViewController.view.bottomAnchor, constant: LayoutOptions.countryListViewTopMargin),
             countryListViewController.view.heightAnchor.constraint(equalToConstant: LayoutOptions.countryListViewHeight),
             countryListViewController.view.bottomAnchor.constraint(equalTo: scrollViewContentView.bottomAnchor),
             countryListViewController.view.leadingAnchor.constraint(equalTo:  scrollViewContentView.leadingAnchor, constant: LayoutOptions.countryListViewMargin),
