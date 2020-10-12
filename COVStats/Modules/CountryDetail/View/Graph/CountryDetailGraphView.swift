@@ -111,6 +111,9 @@ class CountryDetailGraphView: UIView {
         var deathLineDataEntry: [ChartDataEntry] = []
         var affectedLineDataEntry: [ChartDataEntry] = []
 
+        var affectedMaxLineDataEntry: [ChartDataEntry] = []
+        var deathMaxLineDataEntry: [ChartDataEntry] = []
+
 
         for i in 0..<min(xAxisData.count, deathYAxisData.count) {
             deathLineDataEntry.append(ChartDataEntry(x: Double(xAxisData[i]), y: Double(deathYAxisData[i])))
@@ -120,17 +123,34 @@ class CountryDetailGraphView: UIView {
             affectedLineDataEntry.append(ChartDataEntry(x: Double(xAxisData[i]), y: Double(affectedYAxisData[i])))
         }
 
+        affectedMaxLineDataEntry.append(ChartDataEntry(x: Double(affectedYAxisData.lastIndex(where: {$0 == affectedYAxisData.max()}) ?? 0)+1,
+                                                       y: Double(affectedYAxisData.last(where: {$0 == affectedYAxisData.max()}) ?? 0)))
+
+        deathMaxLineDataEntry.append(ChartDataEntry(x: Double(deathYAxisData.lastIndex(where: {$0 == deathYAxisData.max()}) ?? 0)+1,
+                                                       y: Double(deathYAxisData.last(where: {$0 == deathYAxisData.max()}) ?? 0)))
+
         let deathLineDataSet = LineChartDataSet(entries: deathLineDataEntry, label: GraphOptions.deathDataSetLabel)
         let affectedLineDataSet = LineChartDataSet(entries: affectedLineDataEntry, label: GraphOptions.casesDataSetLabel)
+
+        let deathMaxLineDataSet = LineChartDataSet(entries: deathMaxLineDataEntry)
+        let affectedMaxLineDataSet = LineChartDataSet(entries:  affectedMaxLineDataEntry)
+
         let lineData = LineChartData()
+
         deathLineDataSet.mode = .cubicBezier
         deathLineDataSet.colors = [UIColor.clear]
         deathLineDataSet.drawCirclesEnabled = false
+        deathLineDataSet.drawValuesEnabled = false
         affectedLineDataSet.mode = .cubicBezier
+        affectedLineDataSet.drawValuesEnabled = false
         affectedLineDataSet.colors = [UIColor.clear]
         affectedLineDataSet.drawCirclesEnabled = false
 
-        //let maxAffectedLineDataSet = LineChartDataSet(entries: maxDeathLineDataEntry, label: GraphOptions.deathDataSetLabel)
+        affectedMaxLineDataSet.circleColors = [UIColor.white]
+        affectedMaxLineDataSet.circleHoleColor = GraphOptions.casesGradientEndColor
+
+        deathMaxLineDataSet.circleColors = [UIColor.white]
+        deathMaxLineDataSet.circleHoleColor = GraphOptions.deathGradientEndColor
 
 
         if let gradient = getGradient(fromColor: GraphOptions.casesGradientStartColor, toColor: GraphOptions.casesGradientEndColor, location: GraphOptions.gradientColorLocation) {
@@ -145,8 +165,10 @@ class CountryDetailGraphView: UIView {
         deathLineDataSet.fillAlpha = GraphOptions.gradientFillAlpha
         lineData.addDataSet(affectedLineDataSet)
         lineData.addDataSet(deathLineDataSet)
-        //lineData.setDrawValues(false)
+        lineData.addDataSet(affectedMaxLineDataSet)
+        lineData.addDataSet(deathMaxLineDataSet)
         trendingGraph.data = lineData
+        trendingGraph.maxVisibleCount = Int(Int32.max)
     }
 
     func configure(with viewModel: CountryDetailGraphViewModel) {
