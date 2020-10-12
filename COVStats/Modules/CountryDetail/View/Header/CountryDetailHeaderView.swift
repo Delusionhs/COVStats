@@ -35,6 +35,11 @@ class CountryDetailHeaderView: UIView {
         static let todayTextTopPadding: CGFloat = 5
     }
 
+    private enum Localization {
+        static let todayCasesCountText = "Infected cases reported"
+        static let todayDeathCountText = "Death cases reported"
+    }
+
     private let flagImage: UIImageView = {
         let imgView = UIImageView()
         imgView.contentMode = .scaleAspectFill
@@ -169,9 +174,9 @@ class CountryDetailHeaderView: UIView {
         }
         countryNameLabel.text = viewModel.country
         casesCountLabel.text = viewModel.cases
-        todayCasesCountLabel.text = viewModel.todayCases
+        todayCasesCountLabel.text = viewModel.todayCases + " " + Localization.todayCasesCountText
         deathCountLabel.text = viewModel.death
-        todayDeathCountLabel.text = viewModel.todayDeath
+        todayDeathCountLabel.text = viewModel.todayDeath + " " + Localization.todayDeathCountText
     }
 }
 
