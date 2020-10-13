@@ -66,7 +66,7 @@ class EducationBodyView: UIView {
         segmentedControlBar.backgroundColor = SegmentedControlOptions.segmentedControlBarColor
         segmentedControlSelectedBar.backgroundColor = SegmentedControlOptions.segmentedControlSelectedBarColor
 
-        //segmentedControl.addTarget(self, action: #selector(segmentedControlValueChanged), for: UIControl.Event.valueChanged)
+        segmentedControl.addTarget(self, action: #selector(segmentedControlValueChanged), for: UIControl.Event.valueChanged)
     }
 
     private func setupViews() {

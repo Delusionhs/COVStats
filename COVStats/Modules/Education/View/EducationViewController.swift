@@ -10,12 +10,36 @@ import UIKit
 
 class EducationViewController: UIViewController{
 
+    private enum Localization {
+        static let preventionSegmentTitle = "Prevention"
+        static let symptomsSegmentTitle = "Symptoms"
+        static let diagnosisSegmentTitle = "Diagnosis"
+    }
+
+    private enum SegmentedControlOptions {
+        static let titleTextSize: CGFloat = 13
+        static let normalTitleTextColor = UIColor(hex: "#999999")
+        static let segmentedControlBarColor = UIColor(hex: "#96FFE1")
+        static let segmentedControlSelectedBarColor = UIColor(hex: "#00C48C")
+        static let barAnimationDuratation = 0.3
+    }
+
+    private enum ViewOptions {
+    }
+
+    private enum LayoutOptions {
+        static let segmentedControlBarHeight:CGFloat = 5
+    }
+
     var output: EducationViewOutput!
 
     private let headerView = EducationHeaderView()
-    private let bodyView = EducationBodyView()
+    private let segmentedControl = UISegmentedControl()
+    private let segmentedControlBar = UIView()
+    private let segmentedControlSelectedBar = UIView()
     private let scrollView = UIScrollView()
     private let scrollViewContentView = UIView()
+    
 
     // MARK: Life cycle
     override func viewDidLoad() {
@@ -31,15 +55,40 @@ class EducationViewController: UIViewController{
         view.addSubview(scrollView)
         scrollView.addSubview(scrollViewContentView)
         scrollViewContentView.addSubview(headerView)
-        scrollViewContentView.addSubview(bodyView)
+        setupSegmentedControl()
   
+    }
+
+    private func setupSegmentedControl() {
+        scrollViewContentView.addSubview(segmentedControl)
+        scrollViewContentView.addSubview(segmentedControlBar)
+        scrollViewContentView.addSubview(segmentedControlSelectedBar)
+        segmentedControl.setTitleTextAttributes([NSAttributedString.Key.font : UIFont.systemFont(ofSize: SegmentedControlOptions.titleTextSize,
+                                                                                                 weight: UIFont.Weight.regular),
+                                                 NSAttributedString.Key.foregroundColor: SegmentedControlOptions.normalTitleTextColor],
+                                                for: .normal)
+        segmentedControl.setTitleTextAttributes([NSAttributedString.Key.font : UIFont.systemFont(ofSize: SegmentedControlOptions.titleTextSize,
+                                                                                                 weight: UIFont.Weight.regular),
+                                                 NSAttributedString.Key.foregroundColor: UIColor.black],
+                                                for: .selected)
+        segmentedControl.insertSegment(withTitle: Localization.preventionSegmentTitle, at: 0, animated: true)
+        segmentedControl.insertSegment(withTitle: Localization.symptomsSegmentTitle, at: 1, animated: true)
+        segmentedControl.insertSegment(withTitle: Localization.diagnosisSegmentTitle, at: 2, animated: true)
+
+        segmentedControl.selectedSegmentIndex = 0
+        segmentedControlBar.backgroundColor = SegmentedControlOptions.segmentedControlBarColor
+        segmentedControlSelectedBar.backgroundColor = SegmentedControlOptions.segmentedControlSelectedBarColor
+
+        segmentedControl.addTarget(self, action: #selector(segmentedControlValueChanged), for: UIControl.Event.valueChanged)
     }
 
     private func setupLayouts() {
         scrollView.translatesAutoresizingMaskIntoConstraints = false
         scrollViewContentView.translatesAutoresizingMaskIntoConstraints = false
         headerView.translatesAutoresizingMaskIntoConstraints = false
-        bodyView.translatesAutoresizingMaskIntoConstraints = false
+        segmentedControl.translatesAutoresizingMaskIntoConstraints = false
+        segmentedControlBar.translatesAutoresizingMaskIntoConstraints = false
+        segmentedControlSelectedBar.translatesAutoresizingMaskIntoConstraints = false
 
         NSLayoutConstraint.activate([
             scrollView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
@@ -63,11 +112,31 @@ class EducationViewController: UIViewController{
         ])
 
         NSLayoutConstraint.activate([
-            bodyView.leadingAnchor.constraint(equalTo: scrollViewContentView.leadingAnchor),
-            bodyView.trailingAnchor.constraint(equalTo: scrollViewContentView.trailingAnchor),
-            bodyView.topAnchor.constraint(equalTo: headerView.bottomAnchor),
-            bodyView.bottomAnchor.constraint(equalTo: scrollViewContentView.bottomAnchor)
+            segmentedControl.leadingAnchor.constraint(equalTo: scrollViewContentView.leadingAnchor),
+            segmentedControl.trailingAnchor.constraint(equalTo: scrollViewContentView.trailingAnchor),
+            segmentedControl.topAnchor.constraint(equalTo: headerView.bottomAnchor),
+            segmentedControl.bottomAnchor.constraint(equalTo: scrollViewContentView.bottomAnchor)
         ])
+
+        NSLayoutConstraint.activate([
+            segmentedControlBar.topAnchor.constraint(equalTo: segmentedControl.bottomAnchor),
+            segmentedControlBar.widthAnchor.constraint(equalTo: segmentedControl.widthAnchor),
+            segmentedControlBar.heightAnchor.constraint(equalToConstant: LayoutOptions.segmentedControlBarHeight)
+        ])
+
+        NSLayoutConstraint.activate([
+            segmentedControlSelectedBar.topAnchor.constraint(equalTo: segmentedControl.bottomAnchor),
+            segmentedControlSelectedBar.widthAnchor.constraint(equalTo: segmentedControl.widthAnchor, multiplier: 1 / CGFloat(segmentedControl.numberOfSegments)),
+            segmentedControlSelectedBar.leftAnchor.constraint(equalTo: segmentedControl.leftAnchor),
+            segmentedControlSelectedBar.heightAnchor.constraint(equalToConstant: LayoutOptions.segmentedControlBarHeight)
+        ])
+    }
+
+
+    @objc func segmentedControlValueChanged(_ sender: UISegmentedControl) {
+        UIView.animate(withDuration: SegmentedControlOptions.barAnimationDuratation) {
+            self.segmentedControlSelectedBar.frame.origin.x = (self.segmentedControl.frame.width / CGFloat(self.segmentedControl.numberOfSegments)) * CGFloat(self.segmentedControl.selectedSegmentIndex)
+        }
     }
 }
 
