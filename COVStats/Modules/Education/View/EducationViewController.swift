@@ -60,6 +60,8 @@ class EducationViewController: UIViewController{
     }
 
     private func setupSegmentedControl() {
+        segmentedControl.backgroundColor = .clear
+        segmentedControl.selectedSegmentTintColor = .clear
         scrollViewContentView.addSubview(segmentedControl)
         scrollViewContentView.addSubview(segmentedControlBar)
         scrollViewContentView.addSubview(segmentedControlSelectedBar)

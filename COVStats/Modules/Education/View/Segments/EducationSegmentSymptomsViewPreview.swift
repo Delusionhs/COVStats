@@ -1,8 +1,8 @@
 //
-//  EducationBodyViewPreview.swift
+//  EducationSegmentSymptomsViewPreview.swift
 //  COVStats
 //
-//  Created by Igor Podolskiy on 12.10.2020.
+//  Created by Igor Podolskiy on 13.10.2020.
 //  Copyright © 2020 Igor Podolskiy. All rights reserved.
 //
 
@@ -12,7 +12,7 @@ import Foundation
 import SwiftUI
 
 @available(iOS 13, *)
-struct EducationBodyViewPreview: PreviewProvider {
+struct EducationSegmentSymptomsViewPreview: PreviewProvider {
     static var previews: some View {
         let viewController =  mockViewController()
         viewController.toPreview()
@@ -22,8 +22,8 @@ struct EducationBodyViewPreview: PreviewProvider {
 
 fileprivate class mockViewController: UIViewController {
 
-    private let header: EducationBodyView = {
-        let view = EducationBodyView(frame: .zero)
+    private let header: EducationSegmentPreventionView = {
+        let view = EducationSegmentPreventionView(frame: .zero)
         return view
     }()
 
@@ -44,4 +44,5 @@ fileprivate class mockViewController: UIViewController {
     }
 }
 #endif
+
 
