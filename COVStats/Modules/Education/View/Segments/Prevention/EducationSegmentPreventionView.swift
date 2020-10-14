@@ -23,6 +23,7 @@ class EducationSegmentPreventionView: UIView {
         static let segmentedControlBarHeight:CGFloat = 5
         static let titleLeftPadding: CGFloat = 25
         static let titleRightPadding: CGFloat = -65
+        static let tabHeight: CGFloat = 85
     }
 
     private let titleLabel: UILabel = {
@@ -39,7 +40,6 @@ class EducationSegmentPreventionView: UIView {
     override init(frame: CGRect) {
         super.init(frame: frame)
         setupViews()
-        setupTabs()
         setupLayouts()
     }
 
@@ -51,15 +51,31 @@ class EducationSegmentPreventionView: UIView {
         addSubview(titleLabel)
     }
 
-    private func setupTabs() {
-        tab.configure(viewModel: EducationSegmentPreventionViewTabViewModel(imageName: "preventionFace", titleText: "Clean your hands often",
-                                                            tabText: "Wash hands often with soap and water for at least 20s"))
-        addSubview(tab)
+    func setupTabs(viewModels: [EducationSegmentPreventionViewTabViewModel]) {
+        var iterator = 0
+
+        for model in viewModels {
+            let tab = EducationSegmentPreventionViewTab()
+            addSubview(tab)
+
+            tab.translatesAutoresizingMaskIntoConstraints = false
+            tab.configure(viewModel: model)
+
+            NSLayoutConstraint.activate([
+                tab.leadingAnchor.constraint(equalTo: leadingAnchor),
+                tab.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: CGFloat(iterator)*LayoutOptions.tabHeight),
+                tab.trailingAnchor.constraint(equalTo: trailingAnchor),
+                tab.heightAnchor.constraint(equalToConstant: LayoutOptions.tabHeight)
+            ])
+            iterator += 1
+        }
+
+
     }
 
     private func setupLayouts() {
         titleLabel.translatesAutoresizingMaskIntoConstraints = false
-        tab.translatesAutoresizingMaskIntoConstraints = false
+//        tab.translatesAutoresizingMaskIntoConstraints = false
 
         NSLayoutConstraint.activate([
             titleLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: LayoutOptions.titleLeftPadding),
@@ -67,12 +83,12 @@ class EducationSegmentPreventionView: UIView {
             titleLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: LayoutOptions.titleRightPadding),
         ])
 
-        NSLayoutConstraint.activate([
-            tab.leadingAnchor.constraint(equalTo: leadingAnchor),
-            tab.topAnchor.constraint(equalTo: titleLabel.bottomAnchor),
-            tab.trailingAnchor.constraint(equalTo: trailingAnchor),
-            tab.bottomAnchor.constraint(equalTo: bottomAnchor)
-        ])
+//        NSLayoutConstraint.activate([
+//            tab.leadingAnchor.constraint(equalTo: leadingAnchor),
+//            tab.topAnchor.constraint(equalTo: titleLabel.bottomAnchor),
+//            tab.trailingAnchor.constraint(equalTo: trailingAnchor),
+//            tab.bottomAnchor.constraint(equalTo: bottomAnchor)
+//        ])
     }
 }
 

@@ -40,6 +40,8 @@ class EducationViewController: UIViewController{
     private let segmentedControlSelectedBar = UIView()
     private let scrollView = UIScrollView()
     private let scrollViewContentView = UIView()
+
+    private let segmentsContainer = EducationSegmentsContainerView()
     
 
     // MARK: Life cycle
@@ -56,6 +58,7 @@ class EducationViewController: UIViewController{
         view.addSubview(scrollView)
         scrollView.addSubview(scrollViewContentView)
         scrollViewContentView.addSubview(headerView)
+        scrollViewContentView.addSubview(segmentsContainer)
         setupSegmentedControl()
   
     }
@@ -92,6 +95,7 @@ class EducationViewController: UIViewController{
         segmentedControl.translatesAutoresizingMaskIntoConstraints = false
         segmentedControlBar.translatesAutoresizingMaskIntoConstraints = false
         segmentedControlSelectedBar.translatesAutoresizingMaskIntoConstraints = false
+        segmentsContainer.translatesAutoresizingMaskIntoConstraints = false
 
         NSLayoutConstraint.activate([
             scrollView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
@@ -117,7 +121,6 @@ class EducationViewController: UIViewController{
             segmentedControl.leadingAnchor.constraint(equalTo: scrollViewContentView.leadingAnchor),
             segmentedControl.trailingAnchor.constraint(equalTo: scrollViewContentView.trailingAnchor),
             segmentedControl.topAnchor.constraint(equalTo: headerView.bottomAnchor, constant: LayoutOptions.segmentedControlTopMargin),
-            segmentedControl.bottomAnchor.constraint(equalTo: scrollViewContentView.bottomAnchor)
         ])
 
         NSLayoutConstraint.activate([
@@ -131,6 +134,14 @@ class EducationViewController: UIViewController{
             segmentedControlSelectedBar.widthAnchor.constraint(equalTo: segmentedControl.widthAnchor, multiplier: 1 / CGFloat(segmentedControl.numberOfSegments)),
             segmentedControlSelectedBar.leftAnchor.constraint(equalTo: segmentedControl.leftAnchor),
             segmentedControlSelectedBar.heightAnchor.constraint(equalToConstant: LayoutOptions.segmentedControlBarHeight)
+        ])
+
+        NSLayoutConstraint.activate([
+            segmentsContainer.topAnchor.constraint(equalTo: segmentedControlBar.bottomAnchor),
+            segmentsContainer.widthAnchor.constraint(equalTo: segmentedControl.widthAnchor),
+            segmentsContainer.leftAnchor.constraint(equalTo: segmentedControl.leftAnchor),
+            segmentsContainer.bottomAnchor.constraint(equalTo: scrollViewContentView.bottomAnchor),
+            segmentsContainer.heightAnchor.constraint(equalToConstant: 500)
         ])
     }
 
