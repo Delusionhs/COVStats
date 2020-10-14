@@ -21,6 +21,9 @@ class EducationSegmentPreventionViewTab: UIView {
         static let tabImageSideSize: CGFloat = 85
         static let textLeftPadding: CGFloat = 15
         static let textLabelTopPadding: CGFloat = 15
+        static let elementRightPadding: CGFloat = -41
+        static let elementLeftPadding: CGFloat = 25
+        static let tabHeight: CGFloat = 85
     }
 
     override init(frame: CGRect) {
@@ -44,9 +47,9 @@ class EducationSegmentPreventionViewTab: UIView {
 
     private let textLabel: UILabel = {
         let label = UILabel()
-        label.adjustsFontSizeToFitWidth = true
         label.textColor = TabOptions.textLabelFontColor
         label.font = UIFont.systemFont(ofSize: TabOptions.textLabelFontSize, weight: UIFont.Weight.regular)
+        label.numberOfLines = 0
         return label
     }()
 
@@ -66,7 +69,11 @@ class EducationSegmentPreventionViewTab: UIView {
         textLabel.translatesAutoresizingMaskIntoConstraints = false
 
         NSLayoutConstraint.activate([
-            tabImage.leadingAnchor.constraint(equalTo: leadingAnchor),
+            //heightAnchor.constraint(equalToConstant: LayoutOptions.tabHeight)
+        ])
+
+        NSLayoutConstraint.activate([
+            tabImage.leadingAnchor.constraint(equalTo: leadingAnchor, constant: LayoutOptions.elementLeftPadding),
             tabImage.topAnchor.constraint(equalTo: topAnchor),
             tabImage.heightAnchor.constraint(equalToConstant: LayoutOptions.tabImageSideSize),
             tabImage.widthAnchor.constraint(equalToConstant: LayoutOptions.tabImageSideSize)
@@ -75,13 +82,13 @@ class EducationSegmentPreventionViewTab: UIView {
         NSLayoutConstraint.activate([
             titleLabel.leadingAnchor.constraint(equalTo: tabImage.trailingAnchor, constant: LayoutOptions.textLeftPadding),
             titleLabel.topAnchor.constraint(equalTo: tabImage.topAnchor),
-            titleLabel.trailingAnchor.constraint(equalTo: trailingAnchor)
+            titleLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: LayoutOptions.elementRightPadding)
         ])
 
         NSLayoutConstraint.activate([
             textLabel.leadingAnchor.constraint(equalTo: tabImage.trailingAnchor, constant: LayoutOptions.textLeftPadding),
             textLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: LayoutOptions.textLabelTopPadding),
-            textLabel.trailingAnchor.constraint(equalTo: trailingAnchor)
+            textLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: LayoutOptions.elementRightPadding)
         ])
     }
 

@@ -11,28 +11,36 @@ import UIKit
 
 class EducationSegmentPreventionView: UIView {
 
-    let tab = EducationSegmentPreventionViewTab()
-
     private enum Localization {
+        static let titleLabelText = "Basic protective measures against the new coronavirus"
     }
 
     private enum ViewOptions {
+        static let titleLabelFontSize: CGFloat = 28
     }
 
     private enum LayoutOptions {
         static let segmentedControlBarHeight:CGFloat = 5
+        static let titleLeftPadding: CGFloat = 25
+        static let titleRightPadding: CGFloat = -65
     }
 
-    let segmentedControl = UISegmentedControl()
-    private let segmentedControlBar = UIView()
-    private let segmentedControlSelectedBar = UIView()
+    private let titleLabel: UILabel = {
+        let label = UILabel()
+        label.font = UIFont.systemFont(ofSize: ViewOptions.titleLabelFontSize, weight: UIFont.Weight.semibold)
+        label.numberOfLines = 0
+        label.text = Localization.titleLabelText
+        return label
+    }()
+
+    let tab = EducationSegmentPreventionViewTab()
+
 
     override init(frame: CGRect) {
         super.init(frame: frame)
         setupViews()
         setupTabs()
         setupLayouts()
-
     }
 
     required init(coder aDecoder: NSCoder) {
@@ -40,6 +48,7 @@ class EducationSegmentPreventionView: UIView {
     }
 
     private func setupViews() {
+        addSubview(titleLabel)
     }
 
     private func setupTabs() {
@@ -49,11 +58,18 @@ class EducationSegmentPreventionView: UIView {
     }
 
     private func setupLayouts() {
+        titleLabel.translatesAutoresizingMaskIntoConstraints = false
         tab.translatesAutoresizingMaskIntoConstraints = false
 
         NSLayoutConstraint.activate([
+            titleLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: LayoutOptions.titleLeftPadding),
+            titleLabel.topAnchor.constraint(equalTo: topAnchor),
+            titleLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: LayoutOptions.titleRightPadding),
+        ])
+
+        NSLayoutConstraint.activate([
             tab.leadingAnchor.constraint(equalTo: leadingAnchor),
-            tab.topAnchor.constraint(equalTo: topAnchor),
+            tab.topAnchor.constraint(equalTo: titleLabel.bottomAnchor),
             tab.trailingAnchor.constraint(equalTo: trailingAnchor),
             tab.bottomAnchor.constraint(equalTo: bottomAnchor)
         ])
