@@ -11,6 +11,8 @@ import UIKit
 
 class EducationSegmentPreventionView: UIView {
 
+    let tab = EducationSegmentPreventionViewTab()
+
     private enum Localization {
     }
 
@@ -28,7 +30,9 @@ class EducationSegmentPreventionView: UIView {
     override init(frame: CGRect) {
         super.init(frame: frame)
         setupViews()
+        setupTabs()
         setupLayouts()
+
     }
 
     required init(coder aDecoder: NSCoder) {
@@ -38,7 +42,21 @@ class EducationSegmentPreventionView: UIView {
     private func setupViews() {
     }
 
+    private func setupTabs() {
+        tab.configure(viewModel: EducationSegmentPreventionViewTabViewModel(imageName: "preventionFace", titleText: "Clean your hands often",
+                                                            tabText: "Wash hands often with soap and water for at least 20s"))
+        addSubview(tab)
+    }
+
     private func setupLayouts() {
+        tab.translatesAutoresizingMaskIntoConstraints = false
+
+        NSLayoutConstraint.activate([
+            tab.leadingAnchor.constraint(equalTo: leadingAnchor),
+            tab.topAnchor.constraint(equalTo: topAnchor),
+            tab.trailingAnchor.constraint(equalTo: trailingAnchor),
+            tab.bottomAnchor.constraint(equalTo: bottomAnchor)
+        ])
     }
 }
 

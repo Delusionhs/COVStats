@@ -19,6 +19,8 @@ class EducationSegmentPreventionViewTab: UIView {
 
     private enum LayoutOptions {
         static let tabImageSideSize: CGFloat = 85
+        static let textLeftPadding: CGFloat = 15
+        static let textLabelTopPadding: CGFloat = 15
     }
 
     override init(frame: CGRect) {
@@ -69,6 +71,24 @@ class EducationSegmentPreventionViewTab: UIView {
             tabImage.heightAnchor.constraint(equalToConstant: LayoutOptions.tabImageSideSize),
             tabImage.widthAnchor.constraint(equalToConstant: LayoutOptions.tabImageSideSize)
         ])
+
+        NSLayoutConstraint.activate([
+            titleLabel.leadingAnchor.constraint(equalTo: tabImage.trailingAnchor, constant: LayoutOptions.textLeftPadding),
+            titleLabel.topAnchor.constraint(equalTo: tabImage.topAnchor),
+            titleLabel.trailingAnchor.constraint(equalTo: trailingAnchor)
+        ])
+
+        NSLayoutConstraint.activate([
+            textLabel.leadingAnchor.constraint(equalTo: tabImage.trailingAnchor, constant: LayoutOptions.textLeftPadding),
+            textLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: LayoutOptions.textLabelTopPadding),
+            textLabel.trailingAnchor.constraint(equalTo: trailingAnchor)
+        ])
+    }
+
+    func configure(viewModel: EducationSegmentPreventionViewTabViewModel) {
+        tabImage.image = UIImage(named: viewModel.imageName)
+        titleLabel.text = viewModel.titleText
+        textLabel.text = viewModel.tabText
     }
     
 }
