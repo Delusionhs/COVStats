@@ -82,6 +82,7 @@ class GlobalSummaryRecoveryGraph: UIView  {
         addSubview(titleLabel)
         addSubview(affectedLegend)
         addSubview(recoveredLegend)
+        layoutSubviews()
 
     }
 
@@ -114,7 +115,7 @@ class GlobalSummaryRecoveryGraph: UIView  {
         ])
 
         NSLayoutConstraint.activate([
-            recoveredLegend.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -LayoutOptions.legendHorizontalPadding),
+            recoveredLegend.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -LayoutOptions.legendHorizontalPadding*1.5),
             recoveredLegend.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -LayoutOptions.legendVercicalPadding)
         ])
     }
