@@ -60,7 +60,7 @@ class EducationViewController: UIViewController{
         scrollViewContentView.addSubview(headerView)
         scrollViewContentView.addSubview(segmentsContainer)
         setupSegmentedControl()
-  
+        segmentsContainer.configurePreventionTabs(viewModel: output.viewModelsForPreventionsSegments())
     }
 
     private func setupSegmentedControl() {

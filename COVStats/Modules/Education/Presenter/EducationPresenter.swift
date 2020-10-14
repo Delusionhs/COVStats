@@ -20,7 +20,14 @@ extension EducationPresenter: EducationViewOutput {
     }
 
     func viewIsReady() {
+    }
 
+    func viewModelsForPreventionsSegments() -> [EducationSegmentPreventionViewTabViewModel] {
+        var models: [EducationSegmentPreventionViewTabViewModel] = []
+        EducationSegments.Prevention.allCases.forEach { tab in
+            models.append(EducationSegmentPreventionViewTabViewModel(imageName: tab.imageName, titleText: tab.titleText, tabText: tab.tabText))
+        }
+        return models
     }
 }
 

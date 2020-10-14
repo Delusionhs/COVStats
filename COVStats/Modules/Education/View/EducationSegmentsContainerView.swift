@@ -24,13 +24,10 @@ class EducationSegmentsContainerView: UIView {
 
     private func setupViews() {
         addSubview(prevention)
-        prevention.setupTabs(viewModels: [EducationSegmentPreventionViewTabViewModel(imageName: EducationBodySegments.Prevention.cleanHands.imageName,
-                                                                                     titleText: EducationBodySegments.Prevention.cleanHands.titleText,
-                                                                                     tabText: EducationBodySegments.Prevention.cleanHands.tabText),
-                                          EducationSegmentPreventionViewTabViewModel(imageName: EducationBodySegments.Prevention.cleanHands.imageName,
-                                                                                                                       titleText: EducationBodySegments.Prevention.cleanHands.titleText,
-                                                                                                                       tabText: EducationBodySegments.Prevention.cleanHands.tabText)])
+    }
 
+    func configurePreventionTabs(viewModel: [EducationSegmentPreventionViewTabViewModel]) {
+        prevention.setupTabs(viewModels: viewModel)
     }
 
     private func setupLayouts() {

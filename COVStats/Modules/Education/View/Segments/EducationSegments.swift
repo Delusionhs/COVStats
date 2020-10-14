@@ -6,8 +6,8 @@
 //  Copyright © 2020 Igor Podolskiy. All rights reserved.
 //
 
-enum EducationBodySegments {
-    enum Prevention {
+enum EducationSegments {
+    enum Prevention: CaseIterable {
         case cleanHands
         case wearFaceMask
         case touchingFace

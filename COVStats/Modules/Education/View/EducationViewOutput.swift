@@ -9,4 +9,5 @@
 protocol EducationViewOutput {
     func viewIsReady()
     func seeMoreButtonPressed()
+    func viewModelsForPreventionsSegments() -> [EducationSegmentPreventionViewTabViewModel] 
 }

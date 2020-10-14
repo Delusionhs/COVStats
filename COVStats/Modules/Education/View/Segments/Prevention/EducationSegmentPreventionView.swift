@@ -24,6 +24,7 @@ class EducationSegmentPreventionView: UIView {
         static let titleLeftPadding: CGFloat = 25
         static let titleRightPadding: CGFloat = -65
         static let tabHeight: CGFloat = 85
+        static let titleBottomMargin: CGFloat = 20
     }
 
     private let titleLabel: UILabel = {
@@ -63,7 +64,7 @@ class EducationSegmentPreventionView: UIView {
 
             NSLayoutConstraint.activate([
                 tab.leadingAnchor.constraint(equalTo: leadingAnchor),
-                tab.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: CGFloat(iterator)*LayoutOptions.tabHeight),
+                tab.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: LayoutOptions.titleBottomMargin + CGFloat(iterator)*LayoutOptions.tabHeight),
                 tab.trailingAnchor.constraint(equalTo: trailingAnchor),
                 tab.heightAnchor.constraint(equalToConstant: LayoutOptions.tabHeight)
             ])
@@ -75,20 +76,12 @@ class EducationSegmentPreventionView: UIView {
 
     private func setupLayouts() {
         titleLabel.translatesAutoresizingMaskIntoConstraints = false
-//        tab.translatesAutoresizingMaskIntoConstraints = false
 
         NSLayoutConstraint.activate([
             titleLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: LayoutOptions.titleLeftPadding),
             titleLabel.topAnchor.constraint(equalTo: topAnchor),
             titleLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: LayoutOptions.titleRightPadding),
         ])
-
-//        NSLayoutConstraint.activate([
-//            tab.leadingAnchor.constraint(equalTo: leadingAnchor),
-//            tab.topAnchor.constraint(equalTo: titleLabel.bottomAnchor),
-//            tab.trailingAnchor.constraint(equalTo: trailingAnchor),
-//            tab.bottomAnchor.constraint(equalTo: bottomAnchor)
-//        ])
     }
 }
 
