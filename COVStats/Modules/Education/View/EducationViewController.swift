@@ -28,7 +28,8 @@ class EducationViewController: UIViewController{
     }
 
     private enum LayoutOptions {
-        static let segmentedControlBarHeight:CGFloat = 5
+        static let segmentedControlBarHeight: CGFloat = 5
+        static let segmentedControlTopMargin: CGFloat = 60
     }
 
     var output: EducationViewOutput!
@@ -110,13 +111,12 @@ class EducationViewController: UIViewController{
             headerView.leadingAnchor.constraint(equalTo: scrollViewContentView.leadingAnchor),
             headerView.trailingAnchor.constraint(equalTo: scrollViewContentView.trailingAnchor),
             headerView.topAnchor.constraint(equalTo: scrollViewContentView.topAnchor),
-            //headerView.bottomAnchor.constraint(equalTo: scrollViewContentView.bottomAnchor)
         ])
 
         NSLayoutConstraint.activate([
             segmentedControl.leadingAnchor.constraint(equalTo: scrollViewContentView.leadingAnchor),
             segmentedControl.trailingAnchor.constraint(equalTo: scrollViewContentView.trailingAnchor),
-            segmentedControl.topAnchor.constraint(equalTo: headerView.bottomAnchor),
+            segmentedControl.topAnchor.constraint(equalTo: headerView.bottomAnchor, constant: LayoutOptions.segmentedControlTopMargin),
             segmentedControl.bottomAnchor.constraint(equalTo: scrollViewContentView.bottomAnchor)
         ])
 

@@ -41,6 +41,7 @@
 		7819C8DC2534A175002C7AAC /* EducationSegmentPreventionViewPreview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7819C8DB2534A175002C7AAC /* EducationSegmentPreventionViewPreview.swift */; };
 		7819C8E22536591B002C7AAC /* EducationSegmentSymptomsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7819C8E12536591B002C7AAC /* EducationSegmentSymptomsView.swift */; };
 		7819C8E52536592E002C7AAC /* EducationSegmentSymptomsViewPreview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7819C8E42536592E002C7AAC /* EducationSegmentSymptomsViewPreview.swift */; };
+		7819C8EC25369A75002C7AAC /* EducationSegmentPreventionViewTab.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7819C8EB25369A75002C7AAC /* EducationSegmentPreventionViewTab.swift */; };
 		781CC7C8252E6359007E30A5 /* EducationConfiguratorProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 781CC7C7252E6359007E30A5 /* EducationConfiguratorProtocol.swift */; };
 		781CC7CC252E66BF007E30A5 /* EducationHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 781CC7CB252E66BF007E30A5 /* EducationHeaderView.swift */; };
 		781CC7D0252E670D007E30A5 /* EducationHeaderViewPreview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 781CC7CF252E670D007E30A5 /* EducationHeaderViewPreview.swift */; };
@@ -170,6 +171,7 @@
 		7819C8DB2534A175002C7AAC /* EducationSegmentPreventionViewPreview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EducationSegmentPreventionViewPreview.swift; sourceTree = "<group>"; };
 		7819C8E12536591B002C7AAC /* EducationSegmentSymptomsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EducationSegmentSymptomsView.swift; sourceTree = "<group>"; };
 		7819C8E42536592E002C7AAC /* EducationSegmentSymptomsViewPreview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EducationSegmentSymptomsViewPreview.swift; sourceTree = "<group>"; };
+		7819C8EB25369A75002C7AAC /* EducationSegmentPreventionViewTab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EducationSegmentPreventionViewTab.swift; sourceTree = "<group>"; };
 		781CC7C7252E6359007E30A5 /* EducationConfiguratorProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EducationConfiguratorProtocol.swift; sourceTree = "<group>"; };
 		781CC7CB252E66BF007E30A5 /* EducationHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EducationHeaderView.swift; sourceTree = "<group>"; };
 		781CC7CF252E670D007E30A5 /* EducationHeaderViewPreview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EducationHeaderViewPreview.swift; sourceTree = "<group>"; };
@@ -436,12 +438,21 @@
 		7819C8D62534A148002C7AAC /* Segments */ = {
 			isa = PBXGroup;
 			children = (
-				7819C8D72534A16A002C7AAC /* EducationSegmentPreventionView.swift */,
-				7819C8DB2534A175002C7AAC /* EducationSegmentPreventionViewPreview.swift */,
+				7819C8E925369A2B002C7AAC /* Prevention */,
 				7819C8E12536591B002C7AAC /* EducationSegmentSymptomsView.swift */,
 				7819C8E42536592E002C7AAC /* EducationSegmentSymptomsViewPreview.swift */,
 			);
 			path = Segments;
+			sourceTree = "<group>";
+		};
+		7819C8E925369A2B002C7AAC /* Prevention */ = {
+			isa = PBXGroup;
+			children = (
+				7819C8DB2534A175002C7AAC /* EducationSegmentPreventionViewPreview.swift */,
+				7819C8D72534A16A002C7AAC /* EducationSegmentPreventionView.swift */,
+				7819C8EB25369A75002C7AAC /* EducationSegmentPreventionViewTab.swift */,
+			);
+			path = Prevention;
 			sourceTree = "<group>";
 		};
 		781CC7CA252E6666007E30A5 /* Header */ = {
@@ -1171,6 +1182,7 @@
 				47927BBE950CE7D71D2DA754 /* CountryDetailViewInput.swift in Sources */,
 				367A76942AB36CC77FA8BFB8 /* CountryDetailViewOutput.swift in Sources */,
 				78B13379252CC3D9008E2883 /* NewsTableViewCellPreview.swift in Sources */,
+				7819C8EC25369A75002C7AAC /* EducationSegmentPreventionViewTab.swift in Sources */,
 				780CACDC25254D2400B77AC1 /* CountryDetailGraphViewPreview.swift in Sources */,
 				944589AE71A01F13BB572878 /* CountryDetailViewController.swift in Sources */,
 				773A1A9AA9189E8226B72E87 /* CountryDetailModuleInput.swift in Sources */,

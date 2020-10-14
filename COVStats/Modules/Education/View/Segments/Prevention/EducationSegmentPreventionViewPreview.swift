@@ -23,7 +23,7 @@ struct EducationSegmentPreventionViewPreview: PreviewProvider {
 fileprivate class mockViewController: UIViewController {
 
     private let header: EducationSegmentPreventionView = {
-        let view = EducationSegmentPreventionView(frame: .zero)
+        let view = EducationSegmentPreventionView()
         return view
     }()
 
