@@ -145,10 +145,18 @@ class EducationViewController: UIViewController{
         ])
     }
 
-
     @objc func segmentedControlValueChanged(_ sender: UISegmentedControl) {
         UIView.animate(withDuration: SegmentedControlOptions.barAnimationDuratation) {
             self.segmentedControlSelectedBar.frame.origin.x = (self.segmentedControl.frame.width / CGFloat(self.segmentedControl.numberOfSegments)) * CGFloat(self.segmentedControl.selectedSegmentIndex)
+        }
+        if segmentedControl.selectedSegmentIndex == 0 {
+            segmentsContainer.changeSegment(segment: .prevention)
+        }
+        if segmentedControl.selectedSegmentIndex == 1 {
+            segmentsContainer.changeSegment(segment: .symptoms)
+        }
+        if segmentedControl.selectedSegmentIndex == 2 {
+
         }
     }
 }

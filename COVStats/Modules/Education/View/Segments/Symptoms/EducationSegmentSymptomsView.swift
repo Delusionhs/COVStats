@@ -1,18 +1,19 @@
 //
-//  EducationBodyView.swift
+//  EducationSegmentSymptomsView.swift
 //  COVStats
 //
-//  Created by Igor Podolskiy on 12.10.2020.
+//  Created by Igor Podolskiy on 13.10.2020.
 //  Copyright © 2020 Igor Podolskiy. All rights reserved.
 //
+
 
 import Foundation
 import UIKit
 
-class EducationSegmentPreventionView: UIView {
+class EducationSegmentSymptomsView: UIView {
 
     private enum Localization {
-        static let titleLabelText = "Basic protective measures against the new coronavirus"
+        static let titleLabelText = "Symptom Check"
     }
 
     private enum ViewOptions {
@@ -22,7 +23,6 @@ class EducationSegmentPreventionView: UIView {
     private enum LayoutOptions {
         static let titleLeftPadding: CGFloat = 25
         static let titleRightPadding: CGFloat = -65
-        static let tabHeight: CGFloat = 85
         static let titleBottomMargin: CGFloat = 20
     }
 
@@ -33,9 +33,6 @@ class EducationSegmentPreventionView: UIView {
         label.text = Localization.titleLabelText
         return label
     }()
-
-    let tab = EducationSegmentPreventionViewTab()
-
 
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -51,31 +48,9 @@ class EducationSegmentPreventionView: UIView {
         addSubview(titleLabel)
     }
 
-    func setupTabs(viewModels: [EducationSegmentPreventionViewTabViewModel]) {
-        var iterator = 0
-
-        for model in viewModels {
-            let tab = EducationSegmentPreventionViewTab()
-            addSubview(tab)
-
-            tab.translatesAutoresizingMaskIntoConstraints = false
-            tab.configure(viewModel: model)
-
-            NSLayoutConstraint.activate([
-                tab.leadingAnchor.constraint(equalTo: leadingAnchor),
-                tab.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: LayoutOptions.titleBottomMargin + CGFloat(iterator)*LayoutOptions.tabHeight),
-                tab.trailingAnchor.constraint(equalTo: trailingAnchor),
-                tab.heightAnchor.constraint(equalToConstant: LayoutOptions.tabHeight)
-            ])
-            iterator += 1
-        }
-
-
-    }
-
     private func setupLayouts() {
         titleLabel.translatesAutoresizingMaskIntoConstraints = false
-        
+
         NSLayoutConstraint.activate([
             titleLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: LayoutOptions.titleLeftPadding),
             titleLabel.topAnchor.constraint(equalTo: topAnchor),
@@ -83,6 +58,7 @@ class EducationSegmentPreventionView: UIView {
         ])
     }
 }
+
 
 
 

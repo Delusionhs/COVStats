@@ -7,6 +7,9 @@
 //
 
 enum EducationSegments {
+    case prevention
+    case symptoms
+    
     enum Prevention: CaseIterable {
         case cleanHands
         case wearFaceMask
