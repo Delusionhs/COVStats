@@ -29,5 +29,17 @@ extension EducationPresenter: EducationViewOutput {
         }
         return models
     }
+
+    func segmentedControlChangeIndex(index: Int) {
+        if index == 0 {
+            view.changeSegmentsContainerSegment(segment: .prevention)
+        }
+        if index == 1 {
+            view.changeSegmentsContainerSegment(segment: .symptoms)
+        }
+        if index == 2 {
+
+        }
+    }
 }
 

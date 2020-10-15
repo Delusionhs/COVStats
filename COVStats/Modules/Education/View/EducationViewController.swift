@@ -30,6 +30,7 @@ class EducationViewController: UIViewController{
     private enum LayoutOptions {
         static let segmentedControlBarHeight: CGFloat = 5
         static let segmentedControlTopMargin: CGFloat = 60
+        static let segmentsContainerTopMargin: CGFloat = 35
     }
 
     var output: EducationViewOutput!
@@ -137,7 +138,7 @@ class EducationViewController: UIViewController{
         ])
 
         NSLayoutConstraint.activate([
-            segmentsContainer.topAnchor.constraint(equalTo: segmentedControlBar.bottomAnchor),
+            segmentsContainer.topAnchor.constraint(equalTo: segmentedControlBar.bottomAnchor, constant: LayoutOptions.segmentsContainerTopMargin),
             segmentsContainer.widthAnchor.constraint(equalTo: segmentedControl.widthAnchor),
             segmentsContainer.leftAnchor.constraint(equalTo: segmentedControl.leftAnchor),
             segmentsContainer.bottomAnchor.constraint(equalTo: scrollViewContentView.bottomAnchor),
@@ -149,19 +150,14 @@ class EducationViewController: UIViewController{
         UIView.animate(withDuration: SegmentedControlOptions.barAnimationDuratation) {
             self.segmentedControlSelectedBar.frame.origin.x = (self.segmentedControl.frame.width / CGFloat(self.segmentedControl.numberOfSegments)) * CGFloat(self.segmentedControl.selectedSegmentIndex)
         }
-        if segmentedControl.selectedSegmentIndex == 0 {
-            segmentsContainer.changeSegment(segment: .prevention)
-        }
-        if segmentedControl.selectedSegmentIndex == 1 {
-            segmentsContainer.changeSegment(segment: .symptoms)
-        }
-        if segmentedControl.selectedSegmentIndex == 2 {
-
-        }
+        output.segmentedControlChangeIndex(index: segmentedControl.selectedSegmentIndex)
     }
 }
 
 extension EducationViewController: EducationViewInput {
+    func changeSegmentsContainerSegment(segment: EducationSegments) {
+        segmentsContainer.changeSegment(segment: segment)
+    }
 
 }
 

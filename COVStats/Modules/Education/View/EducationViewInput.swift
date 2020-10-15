@@ -7,5 +7,5 @@
 //
 
 protocol EducationViewInput: class {
-
+    func changeSegmentsContainerSegment(segment: EducationSegments)
 }
