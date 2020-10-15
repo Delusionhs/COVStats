@@ -24,6 +24,7 @@ class EducationSegmentPreventionView: UIView {
         static let titleRightPadding: CGFloat = -65
         static let tabHeight: CGFloat = 85
         static let titleBottomMargin: CGFloat = 20
+        static let tabSpacing: CGFloat = 40
     }
 
     private let titleLabel: UILabel = {
@@ -63,7 +64,7 @@ class EducationSegmentPreventionView: UIView {
 
             NSLayoutConstraint.activate([
                 tab.leadingAnchor.constraint(equalTo: leadingAnchor),
-                tab.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: LayoutOptions.titleBottomMargin + CGFloat(iterator)*LayoutOptions.tabHeight),
+                tab.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: LayoutOptions.titleBottomMargin + CGFloat(iterator)*(LayoutOptions.tabHeight+LayoutOptions.tabSpacing) ),
                 tab.trailingAnchor.constraint(equalTo: trailingAnchor),
                 tab.heightAnchor.constraint(equalToConstant: LayoutOptions.tabHeight)
             ])
