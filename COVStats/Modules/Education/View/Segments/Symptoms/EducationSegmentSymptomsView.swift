@@ -22,6 +22,9 @@ class EducationSegmentSymptomsView: UIView {
         static let subTitleLabelFontSize: CGFloat = 16
         static let subTitleLabelColor = UIColor(hex: "#999999")
         static let symptomsLegendImage = UIImage(named: "symptomsGold")
+        static let coldImageViewImage = UIImage(named: "symptomsCold")
+        static let fluImageViewImage = UIImage(named: "symptomsFlu")
+        static let covidImageViewImage = UIImage(named: "symptomsCOVID")
     }
 
     private enum LayoutOptions {
@@ -30,6 +33,8 @@ class EducationSegmentSymptomsView: UIView {
         static let subTitleTopPadding: CGFloat = 20
         static let symptomsImageTopPadding: CGFloat = 10
         static let symptomsHeaderRightPadding: CGFloat = -236
+        static let symptomsHeaderStackViewTopPadding: CGFloat = 40
+        static let symptomsHeaderStackViewWidth: CGFloat = 115
     }
 
     private let titleLabel: UILabel = {
@@ -57,25 +62,20 @@ class EducationSegmentSymptomsView: UIView {
     private let symptomsHeaderStackView:UIStackView = {
         let coldImageView = UIImageView()
         coldImageView.contentMode = .scaleAspectFit
-        coldImageView.image = UIImage(named: "symptomsCold")
+        coldImageView.image = ViewOptions.coldImageViewImage
 
         let fluImageView = UIImageView()
         fluImageView.contentMode = .scaleAspectFit
-        fluImageView.image = UIImage(named: "symptomsFlu")
+        fluImageView.image = ViewOptions.fluImageViewImage
 
         let covidImageView = UIImageView()
         covidImageView .contentMode = .scaleAspectFit
-        covidImageView.image = UIImage(named: "symptomsCOVID")
+        covidImageView.image = ViewOptions.covidImageViewImage
 
         let stackView = UIStackView(arrangedSubviews: [coldImageView,fluImageView,covidImageView])
         stackView.axis = .horizontal
-        stackView.distribution = .fillEqually
+        stackView.distribution = .equalSpacing
         stackView.alignment = .fill
-        stackView.spacing = 18
-
-
-
-
         return stackView
     }()
 
@@ -122,8 +122,8 @@ class EducationSegmentSymptomsView: UIView {
 
         NSLayoutConstraint.activate([
             symptomsHeaderStackView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: LayoutOptions.elementsLeftPadding),
-            symptomsHeaderStackView.topAnchor.constraint(equalTo: symptomsLegendImage.bottomAnchor, constant: LayoutOptions.symptomsImageTopPadding),
-            symptomsHeaderStackView.trailingAnchor.constraint(greaterThanOrEqualTo: trailingAnchor, constant: LayoutOptions.symptomsHeaderRightPadding),
+            symptomsHeaderStackView.topAnchor.constraint(equalTo: symptomsLegendImage.bottomAnchor, constant: LayoutOptions.symptomsHeaderStackViewTopPadding),
+            symptomsHeaderStackView.widthAnchor.constraint(equalToConstant: LayoutOptions.symptomsHeaderStackViewWidth)
         ])
     }
 }

@@ -6,6 +6,14 @@
 //  Copyright © 2020 Igor Podolskiy. All rights reserved.
 //
 
+enum Frequency {
+    case rare
+    case sometimes
+    case common
+    case undetermined
+}
+
+
 enum EducationSegments {
     case prevention
     case symptoms
@@ -57,7 +65,67 @@ enum EducationSegments {
         }
     }
 
-    enum Symptons {
+    enum Symptons: CaseIterable {
+        case shortnessOfBreath
+        case fever
+        case cough
+        case fatigue
+        case aches
+        case chills
+        case headache
+        case throat
+        case sneezing
+        case stuffy
+
+        var tabText: String {
+            switch self {
+            case .shortnessOfBreath:
+                return "Shortness of breath"
+            case .fever:
+                return "Fever"
+            case .cough:
+                return "Cough, chest discomfort"
+            case .fatigue:
+                return "Fatigue, weakness"
+            case .aches:
+                return "Aches"
+            case .chills:
+                return "Chills"
+            case .headache:
+                return "Headache"
+            case .throat:
+                return "Sore throat"
+            case .sneezing:
+                return "Sneezing"
+            case .stuffy:
+                return "Stuffy, runny nose"
+            }
+        }
+
+        var frequency: [Frequency] {
+            switch self {
+            case .shortnessOfBreath:
+                return [.rare,.rare,.common]
+            case .fever:
+                return [.rare,.common,.common]
+            case .cough:
+                return [.sometimes,.common,.common]
+            case .fatigue:
+                return [.sometimes,.common,.undetermined]
+            case .aches:
+                return [.rare,.common,.undetermined]
+            case .chills:
+                return [.rare,.common,.undetermined]
+            case .headache:
+                return [.rare,.common,.undetermined]
+            case .throat:
+                return [.common,.sometimes,.undetermined]
+            case .sneezing:
+                return [.common,.sometimes,.undetermined]
+            case .stuffy:
+                return [.common,.sometimes,.undetermined]
+            }
+        }
 
     }
 
