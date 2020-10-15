@@ -12,6 +12,7 @@ class EducationSegmentsContainerView: UIView {
 
     let prevention = EducationSegmentPreventionView()
     let symptoms = EducationSegmentSymptomsView()
+    let diagnosis = EducationSegmentDiagnosisView()
 
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -26,7 +27,9 @@ class EducationSegmentsContainerView: UIView {
     private func setupViews() {
         addSubview(prevention)
         addSubview(symptoms)
+        addSubview(diagnosis)
         symptoms.isHidden = true
+        diagnosis.isHidden = true
     }
 
     func configurePreventionTabs(viewModel: [EducationSegmentPreventionViewTabViewModel]) {
@@ -38,15 +41,22 @@ class EducationSegmentsContainerView: UIView {
         case .prevention:
             prevention.isHidden = false
             symptoms.isHidden = true
+            diagnosis.isHidden = true
         case .symptoms:
             symptoms.isHidden = false
             prevention.isHidden = true
+            diagnosis.isHidden = true
+        case .diagnosis:
+            symptoms.isHidden = true
+            prevention.isHidden = true
+            diagnosis.isHidden = false
         }
     }
 
     private func setupLayouts() {
         prevention.translatesAutoresizingMaskIntoConstraints = false
         symptoms.translatesAutoresizingMaskIntoConstraints = false
+        diagnosis.translatesAutoresizingMaskIntoConstraints = false
 
         NSLayoutConstraint.activate([
             prevention.trailingAnchor.constraint(equalTo: trailingAnchor),
@@ -60,6 +70,13 @@ class EducationSegmentsContainerView: UIView {
             symptoms.leadingAnchor.constraint(equalTo: leadingAnchor),
             symptoms.topAnchor.constraint(equalTo: topAnchor),
             symptoms.bottomAnchor.constraint(equalTo: bottomAnchor)
+        ])
+
+        NSLayoutConstraint.activate([
+            diagnosis.trailingAnchor.constraint(equalTo: trailingAnchor),
+            diagnosis.leadingAnchor.constraint(equalTo: leadingAnchor),
+            diagnosis.topAnchor.constraint(equalTo: topAnchor),
+            diagnosis.bottomAnchor.constraint(equalTo: bottomAnchor)
         ])
     }
 

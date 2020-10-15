@@ -9,6 +9,7 @@
 enum EducationSegments {
     case prevention
     case symptoms
+    case diagnosis
     
     enum Prevention: CaseIterable {
         case cleanHands
@@ -55,7 +56,11 @@ enum EducationSegments {
             }
         }
     }
+
     enum Symptons {
 
+    }
+
+    enum Diagnosis {
     }
 }

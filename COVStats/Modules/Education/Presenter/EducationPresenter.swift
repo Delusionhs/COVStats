@@ -38,7 +38,7 @@ extension EducationPresenter: EducationViewOutput {
             view.changeSegmentsContainerSegment(segment: .symptoms)
         }
         if index == 2 {
-
+            view.changeSegmentsContainerSegment(segment: .diagnosis)
         }
     }
 }
