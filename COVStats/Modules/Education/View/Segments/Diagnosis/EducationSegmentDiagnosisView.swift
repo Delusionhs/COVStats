@@ -8,7 +8,13 @@
 
 import UIKit
 
+protocol EducationSegmentDiagnosisViewButtonDelegate: class {
+    func reportButtonTap()
+}
+
 class EducationSegmentDiagnosisView: UIView {
+    weak var delegate: EducationSegmentDiagnosisViewButtonDelegate?
+
     private enum Localization {
         static let titleLabelText = "Report my Status"
         static let isolationText = "If you feel some symptoms or you are thinking that you may be infected. Please report your self so other people can be aware that someone who is in isolation is nearby them. "
@@ -59,7 +65,7 @@ class EducationSegmentDiagnosisView: UIView {
     private let reportButton: UIButton = {
         let button = UIButton()
         button.setImage(ViewOptions.reportButtonImage, for: .normal)
-        //button.addTarget(self, action: #selector(seeMoreButtonAction), for: .touchUpInside)
+        button.addTarget(self, action: #selector(reportButtonAction), for: .touchUpInside)
         return button
     }()
 
@@ -109,5 +115,11 @@ class EducationSegmentDiagnosisView: UIView {
             reportButton.topAnchor.constraint(equalTo: reportLabel.bottomAnchor, constant: LayoutOptions.elementsTopPadding),
             reportButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: LayoutOptions.textRightPadding),
         ])
+    }
+}
+
+extension EducationSegmentDiagnosisView {
+    @objc func reportButtonAction() {
+        delegate?.reportButtonTap()
     }
 }

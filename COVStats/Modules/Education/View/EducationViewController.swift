@@ -62,6 +62,7 @@ class EducationViewController: UIViewController{
         scrollViewContentView.addSubview(segmentsContainer)
         setupSegmentedControl()
         segmentsContainer.configurePreventionTabs(viewModel: output.viewModelsForPreventionsSegments())
+        segmentsContainer.configureDiagnosisDelegate(delegate: self)
     }
 
     private func setupSegmentedControl() {
@@ -164,5 +165,11 @@ extension EducationViewController: EducationViewInput {
 extension EducationViewController: EducationHeaderViewButtonDelegate {
     func seeMoreButtonTap() {
         output.seeMoreButtonPressed()
+    }
+}
+
+extension EducationViewController: EducationSegmentDiagnosisViewButtonDelegate{
+    func reportButtonTap() {
+        output.reportButtonPressed()
     }
 }

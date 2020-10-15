@@ -19,6 +19,10 @@ extension EducationPresenter: EducationViewOutput {
         router.openWhoWebsite()
     }
 
+    func reportButtonPressed() {
+        router.openWhoWebsite()
+    }
+
     func viewIsReady() {
     }
 

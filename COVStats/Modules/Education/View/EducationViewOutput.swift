@@ -9,6 +9,7 @@
 protocol EducationViewOutput {
     func viewIsReady()
     func seeMoreButtonPressed()
+    func reportButtonPressed()
     func viewModelsForPreventionsSegments() -> [EducationSegmentPreventionViewTabViewModel]
     func segmentedControlChangeIndex(index: Int)
 }
