@@ -15,6 +15,8 @@ class EducationPresenter: EducationInteractorOutput {
 }
 
 extension EducationPresenter: EducationViewOutput {
+
+
     func seeMoreButtonPressed() {
         router.openWhoWebsite()
     }
@@ -30,6 +32,14 @@ extension EducationPresenter: EducationViewOutput {
         var models: [EducationSegmentPreventionViewTabViewModel] = []
         EducationSegments.Prevention.allCases.forEach { tab in
             models.append(EducationSegmentPreventionViewTabViewModel(imageName: tab.imageName, titleText: tab.titleText, tabText: tab.tabText))
+        }
+        return models
+    }
+
+    func viewModelsForSymptomsSegments() -> [EducationSegmentSymptomsViewTabViewModel] {
+        var models: [EducationSegmentSymptomsViewTabViewModel] = []
+        EducationSegments.Symptons.allCases.forEach { tab in
+            models.append(EducationSegmentSymptomsViewTabViewModel(frequency: tab.frequency, tabText: tab.tabText))
         }
         return models
     }

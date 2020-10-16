@@ -36,6 +36,10 @@ class EducationSegmentsContainerView: UIView {
         prevention.setupTabs(viewModels: viewModel)
     }
 
+    func configureSymptomsTabs(viewModel: [EducationSegmentSymptomsViewTabViewModel]) {
+        symptoms.setupTabs(viewModels: viewModel)
+    }
+
     func configureDiagnosisDelegate(delegate: EducationSegmentDiagnosisViewButtonDelegate) {
         diagnosis.delegate = delegate
     }

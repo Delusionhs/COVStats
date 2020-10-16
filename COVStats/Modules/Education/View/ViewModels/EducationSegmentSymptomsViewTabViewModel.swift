@@ -9,4 +9,6 @@
 import Foundation
 
 struct EducationSegmentSymptomsViewTabViewModel {
+    let frequency: [Frequency]
+    let tabText: String
 }

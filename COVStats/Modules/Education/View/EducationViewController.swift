@@ -62,6 +62,7 @@ class EducationViewController: UIViewController{
         scrollViewContentView.addSubview(segmentsContainer)
         setupSegmentedControl()
         segmentsContainer.configurePreventionTabs(viewModel: output.viewModelsForPreventionsSegments())
+        segmentsContainer.configureSymptomsTabs(viewModel: output.viewModelsForSymptomsSegments())
         segmentsContainer.configureDiagnosisDelegate(delegate: self)
     }
 

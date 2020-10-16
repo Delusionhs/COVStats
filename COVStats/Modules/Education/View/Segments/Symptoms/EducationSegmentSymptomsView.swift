@@ -35,6 +35,8 @@ class EducationSegmentSymptomsView: UIView {
         static let symptomsHeaderRightPadding: CGFloat = -236
         static let symptomsHeaderStackViewTopPadding: CGFloat = 40
         static let symptomsHeaderStackViewWidth: CGFloat = 115
+        static let tabHeight: CGFloat = 22
+        static let tabSpacing: CGFloat = 20
     }
 
     private let titleLabel: UILabel = {
@@ -94,6 +96,26 @@ class EducationSegmentSymptomsView: UIView {
         addSubview(subTitleLabel)
         addSubview(symptomsLegendImage)
         addSubview(symptomsHeaderStackView)
+    }
+
+    func setupTabs(viewModels: [EducationSegmentSymptomsViewTabViewModel]) {
+        var iterator = 0
+
+        for model in viewModels {
+            let tab = EducationSegmentSymptomsViewTab()
+            addSubview(tab)
+
+            tab.translatesAutoresizingMaskIntoConstraints = false
+            tab.configure(viewModel: model)
+
+            NSLayoutConstraint.activate([
+                tab.leadingAnchor.constraint(equalTo: leadingAnchor),
+                tab.topAnchor.constraint(equalTo:  symptomsHeaderStackView.bottomAnchor, constant: LayoutOptions.tabSpacing + CGFloat(iterator)*(LayoutOptions.tabHeight+LayoutOptions.tabSpacing) ),
+                tab.trailingAnchor.constraint(equalTo: trailingAnchor),
+                tab.heightAnchor.constraint(equalToConstant: LayoutOptions.tabHeight)
+            ])
+            iterator += 1
+        }
     }
 
     private func setupLayouts() {

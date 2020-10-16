@@ -70,8 +70,6 @@ class EducationSegmentPreventionView: UIView {
             ])
             iterator += 1
         }
-
-
     }
 
     private func setupLayouts() {

@@ -23,20 +23,26 @@ class EducationSegmentSymptomsViewTab: UIView {
         static let symptomsStackViewWidth: CGFloat = 115
     }
 
+    private let coldImageView = UIImageView()
+    private let fluImageView = UIImageView()
+    private let covidImageView = UIImageView()
+
+    private var symptomsStackView: UIStackView
+
     override init(frame: CGRect) {
+        symptomsStackView = UIStackView(arrangedSubviews: [coldImageView,fluImageView,covidImageView])
         super.init(frame: frame)
+        setupStackView()
         setupViews()
         setupLayouts()
     }
 
-    private let coldImageView = UIImageView()
 
-    private let symptomsStackView:UIStackView = {
-        let coldImageView = UIImageView()
+    private func setupStackView() {
         coldImageView.contentMode = .scaleAspectFit
         coldImageView.image = ViewOptions.undeterminedImage
 
-        let fluImageView = UIImageView()
+
         fluImageView.contentMode = .scaleAspectFit
         fluImageView.image = ViewOptions.undeterminedImage
 
@@ -44,12 +50,10 @@ class EducationSegmentSymptomsViewTab: UIView {
         covidImageView.contentMode = .scaleAspectFit
         covidImageView.image = ViewOptions.undeterminedImage
 
-        let stackView = UIStackView(arrangedSubviews: [coldImageView,fluImageView,covidImageView])
-        stackView.axis = .horizontal
-        stackView.distribution = .equalSpacing
-        stackView.alignment = .fill
-        return stackView
-    }()
+        symptomsStackView.axis = .horizontal
+        symptomsStackView.distribution = .equalSpacing
+        symptomsStackView.alignment = .fill
+    }
 
 
     private let textLabel: UILabel = {
@@ -89,9 +93,26 @@ class EducationSegmentSymptomsViewTab: UIView {
         ])
     }
 
-    func configure(viewModel: EducationSegmentPreventionViewTabViewModel) {
-//        tabImage.image = UIImage(named: viewModel.imageName)
-//        titleLabel.text = viewModel.titleText
-//        textLabel.text = viewModel.tabText
+    private func imageFromFrequncy(frequency: Frequency) -> UIImage? {
+        switch frequency {
+        case .rare:
+            return ViewOptions.rareImage
+        case .sometimes:
+            return ViewOptions.sometimesImage
+        case .common:
+            return ViewOptions.commonImage
+        case .undetermined:
+            return ViewOptions.undeterminedImage
+        }
+    }
+
+    func configure(viewModel: EducationSegmentSymptomsViewTabViewModel) {
+        guard viewModel.frequency.count == 3 else { return }
+
+        coldImageView.image = imageFromFrequncy(frequency: viewModel.frequency[0])
+        fluImageView.image = imageFromFrequncy(frequency: viewModel.frequency[1])
+        covidImageView.image = imageFromFrequncy(frequency: viewModel.frequency[1])
+
+        textLabel.text = viewModel.tabText
     }
 }
