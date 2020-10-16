@@ -48,6 +48,7 @@
 		781CC7D0252E670D007E30A5 /* EducationHeaderViewPreview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 781CC7CF252E670D007E30A5 /* EducationHeaderViewPreview.swift */; };
 		78253DC2253911C400889F74 /* EducationSegmentSymptomsViewTab.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78253DC1253911C400889F74 /* EducationSegmentSymptomsViewTab.swift */; };
 		78253DC52539161C00889F74 /* EducationSegmentSymptomsViewTabViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78253DC42539161C00889F74 /* EducationSegmentSymptomsViewTabViewModel.swift */; };
+		78253DCC25392AF500889F74 /* EducationLegendTabStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78253DCB25392AF500889F74 /* EducationLegendTabStackView.swift */; };
 		78516E71251A5F6E00FBDBDE /* Trending.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78516E70251A5F6E00FBDBDE /* Trending.swift */; };
 		78516E7A251A935800FBDBDE /* UIVIewController+Preview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78516E79251A935800FBDBDE /* UIVIewController+Preview.swift */; };
 		786DA4FD252FC93F002B688F /* InitialConfiguratorProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 786DA4FC252FC93F002B688F /* InitialConfiguratorProtocol.swift */; };
@@ -184,6 +185,7 @@
 		781CC7CF252E670D007E30A5 /* EducationHeaderViewPreview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EducationHeaderViewPreview.swift; sourceTree = "<group>"; };
 		78253DC1253911C400889F74 /* EducationSegmentSymptomsViewTab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EducationSegmentSymptomsViewTab.swift; sourceTree = "<group>"; };
 		78253DC42539161C00889F74 /* EducationSegmentSymptomsViewTabViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EducationSegmentSymptomsViewTabViewModel.swift; sourceTree = "<group>"; };
+		78253DCB25392AF500889F74 /* EducationLegendTabStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EducationLegendTabStackView.swift; sourceTree = "<group>"; };
 		78516E70251A5F6E00FBDBDE /* Trending.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Trending.swift; sourceTree = "<group>"; };
 		78516E79251A935800FBDBDE /* UIVIewController+Preview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIVIewController+Preview.swift"; sourceTree = "<group>"; };
 		786DA4FC252FC93F002B688F /* InitialConfiguratorProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InitialConfiguratorProtocol.swift; sourceTree = "<group>"; };
@@ -558,6 +560,7 @@
 				7819C8E12536591B002C7AAC /* EducationSegmentSymptomsView.swift */,
 				7819C8E42536592E002C7AAC /* EducationSegmentSymptomsViewPreview.swift */,
 				78253DC1253911C400889F74 /* EducationSegmentSymptomsViewTab.swift */,
+				78253DCB25392AF500889F74 /* EducationLegendTabStackView.swift */,
 			);
 			path = Symptoms;
 			sourceTree = "<group>";
@@ -1147,6 +1150,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				78253DCC25392AF500889F74 /* EducationLegendTabStackView.swift in Sources */,
 				78F470082518E6120008637C /* HomeInteractorInput.swift in Sources */,
 				786DA504252FCEF8002B688F /* InitialPageContentViewController.swift in Sources */,
 				78F4704C251A1C600008637C /* GlobalSummaryInteractorOutput.swift in Sources */,

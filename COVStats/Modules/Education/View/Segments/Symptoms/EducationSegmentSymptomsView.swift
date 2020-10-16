@@ -16,6 +16,9 @@ class EducationSegmentSymptomsView: UIView {
         static let titleLabelText = "Symptom Check"
         static let subTitleLabelText = "Check your symptoms for"
         static let legendTitleText = "Legend"
+        static let commonLegend = "Common"
+        static let rareLegend = "Rare"
+        static let sometimesLegend = "Sometimes"
     }
 
     private enum ViewOptions {
@@ -27,6 +30,9 @@ class EducationSegmentSymptomsView: UIView {
         static let coldImageViewImage = UIImage(named: "symptomsCold")
         static let fluImageViewImage = UIImage(named: "symptomsFlu")
         static let covidImageViewImage = UIImage(named: "symptomsCOVID")
+        static let commonImage = UIImage(named: "commonCircle")
+        static let rareImage = UIImage(named: "rareCircle")
+        static let sometimesImage = UIImage(named: "sometimesCircle")
     }
 
     private enum LayoutOptions {
@@ -40,6 +46,7 @@ class EducationSegmentSymptomsView: UIView {
         static let tabHeight: CGFloat = 22
         static let tabSpacing: CGFloat = 20
         static let legendTitleTopPadding: CGFloat = 37
+        static let legendStackViewTopPadding: CGFloat = 16
     }
 
     private let titleLabel: UILabel = {
@@ -57,7 +64,7 @@ class EducationSegmentSymptomsView: UIView {
         return label
     }()
 
-    private let LegendTitleLabel: UILabel = {
+    private let legendTitleLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont.systemFont(ofSize: ViewOptions.legendTitleFontSize, weight: UIFont.Weight.light)
         label.text = Localization.legendTitleText
@@ -71,7 +78,7 @@ class EducationSegmentSymptomsView: UIView {
         return imageView
     }()
 
-    private let symptomsHeaderStackView:UIStackView = {
+    private let symptomsHeaderStackView: UIStackView = {
         let coldImageView = UIImageView()
         coldImageView.contentMode = .scaleAspectFit
         coldImageView.image = ViewOptions.coldImageViewImage
@@ -85,6 +92,16 @@ class EducationSegmentSymptomsView: UIView {
         covidImageView.image = ViewOptions.covidImageViewImage
 
         let stackView = UIStackView(arrangedSubviews: [coldImageView,fluImageView,covidImageView])
+        stackView.axis = .horizontal
+        stackView.distribution = .equalSpacing
+        stackView.alignment = .fill
+        return stackView
+    }()
+
+    private let legendStackView: UIStackView = {
+        let stackView = UIStackView(arrangedSubviews: [EducationLegendTabStackView(legendImage: ViewOptions.commonImage, legendText: Localization.commonLegend),
+                                                       EducationLegendTabStackView(legendImage: ViewOptions.sometimesImage, legendText: Localization.sometimesLegend),
+                                                       EducationLegendTabStackView(legendImage: ViewOptions.rareImage, legendText: Localization.rareLegend)])
         stackView.axis = .horizontal
         stackView.distribution = .equalSpacing
         stackView.alignment = .fill
@@ -130,13 +147,22 @@ class EducationSegmentSymptomsView: UIView {
         }
 
         if let lastTab = lastTab {
-            addSubview(LegendTitleLabel)
-            LegendTitleLabel.translatesAutoresizingMaskIntoConstraints = false
+            addSubview(legendTitleLabel)
+            legendTitleLabel.translatesAutoresizingMaskIntoConstraints = false
 
             NSLayoutConstraint.activate([
-                LegendTitleLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: LayoutOptions.elementsLeftPadding),
-                LegendTitleLabel.topAnchor.constraint(equalTo: lastTab.bottomAnchor, constant: LayoutOptions.legendTitleTopPadding),
-                LegendTitleLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: LayoutOptions.elementsRightPadding),
+                legendTitleLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: LayoutOptions.elementsLeftPadding),
+                legendTitleLabel.topAnchor.constraint(equalTo: lastTab.bottomAnchor, constant: LayoutOptions.legendTitleTopPadding),
+                legendTitleLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: LayoutOptions.elementsRightPadding),
+            ])
+
+            addSubview(legendStackView)
+            legendStackView.translatesAutoresizingMaskIntoConstraints = false
+
+            NSLayoutConstraint.activate([
+                legendStackView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: LayoutOptions.elementsLeftPadding),
+                legendStackView.topAnchor.constraint(equalTo: legendTitleLabel.bottomAnchor, constant: LayoutOptions.legendStackViewTopPadding),
+                legendStackView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: LayoutOptions.elementsRightPadding),
             ])
         }
     }
@@ -146,6 +172,7 @@ class EducationSegmentSymptomsView: UIView {
         subTitleLabel.translatesAutoresizingMaskIntoConstraints = false
         symptomsLegendImage.translatesAutoresizingMaskIntoConstraints = false
         symptomsHeaderStackView.translatesAutoresizingMaskIntoConstraints = false
+        legendStackView.translatesAutoresizingMaskIntoConstraints = false
 
         NSLayoutConstraint.activate([
             titleLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: LayoutOptions.elementsLeftPadding),
@@ -163,6 +190,12 @@ class EducationSegmentSymptomsView: UIView {
             symptomsLegendImage.leadingAnchor.constraint(equalTo: leadingAnchor, constant: LayoutOptions.elementsLeftPadding),
             symptomsLegendImage.topAnchor.constraint(equalTo: subTitleLabel.bottomAnchor, constant: LayoutOptions.symptomsImageTopPadding),
             symptomsLegendImage.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -LayoutOptions.elementsLeftPadding),
+        ])
+
+        NSLayoutConstraint.activate([
+            symptomsHeaderStackView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: LayoutOptions.elementsLeftPadding),
+            symptomsHeaderStackView.topAnchor.constraint(equalTo: symptomsLegendImage.bottomAnchor, constant: LayoutOptions.symptomsHeaderStackViewTopPadding),
+            symptomsHeaderStackView.widthAnchor.constraint(equalToConstant: LayoutOptions.symptomsHeaderStackViewWidth)
         ])
 
         NSLayoutConstraint.activate([
