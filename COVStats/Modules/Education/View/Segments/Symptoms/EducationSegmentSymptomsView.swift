@@ -15,11 +15,13 @@ class EducationSegmentSymptomsView: UIView {
     private enum Localization {
         static let titleLabelText = "Symptom Check"
         static let subTitleLabelText = "Check your symptoms for"
+        static let legendTitleText = "Legend"
     }
 
     private enum ViewOptions {
         static let titleLabelFontSize: CGFloat = 28
         static let subTitleLabelFontSize: CGFloat = 16
+        static let legendTitleFontSize: CGFloat = 17
         static let subTitleLabelColor = UIColor(hex: "#999999")
         static let symptomsLegendImage = UIImage(named: "symptomsGold")
         static let coldImageViewImage = UIImage(named: "symptomsCold")
@@ -37,6 +39,7 @@ class EducationSegmentSymptomsView: UIView {
         static let symptomsHeaderStackViewWidth: CGFloat = 115
         static let tabHeight: CGFloat = 22
         static let tabSpacing: CGFloat = 20
+        static let legendTitleTopPadding: CGFloat = 37
     }
 
     private let titleLabel: UILabel = {
@@ -51,6 +54,13 @@ class EducationSegmentSymptomsView: UIView {
         label.font = UIFont.systemFont(ofSize: ViewOptions.subTitleLabelFontSize, weight: UIFont.Weight.light)
         label.textColor = ViewOptions.subTitleLabelColor
         label.text = Localization.subTitleLabelText
+        return label
+    }()
+
+    private let LegendTitleLabel: UILabel = {
+        let label = UILabel()
+        label.font = UIFont.systemFont(ofSize: ViewOptions.legendTitleFontSize, weight: UIFont.Weight.light)
+        label.text = Localization.legendTitleText
         return label
     }()
 
@@ -100,21 +110,34 @@ class EducationSegmentSymptomsView: UIView {
 
     func setupTabs(viewModels: [EducationSegmentSymptomsViewTabViewModel]) {
         var iterator = 0
+        var lastTab: EducationSegmentSymptomsViewTab?
 
         for model in viewModels {
             let tab = EducationSegmentSymptomsViewTab()
+            lastTab = tab
             addSubview(tab)
 
             tab.translatesAutoresizingMaskIntoConstraints = false
             tab.configure(viewModel: model)
 
             NSLayoutConstraint.activate([
-                tab.leadingAnchor.constraint(equalTo: leadingAnchor),
+                tab.leadingAnchor.constraint(equalTo: leadingAnchor, constant: LayoutOptions.elementsLeftPadding),
                 tab.topAnchor.constraint(equalTo:  symptomsHeaderStackView.bottomAnchor, constant: LayoutOptions.tabSpacing + CGFloat(iterator)*(LayoutOptions.tabHeight+LayoutOptions.tabSpacing) ),
                 tab.trailingAnchor.constraint(equalTo: trailingAnchor),
                 tab.heightAnchor.constraint(equalToConstant: LayoutOptions.tabHeight)
             ])
             iterator += 1
+        }
+
+        if let lastTab = lastTab {
+            addSubview(LegendTitleLabel)
+            LegendTitleLabel.translatesAutoresizingMaskIntoConstraints = false
+
+            NSLayoutConstraint.activate([
+                LegendTitleLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: LayoutOptions.elementsLeftPadding),
+                LegendTitleLabel.topAnchor.constraint(equalTo: lastTab.bottomAnchor, constant: LayoutOptions.legendTitleTopPadding),
+                LegendTitleLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: LayoutOptions.elementsRightPadding),
+            ])
         }
     }
 

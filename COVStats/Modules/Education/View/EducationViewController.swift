@@ -144,7 +144,7 @@ class EducationViewController: UIViewController{
             segmentsContainer.widthAnchor.constraint(equalTo: segmentedControl.widthAnchor),
             segmentsContainer.leftAnchor.constraint(equalTo: segmentedControl.leftAnchor),
             segmentsContainer.bottomAnchor.constraint(equalTo: scrollViewContentView.bottomAnchor),
-            segmentsContainer.heightAnchor.constraint(equalToConstant: 500)
+            segmentsContainer.heightAnchor.constraint(equalToConstant: 800)
         ])
     }
 

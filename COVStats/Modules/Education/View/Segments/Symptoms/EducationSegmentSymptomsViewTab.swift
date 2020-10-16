@@ -15,12 +15,13 @@ class EducationSegmentSymptomsViewTab: UIView {
         static let textLabelFontColor = UIColor(hex: "#999999")
         static let commonImage = UIImage(named: "commonCircle")
         static let rareImage = UIImage(named: "rareCircle")
-        static let sometimesImage = UIImage(named: "sometimesCOVID")
+        static let sometimesImage = UIImage(named: "sometimesCircle")
         static let undeterminedImage = UIImage(named: "undeterminedCircle")
     }
 
     private enum LayoutOptions {
         static let symptomsStackViewWidth: CGFloat = 115
+        static let textLeftPadding: CGFloat = 28
     }
 
     private let coldImageView = UIImageView()
@@ -77,8 +78,6 @@ class EducationSegmentSymptomsViewTab: UIView {
         symptomsStackView.translatesAutoresizingMaskIntoConstraints = false
         textLabel.translatesAutoresizingMaskIntoConstraints = false
 
-        textLabel.text = "TEST TEST"
-
         NSLayoutConstraint.activate([
             symptomsStackView.leadingAnchor.constraint(equalTo: leadingAnchor),
             symptomsStackView.topAnchor.constraint(equalTo: topAnchor),
@@ -87,7 +86,7 @@ class EducationSegmentSymptomsViewTab: UIView {
         ])
 
         NSLayoutConstraint.activate([
-            textLabel.leadingAnchor.constraint(equalTo: symptomsStackView.trailingAnchor),
+            textLabel.leadingAnchor.constraint(equalTo: symptomsStackView.trailingAnchor, constant: LayoutOptions.textLeftPadding),
             textLabel.trailingAnchor.constraint(equalTo: trailingAnchor),
             textLabel.centerYAnchor.constraint(equalTo: symptomsStackView.centerYAnchor)
         ])
@@ -111,7 +110,7 @@ class EducationSegmentSymptomsViewTab: UIView {
 
         coldImageView.image = imageFromFrequncy(frequency: viewModel.frequency[0])
         fluImageView.image = imageFromFrequncy(frequency: viewModel.frequency[1])
-        covidImageView.image = imageFromFrequncy(frequency: viewModel.frequency[1])
+        covidImageView.image = imageFromFrequncy(frequency: viewModel.frequency[2])
 
         textLabel.text = viewModel.tabText
     }
