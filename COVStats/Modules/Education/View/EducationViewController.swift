@@ -31,6 +31,10 @@ class EducationViewController: UIViewController{
         static let segmentedControlBarHeight: CGFloat = 5
         static let segmentedControlTopMargin: CGFloat = 60
         static let segmentsContainerTopMargin: CGFloat = 35
+        static let preventionScreenHeight: CGFloat = 1150
+        static let symptomsScreenHeight: CGFloat = 1250
+        static let diagnosisScreenHeight: CGFloat = 1000
+
     }
 
     var output: EducationViewOutput!
@@ -144,7 +148,7 @@ class EducationViewController: UIViewController{
             segmentsContainer.widthAnchor.constraint(equalTo: segmentedControl.widthAnchor),
             segmentsContainer.leftAnchor.constraint(equalTo: segmentedControl.leftAnchor),
             segmentsContainer.bottomAnchor.constraint(equalTo: scrollViewContentView.bottomAnchor),
-            segmentsContainer.heightAnchor.constraint(equalToConstant: 800)
+            segmentsContainer.heightAnchor.constraint(equalToConstant: 600)
         ])
     }
 
@@ -153,6 +157,20 @@ class EducationViewController: UIViewController{
             self.segmentedControlSelectedBar.frame.origin.x = (self.segmentedControl.frame.width / CGFloat(self.segmentedControl.numberOfSegments)) * CGFloat(self.segmentedControl.selectedSegmentIndex)
         }
         output.segmentedControlChangeIndex(index: segmentedControl.selectedSegmentIndex)
+
+        switch sender.selectedSegmentIndex {
+        case 0:
+            scrollView.frame = CGRect(x: view.frame.origin.x, y: view.frame.origin.y, width: view.frame.width, height: LayoutOptions.preventionScreenHeight)
+            scrollView.contentSize = CGSize(width: view.frame.width, height: LayoutOptions.preventionScreenHeight)
+        case 1:
+            scrollView.frame = CGRect(x: view.frame.origin.x, y: view.frame.origin.y, width: view.frame.width, height: LayoutOptions.symptomsScreenHeight)
+            scrollView.contentSize = CGSize(width: view.frame.width, height: LayoutOptions.symptomsScreenHeight)
+        case 2:
+            scrollView.frame = CGRect(x: view.frame.origin.x, y: view.frame.origin.y, width: view.frame.width, height: LayoutOptions.diagnosisScreenHeight)
+            scrollView.contentSize = CGSize(width: view.frame.width, height: LayoutOptions.diagnosisScreenHeight)
+        default:
+            return
+        }
     }
 }
 
