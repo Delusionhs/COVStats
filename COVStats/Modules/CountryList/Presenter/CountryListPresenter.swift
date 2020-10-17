@@ -17,7 +17,7 @@ class CountryListPresenter {
     private var countrySummaryYesterdayData: [String:Int] = [:]
 
     private func setupHeader() {
-        view.setupHeader(titleText: "Life Reports", subTitleText: "Top countries")
+        view.setupHeader(titleText: "Life Reports", subTitleText: "All countries")
     }
 
     private func yesterdayTredingDataForCountryName(countryName: String, todayCount: Int) -> Trending {
