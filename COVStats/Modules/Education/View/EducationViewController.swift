@@ -56,6 +56,7 @@ class EducationViewController: UIViewController{
         output.viewIsReady()
         headerView.delegate = self
         setupViews()
+        setupSegmentedControl()
         setupLayouts()
     }
 
@@ -65,7 +66,6 @@ class EducationViewController: UIViewController{
         scrollView.addSubview(scrollViewContentView)
         scrollViewContentView.addSubview(headerView)
         scrollViewContentView.addSubview(segmentsContainer)
-        setupSegmentedControl()
         segmentsContainer.configurePreventionTabs(viewModel: output.viewModelsForPreventionsSegments())
         segmentsContainer.configureSymptomsTabs(viewModel: output.viewModelsForSymptomsSegments())
         segmentsContainer.configureDiagnosisDelegate(delegate: self)

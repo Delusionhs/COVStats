@@ -36,8 +36,8 @@ class CountryDetailHeaderView: UIView {
     }
 
     private enum Localization {
-        static let todayCasesCountText = "Infected cases reported"
-        static let todayDeathCountText = "Death cases reported"
+        static let todayCasesCountText = "Today infected cases reported"
+        static let todayDeathCountText = "Today death cases reported"
     }
 
     private let flagImage: UIImageView = {
@@ -66,6 +66,7 @@ class CountryDetailHeaderView: UIView {
 
     private let todayCasesCountLabel: UILabel = {
         let label = UILabel()
+        label.adjustsFontSizeToFitWidth = true
         label.font = UIFont.systemFont(ofSize: ViewOptions.todayCasesLabelFontSize, weight: UIFont.Weight.regular)
         label.textColor = ViewOptions.todayTextColor
         return label
@@ -80,6 +81,7 @@ class CountryDetailHeaderView: UIView {
 
     private let todayDeathCountLabel: UILabel = {
         let label = UILabel()
+        label.adjustsFontSizeToFitWidth = true
         label.font = UIFont.systemFont(ofSize: ViewOptions.todayCasesLabelFontSize, weight: UIFont.Weight.regular)
         label.textColor = ViewOptions.todayTextColor
         return label
@@ -128,22 +130,26 @@ class CountryDetailHeaderView: UIView {
 
         NSLayoutConstraint.activate([
             casesCountLabel.topAnchor.constraint(equalTo: flagImage.bottomAnchor, constant: LayoutOptions.casesCountLabelTopPadding),
-            casesCountLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: LayoutOptions.textLeading)
+            casesCountLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: LayoutOptions.textLeading),
+            casesCountLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -LayoutOptions.textLeading)
         ])
 
         NSLayoutConstraint.activate([
             todayCasesCountLabel.topAnchor.constraint(equalTo: casesCountLabel.bottomAnchor, constant: LayoutOptions.todayTextTopPadding),
-            todayCasesCountLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: LayoutOptions.textLeading)
+            todayCasesCountLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: LayoutOptions.textLeading),
+            todayCasesCountLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -LayoutOptions.textLeading)
         ])
 
         NSLayoutConstraint.activate([
             deathCountLabel.topAnchor.constraint(equalTo: todayCasesCountLabel.bottomAnchor, constant: LayoutOptions.deathCountLabelTopPadding),
-            deathCountLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: LayoutOptions.textLeading)
+            deathCountLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: LayoutOptions.textLeading),
+            deathCountLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -LayoutOptions.textLeading)
         ])
 
         NSLayoutConstraint.activate([
             todayDeathCountLabel.topAnchor.constraint(equalTo: deathCountLabel.bottomAnchor, constant: LayoutOptions.todayTextTopPadding),
-            todayDeathCountLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: LayoutOptions.textLeading)
+            todayDeathCountLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: LayoutOptions.textLeading),
+            todayDeathCountLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -LayoutOptions.textLeading)
         ])
 
     }
