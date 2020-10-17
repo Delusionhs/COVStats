@@ -30,44 +30,30 @@ class StatisticsService: StatisticsServiceProtocol {
 
     private let networkService = NetworkService()
 
-    func fetchGlobalSummaryData(completion: @escaping (GlobalSummaryCovidCases?) -> Void) {
-        guard let url = URL(string: ApiURL.globalSummary) else { return }
-        networkService.getJSONData(URL: url) { data in
+    private func fetchData<T: Decodable>(API: String, parametres: [String: Any] = [:], completion: @escaping (T?) -> Void) {
+        guard let url = URL(string: API) else { return }
+        networkService.getJSONData(URL: url, parameters: parametres) { data in
             if let data = data {
-                let summary = try? JSONDecoder().decode(GlobalSummaryCovidCases.self, from: data)
+                let summary = try? JSONDecoder().decode(T.self, from: data)
                     completion(summary)
             }
         }
+    }
+
+    func fetchGlobalSummaryData(completion: @escaping (GlobalSummaryCovidCases?) -> Void) {
+        fetchData(API: ApiURL.globalSummary, completion: completion)
     }
 
     func fetchGlobalHistoricalData(completion: @escaping (GlobalSummaryHistorical?) -> Void) {
-        guard let url = URL(string: ApiURL.globalHistorical) else { return }
-        networkService.getJSONData(URL: url) { data in
-            if let data = data {
-                let historical = try? JSONDecoder().decode(GlobalSummaryHistorical.self, from: data)
-                    completion(historical)
-            }
-        }
+        fetchData(API: ApiURL.globalHistorical, completion: completion)
     }
 
     func fetchСountrySummaryData(completion: @escaping ([СountrySummary]?) -> Void) {
-        guard let url = URL(string: ApiURL.countrySummary) else { return }
-        networkService.getJSONData(URL: url) { data in
-            if let data = data {
-                let summary = try? JSONDecoder().decode([СountrySummary].self, from: data)
-                    completion(summary)
-            }
-        }
+        fetchData(API: ApiURL.countrySummary, completion: completion)
     }
 
     func fetchCountryHistoricalData(country: String, completion: @escaping (CountryHistorical?) -> Void) {
         guard let country = country.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) else { return }
-        guard let url = URL(string: ApiURL.countryHistorical+country) else { return }
-        networkService.getJSONData(URL: url, parameters: ["lastdays": "all"]) { data in
-            if let data = data {
-                let summary = try? JSONDecoder().decode(CountryHistorical.self, from: data)
-                    completion(summary)
-            }
-        }
+        fetchData(API:  ApiURL.countryHistorical+country, parametres: ["lastdays": "all"], completion: completion)
     }
 }
