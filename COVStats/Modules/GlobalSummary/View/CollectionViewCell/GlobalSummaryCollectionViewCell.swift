@@ -201,6 +201,10 @@ extension GlobalSummaryCollectionViewCell {
             if let image = UIImage(named: CellOption.trendingDownImageName) {
                 return image
             }
+        case .notDetermined:
+            if let image = UIImage(named: CellOption.trendingDownImageName) {
+                return image
+            }
         }
         return UIImage()
     }

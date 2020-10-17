@@ -13,6 +13,7 @@ protocol StatisticsServiceProtocol {
     func fetchGlobalHistoricalData(completion: @escaping (GlobalSummaryHistorical?) -> Void)
     func fetchСountrySummaryData(completion: @escaping ([СountrySummary]?) -> Void)
     func fetchCountryHistoricalData(country: String, completion: @escaping (CountryHistorical?) -> Void)
+    func fetchСountrySummaryYesterdayData(completion: @escaping ([СountrySummaryYesterday]?) -> Void)
 }
 
 class StatisticsService: StatisticsServiceProtocol {
@@ -26,6 +27,7 @@ class StatisticsService: StatisticsServiceProtocol {
         static let globalHistorical = "https://disease.sh/v3/covid-19/historical/all?lastdays=" + String(QueryOption.historycalDaysCount)
         static let countrySummary = "https://disease.sh/v3/covid-19/countries?sort=cases"
         static let countryHistorical = "https://disease.sh/v3/covid-19/historical/"
+        static let countrySummaryYesterday = "https://disease.sh/v3/covid-19/countries?yesterday=true&sort=cases"
     }
 
     private let networkService = NetworkService()
@@ -55,5 +57,9 @@ class StatisticsService: StatisticsServiceProtocol {
     func fetchCountryHistoricalData(country: String, completion: @escaping (CountryHistorical?) -> Void) {
         guard let country = country.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) else { return }
         fetchData(API:  ApiURL.countryHistorical+country, parametres: ["lastdays": "all"], completion: completion)
+    }
+
+    func fetchСountrySummaryYesterdayData(completion: @escaping ([СountrySummaryYesterday]?) -> Void) {
+        fetchData(API: ApiURL.countrySummaryYesterday, completion: completion)
     }
 }

@@ -17,6 +17,12 @@ struct СountrySummary: Decodable {
     let todayCases: Int
 }
 
+struct СountrySummaryYesterday: Decodable {
+    let cases: Int
+    let country: String
+}
+
 struct CountryInfo: Decodable {
     let flag: String
 }
+

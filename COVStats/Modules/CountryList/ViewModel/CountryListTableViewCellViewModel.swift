@@ -12,4 +12,5 @@ struct CountryListTableViewCellViewModel {
     let cases: String
     let country: String
     let flagImageURL: String
+    let trending: Trending
 }

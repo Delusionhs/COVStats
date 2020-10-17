@@ -122,13 +122,24 @@ class CountryListTableViewCell: UITableViewCell {
         ])
     }
 
+    private func imageForTreding(treding: Trending) -> UIImage? {
+        switch treding {
+        case .up:
+            return UIImage(named: "chevronUp")
+        case .down:
+            return  UIImage(named: "chevronDown")
+        case .notDetermined:
+            return UIImage(named: "chevronDown")
+        }
+    }
+
     func configure(with viewModel: CountryListTableViewCellViewModel) {
         countryNameLabel.text = viewModel.country
         countLabel.text = viewModel.cases
         if let url = URL(string: viewModel.flagImageURL) {
             flagImage.setImage(with: url)
         }
-        trendingImage.image = UIImage(named: "chevronDown")
+        trendingImage.image = imageForTreding(treding: viewModel.trending)
     }
 }
 

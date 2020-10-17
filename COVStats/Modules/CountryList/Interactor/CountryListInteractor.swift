@@ -18,4 +18,10 @@ extension CountryListInteractor: CountryListInteractorInput {
             self?.output.countrySummaryDataDidRiceive(data: data)
         }
     }
+
+    func fetchCountrySummaryYesterdayData() {
+        statisticsService.fetchСountrySummaryYesterdayData { [weak self] data in
+            self?.output.countrySummaryYesterdayDataDidRiceive(data: data)
+        }
+    }
 }

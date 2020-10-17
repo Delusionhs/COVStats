@@ -10,4 +10,5 @@ import Foundation
 
 protocol CountryListInteractorInput {
     func fetchCountrySummaryData()
+    func fetchCountrySummaryYesterdayData()
 }

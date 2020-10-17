@@ -11,4 +11,5 @@ import Foundation
 enum Trending {
     case up
     case down
+    case notDetermined
 }

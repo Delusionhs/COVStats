@@ -10,4 +10,5 @@ import Foundation
 
 protocol CountryListInteractorOutput: class {
     func countrySummaryDataDidRiceive (data: [СountrySummary]?)
+    func countrySummaryYesterdayDataDidRiceive(data: [СountrySummaryYesterday]?)
 }
