@@ -16,6 +16,18 @@ struct CountryHistoricalTimeline: Decodable {
     let cases: [String:Int]
     let deaths: [String:Int]
 
+    var startDay: Int {
+        var days: [String] = []
+        for (key,_) in cases {
+            days.append(key)
+        }
+        if let startDateComponents = days.min()?.components(separatedBy: "/"),
+           startDateComponents.count == 2 {
+            return Int(startDateComponents[1]) ?? 0
+        }
+        return 0
+    }
+
     var casesPerDayTimeline: [Int] {
         var timeline: [Int] = []
         var dynamicTimeline: [Int] = []

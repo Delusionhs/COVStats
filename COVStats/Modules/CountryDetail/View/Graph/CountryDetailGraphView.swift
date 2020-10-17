@@ -118,7 +118,6 @@ class CountryDetailGraphView: UIView {
         var affectedMaxLineDataEntry: [ChartDataEntry] = []
         var deathMaxLineDataEntry: [ChartDataEntry] = []
 
-
         for i in 0..<min(xAxisData.count, deathYAxisData.count) {
             deathLineDataEntry.append(ChartDataEntry(x: Double(xAxisData[i]), y: Double(deathYAxisData[i])))
         }
@@ -127,10 +126,12 @@ class CountryDetailGraphView: UIView {
             affectedLineDataEntry.append(ChartDataEntry(x: Double(xAxisData[i]), y: Double(affectedYAxisData[i])))
         }
 
-        affectedMaxLineDataEntry.append(ChartDataEntry(x: Double(affectedYAxisData.lastIndex(where: {$0 == affectedYAxisData.max()}) ?? 0)+1,
+        let minDayOffset = Double(xAxisData.first ?? 0)
+
+        affectedMaxLineDataEntry.append(ChartDataEntry(x: Double(affectedYAxisData.lastIndex(where: {$0 == affectedYAxisData.max()}) ?? 0)+minDayOffset+1,
                                                        y: Double(affectedYAxisData.last(where: {$0 == affectedYAxisData.max()}) ?? 0)))
 
-        deathMaxLineDataEntry.append(ChartDataEntry(x: Double(deathYAxisData.lastIndex(where: {$0 == deathYAxisData.max()}) ?? 0)+1,
+        deathMaxLineDataEntry.append(ChartDataEntry(x: Double(deathYAxisData.lastIndex(where: {$0 == deathYAxisData.max()}) ?? 0)+minDayOffset+1,
                                                        y: Double(deathYAxisData.last(where: {$0 == deathYAxisData.max()}) ?? 0)))
 
         let deathLineDataSet = LineChartDataSet(entries: deathLineDataEntry, label: GraphOptions.deathDataSetLabel)

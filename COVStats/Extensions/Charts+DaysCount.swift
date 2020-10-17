@@ -12,8 +12,7 @@ class DayAxisValueFormatter: NSObject, IAxisValueFormatter {
     }
 
     public func stringForValue(_ value: Double, axis: AxisBase?) -> String {
-        let days = Int(value)+22 //start backend data 01/22/2020
-        print(days)
+        let days = Int(value)
         let month = determineMonth(forDayOfYear: days)
 
         let monthName = months[month % months.count]

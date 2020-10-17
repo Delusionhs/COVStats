@@ -14,6 +14,6 @@ struct CountryDetailGraphViewModel {
     let startDay: Int
 
     var xAxisData: [Int] {
-        return Array(1...min(affectedYAxisData.count,deathYAxisData.count))
+        return Array(startDay...min(affectedYAxisData.count+startDay,deathYAxisData.count+startDay))
     }
 }
