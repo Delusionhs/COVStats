@@ -129,7 +129,7 @@ class CountryListTableViewCell: UITableViewCell {
         case .down:
             return  UIImage(named: "chevronDown")
         case .notDetermined:
-            return UIImage(named: "chevronDown")
+           return nil
         }
     }
 

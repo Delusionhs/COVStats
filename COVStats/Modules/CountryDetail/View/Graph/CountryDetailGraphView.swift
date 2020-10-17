@@ -73,14 +73,16 @@ class CountryDetailGraphView: UIView {
         trendingGraph.xAxis.drawGridLinesEnabled = true
         trendingGraph.xAxis.gridColor = GraphOptions.graphGridColor
         trendingGraph.xAxis.drawAxisLineEnabled = false
-        trendingGraph.xAxis.drawLabelsEnabled = false
+
         trendingGraph.rightAxis.enabled = false
         trendingGraph.leftAxis.enabled = false
         trendingGraph.legend.enabled = false
         trendingGraph.minOffset = 0
         trendingGraph.leftAxis.axisMinimum = 0
-//        trendingGraph.legend.enabled = true
-//        trendingGraph.legend.form = .circle
+
+        trendingGraph.xAxis.drawLabelsEnabled = true
+        trendingGraph.xAxis.labelPosition = XAxis.LabelPosition.bottom
+        trendingGraph.xAxis.valueFormatter = DayAxisValueFormatter(chart: trendingGraph)
     }
     
 
@@ -190,3 +192,4 @@ extension CountryDetailGraphView {
         return nil
     }
 }
+

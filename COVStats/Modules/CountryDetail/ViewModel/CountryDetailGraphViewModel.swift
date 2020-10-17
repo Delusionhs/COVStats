@@ -11,6 +11,7 @@ import Foundation
 struct CountryDetailGraphViewModel {
     let affectedYAxisData: [Int]
     let deathYAxisData: [Int]
+    let startDay: Int
 
     var xAxisData: [Int] {
         return Array(1...min(affectedYAxisData.count,deathYAxisData.count))

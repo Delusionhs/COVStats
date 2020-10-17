@@ -15,6 +15,7 @@ class CountryDetailViewController: UIViewController {
         static let headerHorizontalMargin: CGFloat = 14
         static let headerViewHeight: CGFloat = 240
         static let graphToHeaderDistanse: CGFloat = 25
+        static let graphBottomMargin: CGFloat = -22
     }
 
     var output: CountryDetailViewOutput!
@@ -51,7 +52,8 @@ class CountryDetailViewController: UIViewController {
         NSLayoutConstraint.activate([
             trendingGraph.topAnchor.constraint(equalTo: headerView.bottomAnchor, constant: LayoutOptions.graphToHeaderDistanse),
             trendingGraph.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: LayoutOptions.headerHorizontalMargin),
-            trendingGraph.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -LayoutOptions.headerHorizontalMargin), trendingGraph.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)
+            trendingGraph.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -LayoutOptions.headerHorizontalMargin),
+            trendingGraph.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: LayoutOptions.graphBottomMargin)
         ])
     }
 }

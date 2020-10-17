@@ -49,6 +49,7 @@
 		78253DC2253911C400889F74 /* EducationSegmentSymptomsViewTab.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78253DC1253911C400889F74 /* EducationSegmentSymptomsViewTab.swift */; };
 		78253DC52539161C00889F74 /* EducationSegmentSymptomsViewTabViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78253DC42539161C00889F74 /* EducationSegmentSymptomsViewTabViewModel.swift */; };
 		78253DCC25392AF500889F74 /* EducationLegendTabStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78253DCB25392AF500889F74 /* EducationLegendTabStackView.swift */; };
+		78253DD3253BA2EE00889F74 /* Charts+DaysCount.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78253DD2253BA2EE00889F74 /* Charts+DaysCount.swift */; };
 		78516E71251A5F6E00FBDBDE /* Trending.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78516E70251A5F6E00FBDBDE /* Trending.swift */; };
 		78516E7A251A935800FBDBDE /* UIVIewController+Preview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78516E79251A935800FBDBDE /* UIVIewController+Preview.swift */; };
 		786DA4FD252FC93F002B688F /* InitialConfiguratorProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 786DA4FC252FC93F002B688F /* InitialConfiguratorProtocol.swift */; };
@@ -186,6 +187,7 @@
 		78253DC1253911C400889F74 /* EducationSegmentSymptomsViewTab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EducationSegmentSymptomsViewTab.swift; sourceTree = "<group>"; };
 		78253DC42539161C00889F74 /* EducationSegmentSymptomsViewTabViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EducationSegmentSymptomsViewTabViewModel.swift; sourceTree = "<group>"; };
 		78253DCB25392AF500889F74 /* EducationLegendTabStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EducationLegendTabStackView.swift; sourceTree = "<group>"; };
+		78253DD2253BA2EE00889F74 /* Charts+DaysCount.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Charts+DaysCount.swift"; sourceTree = "<group>"; };
 		78516E70251A5F6E00FBDBDE /* Trending.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Trending.swift; sourceTree = "<group>"; };
 		78516E79251A935800FBDBDE /* UIVIewController+Preview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIVIewController+Preview.swift"; sourceTree = "<group>"; };
 		786DA4FC252FC93F002B688F /* InitialConfiguratorProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InitialConfiguratorProtocol.swift; sourceTree = "<group>"; };
@@ -819,6 +821,7 @@
 				78516E79251A935800FBDBDE /* UIVIewController+Preview.swift */,
 				781019CB2523EB3C00462CFC /* Int+Formatter.swift */,
 				78F169272526909E00D77BFE /* UIImageView + URL.swift */,
+				78253DD2253BA2EE00889F74 /* Charts+DaysCount.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -1185,6 +1188,7 @@
 				780CACD325253D4400B77AC1 /* CountryDetailHeaderViewPreview.swift in Sources */,
 				78F46FFF2518E55A0008637C /* HomeInteractor.swift in Sources */,
 				78F46FFD2518E19E0008637C /* HomePresenter.swift in Sources */,
+				78253DD3253BA2EE00889F74 /* Charts+DaysCount.swift in Sources */,
 				78D1BA89251D2EAE000A21C8 /* CountryListTableViewCell.swift in Sources */,
 				78F47045251A1C600008637C /* GlobalSummaryPresenter.swift in Sources */,
 				78F470182519092D0008637C /* GlobalSummaryCovidCases.swift in Sources */,
