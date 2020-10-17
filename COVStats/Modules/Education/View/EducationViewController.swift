@@ -34,6 +34,7 @@ class EducationViewController: UIViewController{
         static let preventionScreenHeight: CGFloat = 1150
         static let symptomsScreenHeight: CGFloat = 1250
         static let diagnosisScreenHeight: CGFloat = 1000
+        static let startHeight: CGFloat = 600
 
     }
 
@@ -92,6 +93,11 @@ class EducationViewController: UIViewController{
         segmentedControlBar.backgroundColor = SegmentedControlOptions.segmentedControlBarColor
         segmentedControlSelectedBar.backgroundColor = SegmentedControlOptions.segmentedControlSelectedBarColor
 
+        for i in 0...(segmentedControl.numberOfSegments-1)  {
+            let backgroundSegmentView = segmentedControl.subviews[i]
+            backgroundSegmentView.isHidden = true
+        }
+
         segmentedControl.addTarget(self, action: #selector(segmentedControlValueChanged), for: UIControl.Event.valueChanged)
     }
 
@@ -148,7 +154,7 @@ class EducationViewController: UIViewController{
             segmentsContainer.widthAnchor.constraint(equalTo: segmentedControl.widthAnchor),
             segmentsContainer.leftAnchor.constraint(equalTo: segmentedControl.leftAnchor),
             segmentsContainer.bottomAnchor.constraint(equalTo: scrollViewContentView.bottomAnchor),
-            segmentsContainer.heightAnchor.constraint(equalToConstant: 600)
+            segmentsContainer.heightAnchor.constraint(equalToConstant: LayoutOptions.startHeight)
         ])
     }
 
