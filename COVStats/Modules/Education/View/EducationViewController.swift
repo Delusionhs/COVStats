@@ -72,11 +72,14 @@ class EducationViewController: UIViewController{
     }
 
     private func setupSegmentedControl() {
-        segmentedControl.backgroundColor = .clear
-        segmentedControl.selectedSegmentTintColor = .clear
+        segmentedControl.insertSegment(withTitle: Localization.preventionSegmentTitle, at: 0, animated: true)
+        segmentedControl.insertSegment(withTitle: Localization.symptomsSegmentTitle, at: 1, animated: true)
+        segmentedControl.insertSegment(withTitle: Localization.diagnosisSegmentTitle, at: 2, animated: true)
+
         scrollViewContentView.addSubview(segmentedControl)
         scrollViewContentView.addSubview(segmentedControlBar)
         scrollViewContentView.addSubview(segmentedControlSelectedBar)
+        
         segmentedControl.setTitleTextAttributes([NSAttributedString.Key.font : UIFont.systemFont(ofSize: SegmentedControlOptions.titleTextSize,
                                                                                                  weight: UIFont.Weight.regular),
                                                  NSAttributedString.Key.foregroundColor: SegmentedControlOptions.normalTitleTextColor],
@@ -85,10 +88,6 @@ class EducationViewController: UIViewController{
                                                                                                  weight: UIFont.Weight.regular),
                                                  NSAttributedString.Key.foregroundColor: UIColor.black],
                                                 for: .selected)
-        segmentedControl.insertSegment(withTitle: Localization.preventionSegmentTitle, at: 0, animated: true)
-        segmentedControl.insertSegment(withTitle: Localization.symptomsSegmentTitle, at: 1, animated: true)
-        segmentedControl.insertSegment(withTitle: Localization.diagnosisSegmentTitle, at: 2, animated: true)
-
         segmentedControl.selectedSegmentIndex = 0
         segmentedControlBar.backgroundColor = SegmentedControlOptions.segmentedControlBarColor
         segmentedControlSelectedBar.backgroundColor = SegmentedControlOptions.segmentedControlSelectedBarColor
