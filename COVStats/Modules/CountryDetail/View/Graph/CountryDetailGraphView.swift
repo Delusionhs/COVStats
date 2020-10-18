@@ -34,6 +34,7 @@ class CountryDetailGraphView: UIView {
 
     private enum LayoutOptions {
         static let titleMargin: CGFloat = 15
+        static let trendingGraphTopPadding: CGFloat = 5
     }
 
     private let trendingGraph: LineChartView = {
@@ -99,7 +100,7 @@ class CountryDetailGraphView: UIView {
         NSLayoutConstraint.activate([
             trendingGraph.leadingAnchor.constraint(equalTo: self.leadingAnchor),
             trendingGraph.trailingAnchor.constraint(equalTo: self.trailingAnchor),
-            trendingGraph.topAnchor.constraint(equalTo: trendingGraphTitle.bottomAnchor),
+            trendingGraph.topAnchor.constraint(equalTo: trendingGraphTitle.bottomAnchor, constant: LayoutOptions.trendingGraphTopPadding),
             trendingGraph.bottomAnchor.constraint(equalTo: self.bottomAnchor)
         ])
     }
