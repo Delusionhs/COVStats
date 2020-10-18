@@ -22,7 +22,7 @@ struct CountryHistoricalTimeline: Decodable {
             days.append(key)
         }
         if let startDateComponents = days.min()?.components(separatedBy: "/"),
-           startDateComponents.count == 2 {
+           startDateComponents.count == 3 { /* Month/Day/Year */
             return Int(startDateComponents[1]) ?? 0
         }
         return 0
