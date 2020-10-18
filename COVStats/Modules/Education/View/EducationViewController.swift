@@ -76,6 +76,9 @@ class EducationViewController: UIViewController{
         segmentedControl.insertSegment(withTitle: Localization.symptomsSegmentTitle, at: 1, animated: true)
         segmentedControl.insertSegment(withTitle: Localization.diagnosisSegmentTitle, at: 2, animated: true)
 
+        segmentedControl.backgroundColor = .clear
+        segmentedControl.selectedSegmentTintColor = .clear
+        
         scrollViewContentView.addSubview(segmentedControl)
         scrollViewContentView.addSubview(segmentedControlBar)
         scrollViewContentView.addSubview(segmentedControlSelectedBar)
