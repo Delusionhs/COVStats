@@ -29,5 +29,3 @@ extension CountryDetailPresenter: CountryDetailInteractorOutput {
     }
 }
 
-extension CountryDetailPresenter: CountryDetailModuleInput {
-}
