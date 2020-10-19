@@ -30,7 +30,7 @@ class StatisticsService: StatisticsServiceProtocol {
         static let countrySummaryYesterday = "https://disease.sh/v3/covid-19/countries?yesterday=true&sort=cases"
     }
 
-    private let networkService = NetworkService()
+    private let networkService: NetworkServiceProtocol = NetworkService()
 
     private func fetchData<T: Decodable>(API: String, parametres: [String: Any] = [:], completion: @escaping (T?) -> Void) {
         guard let url = URL(string: API) else { return }

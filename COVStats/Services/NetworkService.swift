@@ -2,8 +2,12 @@ import Foundation
 import SystemConfiguration
 import Alamofire
 
-class NetworkService {
-    func getJSONData(URL: URL, parameters: [String: Any] = [:], completion: @escaping (Data?) -> Void) {
+protocol NetworkServiceProtocol {
+    func getJSONData(URL: URL, parameters: [String: Any], completion: @escaping (Data?) -> Void)
+}
+
+class NetworkService: NetworkServiceProtocol {
+    func getJSONData(URL: URL, parameters: [String: Any], completion: @escaping (Data?) -> Void) {
         AF.request(URL, parameters: parameters).responseJSON { responseJSON in
             switch responseJSON.result {
                 case .success:
