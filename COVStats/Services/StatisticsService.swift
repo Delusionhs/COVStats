@@ -34,10 +34,13 @@ class StatisticsService: StatisticsServiceProtocol {
 
     private func fetchData<T: Decodable>(API: String, parametres: [String: Any] = [:], completion: @escaping (T?) -> Void) {
         guard let url = URL(string: API) else { return }
-        networkService.getJSONData(URL: url, parameters: parametres) { data in
-            if let data = data {
+        networkService.getJSONData(URL: url, parameters: parametres) { result  in
+            switch result {
+            case .success(let data):
                 let summary = try? JSONDecoder().decode(T.self, from: data)
-                    completion(summary)
+                completion(summary)
+            case .failure(let error):
+                completion(nil)
             }
         }
     }

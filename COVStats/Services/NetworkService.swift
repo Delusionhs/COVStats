@@ -2,19 +2,28 @@ import Foundation
 import SystemConfiguration
 import Alamofire
 
+enum NetworkError: Error {
+    case networkError
+    case dataError
+}
+
 protocol NetworkServiceProtocol {
-    func getJSONData(URL: URL, parameters: [String: Any], completion: @escaping (Data?) -> Void)
+    func getJSONData(URL: URL, parameters: [String: Any], completion: @escaping (Result<Data, NetworkError>) -> Void)
 }
 
 class NetworkService: NetworkServiceProtocol {
-    func getJSONData(URL: URL, parameters: [String: Any], completion: @escaping (Data?) -> Void) {
+
+    func getJSONData(URL: URL, parameters: [String: Any], completion: @escaping (Result<Data, NetworkError>) -> Void) {
         AF.request(URL, parameters: parameters).responseJSON { responseJSON in
             switch responseJSON.result {
                 case .success:
-                    completion(responseJSON.data)
-                case .failure(let error):
-                    print("Failed to load: \(error.localizedDescription)")
-                    completion(nil)
+                    if let data = responseJSON.data {
+                        completion(.success(data))
+                    } else {
+                        completion(.failure(NetworkError.dataError))
+                    }
+                case .failure(_):
+                    completion(.failure(NetworkError.networkError))
             }
         }
 

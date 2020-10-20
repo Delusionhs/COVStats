@@ -25,10 +25,13 @@ class NewsService: NewsServiceProtocol {
 
     func fetchCovidNewsData(completion: @escaping (NewsResponse?) -> Void) {
         guard let url = URL(string: ApiURL.everythingNews) else { return }
-        networkService.getJSONData(URL: url, parameters: ["q": QueryOptions.covidQuery, "apiKey": QueryOptions.apiKey]) { data in
-            if let data = data {
+        networkService.getJSONData(URL: url, parameters: ["q": QueryOptions.covidQuery, "apiKey": QueryOptions.apiKey]) { result in
+            switch result {
+            case .success(let data):
                 let summary = try? JSONDecoder().decode(NewsResponse.self, from: data)
                 completion(summary)
+            case .failure(_):
+                completion(nil)
             }
         }
     }
