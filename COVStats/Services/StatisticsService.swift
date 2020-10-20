@@ -40,6 +40,7 @@ class StatisticsService: StatisticsServiceProtocol {
                 let summary = try? JSONDecoder().decode(T.self, from: data)
                 completion(summary)
             case .failure(let error):
+                print(error)
                 completion(nil)
             }
         }
