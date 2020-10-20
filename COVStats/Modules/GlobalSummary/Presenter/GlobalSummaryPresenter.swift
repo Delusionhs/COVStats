@@ -79,7 +79,7 @@ extension GlobalSummaryPresenter: GlobalSummaryInteractorOutput {
     }
 
     func errorReceiveGlobalSummaryData(errorText: String) {
-        router.stowAlertWithText(text: "test")
+        router.stowAlertWithText(text: errorText)
     }
 
 }

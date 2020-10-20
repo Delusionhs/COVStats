@@ -19,8 +19,8 @@ extension GlobalSummaryInteractor: GlobalSummaryInteractorInput {
             switch result {
             case .success(let data):
                 self?.output.globalSummaryDataDidRiceive(data: data)
-            case .failure(_):
-                self?.output.errorReceiveGlobalSummaryData(errorText: "test")
+            case .failure(let error):
+                self?.output.errorReceiveGlobalSummaryData(errorText: error.errorText)
             }
         }
     }

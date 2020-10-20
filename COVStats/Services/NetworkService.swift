@@ -5,6 +5,15 @@ import Alamofire
 enum NetworkError: Error {
     case networkError
     case dataError
+
+    var errorText: String {
+        switch self {
+        case .networkError:
+            return "Sorry, Network Error"
+        case .dataError:
+            return "Sorry, Receive Data error"
+        }
+    }
 }
 
 protocol NetworkServiceProtocol {

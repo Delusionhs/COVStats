@@ -9,7 +9,7 @@
 import Foundation
 
 protocol NewsServiceProtocol {
-    func fetchCovidNewsData(completion: @escaping (NewsResponse?) -> Void)
+    func fetchCovidNewsData(completion: @escaping (Result<NewsResponse?, NetworkError>) -> Void)
 }
 
 class NewsService: NewsServiceProtocol {
@@ -23,15 +23,15 @@ class NewsService: NewsServiceProtocol {
 
     private let networkService = NetworkService()
 
-    func fetchCovidNewsData(completion: @escaping (NewsResponse?) -> Void) {
+    func fetchCovidNewsData(completion: @escaping (Result<NewsResponse?, NetworkError>) -> Void) {
         guard let url = URL(string: ApiURL.everythingNews) else { return }
         networkService.getJSONData(URL: url, parameters: ["q": QueryOptions.covidQuery, "apiKey": QueryOptions.apiKey]) { result in
             switch result {
             case .success(let data):
                 let summary = try? JSONDecoder().decode(NewsResponse.self, from: data)
-                completion(summary)
-            case .failure(_):
-                completion(nil)
+                completion(.success(summary))
+            case .failure(let error):
+                completion(.failure(error))
             }
         }
     }

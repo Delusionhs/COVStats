@@ -13,6 +13,7 @@ class NewsConfigurator: NewsConfiguratorProtocol {
     func configure(with viewController: NewsViewController) {
 
         let router = NewsRouter()
+        router.viewController = viewController
 
         let presenter = NewsPresenter()
         presenter.view = viewController

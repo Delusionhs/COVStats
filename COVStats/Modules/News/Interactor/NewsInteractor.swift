@@ -16,8 +16,13 @@ class NewsInteractor {
 
 extension NewsInteractor: NewsInteractorInput {
     func fetchCovidNews() {
-        newsService.fetchCovidNewsData { [weak self] data in
-            self?.output.CovidNewsDataDidRiceive(data: data)
+        newsService.fetchCovidNewsData { [weak self] result in
+            switch result {
+            case .success(let data):
+                self?.output.CovidNewsDataDidRiceive(data: data)
+            case .failure(let error):
+                self?.output.errorReceiveNewsData(errorText: error.errorText)
+            }
         }
     }
 

@@ -25,6 +25,10 @@ extension NewsPresenter: NewsInteractorOutput {
         newsResponse = data
         view.reloadTableViewData()
     }
+
+    func errorReceiveNewsData(errorText: String) {
+        router.stowAlertWithText(text: errorText)
+    }
 }
 
 extension NewsPresenter: NewsViewOutput {
