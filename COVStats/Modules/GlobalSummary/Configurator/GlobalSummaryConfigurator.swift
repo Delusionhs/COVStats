@@ -13,6 +13,7 @@ class GlobalSummaryConfigurator: GlobalSummaryConfiguratorProtocol {
     func configure(with viewController: GlobalSummaryViewController) {
 
         let router = GlobalSummaryRouter()
+        router.viewController = viewController
 
         let presenter = GlobalSummaryPresenter()
         presenter.view = viewController

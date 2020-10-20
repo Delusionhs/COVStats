@@ -9,4 +9,5 @@
 import Foundation
 
 protocol GlobalSummaryRouterInput: class {
+    func stowAlertWithText(text: String)
 }

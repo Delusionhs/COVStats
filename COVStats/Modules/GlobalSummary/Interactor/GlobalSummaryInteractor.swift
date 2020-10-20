@@ -20,7 +20,7 @@ extension GlobalSummaryInteractor: GlobalSummaryInteractorInput {
             case .success(let data):
                 self?.output.globalSummaryDataDidRiceive(data: data)
             case .failure(_):
-                self?.output.globalSummaryDataDidRiceive(data: nil)
+                self?.output.errorReceiveGlobalSummaryData(errorText: "test")
             }
         }
     }

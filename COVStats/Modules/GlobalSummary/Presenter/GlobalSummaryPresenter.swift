@@ -77,4 +77,9 @@ extension GlobalSummaryPresenter: GlobalSummaryInteractorOutput {
         setupGraphViewModels(data: data)
         view.reloadCollectionViewData()
     }
+
+    func errorReceiveGlobalSummaryData(errorText: String) {
+        router.stowAlertWithText(text: "test")
+    }
+
 }
