@@ -14,8 +14,13 @@ class CountryDetailInteractor {
 
 extension CountryDetailInteractor: CountryDetailInteractorInput {
     func fetchCountryHistoricalData(country: String) {
-        statisticsService.fetchCountryHistoricalData(country: country) { [weak self] data in
-            self?.output.countryHistoricalDataDidRiceive(data: data)
+        statisticsService.fetchCountryHistoricalData(country: country) { [weak self] result in
+            switch result {
+            case .success(let data):
+                self?.output.countryHistoricalDataDidRiceive(data: data)
+            case .failure(_):
+                self?.output.countryHistoricalDataDidRiceive(data: nil)
+            }
         }
     }
 }

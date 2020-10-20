@@ -9,11 +9,11 @@
 import Foundation
 
 protocol StatisticsServiceProtocol {
-    func fetchGlobalSummaryData(completion: @escaping (GlobalSummaryCovidCases?) -> Void)
-    func fetchGlobalHistoricalData(completion: @escaping (GlobalSummaryHistorical?) -> Void)
-    func fetchСountrySummaryData(completion: @escaping ([СountrySummary]?) -> Void)
-    func fetchCountryHistoricalData(country: String, completion: @escaping (CountryHistorical?) -> Void)
-    func fetchСountrySummaryYesterdayData(completion: @escaping ([СountrySummaryYesterday]?) -> Void)
+    func fetchGlobalSummaryData(completion: @escaping (Result<GlobalSummaryCovidCases?, NetworkError>) -> Void)
+    func fetchGlobalHistoricalData(completion: @escaping (Result<GlobalSummaryHistorical?, NetworkError>) -> Void)
+    func fetchСountrySummaryData(completion: @escaping (Result<[СountrySummary]?, NetworkError>) -> Void)
+    func fetchCountryHistoricalData(country: String, completion: @escaping (Result<CountryHistorical?, NetworkError>) -> Void)
+    func fetchСountrySummaryYesterdayData(completion: @escaping (Result<[СountrySummaryYesterday]?, NetworkError>) -> Void)
 }
 
 class StatisticsService: StatisticsServiceProtocol {
@@ -32,38 +32,37 @@ class StatisticsService: StatisticsServiceProtocol {
 
     private let networkService: NetworkServiceProtocol = NetworkService()
 
-    private func fetchData<T: Decodable>(API: String, parametres: [String: Any] = [:], completion: @escaping (T?) -> Void) {
+    private func fetchData<T: Decodable>(API: String, parametres: [String: Any] = [:], completion: @escaping (Result<T?, NetworkError>) -> Void) {
         guard let url = URL(string: API) else { return }
         networkService.getJSONData(URL: url, parameters: parametres) { result  in
             switch result {
             case .success(let data):
                 let summary = try? JSONDecoder().decode(T.self, from: data)
-                completion(summary)
+                completion(.success(summary))
             case .failure(let error):
-                print(error)
-                completion(nil)
+                completion(.failure(error))
             }
         }
     }
 
-    func fetchGlobalSummaryData(completion: @escaping (GlobalSummaryCovidCases?) -> Void) {
+    func fetchGlobalSummaryData(completion: @escaping (Result<GlobalSummaryCovidCases?, NetworkError>) -> Void) {
         fetchData(API: ApiURL.globalSummary, completion: completion)
     }
 
-    func fetchGlobalHistoricalData(completion: @escaping (GlobalSummaryHistorical?) -> Void) {
+    func fetchGlobalHistoricalData(completion: @escaping (Result<GlobalSummaryHistorical?, NetworkError>) -> Void) {
         fetchData(API: ApiURL.globalHistorical, completion: completion)
     }
 
-    func fetchСountrySummaryData(completion: @escaping ([СountrySummary]?) -> Void) {
+    func fetchСountrySummaryData(completion: @escaping (Result<[СountrySummary]?, NetworkError>) -> Void) {
         fetchData(API: ApiURL.countrySummary, completion: completion)
     }
 
-    func fetchCountryHistoricalData(country: String, completion: @escaping (CountryHistorical?) -> Void) {
+    func fetchCountryHistoricalData(country: String, completion: @escaping (Result<CountryHistorical?, NetworkError>) -> Void) {
         guard let country = country.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) else { return }
         fetchData(API:  ApiURL.countryHistorical+country, parametres: ["lastdays": "all"], completion: completion)
     }
 
-    func fetchСountrySummaryYesterdayData(completion: @escaping ([СountrySummaryYesterday]?) -> Void) {
+    func fetchСountrySummaryYesterdayData(completion: @escaping (Result<[СountrySummaryYesterday]?, NetworkError>) -> Void) {
         fetchData(API: ApiURL.countrySummaryYesterday, completion: completion)
     }
 }

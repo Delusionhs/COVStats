@@ -14,14 +14,24 @@ class CountryListInteractor {
 
 extension CountryListInteractor: CountryListInteractorInput {
     func fetchCountrySummaryData() {
-        statisticsService.fetchСountrySummaryData { [weak self] data in
-            self?.output.countrySummaryDataDidRiceive(data: data)
+        statisticsService.fetchСountrySummaryData { [weak self] result in
+            switch result {
+            case .success(let data):
+                self?.output.countrySummaryDataDidRiceive(data: data)
+            case .failure(_):
+                self?.output.countrySummaryDataDidRiceive(data: nil)
+            }
         }
     }
 
     func fetchCountrySummaryYesterdayData() {
-        statisticsService.fetchСountrySummaryYesterdayData { [weak self] data in
-            self?.output.countrySummaryYesterdayDataDidRiceive(data: data)
+        statisticsService.fetchСountrySummaryYesterdayData { [weak self] result in
+            switch result {
+            case .success(let data):
+                self?.output.countrySummaryYesterdayDataDidRiceive(data: data)
+            case .failure(_):
+                self?.output.countrySummaryYesterdayDataDidRiceive(data: nil)
+            }
         }
     }
 }
